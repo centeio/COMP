@@ -1,0 +1,139 @@
+/**
+ * JJTree template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
+ */
+options
+{
+  //static = true;
+  multi = true;
+}
+
+PARSER_BEGIN(MyNewGrammar)
+package pack;
+import java.io.*;
+
+public class MyNewGrammar
+{
+  public static void main(String args [])
+  {
+ 
+    String code = "if(x == null)";
+
+    StringReader sr = new StringReader(code);
+    Reader r = new BufferedReader(sr);
+    try
+    {
+   		MyNewGrammar grammar = new MyNewGrammar(r);
+
+      ASTStart n = grammar.Start(); //root
+      n.dump("");
+      System.out.println("Thank you.");
+    }
+    catch (Exception e)
+    {
+      System.out.println("Oops.");
+      System.out.println(e.getMessage());
+    }
+  }
+}
+
+PARSER_END(MyNewGrammar)
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}
+
+TOKEN : /* Keywords */
+{
+	< ABSTRACT: "abstract" > |
+	< CONTINUE: "continue" > |
+	< NEW: "new" > |
+	< SWITCH: "switch" > |
+	< ASSERT: "assert" > |
+	< DEFAULTT: "default" > |
+	< GOTO: "goto" > |
+	< PACKAGE: "package" > |
+	< SYNCHRONIZED: "synchronized" > |
+	< BOOLEAN: "boolean" > |
+	< PRIVATE: "private" > |
+	< THIS: "this" > |
+	< BREAK: "break" > |
+	< DOUBLE: "double" > |
+	< IMPLEMENTS: "implements" > |
+	< PROTECTED: "protected" > |
+	< THROW: "throw" > |
+	< BYTE: "byte" > |
+	< IMPORT: "import" > |
+	< THROWS: "throws" > |
+	< CASE: "case" > |
+	< ENUM: "enum" > |
+	< INSTANCEOF: "instanceof" > |
+	< TRANSIENT: "transient" > |
+	< CATCH: "catch" > |
+	< EXTENDS: "extends" > |
+	< SHORT: "short" > |
+	< TRY: "try" > |
+	< IF: "if"> |
+  	< ELSE: "else" > |
+  	< WHILE: "while" > |
+  	< DO: "do" > |
+  	< FOR: "for" > |
+  	< STRING: "String" > |
+  	< INT: "int" > |
+  	< CLASS: "class" > |
+  	< PUBLIC: "public" > |
+  	< RETURN: "return" > |
+  	< CHAR: "char" > |
+  	< FINAL: "final" > |
+  	< INTERFACE: "interface" > |
+  	< STATIC: "static" > |
+  	< VOID: "void" > |
+  	< FINALLY: "finally" > |
+  	< LONG: "long" > |
+  	< STRICTFP: "strictfp" > |
+  	< VOLATILE: "volatile" > |
+  	< CONST: "const" > |
+  	< FLOAT: "float" > |
+  	< NATIVE: "native" > |
+  	< SUPER: "super" >
+}
+
+TOKEN : /* IDENTIFIERS */
+{
+  	< VARIABLE: < LETTER > (< LETTER > | < DIGIT >)* > |
+	< LETTER : [ "_", "a"-"z", "A"-"Z" ] > |
+	< DIGIT : [ "0"-"9" ] > |
+	< BOOLEANVALUE: "false" | "true"  > |
+	< EQUALS: "==" > |
+	< NULL: "null" > |
+	< PL: "(" > |
+	< PR: ")" >
+}
+
+ASTStart Start() :
+{}
+{
+  	If() { return jjtThis; }
+}
+
+void If() :  {} {
+	< IF > <PL > Condition() < PR >/* [<ELSE > { jjtThis.hasElse = true; }]*/
+}
+
+void Condition() : {} {
+	Expression1() Equals() Expression1()
+}
+
+void Equals() : {} {
+	< EQUALS >
+}
+
+void Expression1() : {Token t;} {
+	t = < VARIABLE > 
+	{
+		jjtThis.val = t.image;
+	}
+}

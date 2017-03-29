@@ -1,0 +1,17 @@
+/MyNewGrammar.java
+/MyNewGrammarConstants.java
+/MyNewGrammarTokenManager.java
+/ParseException.java
+/SimpleCharStream.java
+/Token.java
+/TokenMgrError.java
+/ASTCondition.java
+/ASTEquals.java
+/ASTExpression1.java
+/ASTStart.java
+/JJTMyNewGrammarState.java
+/MyNewGrammar.jj
+/MyNewGrammarTreeConstants.java
+/Node.java
+/ASTIf.java
+/SimpleNode.java
