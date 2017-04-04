@@ -9,9 +9,7 @@ public class PAT {
 	public static void main(String args[]) {
 		Parser parser = new Parser();
 		
-		parser.parse();
-		
-		Root root = parser.getRoot();
+		Root root = parser.parse();;
 		
 		MyNewGrammar.createJJTree("if(x == null) { x = 3 }");
 	}
