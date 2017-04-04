@@ -10,6 +10,10 @@ public abstract class BasicNode {
 	    public String toString(String prefix) {
 	    	return prefix + "BasicNode";
 	    }
+	    
+	    public String getNodeType() { return nodetype; }
+	    public String getLocation() { return location; }
+	    public List<Comment> getComments() { return comments; } 
 }
 
 

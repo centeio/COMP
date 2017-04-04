@@ -14,4 +14,6 @@ public class CompilationUnit extends BasicNode {
 		
 		return str;
 	}
+	
+	public List<Type> getTypes() { return types; }
 }

@@ -11,4 +11,6 @@ public class VariableWrite extends Expression {
 		
 		return str;
 	}
+	
+	public Reference getVar() { return var; }
 }

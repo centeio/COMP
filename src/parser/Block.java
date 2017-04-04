@@ -14,4 +14,6 @@ public class Block extends Statement {
 		
 		return str;
 	}
+	
+	public List<Statement> getStatements() { return statements; }
 }

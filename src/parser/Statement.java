@@ -6,4 +6,6 @@ public abstract class Statement extends BasicNode {
 	public String toString(String prefix) {
 		return prefix + "Statement";
 	}
+	
+	public String getLabel() { return label; }
 }

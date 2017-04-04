@@ -22,4 +22,9 @@ public class ExecutableReference extends Reference {
 		return str;
 	}
 	
+	public TypeReference getDeclarator() { return declarator; }
+	public TypeReference getType() { return type; }
+	public List<Parameter> getParameters() { return parameters; }
+	public List<Reference> getArguments() { return arguments; }
+	
 }

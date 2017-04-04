@@ -6,4 +6,6 @@ public abstract class Reference extends BasicNode {
 	public String toString(String prefix) {
 		return prefix + "Reference";
 	}
+	
+	public String getName() { return name; }
 }

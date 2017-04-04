@@ -12,7 +12,7 @@ public class Parser {
 	
 	public Parser() {}
 	
-	public void parse() {
+	public Root parse() {
 
 		NodeDeserializer typeAdapter = new NodeDeserializer();
 		Gson gson = new GsonBuilder()
@@ -27,14 +27,17 @@ public class Parser {
 		try {
 			
 			String jsonString = readFile("ast.json");
-			Root fromJson = gson.fromJson(jsonString, Root.class);
-			System.out.println(fromJson.toString(""));
+			Root root = gson.fromJson(jsonString, Root.class);
+			System.out.println(root.toString(""));
+			return root;
 			
 		} catch(IOException e) { e.printStackTrace(); }
+		
+		return null;		
 	}
 	
 	public String readFile(String json) throws IOException {
 		return new String(Files.readAllBytes(Paths.get(json)), StandardCharsets.UTF_8);
 	}
-	
+		
 }

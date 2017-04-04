@@ -18,4 +18,7 @@ public class Class extends Type {
 		
 		return str;
 	}
+	
+	public String getPackage() { return _package; }
+	public TypeReference getSuperClass() { return _super; }
 }

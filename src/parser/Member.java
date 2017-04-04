@@ -6,4 +6,6 @@ public abstract class Member extends BasicNode {
 	public String toString(String prefix) {
 		return prefix + "Member";
 	}
+	
+	public String getName() { return name; }
 }

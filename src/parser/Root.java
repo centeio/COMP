@@ -14,4 +14,6 @@ public class Root extends BasicNode {
 		
 		return str;
 	}
+	
+	public List<CompilationUnit> getCompilationUnits() { return compilation_units; }
 }

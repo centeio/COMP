@@ -1,20 +1,20 @@
 package main;
 
 import pack.MyNewGrammar;
-import pack.Node;
-import pack.SimpleNode;
 import parser.Parser;
+import parser.Root;
 
 public class PAT {
 	
 	public static void main(String args[]) {
 		Parser parser = new Parser();
 		
-		parser.parse();
-		MyNewGrammar.createjjt("if(x==null){x=3}");
+		Root root = parser.parse();
 		
-		SimpleNode n = MyNewGrammar.n;
-		printChildren(n);
+		MyNewGrammar.createjjt("if(x == null) { x = 3 }");
+	
+        SimpleNode n;
+        printChildren(n);
 		
 	}
 	

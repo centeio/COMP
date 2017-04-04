@@ -20,4 +20,8 @@ public class Assignment extends Statement {
     	return str;
     }
     
+    public Expression getlhs() { return lhs; }
+    public Expression getrhs() { return rhs; }
+    public TypeReference type() { return type; }
+    
 }
