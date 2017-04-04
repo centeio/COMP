@@ -13,10 +13,10 @@ import java.io.*;
 
 public class MyNewGrammar
 {
-  public static void main(String args [])
+  public static ASTStart n;
+  public static void createjjt(String code)
   {
  
-    String code = "if(x == null) {x = 3}";
 
     StringReader sr = new StringReader(code);
     Reader r = new BufferedReader(sr);
@@ -24,7 +24,7 @@ public class MyNewGrammar
     {
    		MyNewGrammar grammar = new MyNewGrammar(r);
 
-      ASTStart n = grammar.Start(); //root
+      n = grammar.Start(); //root
       n.dump("");
       System.out.println("Thank you.");
     }
@@ -102,9 +102,9 @@ TOKEN : /* Keywords */
 
 TOKEN : /* IDENTIFIERS */
 {
-  	< STRING: < LETTER > (< LETTER > | < DIGIT >)* > |
+  	< STRING: < LETTER > (< LETTER > | < INTEGER >)* > |
 	< LETTER : [ "_", "a"-"z", "A"-"Z" ] > |
-	< DIGIT : [ "0"-"9" ] > |
+	< INTEGER : [ "0"-"9" ]([ "0"-"9" ])* > |
 	< BOOLEANVALUE: "false" | "true"  > |
 	< EQUALS: "==" > |
 	< PL: "(" > |
@@ -115,7 +115,9 @@ TOKEN : /* IDENTIFIERS */
 	< MINUS : "-"> |
 	< PLUS : "+"> |
 	< TIMES : "*" > |
-	< DIV : "/" >
+	< DIV : "/" > |
+	< MAJOR : ">" > |
+	< MINOR : "<" >
 		
 }
 
@@ -139,9 +141,12 @@ void Condition() : {} {
 	Expression()  CompareOp() Expression() 
 }
 
-void CompareOp() : {} {
+void CompareOp() : {Token t;} {
   { System.out.println("CompareOp");  }
-	< EQUALS >
+	t = < EQUALS >
+	{
+		jjtThis.value = t.image;
+	}
 }
 
 void Var() : {Token t;} {
@@ -153,7 +158,7 @@ void Var() : {Token t;} {
 	}
 }
 
-void Expression() : {Token t;} {
+void Expression() : {} {
   { System.out.println("Expression");  }
   
 	< PL > Expression() Op() Expression() < PR > |
@@ -162,10 +167,13 @@ void Expression() : {Token t;} {
 	
 }
 
-void Int() : {} {
+void Int() : {Token t;} {
   { System.out.println("Int");  }
   
-	(<  DIGIT >) *
+    t = < INTEGER >
+	{
+		jjtThis.value = t.image;
+	}
 }
 
 void Operation() : {} {
@@ -184,4 +192,5 @@ void Op() : {} {
   { System.out.println("Op");  }
   
  < EQ > | < MINUS > | < PLUS > | < TIMES > | < DIV >
+
 }
