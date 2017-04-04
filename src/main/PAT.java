@@ -1,6 +1,7 @@
 package main;
 
 import pack.MyNewGrammar;
+import pack.SimpleNode;
 import parser.Parser;
 import parser.Root;
 
@@ -13,7 +14,7 @@ public class PAT {
 		
 		MyNewGrammar.createjjt("if(x == null) { x = 3 }");
 	
-        SimpleNode n;
+        SimpleNode n = MyNewGrammar.n;
         printChildren(n);
 		
 	}
