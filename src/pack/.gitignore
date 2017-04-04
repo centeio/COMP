@@ -15,3 +15,11 @@
 /Node.java
 /SimpleNode.java
 /MyNewGrammar.jj
+/ASTExpression2.java
+/ASTCompareOp.java
+/ASTExpression.java
+/ASTOp.java
+/ASTOperation.java
+/ASTVar.java
+/ASTAritmeticOp.java
+/ASTInt.java

@@ -16,7 +16,7 @@ public class MyNewGrammar
   public static void main(String args [])
   {
  
-    String code = "if(x == null)";
+    String code = "if(x == null) {x = 3}";
 
     StringReader sr = new StringReader(code);
     Reader r = new BufferedReader(sr);
@@ -81,7 +81,6 @@ TOKEN : /* Keywords */
   	< WHILE: "while" > |
   	< DO: "do" > |
   	< FOR: "for" > |
-  	< STRING: "String" > |
   	< INT: "int" > |
   	< CLASS: "class" > |
   	< PUBLIC: "public" > |
@@ -103,14 +102,21 @@ TOKEN : /* Keywords */
 
 TOKEN : /* IDENTIFIERS */
 {
-  	< VARIABLE: < LETTER > (< LETTER > | < DIGIT >)* > |
+  	< STRING: < LETTER > (< LETTER > | < DIGIT >)* > |
 	< LETTER : [ "_", "a"-"z", "A"-"Z" ] > |
 	< DIGIT : [ "0"-"9" ] > |
 	< BOOLEANVALUE: "false" | "true"  > |
 	< EQUALS: "==" > |
-	< NULL: "null" > |
 	< PL: "(" > |
-	< PR: ")" >
+	< PR: ")" > |
+	< BL: "{" > |
+	< BR: "}" > |
+	< EQ : "="> |
+	< MINUS : "-"> |
+	< PLUS : "+"> |
+	< TIMES : "*" > |
+	< DIV : "/" >
+		
 }
 
 ASTStart Start() :
@@ -120,20 +126,62 @@ ASTStart Start() :
 }
 
 void If() :  {} {
-	< IF > <PL > Condition() < PR >/* [<ELSE > { jjtThis.hasElse = true; }]*/
+  { System.out.println("If");  }
+  
+	< IF > <PL >
+
+	Condition() < PR > < BL > Operation() < BR >  [<ELSE > { jjtThis.hasElse = true; }]
 }
 
 void Condition() : {} {
-	Expression1() Equals() Expression1()
+  { System.out.println("Condition");  }
+  
+	Expression()  CompareOp() Expression() 
 }
 
-void Equals() : {} {
+void CompareOp() : {} {
+  { System.out.println("CompareOp");  }
 	< EQUALS >
 }
 
-void Expression1() : {Token t;} {
-	t = < VARIABLE > 
+void Var() : {Token t;} {
+  { System.out.println("Var");  }
+  
+	t = < STRING >
 	{
 		jjtThis.value = t.image;
 	}
+}
+
+void Expression() : {Token t;} {
+  { System.out.println("Expression");  }
+  
+	< PL > Expression() Op() Expression() < PR > |
+	Var() |
+	Int() 
+	
+}
+
+void Int() : {} {
+  { System.out.println("Int");  }
+  
+	(<  DIGIT >) *
+}
+
+void Operation() : {} {
+  { System.out.println("Operation");  }
+  
+  Var() < EQ > AritmeticOp()
+}
+
+void AritmeticOp() : {} {
+  { System.out.println("AritmeticOp");  }
+  
+  Expression() [Op() Expression()]
+}
+
+void Op() : {} {
+  { System.out.println("Op");  }
+  
+ < EQ > | < MINUS > | < PLUS > | < TIMES > | < DIV >
 }
