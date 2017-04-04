@@ -11,4 +11,6 @@ public class LocalVariableReference extends Reference {
 		
 		return str;
 	}
+	
+	public TypeReference getType() { return type; }
 }

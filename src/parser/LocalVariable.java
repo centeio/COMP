@@ -15,4 +15,7 @@ public class LocalVariable extends Statement {
 		
 		return str;
 	}
+	
+	public TypeReference getType() { return type; }
+	public Expression getInit() { return init; }
 }

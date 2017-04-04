@@ -22,4 +22,8 @@ public class If extends Statement {
 		
 		return str;
 	}
+	
+	public Expression getCondition() { return condition; }
+	public Statement getThen() { return then; }
+	public Statement getElse() { return _else; }
 }

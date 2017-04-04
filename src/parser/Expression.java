@@ -6,4 +6,6 @@ public abstract class Expression extends BasicNode {
     public String toString(String prefix) {
     	return prefix + "Expression";
     }
+    
+    public TypeReference getType() { return type; }
 }

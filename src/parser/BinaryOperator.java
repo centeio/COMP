@@ -16,4 +16,8 @@ public class BinaryOperator extends Expression {
     	
     	return str;
     }
+    
+    public String getOperator() { return operator; }
+    public Expression getLHS() { return lhs; }
+    public Expression getRHS() { return rhs; }
 }

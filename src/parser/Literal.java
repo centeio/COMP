@@ -6,4 +6,6 @@ public class Literal extends Expression {
 	public String toString(String prefix) {
 		return prefix + "Literal";
 	}
+	
+	public String getValue() { return value; }
 }

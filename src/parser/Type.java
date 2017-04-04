@@ -24,4 +24,8 @@ public abstract class Type extends Member {
 		
 		return str;
 	}
+	
+	public List<TypeReference> getFormalTypeParameters() { return formal_type_parameters; }
+	public List<TypeReference> getInterfaces() { return interfaces; }
+	public List<Member> getMembers() { return members; }
 }

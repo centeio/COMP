@@ -18,4 +18,8 @@ public class Method extends Member {
 		
 		return str;
 	}
+	
+	public TypeReference getType() { return type; }
+	public List<Parameter> getParameters() { return parameters; }
+	public Statement getBody() { return body; }
 }

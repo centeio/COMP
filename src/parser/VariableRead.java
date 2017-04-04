@@ -11,4 +11,6 @@ public class VariableRead extends Expression {
 		
 		return str;
 	}
+	
+	public Reference getVar() { return var; }
 }

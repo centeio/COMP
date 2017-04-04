@@ -13,10 +13,8 @@ import java.io.*;
 
 public class MyNewGrammar
 {
-  public static void main(String args [])
+  public static void createJJTree(String code)
   {
- 
-    String code = "if(x == null) {x = 3}";
 
     StringReader sr = new StringReader(code);
     Reader r = new BufferedReader(sr);
@@ -130,7 +128,7 @@ void If() :  {} {
   
 	< IF > <PL >
 
-	Condition() < PR > < BL > Operation() < BR >  [<ELSE > { jjtThis.hasElse = true; }]
+	Condition() < PR > < BL > Operation() < BR >  [<ELSE > ]
 }
 
 void Condition() : {} {

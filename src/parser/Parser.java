@@ -10,6 +10,8 @@ import com.google.gson.GsonBuilder;
 
 public class Parser {
 	
+	private Root root;
+	
 	public Parser() {}
 	
 	public void parse() {
@@ -27,8 +29,8 @@ public class Parser {
 		try {
 			
 			String jsonString = readFile("ast.json");
-			Root fromJson = gson.fromJson(jsonString, Root.class);
-			System.out.println(fromJson.toString(""));
+			root = gson.fromJson(jsonString, Root.class);
+			System.out.println(root.toString(""));
 			
 		} catch(IOException e) { e.printStackTrace(); }
 	}
@@ -36,5 +38,7 @@ public class Parser {
 	public String readFile(String json) throws IOException {
 		return new String(Files.readAllBytes(Paths.get(json)), StandardCharsets.UTF_8);
 	}
+	
+	public Root getRoot() { return root; }
 	
 }

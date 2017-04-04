@@ -17,4 +17,7 @@ public class Constructor extends Member {
 		
 		return str;
 	}
+	
+	public List<Parameter> getParameters() { return parameters; }
+	public Statement getBody() { return body; }
 }

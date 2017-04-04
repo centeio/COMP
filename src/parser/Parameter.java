@@ -12,4 +12,7 @@ public class Parameter extends BasicNode {
 		
 		return str;
 	}
+	
+	public String getName() { return name; }
+	public Reference getType() { return type; }
 }

@@ -9,4 +9,6 @@ public class TypeReference extends Reference {
 	public String toString(String prefix) {
 		return prefix + "TypeReference";
 	}
+	
+	public String getPackage() { return _package; }
 }

@@ -11,4 +11,6 @@ public class Invocation extends Statement {
 		
 		return str;
 	}
+	
+	public Reference getReference() { return executable; }
 }
