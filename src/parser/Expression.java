@@ -1,0 +1,9 @@
+package parser;
+
+public abstract class Expression extends BasicNode {
+    protected TypeReference type; 
+    
+    public String toString(String prefix) {
+    	return prefix + "Expression";
+    }
+}

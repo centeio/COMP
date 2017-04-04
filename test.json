@@ -1,0 +1,30 @@
+{
+  "nodetype": "BinaryOperator",
+  "location": "/Users/tiago/Desktop/spoon2ast/src/Test.java:8",
+  "type": {
+    "nodetype": "TypeReference",
+    "name": "int"
+    },
+  "operator": "+",
+  "lhs": {
+    "nodetype": "Literal",
+    "location": "/Users/tiago/Desktop/spoon2ast/src/Test.java:8",
+    "value": 2,
+    "type": {
+      "nodetype": "TypeReference",
+      "name": "int"
+      }
+    },
+  "rhs": {
+    "nodetype": "VariableRead",
+    "location": "/Users/tiago/Desktop/spoon2ast/src/Test.java:8",
+    "var": {
+      "nodetype": "LocalVariableReference",
+      "name": "a",
+      "type": {
+        "nodetype": "TypeReference",
+        "name": "int"
+        }
+      }
+    }
+}
