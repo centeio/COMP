@@ -1,5 +1,6 @@
 package parser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Type extends Member {
@@ -28,4 +29,8 @@ public abstract class Type extends Member {
 	public List<TypeReference> getFormalTypeParameters() { return formal_type_parameters; }
 	public List<TypeReference> getInterfaces() { return interfaces; }
 	public List<Member> getMembers() { return members; }
+	
+	public BasicNode[] getChildren(){
+		return members.toArray(new BasicNode[0]);
+	}
 }

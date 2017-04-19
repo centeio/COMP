@@ -8,4 +8,8 @@ public abstract class Reference extends BasicNode {
 	}
 	
 	public String getName() { return name; }
+	
+	public BasicNode[] getChildren(){
+		return new BasicNode[0];
+	}
 }

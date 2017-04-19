@@ -20,4 +20,9 @@ public class BinaryOperator extends Expression {
     public String getOperator() { return operator; }
     public Expression getLHS() { return lhs; }
     public Expression getRHS() { return rhs; }
+
+	@Override
+	public BasicNode[] getChildren() {
+		return new BasicNode[0];
+	}
 }

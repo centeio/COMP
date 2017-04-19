@@ -8,4 +8,9 @@ public abstract class Statement extends BasicNode {
 	}
 	
 	public String getLabel() { return label; }
+
+	@Override
+	public BasicNode[] getChildren() {
+		return new BasicNode[0];
+	}
 }

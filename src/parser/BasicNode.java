@@ -14,6 +14,7 @@ public abstract class BasicNode {
 	    public String getNodeType() { return nodetype; }
 	    public String getLocation() { return location; }
 	    public List<Comment> getComments() { return comments; } 
+	    abstract public BasicNode[] getChildren();
 }
 
 

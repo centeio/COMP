@@ -16,4 +16,9 @@ public class Root extends BasicNode {
 	}
 	
 	public List<CompilationUnit> getCompilationUnits() { return compilation_units; }
+
+	@Override
+	public BasicNode[] getChildren() {
+		return compilation_units.toArray(new BasicNode[0]);
+	}
 }
