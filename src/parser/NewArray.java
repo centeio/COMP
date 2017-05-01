@@ -11,19 +11,19 @@ public class NewArray extends Expression {
 		String str = prefix + "NewArray";
 		
 		if(type != null) {
-			str += "\n" + prefix + " Type";
+			str += "\n" + prefix + " Type:";
 			str += "\n" + type.toString(prefix + "  ");
 		}
 		
 		if(elements != null) {
-			str += "\n" + prefix + " Elements";
+			str += "\n" + prefix + " Elements:";
 			
 			for(Expression element: elements)
 				str += "\n" + element.toString(prefix + "  ");
 		}
 		
 		if(dimensions != null) {
-			str += "\n" + prefix + " Dimensions";
+			str += "\n" + prefix + " Dimensions:";
 			
 			for(Expression dimension: dimensions)
 				str += "\n" + dimension.toString(prefix + "  ");

@@ -9,7 +9,7 @@ public class CompilationUnit extends BasicNode {
 		String str = prefix + "CompilationUnit";
 		
 		if(types != null) {
-			str += "\n" + prefix + " Types";
+			str += "\n" + prefix + " Types:";
 			
 			for(Type type: types)
 				str += "\n" + type.toString(prefix + "  ");

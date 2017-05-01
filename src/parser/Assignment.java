@@ -9,17 +9,17 @@ public class Assignment extends Statement {
     	String str = prefix + "Assignment";
     			
     	if(type!= null) {
-    		str += "\n" + prefix + " Type";
+    		str += "\n" + prefix + " Type:";
     		str += "\n" + type.toString(prefix + "  ");
     	}
     	
     	if(lhs != null) {
-    		str += "\n" + prefix + " lhs";
+    		str += "\n" + prefix + " lhs:";
     		str += "\n" + lhs.toString(prefix + "  ");
     	}
     	
     	if(rhs != null) {
-    		str += "\n" + prefix + " rhs"; 
+    		str += "\n" + prefix + " rhs:"; 
     		str += "\n" + rhs.toString(prefix + "  ");
     	}
     	

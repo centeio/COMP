@@ -12,17 +12,17 @@ public class If extends Statement {
 		String str =  prefix + "If";
 	
 		if(condition != null) {
-			str += "\n" + prefix + " Condition";
+			str += "\n" + prefix + " Condition:";
 			str += "\n" + condition.toString(prefix + "  ");
 		}
 		
 		if(then != null) {
-			str += "\n" + prefix + " Then";
+			str += "\n" + prefix + " Then:";
 			str += "\n" + then.toString(prefix + "  ");
 		}
 		
 		if(_else != null) {
-			str += "\n" + prefix + " Else";
+			str += "\n" + prefix + " Else:";
 			str += "\n" + _else.toString(prefix + "  ");
 		}
 		

@@ -7,7 +7,7 @@ public class TypeAccess extends Expression {
     	String str = prefix + "TypeAccess"; 
     	
     	if(target != null) {
-    		str += "\n" + prefix + " Target";
+    		str += "\n" + prefix + " Target:";
     		str += "\n" + target.toString(prefix + "  ");
     	}
     	

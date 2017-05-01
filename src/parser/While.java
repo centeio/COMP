@@ -8,12 +8,12 @@ public class While extends Statement {
 		String str =  prefix + "While";
 	
 		if(condition != null) {
-			str += "\n" + prefix + " Condition";
+			str += "\n" + prefix + " Condition:";
 			str += "\n" + condition.toString(prefix + "  ");
 		}
 		
 		if(body != null) {
-			str += "\n" + prefix + " Body";
+			str += "\n" + prefix + " Body:";
 			str += "\n" + body.toString(prefix + "  ");
 		}
 		

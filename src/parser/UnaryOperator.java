@@ -5,10 +5,18 @@ public class UnaryOperator extends Expression {
 	private Expression operand;
 	
 	public String toString(String prefix) {
-    	String str = prefix + "UnaryOperator"; 
+    	String str = prefix + "UnaryOperator";
+    	
+    	if(type != null) {
+    		str += "\n" + prefix + " Type:";
+			str += "\n" + type.toString(prefix + "  ");
+    	}
+    	
+    	if(operator != null) 
+    		str += "\n" + prefix + " Operator:\n" + prefix + "  " + operator;
     	
     	if(operand != null) {
-    		str += "\n" + prefix + " Operand";
+    		str += "\n" + prefix + " Operand:";
     		str += "\n" + operand.toString(prefix + "  ");
     	}
     	

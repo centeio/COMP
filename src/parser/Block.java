@@ -9,7 +9,7 @@ public class Block extends Statement {
 		String str = prefix + "Block";
 		
 		if(statements != null) {
-			str += "\n" + prefix + " Statements";
+			str += "\n" + prefix + " Statements:";
 			
 			for(BasicNode statement: statements)
 				str += "\n" + statement.toString(prefix + "  ");

@@ -7,7 +7,7 @@ public class ArrayTypeReference extends Reference {
 		String str = prefix + "ArrayTypeReference";
 		
 		if(type != null) {
-			str += "\n" + prefix + " Type";
+			str += "\n" + prefix + " Type:";
 			str += "\n" + type.toString(prefix + "  ");
 		}
 		

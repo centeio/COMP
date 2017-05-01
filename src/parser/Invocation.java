@@ -10,12 +10,12 @@ public class Invocation extends Statement {
 		String str = prefix + "Invocation";
 		
 		if(executable != null) {
-			str += "\n" + prefix + " Executable";
+			str += "\n" + prefix + " Executable:";
 			str += "\n" + executable.toString(prefix + "  ");
 		}
 		
 		if(arguments != null) {
-			str += "\n" + prefix + " Arguments";
+			str += "\n" + prefix + " Arguments:";
 			for(Expression argument: arguments)
 				str += "\n" + argument.toString(prefix + "  ");
 		}

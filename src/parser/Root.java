@@ -9,7 +9,7 @@ public class Root extends BasicNode {
 		String str = prefix + "Root";
 		
 		if(compilation_units != null) {
-			str += "\n" + prefix + " CompilationUnits";
+			str += "\n" + prefix + " CompilationUnits:";
 			for(CompilationUnit unit: compilation_units)
 				str += "\n" + unit.toString(prefix + "  ");
 		}

@@ -12,7 +12,7 @@ public class Class extends Type {
 		String str = prefix + "Class";
 		
 		if(_super != null) {
-			str += "\n" + prefix + " Super";
+			str += "\n" + prefix + " Super:";
 			str += "\n" + _super.toString(prefix + "  ");
 		}
 		

@@ -8,17 +8,17 @@ public class ArrayRead extends Expression {
 		String str = prefix + "ArrayRead";
 		
 		if(type != null) {
-			str += "\n" + prefix + " Type";
+			str += "\n" + prefix + " Type:";
 			str += "\n" + type.toString(prefix + "  ");
 		}
 		
 		if(target != null) {
-			str += "\n" + prefix + " Target";
+			str += "\n" + prefix + " Target:";
 			str += "\n" + target.toString(prefix + "  ");
 		}
 		
 		if(index != null) {
-			str += "\n" + prefix + " Index";
+			str += "\n" + prefix + " Index:";
 			str += "\n" + index.toString(prefix + "  ");
 		}
 		

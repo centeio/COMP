@@ -11,23 +11,23 @@ public abstract class Type extends Member {
 		String str = prefix + "";
 		
 		if(name != null) {
-			str += "\n" + prefix + " Name\n" + prefix + "  " + name;
+			str += "\n" + prefix + " Name:\n" + prefix + "  " + name;
 		}
 		
 		if(formal_type_parameters != null) {
-			str += "\n" + prefix + " Formal Type Parameters";
+			str += "\n" + prefix + " Formal Type Parameters:";
 			for(TypeReference reference: formal_type_parameters)
 				str += "\n" + reference.toString(prefix + "  ");
 		}
 		
 		if(interfaces != null) {
-			str += "\n" + prefix + " Interfaces";
+			str += "\n" + prefix + " Interfaces:";
 			for(TypeReference reference: interfaces)
 				str += "\n" + reference.toString(prefix + "  ");
 		}
 		
 		if(members != null) {
-			str += "\n" + prefix + " Members";
+			str += "\n" + prefix + " Members:";
 			for(Member member: members)
 				str += "\n" + member.toString(prefix + "  ");
 		}

@@ -8,12 +8,12 @@ public class FieldRead extends Expression {
     	String str = prefix + "FieldRead"; 
     	
     	if(target != null) {
-    		str += "\n" + prefix + " Target";
+    		str += "\n" + prefix + " Target:";
     		str += "\n" + target.toString(prefix + "  ");
     	}
     	
     	if(var != null) {
-    		str += "\n" + prefix + " Var";
+    		str += "\n" + prefix + " Var:";
     		str += "\n" + var.toString(prefix + "  ");
     	}
     	

@@ -7,7 +7,7 @@ public class VariableRead extends Expression {
 		String str = prefix + "VariableRead"; 
 		
 		if(var != null) {
-			str += "\n" + prefix + " Var";
+			str += "\n" + prefix + " Var:";
 			str += "\n" + var.toString(prefix + "  ");
 		}
 		

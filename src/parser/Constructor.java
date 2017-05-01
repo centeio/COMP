@@ -10,13 +10,13 @@ public class Constructor extends Member {
 		String str = prefix + "Constructor";
 		
 		if(parameters != null) {
-			str += "\n" + prefix + " Parameters";
+			str += "\n" + prefix + " Parameters:";
 			for(Parameter parameter: parameters)
 				str += "\n" + parameter.toString(prefix + "  ");
 		}
 		
 		if(body != null) {
-			str += "\n" + prefix + " Body";
+			str += "\n" + prefix + " Body:";
 			str += "\n" + body.toString(prefix + "  ");
 		}
 		

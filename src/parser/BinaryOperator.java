@@ -6,15 +6,18 @@ public class BinaryOperator extends Expression {
     private Expression rhs;
     
     public String toString(String prefix) {
-    	String str = prefix + "BinaryOperator " + operator; 
+    	String str = prefix + "BinaryOperator";
+    	
+    	if(operator != null)
+    		str += "\n" + prefix + " Operator:\n" + prefix + "  " + operator;
     	
     	if(lhs != null) {
-    		str += "\n" + prefix + " lhs";
+    		str += "\n" + prefix + " lhs:";
     		str += "\n" + lhs.toString(prefix + "  ");
     	}
     	
     	if(rhs != null) {
-    		str += "\n" + prefix + " rhs";
+    		str += "\n" + prefix + " rhs:";
     		str += "\n" + rhs.toString(prefix + "  ");
     	}
     	
