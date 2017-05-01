@@ -9,11 +9,16 @@ public class Constructor extends Member {
 	public String toString(String prefix) {
 		String str = prefix + "Constructor";
 		
-		for(Parameter parameter: parameters) {
-			str += "\n" + parameter.toString(prefix + " ");
+		if(parameters != null) {
+			str += "\n" + prefix + " Parameters";
+			for(Parameter parameter: parameters)
+				str += "\n" + parameter.toString(prefix + "  ");
 		}
 		
-		str += "\n" + body.toString(prefix + " ");
+		if(body != null) {
+			str += "\n" + prefix + " Body";
+			str += "\n" + body.toString(prefix + "  ");
+		}
 		
 		return str;
 	}

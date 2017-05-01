@@ -1,6 +1,5 @@
 package parser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Type extends Member {
@@ -11,17 +10,27 @@ public abstract class Type extends Member {
 	public String toString(String prefix) {
 		String str = prefix + "";
 		
-		/*if(formal_type_parameters != null)
+		if(name != null) {
+			str += "\n" + prefix + " Name\n" + prefix + "  " + name;
+		}
+		
+		if(formal_type_parameters != null) {
+			str += "\n" + prefix + " Formal Type Parameters";
 			for(TypeReference reference: formal_type_parameters)
-				str += "\n" + reference.toString(prefix + " ");
+				str += "\n" + reference.toString(prefix + "  ");
+		}
 		
-		if(interfaces != null)
+		if(interfaces != null) {
+			str += "\n" + prefix + " Interfaces";
 			for(TypeReference reference: interfaces)
-				str += "\n" + reference.toString(prefix + " ");*/
+				str += "\n" + reference.toString(prefix + "  ");
+		}
 		
-		if(members != null)
+		if(members != null) {
+			str += "\n" + prefix + " Members";
 			for(Member member: members)
-				str += "\n" + member.toString(prefix + " ");
+				str += "\n" + member.toString(prefix + "  ");
+		}
 		
 		return str;
 	}

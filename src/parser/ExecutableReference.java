@@ -11,13 +11,17 @@ public class ExecutableReference extends Reference {
 	public String toString(String prefix) {
 		String str = prefix + "ExecutableReference\n" + declarator.toString(prefix + " ") + "\n" + type.toString(prefix + " ");
 		
-		if(parameters != null)
+		if(parameters != null) {
+			str += "\n" + prefix + " Parameters";
 			for(Parameter parameter: parameters)
-				str += "\n" + parameter.toString(prefix + " ");
+				str += "\n" + parameter.toString(prefix + "  ");
+		}
 		
-		if(arguments != null)
+		if(arguments != null) {
+			str += "\n" + prefix + " Arguments";
 			for(Reference argument: arguments)
-			str += "\n" + argument.toString(prefix + " ");
+				str += "\n" + argument.toString(prefix + "  ");
+		}
 		
 		return str;
 	}

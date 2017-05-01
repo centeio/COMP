@@ -7,8 +7,10 @@ public class Parameter extends BasicNode {
 	public String toString(String prefix) {
 		String str = prefix + "Parameter";
 		
-		if(type != null)
-			str += "\n" + type.toString(prefix + " ");
+		if(type != null) {
+			str += "\n" + prefix + " Type";
+			str += "\n" + type.toString(prefix + "  ");
+		}
 		
 		return str;
 	}

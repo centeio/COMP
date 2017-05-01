@@ -11,8 +11,10 @@ public class Class extends Type {
 	public String toString(String prefix) {
 		String str = prefix + "Class";
 		
-		if(_super != null)
-			str += "\n" + _super.toString(prefix + " ");
+		if(_super != null) {
+			str += "\n" + prefix + " Super";
+			str += "\n" + _super.toString(prefix + "  ");
+		}
 		
 		str += super.toString(prefix + " ");
 		

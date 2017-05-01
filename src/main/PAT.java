@@ -25,7 +25,7 @@ public class PAT {
 	
 	public static void printChildren(SimpleNode node){
 		if(node.jjtGetNumChildren()==0){
-			System.out.println(node.type + " " + node.jjtGetValue());
+			//System.out.println(node.type + " " + node.jjtGetValue());
 			return;
 		}
 		

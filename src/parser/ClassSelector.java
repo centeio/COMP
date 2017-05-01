@@ -21,7 +21,15 @@ public enum ClassSelector {
     LOCALVARIABLEREFERENCE(LocalVariableReference.class),
     BINARYOPERATOR(BinaryOperator.class),
     LITERAL(Literal.class),
-    VARIABLEREAD(VariableRead.class);
+    VARIABLEREAD(VariableRead.class),
+    FOR(For.class),
+    UNARYOPERATOR(UnaryOperator.class),
+    NEWARRAY(NewArray.class),
+    ARRAYWRITE(ArrayWrite.class),
+    FIELDREAD(FieldRead.class),
+    TYPEACESS(TypeAccess.class),
+    ARRAYREAD(ArrayRead.class),
+    WHILE(While.class);
     
     private java.lang.Class<? extends BasicNode> myClass;
 

@@ -1,0 +1,163 @@
+{
+  "nodetype": "Root",
+  "compilation_units": [{
+    "nodetype": "CompilationUnit",
+    "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java",
+    "types": [{
+      "nodetype": "Class",
+      "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:1",
+      "name": "Hello",
+      "package": "",
+      "members": [
+        {
+        "nodetype": "Constructor",
+        "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:1",
+        "name": "<init>",
+        "parameters": [],
+        "body": {
+          "nodetype": "Block",
+          "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:1",
+          "statements": [{
+            "nodetype": "Invocation",
+            "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:1",
+            "executable": {
+              "nodetype": "ExecutableReference",
+              "name": "<init>",
+              "declarator": {
+                "nodetype": "TypeReference",
+                "name": "Object",
+                "package": "java.lang"
+                },
+              "type": {
+                "nodetype": "TypeReference",
+                "name": "Object",
+                "package": "java.lang"
+                },
+              "parameters": []
+              },
+            "arguments": []
+            }]
+          }
+        },
+        {
+        "nodetype": "Method",
+        "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:2",
+        "name": "main",
+        "type": {
+          "nodetype": "TypeReference",
+          "name": "void"
+          },
+        "parameters": [{
+          "nodetype": "Parameter",
+          "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:2",
+          "name": "args",
+          "type": {
+            "nodetype": "ArrayTypeReference",
+            "type": {
+              "nodetype": "TypeReference",
+              "name": "String",
+              "package": "java.lang"
+              }
+            }
+          }],
+        "body": {
+          "nodetype": "Block",
+          "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:2",
+          "statements": [
+            {
+            "nodetype": "LocalVariable",
+            "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:4",
+            "name": "x",
+            "type": {
+              "nodetype": "TypeReference",
+              "name": "Integer",
+              "package": "java.lang"
+              },
+            "init": {
+              "nodetype": "Literal",
+              "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:4",
+              "value": null,
+              "type": {
+                "nodetype": "TypeReference",
+                "name": "<nulltype>"
+                }
+              }
+            },
+            {
+            "nodetype": "If",
+            "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:6",
+            "condition": {
+              "nodetype": "BinaryOperator",
+              "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:6",
+              "type": {
+                "nodetype": "TypeReference",
+                "name": "boolean"
+                },
+              "operator": "==",
+              "lhs": {
+                "nodetype": "VariableRead",
+                "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:6",
+                "var": {
+                  "nodetype": "LocalVariableReference",
+                  "name": "x",
+                  "type": {
+                    "nodetype": "TypeReference",
+                    "name": "Integer",
+                    "package": "java.lang"
+                    }
+                  }
+                },
+              "rhs": {
+                "nodetype": "Literal",
+                "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:6",
+                "value": null,
+                "type": {
+                  "nodetype": "TypeReference",
+                  "name": "<nulltype>"
+                  }
+                }
+              },
+            "then": {
+              "nodetype": "Block",
+              "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:6",
+              "statements": [{
+                "nodetype": "Assignment",
+                "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:7",
+                "type": {
+                  "nodetype": "TypeReference",
+                  "name": "Integer",
+                  "package": "java.lang"
+                  },
+                "lhs": {
+                  "nodetype": "VariableWrite",
+                  "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:7",
+                  "var": {
+                    "nodetype": "LocalVariableReference",
+                    "name": "x",
+                    "type": {
+                      "nodetype": "TypeReference",
+                      "name": "Integer",
+                      "package": "java.lang"
+                      }
+                    }
+                  },
+                "rhs": {
+                  "nodetype": "Literal",
+                  "location": "/Users/Tiago Almeida/Documents/College/Third Year/Second Semester/COMP/Project/Hello.java:7",
+                  "value": 4,
+                  "type": {
+                    "nodetype": "TypeReference",
+                    "name": "int"
+                    }
+                  }
+                }]
+              },
+            "else": {"nodetype": "NullNode"}
+            }
+          ]
+          }
+        }
+      ]
+      }]
+    }]
+  }

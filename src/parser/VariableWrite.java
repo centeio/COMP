@@ -6,8 +6,10 @@ public class VariableWrite extends Expression {
 	public String toString(String prefix) {
 		String str = prefix + "VariableWrite";
 		
-		if(var != null)
-			str += "\n" + var.toString(prefix + " ");
+		if(var != null) {
+			str += "\n" + prefix + " Var";
+			str += "\n" + var.toString(prefix + "  ");
+		}
 		
 		return str;
 	}

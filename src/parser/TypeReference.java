@@ -7,7 +7,7 @@ public class TypeReference extends Reference {
 	private String _package;
 	
 	public String toString(String prefix) {
-		return prefix + "TypeReference";
+		return prefix + "TypeReference " + name;
 	}
 	
 	public String getPackage() { return _package; }
