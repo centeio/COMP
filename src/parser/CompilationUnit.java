@@ -8,9 +8,12 @@ public class CompilationUnit extends BasicNode {
 	public String toString(String prefix) {
 		String str = prefix + "CompilationUnit";
 		
-		if(types != null)
+		if(types != null) {
+			str += "\n" + prefix + " Types:";
+			
 			for(Type type: types)
-				str += "\n" + type.toString(prefix + " ");
+				str += "\n" + type.toString(prefix + "  ");
+		}
 		
 		return str;
 	}
