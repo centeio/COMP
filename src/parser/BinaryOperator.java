@@ -47,9 +47,4 @@ public class BinaryOperator extends Expression {
 	public void setRhs(Expression rhs) {
 		this.rhs = rhs;
 	}
-
-	@Override
-	public BasicNode[] getChildren() {
-		return new BasicNode[0];
-	}
 }

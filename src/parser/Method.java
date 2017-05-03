@@ -37,11 +37,4 @@ public class Method extends Member {
 	public TypeReference getType() { return type; }
 	public List<Parameter> getParameters() { return parameters; }
 	public Statement getBody() { return body; }
-
-	@Override
-	public BasicNode[] getChildren() {
-		BasicNode children[] = new BasicNode[1];
-		children[0] = body;
-		return children;
-	}
 }

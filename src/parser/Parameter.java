@@ -20,9 +20,4 @@ public class Parameter extends BasicNode {
 	
 	public String getName() { return name; }
 	public Reference getType() { return type; }
-
-	@Override
-	public BasicNode[] getChildren() {
-		return new BasicNode[0];
-	}
 }

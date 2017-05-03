@@ -19,9 +19,4 @@ public class CompilationUnit extends BasicNode {
 	}
 	
 	public List<Type> getTypes() { return types; }
-
-	@Override
-	public BasicNode[] getChildren() {
-		return types.toArray(new BasicNode[0]);
-	}
 }

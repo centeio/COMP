@@ -8,8 +8,4 @@ public abstract class Expression extends BasicNode {
     }
     
     public Reference getType() { return type; }
-    
-    public BasicNode[] getChildren(){
-    	return new BasicNode[0];
-    }
 }

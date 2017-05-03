@@ -12,9 +12,4 @@ public class Comment extends BasicNode {
 	public String getType() { return type; }
 	public String getContent() { return content; }
 	public String getPosition() { return position; }
-
-	@Override
-	public BasicNode[] getChildren() {
-		return new BasicNode[0];
-	}
 }
