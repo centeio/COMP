@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class Root extends BasicNode {
 	protected List<CompilationUnit> compilation_units;
 	

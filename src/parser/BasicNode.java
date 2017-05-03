@@ -2,6 +2,9 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
+
 public abstract class BasicNode {
 	    private String nodetype;
 	    private String location;
@@ -13,8 +16,7 @@ public abstract class BasicNode {
 	    
 	    public String getNodeType() { return nodetype; }
 	    public String getLocation() { return location; }
-	    public List<Comment> getComments() { return comments; } 
-	    abstract public BasicNode[] getChildren();
+	    public List<Comment> getComments() { return comments; }
 }
 
 

@@ -19,9 +19,4 @@ public class Block extends Statement {
 	}
 	
 	public List<BasicNode> getStatements() { return statements; }
-
-	@Override
-	public BasicNode[] getChildren() {
-		return statements.toArray(new BasicNode[0]);
-	}
 }

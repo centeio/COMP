@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class CompilationUnit extends BasicNode {
 	protected List<Type> types;
 	
