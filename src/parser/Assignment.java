@@ -8,14 +8,20 @@ public class Assignment extends Statement {
     public String toString(String prefix) {
     	String str = prefix + "Assignment";
     			
-    	if(type!= null) 
-    		str += "\n" + type.toString(prefix + " ");
+    	if(type!= null) {
+    		str += "\n" + prefix + " Type:";
+    		str += "\n" + type.toString(prefix + "  ");
+    	}
     	
-    	if(lhs != null)
-    		str += "\n" + lhs.toString(prefix + " ");
+    	if(lhs != null) {
+    		str += "\n" + prefix + " lhs:";
+    		str += "\n" + lhs.toString(prefix + "  ");
+    	}
     	
-    	if(rhs != null)
-    		str += "\n" + rhs.toString(prefix + " ");
+    	if(rhs != null) {
+    		str += "\n" + prefix + " rhs:"; 
+    		str += "\n" + rhs.toString(prefix + "  ");
+    	}
     	
     	return str;
     }

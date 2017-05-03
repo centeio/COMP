@@ -8,9 +8,11 @@ public class Root extends BasicNode {
 	public String toString(String prefix) {
 		String str = prefix + "Root";
 		
-		if(compilation_units != null)
+		if(compilation_units != null) {
+			str += "\n" + prefix + " CompilationUnits:";
 			for(CompilationUnit unit: compilation_units)
-				str += "\n" + unit.toString(prefix + " ");
+				str += "\n" + unit.toString(prefix + "  ");
+		}
 		
 		return str;
 	}

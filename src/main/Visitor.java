@@ -24,19 +24,70 @@ public class Visitor {
 		parserCond.getRHS();		searchCond.jjtGetChild(2);*/
 		
 		System.out.println("	If Condition Compare");
-		if(parserCond.getOperator() == searchCond.jjtGetChild(1).toString())
+		if(!parserCond.getOperator().equals(((SimpleNode) searchCond.jjtGetChild(1)).jjtGetValue().toString()))
+			return false;
+		
+		if(!equal((Expression) parserCond.getLHS(), (ASTExpression) searchCond.jjtGetChild(0)))
+			return false;
+		
+		if(!equal((Expression) parserCond.getRHS(), (ASTExpression) searchCond.jjtGetChild(2)))
+			return false;
+		
+		return true;
+	}
+	
+	public boolean equal(Expression parserExpression, ASTExpression searchExpression){
+		SimpleNode child = (SimpleNode) searchExpression.jjtGetChild(0);
+		if(parserExpression instanceof VariableRead && child instanceof ASTVar){
+			System.out.println("-----> Comparing var with var");
+			
 			return true;
+		}
+		
+		if(parserExpression instanceof Literal && child instanceof ASTVar){
+			String v1 = ((Literal) parserExpression).getValue();
+			String v2 = (String) child.jjtGetValue();
+			
+			System.out.println("-----> Comparing literal with var ");
+			
+			if(v1 == null && v2.equals("null"))
+				return true;
+		}
+		if(parserExpression instanceof Literal && child instanceof ASTInt){
+			String v1 = ((Literal) parserExpression).getValue();
+			String v2 = (String) child.jjtGetValue();
+			
+			System.out.println("-----> Comparing literal with int");
+			
+			if(v1.equals(v2))
+				return true;
+		}
 		
 		return false;
 	}
 	
-	public boolean equal(If parserNode, ASTIf searchNode){
-		System.out.println("If Compare");
+	public boolean equal(Statement parserThen, ASTOperation searchThen){
 		
-		ASTCondition cond = (ASTCondition) searchNode.jjtGetChild(0);
-		BinaryOperator op = (BinaryOperator) parserNode.getCondition();
+		System.out.println("	If Then Compare");
+		return true;
+	}
+	
+	public boolean equal(If parserNode, ASTIf searchNode){
+		
+		//Compare condition
+		ASTCondition cond1 = (ASTCondition) searchNode.jjtGetChild(0);
+		BinaryOperator cond2 = (BinaryOperator) parserNode.getCondition();
+		
+		if(!equal(cond2, cond1))
+			return false;
+		
+		//Compare then
+		ASTOperation then1 = (ASTOperation) searchNode.jjtGetChild(1);
+		Statement then2 = (Statement) parserNode.getThen();
+		
+		//Compare else (if it exists)
 
-		return equal(op, cond);
+		return equal(then2, then1);
 	}
 	
 	public boolean equal(BasicNode parserNode, SimpleNode searchNode){

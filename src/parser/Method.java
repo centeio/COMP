@@ -8,13 +8,28 @@ public class Method extends Member {
 	private Statement body;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Method\n" + type.toString(prefix + " ");
+		String str = prefix + "Method";
 		
-		for(Parameter parameter: parameters) {
-			str += "\n" + parameter.toString(prefix + " ");
+		if(name != null)
+			str += "\n" + prefix + " Name:\n" + prefix + "  " + name;
+		
+		if(type != null) {
+			str += "\n" + prefix + " Type:";
+			str += "\n" + type.toString(prefix + "  ");
 		}
 		
-		str += "\n" + body.toString(prefix + " ");
+		
+		if(parameters != null) {
+			str += "\n" + prefix + " Parameters:";
+			for(Parameter parameter: parameters) {
+				str += "\n" + parameter.toString(prefix + "  ");
+			}
+		}
+		
+		if(body != null) {
+			str += "\n" + prefix + " Body:"; 
+			str += "\n" + body.toString(prefix + "  ");
+		}
 		
 		return str;
 	}
