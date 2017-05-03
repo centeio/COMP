@@ -39,15 +39,35 @@ public class Visitor {
 	public boolean equal(Expression parserExpression, ASTExpression searchExpression){
 		SimpleNode child = (SimpleNode) searchExpression.jjtGetChild(0);
 		if(parserExpression instanceof VariableRead && child instanceof ASTVar){
-			System.out.println("-----> Comparing var")
+			System.out.println("-----> Comparing var with var");
+			
+			return true;
 		}
 		
 		if(parserExpression instanceof Literal && child instanceof ASTVar){
-			System.out.println("-----> Comparing var")
+			String v1 = ((Literal) parserExpression).getValue();
+			String v2 = (String) child.jjtGetValue();
+			
+			System.out.println("-----> Comparing literal with var ");
+			
+			if(v1 == null && v2.equals("null"))
+				return true;
 		}
+		if(parserExpression instanceof Literal && child instanceof ASTInt){
+			String v1 = ((Literal) parserExpression).getValue();
+			String v2 = (String) child.jjtGetValue();
+			
+			System.out.println("-----> Comparing literal with int");
+			
+			if(v1.equals(v2))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	public boolean equal(Statement parserThen, ASTOperation searchThen){
+		
 		System.out.println("	If Then Compare");
 		return true;
 	}
