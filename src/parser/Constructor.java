@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class Constructor extends Member {
 	private List<Parameter> parameters;
 	private Statement body;
@@ -25,4 +27,9 @@ public class Constructor extends Member {
 	
 	public List<Parameter> getParameters() { return parameters; }
 	public Statement getBody() { return body; }
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

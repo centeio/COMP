@@ -20,4 +20,9 @@ public class Root extends BasicNode {
 	}
 	
 	public List<CompilationUnit> getCompilationUnits() { return compilation_units; }
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

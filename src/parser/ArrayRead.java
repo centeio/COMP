@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class ArrayRead extends Expression {
 	private Expression target;
 	private Expression index;
@@ -37,6 +39,9 @@ public class ArrayRead extends Expression {
 	public void setIndex(Expression index) {
 		this.index = index;
 	}
-	
-	
+
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

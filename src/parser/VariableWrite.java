@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class VariableWrite extends Expression {
 	private Reference var;
 	
@@ -15,4 +17,9 @@ public class VariableWrite extends Expression {
 	}
 	
 	public Reference getVar() { return var; }
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

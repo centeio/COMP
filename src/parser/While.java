@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class While extends Statement {
 	private Expression condition;
 	private Statement body;
@@ -33,5 +35,8 @@ public class While extends Statement {
 		this.body = body;
 	}
 	
-	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

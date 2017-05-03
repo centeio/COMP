@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class NewArray extends Expression {
 	private List<TypeReference> type_casts;
 	private List<Expression> elements;
@@ -64,4 +66,8 @@ public class NewArray extends Expression {
 		this.dimensions = dimensions;
 	}
 	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class TypeAccess extends Expression {
 	public TypeReference target;
 	
@@ -22,6 +24,8 @@ public class TypeAccess extends Expression {
 		this.target = target;
 	}
 	
-	
-
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

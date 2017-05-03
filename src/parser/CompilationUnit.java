@@ -21,4 +21,9 @@ public class CompilationUnit extends BasicNode {
 	}
 	
 	public List<Type> getTypes() { return types; }
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

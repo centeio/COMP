@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class LocalVariableReference extends Reference {
 	private Reference type;
 	
@@ -25,6 +27,8 @@ public class LocalVariableReference extends Reference {
 		this.type = type;
 	}
 	
-	
-	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}	
 }

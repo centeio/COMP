@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class Literal.
@@ -22,4 +24,9 @@ public class Literal extends Expression {
 	 * @return the value
 	 */
 	public String getValue() { return value; }
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

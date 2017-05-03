@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class For extends Statement {
 	private List<Statement> init;
 	private Expression condition;
@@ -71,6 +73,8 @@ public class For extends Statement {
 		this.body = body;
 	}
 	
-	
-
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

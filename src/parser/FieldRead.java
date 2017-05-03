@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class FieldRead extends Expression {
 	private Expression target;
 	private Reference var;
@@ -33,5 +35,8 @@ public class FieldRead extends Expression {
 		this.var = var;
 	}
 	
-	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

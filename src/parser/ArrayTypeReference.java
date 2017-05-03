@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class ArrayTypeReference extends Reference {
 	private TypeReference type;
 
@@ -12,5 +14,10 @@ public class ArrayTypeReference extends Reference {
 		}
 		
 		return str;
+	}
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

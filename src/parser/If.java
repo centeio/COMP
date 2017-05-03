@@ -2,6 +2,8 @@ package parser;
 
 import com.google.gson.annotations.SerializedName;
 
+import main.Visitor;
+
 public class If extends Statement {
 	private Expression condition;
 	private Statement then;
@@ -32,4 +34,9 @@ public class If extends Statement {
 	public Expression getCondition() { return condition; }
 	public Statement getThen() { return then; }
 	public Statement getElse() { return _else; }
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

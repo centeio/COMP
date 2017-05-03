@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class Method extends Member {
 	private TypeReference type;
 	private List<Parameter> parameters;
@@ -37,4 +39,9 @@ public class Method extends Member {
 	public TypeReference getType() { return type; }
 	public List<Parameter> getParameters() { return parameters; }
 	public Statement getBody() { return body; }
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

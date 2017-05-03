@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class Assignment extends Statement {
 	private TypeReference type;
 	private Expression lhs;
@@ -30,4 +32,8 @@ public class Assignment extends Statement {
     public Expression getrhs() { return rhs; }
     public TypeReference type() { return type; }
     
+    @Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

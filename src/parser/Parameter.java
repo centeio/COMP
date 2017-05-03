@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class Parameter extends BasicNode {
 	private String name;
 	private Reference type;
@@ -20,4 +22,9 @@ public class Parameter extends BasicNode {
 	
 	public String getName() { return name; }
 	public Reference getType() { return type; }
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }
