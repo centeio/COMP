@@ -23,13 +23,16 @@ public class PAT {
         IStatement lv1 = b.getStatements().get(0);
         IStatement lv2 = b.getStatements().get(1);
         IStatement lv3 = b.getStatements().get(2);
+        IStatement lv4 = b.getStatements().get(5);
         IStatement if1 = b.getStatements().get(3);
+        IStatement for1 = b.getStatements().get(4);
+        IStatement while1 = b.getStatements().get(6);
         System.out.println("-----------------------------------------------");
-        System.out.println(if1.toString(""));
+        System.out.println(for1.toString(""));
         //System.out.println(lv3.toString(""));
         
-        PatternMatcher pm = new PatternMatcher(if1);
-        if1.accept(pm);
+        PatternMatcher pm = new PatternMatcher(for1);
+        for1.accept(pm);
         System.out.println(pm.isMatch());
 	}
 	

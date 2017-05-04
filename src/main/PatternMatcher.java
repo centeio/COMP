@@ -55,8 +55,23 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(Block block) {
-		// TODO Auto-generated method stub
-		System.out.println("visit Block stub");
+		//TODO: only exhaustive search now
+		if(!(pattern instanceof Block)){
+			match = false;
+			return;
+		}
+		
+		Block p = (Block) pattern;
+		for (int i = 0; i < block.getStatements().size(); i++) {
+		    pattern = p.getStatements().get(i);
+		    
+		    IStatement statement = block.getStatements().get(i);
+		    
+		    statement.accept(this);
+		    
+		    if(!match)
+		    	break;
+		}
 	}
 
 	@Override
@@ -128,8 +143,14 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(VariableWrite vw) {
-		// TODO Auto-generated method stub
-		System.out.println("visit VariableWrite stub");
+		if(!(pattern instanceof VariableWrite)){
+			match = false;
+			return;
+		}
+		
+		VariableWrite p = (VariableWrite) pattern;
+		pattern = p.getVar();
+		vw.getVar().accept(this);
 	}
 
 	@Override
@@ -250,14 +271,47 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(For f) {
-		// TODO Auto-generated method stub
-		System.out.println("visit For stub");
+		if(!(pattern instanceof For)){
+			match = false;
+			return;
+		}
+		
+		For p = (For) pattern;
+		
+		//TODO: Compare init
+		System.out.println("Comparing init");
+		
+		//Compare condition
+		pattern = p.getCondition();
+		f.getCondition().accept(this);
+		
+		if(!match)
+			return;
+		
+		//TODO: Compare update
+		System.out.println("Comparing update");
+		
+		//Compare
+		pattern = p.getBody();
+		f.getBody().accept(this);
 	}
 
 	@Override
 	public void visit(UnaryOperator uo) {
-		// TODO Auto-generated method stub
-		System.out.println("visit UnaryOperator stub");
+		if(!(pattern instanceof UnaryOperator)){
+			match = false;
+			return;
+		}
+		
+		UnaryOperator p = (UnaryOperator) pattern;
+		
+		if(!p.getOperator().equals(uo.getOperator())){
+			match = false;
+			return;
+		}
+		
+		pattern = p.getOperand();
+		uo.getOperand().accept(this);
 	}
 
 	@Override
