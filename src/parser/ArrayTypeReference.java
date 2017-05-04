@@ -28,4 +28,8 @@ public class ArrayTypeReference extends Reference {
 	public void accept(Visitor v) {
 		v.visit(this);
 	}
+	
+	public TypeReference getType() {
+		return type;
+	}
 }
