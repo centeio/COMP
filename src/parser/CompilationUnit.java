@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class CompilationUnit extends BasicNode {
 	protected List<Type> types;
 	
@@ -19,9 +21,9 @@ public class CompilationUnit extends BasicNode {
 	}
 	
 	public List<Type> getTypes() { return types; }
-
+	
 	@Override
-	public BasicNode[] getChildren() {
-		return types.toArray(new BasicNode[0]);
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

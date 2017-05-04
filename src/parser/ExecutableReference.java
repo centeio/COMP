@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class ExecutableReference extends Reference {
 	private TypeReference declarator;
 	private TypeReference type;
@@ -46,4 +48,8 @@ public class ExecutableReference extends Reference {
 	public List<Parameter> getParameters() { return parameters; }
 	public List<Reference> getArguments() { return arguments; }
 	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

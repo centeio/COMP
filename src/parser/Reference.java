@@ -15,8 +15,4 @@ public abstract class Reference extends BasicNode {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public BasicNode[] getChildren(){
-		return new BasicNode[0];
-	}
 }

@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class Block extends Statement {
 	private List<BasicNode> statements;
 	
@@ -19,9 +21,9 @@ public class Block extends Statement {
 	}
 	
 	public List<BasicNode> getStatements() { return statements; }
-
+	
 	@Override
-	public BasicNode[] getChildren() {
-		return statements.toArray(new BasicNode[0]);
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

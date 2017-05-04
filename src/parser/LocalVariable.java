@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class LocalVariable extends Statement {
 	private String name;
 	private Reference type;
@@ -48,5 +50,8 @@ public class LocalVariable extends Statement {
 		this.init = init;
 	}
 	
-	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

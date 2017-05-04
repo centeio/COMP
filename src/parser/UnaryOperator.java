@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class UnaryOperator extends Expression {
 	private String operator;
 	private Expression operand;
@@ -37,4 +39,8 @@ public class UnaryOperator extends Expression {
 		this.operand = operand;
 	}
 	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

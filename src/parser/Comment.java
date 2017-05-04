@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class Comment extends BasicNode {
 	String type;
 	String content;
@@ -12,9 +14,9 @@ public class Comment extends BasicNode {
 	public String getType() { return type; }
 	public String getContent() { return content; }
 	public String getPosition() { return position; }
-
+	
 	@Override
-	public BasicNode[] getChildren() {
-		return new BasicNode[0];
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

@@ -16,11 +16,7 @@ public class PAT {
 	
         SimpleNode n = MyNewGrammar.n;
         printChildren(n);
-        
-        Visitor v = new Visitor(n);
-        
-        v.findSubtree(root);
-		
+	
 	}
 	
 	public static void printChildren(SimpleNode node){

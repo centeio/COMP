@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class Invocation extends Statement {
 	private Reference executable;
 	private List<Expression> arguments;
@@ -38,5 +40,9 @@ public class Invocation extends Statement {
 	public void setArguments(List<Expression> arguments) {
 		this.arguments = arguments;
 	}
-
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

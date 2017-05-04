@@ -2,7 +2,9 @@ package parser;
 
 import java.util.List;
 
-public abstract class BasicNode {
+import main.Visitable;
+
+public abstract class BasicNode implements Visitable{
 	    private String nodetype;
 	    private String location;
 	    private List<Comment> comments;
@@ -13,8 +15,7 @@ public abstract class BasicNode {
 	    
 	    public String getNodeType() { return nodetype; }
 	    public String getLocation() { return location; }
-	    public List<Comment> getComments() { return comments; } 
-	    abstract public BasicNode[] getChildren();
+	    public List<Comment> getComments() { return comments; }
 }
 
 

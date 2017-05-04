@@ -1,5 +1,7 @@
 package parser;
 
+import main.Visitor;
+
 public class BinaryOperator extends Expression { 
     private String operator;
     private Expression lhs;
@@ -47,9 +49,9 @@ public class BinaryOperator extends Expression {
 	public void setRhs(Expression rhs) {
 		this.rhs = rhs;
 	}
-
+	
 	@Override
-	public BasicNode[] getChildren() {
-		return new BasicNode[0];
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }
