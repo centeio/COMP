@@ -4,7 +4,7 @@ import java.util.List;
 
 import main.Visitable;
 
-public abstract class BasicNode implements Visitable, IBasicNode {
+public abstract class BasicNode implements IBasicNode {
 	    private String nodetype;
 	    private String location;
 	    private List<Comment> comments;

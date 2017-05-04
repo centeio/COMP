@@ -2,9 +2,10 @@ package parser;
 
 import java.util.List;
 
+import main.Visitable;
 import main.Visitor;
 
-public interface IBasicNode {
+public interface IBasicNode extends Visitable {
 	public String getNodeType();
     public String getLocation();
     public List<Comment> getComments();
