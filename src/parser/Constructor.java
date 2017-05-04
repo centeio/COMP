@@ -6,7 +6,7 @@ import main.Visitor;
 
 public class Constructor extends Member {
 	private List<Parameter> parameters;
-	private Statement body;
+	private IStatement body;
 	
 	public String toString(String prefix) {
 		String str = prefix + "Constructor";
@@ -26,7 +26,7 @@ public class Constructor extends Member {
 	}
 	
 	public List<Parameter> getParameters() { return parameters; }
-	public Statement getBody() { return body; }
+	public IStatement getBody() { return body; }
 	
 	@Override
 	public void accept(Visitor v) {

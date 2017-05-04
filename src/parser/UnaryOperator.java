@@ -2,9 +2,9 @@ package parser;
 
 import main.Visitor;
 
-public class UnaryOperator extends Expression {
+public class UnaryOperator extends Expression implements IStatement {
 	private String operator;
-	private Expression operand;
+	private IExpression operand;
 	
 	public String toString(String prefix) {
     	String str = prefix + "UnaryOperator";
@@ -32,12 +32,14 @@ public class UnaryOperator extends Expression {
 	public void setOperator(String operator) {
 		this.operator = operator;
 	}
-	public Expression getOperand() {
+	public IExpression getOperand() {
 		return operand;
 	}
-	public void setOperand(Expression operand) {
+	public void setOperand(IExpression operand) {
 		this.operand = operand;
 	}
+	@Override
+	public String getLabel() { return null; }
 	
 	@Override
 	public void accept(Visitor v) {

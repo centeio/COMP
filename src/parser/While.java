@@ -3,8 +3,8 @@ package parser;
 import main.Visitor;
 
 public class While extends Statement {
-	private Expression condition;
-	private Statement body;
+	private IExpression condition;
+	private IStatement body;
 	
 	public String toString(String prefix) {
 		String str =  prefix + "While";
@@ -22,16 +22,16 @@ public class While extends Statement {
 		return str;
 	}
 	
-	public Expression getCondition() {
+	public IExpression getCondition() {
 		return condition;
 	}
-	public void setCondition(Expression condition) {
+	public void setCondition(IExpression condition) {
 		this.condition = condition;
 	}
-	public Statement getBody() {
+	public IStatement getBody() {
 		return body;
 	}
-	public void setBody(Statement body) {
+	public void setBody(IStatement body) {
 		this.body = body;
 	}
 	

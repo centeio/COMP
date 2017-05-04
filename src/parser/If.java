@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 import main.Visitor;
 
 public class If extends Statement {
-	private Expression condition;
-	private Statement then;
+	private IExpression condition;
+	private IStatement then;
 	@SerializedName("else")
-	private Statement _else;
+	private IStatement _else;
 	
 	public String toString(String prefix) {
 		String str =  prefix + "If";
@@ -31,9 +31,9 @@ public class If extends Statement {
 		return str;
 	}
 	
-	public Expression getCondition() { return condition; }
-	public Statement getThen() { return then; }
-	public Statement getElse() { return _else; }
+	public IExpression getCondition() { return condition; }
+	public IStatement getThen() { return then; }
+	public IStatement getElse() { return _else; }
 	
 	@Override
 	public void accept(Visitor v) {

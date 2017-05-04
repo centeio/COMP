@@ -6,7 +6,7 @@ import parser.*;
 import parser.Class;
 
 public class PatternMatcher implements Visitor {
-	BasicNode pattern;
+	IBasicNode pattern;
 	HashMap<String,String> variables_found;
 	boolean match = true;
 

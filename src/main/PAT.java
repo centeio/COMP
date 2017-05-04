@@ -12,10 +12,10 @@ public class PAT {
 		
 		Root root = parser.parse();
 		
-		MyNewGrammar.createjjt("if(x == null) { x = 3 }");
+		/*MyNewGrammar.createjjt("if(x == null) { x = 3 }");
 	
         SimpleNode n = MyNewGrammar.n;
-        printChildren(n);
+        printChildren(n);*/
 	
 	}
 	

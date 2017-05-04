@@ -5,10 +5,10 @@ import java.util.List;
 import main.Visitor;
 
 public class For extends Statement {
-	private List<Statement> init;
-	private Expression condition;
-	private List<BasicNode> update;
-	private Statement body;
+	private List<IStatement> init;
+	private IExpression condition;
+	private List<IStatement> update;
+	private IStatement body;
 	
 	public String toString(String prefix) {
 		String str = prefix + "For";
@@ -16,7 +16,7 @@ public class For extends Statement {
 		if(init != null) {
 			str += "\n" + prefix + " init:";
 			
-			for(Statement statement: init)
+			for(IStatement statement: init)
 				str += "\n" + statement.toString(prefix + "  ");
 			
 		}
@@ -29,7 +29,7 @@ public class For extends Statement {
 		if(update != null) {
 			str += "\n" + prefix + " Update:";
 			
-			for(BasicNode statement: update)
+			for(IStatement statement: update)
 				str += "\n" + statement.toString(prefix + "  ");
 		}
 		
@@ -41,35 +41,35 @@ public class For extends Statement {
 		return str;
 	}
 
-	public List<Statement> getInit() {
+	public List<IStatement> getInit() {
 		return init;
 	}
 
-	public void setInit(List<Statement> init) {
+	public void setInit(List<IStatement> init) {
 		this.init = init;
 	}
 
-	public Expression getCondition() {
+	public IExpression getCondition() {
 		return condition;
 	}
 
-	public void setCondition(Expression condition) {
+	public void setCondition(IExpression condition) {
 		this.condition = condition;
 	}
 
-	public List<BasicNode> getUpdate() {
+	public List<IStatement> getUpdate() {
 		return update;
 	}
 
-	public void setUpdate(List<BasicNode> update) {
+	public void setUpdate(List<IStatement> update) {
 		this.update = update;
 	}
 
-	public Statement getBody() {
+	public IStatement getBody() {
 		return body;
 	}
 
-	public void setBody(Statement body) {
+	public void setBody(IStatement body) {
 		this.body = body;
 	}
 	

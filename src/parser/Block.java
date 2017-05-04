@@ -5,7 +5,7 @@ import java.util.List;
 import main.Visitor;
 
 public class Block extends Statement {
-	private List<BasicNode> statements;
+	private List<IStatement> statements;
 	
 	public String toString(String prefix) {
 		String str = prefix + "Block";
@@ -13,14 +13,14 @@ public class Block extends Statement {
 		if(statements != null) {
 			str += "\n" + prefix + " Statements:";
 			
-			for(BasicNode statement: statements)
+			for(IStatement statement: statements)
 				str += "\n" + statement.toString(prefix + "  ");
 		}
 		
 		return str;
 	}
 	
-	public List<BasicNode> getStatements() { return statements; }
+	public List<IStatement> getStatements() { return statements; }
 	
 	@Override
 	public void accept(Visitor v) {

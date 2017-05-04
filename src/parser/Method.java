@@ -7,7 +7,7 @@ import main.Visitor;
 public class Method extends Member {
 	private TypeReference type;
 	private List<Parameter> parameters;
-	private Statement body;
+	private IStatement body;
 	
 	public String toString(String prefix) {
 		String str = prefix + "Method";
@@ -38,7 +38,7 @@ public class Method extends Member {
 	
 	public TypeReference getType() { return type; }
 	public List<Parameter> getParameters() { return parameters; }
-	public Statement getBody() { return body; }
+	public IStatement getBody() { return body; }
 	
 	@Override
 	public void accept(Visitor v) {

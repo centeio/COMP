@@ -5,7 +5,7 @@ import main.Visitor;
 public class LocalVariable extends Statement {
 	private String name;
 	private Reference type;
-	private Expression init;
+	private IExpression init;
 	
 	public String toString(String prefix) {
 		String str = prefix + "LocalVariable";
@@ -42,11 +42,11 @@ public class LocalVariable extends Statement {
 		this.type = type;
 	}
 
-	public Expression getInit() {
+	public IExpression getInit() {
 		return init;
 	}
 
-	public void setInit(Expression init) {
+	public void setInit(IExpression init) {
 		this.init = init;
 	}
 	

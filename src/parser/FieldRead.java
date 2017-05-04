@@ -3,7 +3,7 @@ package parser;
 import main.Visitor;
 
 public class FieldRead extends Expression {
-	private Expression target;
+	private IExpression target;
 	private Reference var;
 	
 	public String toString(String prefix) {
@@ -22,10 +22,10 @@ public class FieldRead extends Expression {
     	return str;
     }
 	
-	public Expression getTarget() {
+	public IExpression getTarget() {
 		return target;
 	}
-	public void setTarget(Expression target) {
+	public void setTarget(IExpression target) {
 		this.target = target;
 	}
 	public Reference getVar() {

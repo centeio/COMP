@@ -2,6 +2,7 @@ package parser;
 
 import java.util.List;
 
+import main.Visitable;
 import main.Visitor;
 
 public class Root extends BasicNode {

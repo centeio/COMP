@@ -4,8 +4,8 @@ import main.Visitor;
 
 public class BinaryOperator extends Expression { 
     private String operator;
-    private Expression lhs;
-    private Expression rhs;
+    private IExpression lhs;
+    private IExpression rhs;
     
     public String toString(String prefix) {
     	String str = prefix + "BinaryOperator";
@@ -34,19 +34,19 @@ public class BinaryOperator extends Expression {
 		this.operator = operator;
 	}
 
-	public Expression getLhs() {
+	public IExpression getLhs() {
 		return lhs;
 	}
 
-	public void setLhs(Expression lhs) {
+	public void setLhs(IExpression lhs) {
 		this.lhs = lhs;
 	}
 
-	public Expression getRhs() {
+	public IExpression getRhs() {
 		return rhs;
 	}
 
-	public void setRhs(Expression rhs) {
+	public void setRhs(IExpression rhs) {
 		this.rhs = rhs;
 	}
 	
