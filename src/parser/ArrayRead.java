@@ -7,7 +7,7 @@ public class ArrayRead extends Expression {
 	private IExpression index;
 	
 	public String toString(String prefix) {
-		String str = prefix + "ArrayRead";
+		String str = prefix + nodetype;
 		
 		if(type != null) {
 			str += "\n" + prefix + " Type:";

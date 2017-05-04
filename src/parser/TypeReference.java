@@ -9,7 +9,7 @@ public class TypeReference extends Reference {
 	private String _package;
 	
 	public String toString(String prefix) {
-		return prefix + "TypeReference\n" + prefix + " Name:\n" + prefix + "  " + name;
+		return prefix + nodetype + "\n" + prefix + " Name:\n" + prefix + "  " + name;
 	}
 	
 	public String getPackage() { return _package; }

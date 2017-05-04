@@ -11,7 +11,7 @@ public class Class extends Type {
 	private TypeReference _super;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Class";
+		String str = prefix + nodetype;
 		
 		if(_super != null) {
 			str += "\n" + prefix + " Super:";

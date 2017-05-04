@@ -11,7 +11,7 @@ public class For extends Statement {
 	private IStatement body;
 	
 	public String toString(String prefix) {
-		String str = prefix + "For";
+		String str = prefix + nodetype;
 		
 		if(init != null) {
 			str += "\n" + prefix + " init:";

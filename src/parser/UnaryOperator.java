@@ -7,7 +7,7 @@ public class UnaryOperator extends Expression implements IStatement {
 	private IExpression operand;
 	
 	public String toString(String prefix) {
-    	String str = prefix + "UnaryOperator";
+    	String str = prefix + nodetype;
     	
     	if(type != null) {
     		str += "\n" + prefix + " Type:";

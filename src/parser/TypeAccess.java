@@ -6,7 +6,7 @@ public class TypeAccess extends Expression {
 	public TypeReference target;
 	
 	public String toString(String prefix) {
-    	String str = prefix + "TypeAccess"; 
+    	String str = prefix + nodetype; 
     	
     	if(target != null) {
     		str += "\n" + prefix + " Target:";

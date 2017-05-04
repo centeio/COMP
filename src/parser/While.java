@@ -7,7 +7,7 @@ public class While extends Statement {
 	private IStatement body;
 	
 	public String toString(String prefix) {
-		String str =  prefix + "While";
+		String str =  prefix + nodetype;
 	
 		if(condition != null) {
 			str += "\n" + prefix + " Condition:";

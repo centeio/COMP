@@ -8,7 +8,7 @@ public class Block extends Statement {
 	private List<IStatement> statements;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Block";
+		String str = prefix + nodetype;
 		
 		if(statements != null) {
 			str += "\n" + prefix + " Statements:";

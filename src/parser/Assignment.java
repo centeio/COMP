@@ -8,7 +8,7 @@ public class Assignment extends Statement implements IStatement {
     private IExpression rhs;
     
     public String toString(String prefix) {
-    	String str = prefix + "Assignment";
+    	String str = prefix + nodetype;
     			
     	if(type!= null) {
     		str += "\n" + prefix + " Type:";

@@ -7,7 +7,7 @@ public class Parameter extends BasicNode {
 	private Reference type;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Parameter";
+		String str = prefix + nodetype;
 		
 		if(name != null)
 			str += "\n" + prefix + " Name:\n" + prefix + "  " + name;

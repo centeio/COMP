@@ -11,7 +11,7 @@ public class If extends Statement {
 	private IStatement _else;
 	
 	public String toString(String prefix) {
-		String str =  prefix + "If";
+		String str =  prefix + nodetype;
 	
 		if(condition != null) {
 			str += "\n" + prefix + " Condition:";

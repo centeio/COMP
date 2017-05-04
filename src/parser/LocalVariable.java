@@ -8,7 +8,7 @@ public class LocalVariable extends Statement {
 	private IExpression init;
 	
 	public String toString(String prefix) {
-		String str = prefix + "LocalVariable";
+		String str = prefix + nodetype;
 		
 		if(name != null)
 			str += "\n" + prefix + " Name:\n" + prefix + "  " + name;

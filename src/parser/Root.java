@@ -2,14 +2,13 @@ package parser;
 
 import java.util.List;
 
-import main.Visitable;
 import main.Visitor;
 
 public class Root extends BasicNode {
 	protected List<CompilationUnit> compilation_units;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Root";
+		String str = prefix + nodetype;
 		
 		if(compilation_units != null) {
 			str += "\n" + prefix + " CompilationUnits:";

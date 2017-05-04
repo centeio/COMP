@@ -10,7 +10,7 @@ public class NewArray extends Expression {
 	private List<IExpression> dimensions;
 	
 	public String toString(String prefix) {
-		String str = prefix + "NewArray";
+		String str = prefix + nodetype;
 		
 		if(type != null) {
 			str += "\n" + prefix + " Type:";

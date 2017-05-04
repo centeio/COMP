@@ -9,7 +9,7 @@ public class Invocation extends Statement implements IExpression {
 	private List<IExpression> arguments;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Invocation";
+		String str = prefix + nodetype;
 		
 		if(executable != null) {
 			str += "\n" + prefix + " Executable:";

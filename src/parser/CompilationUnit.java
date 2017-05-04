@@ -8,7 +8,7 @@ public class CompilationUnit extends BasicNode {
 	protected List<Type> types;
 	
 	public String toString(String prefix) {
-		String str = prefix + "CompilationUnit";
+		String str = prefix + nodetype;
 		
 		if(types != null) {
 			str += "\n" + prefix + " Types:";

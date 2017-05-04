@@ -7,7 +7,7 @@ public class ArrayWrite extends Expression {
 	private IExpression index;
 	
 	public String toString(String prefix) {
-    	String str = prefix + "ArrayWrite";
+    	String str = prefix + nodetype;
     	
     	if(type != null) {
 			str += "\n" + prefix + " Type:";

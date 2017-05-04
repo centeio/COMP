@@ -8,7 +8,7 @@ public class BinaryOperator extends Expression {
     private IExpression rhs;
     
     public String toString(String prefix) {
-    	String str = prefix + "BinaryOperator";
+    	String str = prefix + nodetype;
     	
     	if(operator != null)
     		str += "\n" + prefix + " Operator:\n" + prefix + "  " + operator;

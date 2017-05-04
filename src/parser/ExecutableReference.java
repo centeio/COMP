@@ -11,7 +11,7 @@ public class ExecutableReference extends Reference {
 	private List<Reference> arguments;
 	
 	public String toString(String prefix) {
-		String str = prefix + "ExecutableReference";
+		String str = prefix + nodetype;
 		
 		if(name != null)
 			str += "\n" + prefix + " Name:\n" + prefix + "  " + name;

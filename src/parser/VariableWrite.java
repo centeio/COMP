@@ -6,7 +6,7 @@ public class VariableWrite extends Expression {
 	private Reference var;
 	
 	public String toString(String prefix) {
-		String str = prefix + "VariableWrite";
+		String str = prefix + nodetype;
 		
 		if(var != null) {
 			str += "\n" + prefix + " Var:";

@@ -9,7 +9,7 @@ public class Constructor extends Member {
 	private IStatement body;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Constructor";
+		String str = prefix + nodetype;
 		
 		if(parameters != null) {
 			str += "\n" + prefix + " Parameters:";

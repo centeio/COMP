@@ -15,7 +15,7 @@ public class Literal extends Expression {
 	 * @see parser.Expression#toString(java.lang.String)
 	 */
 	public String toString(String prefix) {
-		return prefix + "Literal\n" + prefix + " Value:\n" + prefix + "  " + value;
+		return prefix + nodetype + "\n" + prefix + " Value:\n" + prefix + "  " + value;
 	}
 	
 	/**

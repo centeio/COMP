@@ -7,7 +7,7 @@ public class FieldRead extends Expression {
 	private Reference var;
 	
 	public String toString(String prefix) {
-    	String str = prefix + "FieldRead"; 
+    	String str = prefix + nodetype; 
     	
     	if(target != null) {
     		str += "\n" + prefix + " Target:";

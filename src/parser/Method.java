@@ -10,7 +10,7 @@ public class Method extends Member {
 	private IStatement body;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Method";
+		String str = prefix + nodetype;
 		
 		if(name != null)
 			str += "\n" + prefix + " Name:\n" + prefix + "  " + name;
