@@ -39,11 +39,11 @@ public class Visitor {
 	public boolean equal(Expression parserExpression, ASTExpression searchExpression){
 		SimpleNode child = (SimpleNode) searchExpression.jjtGetChild(0);
 		if(parserExpression instanceof VariableRead && child instanceof ASTVar){
-			System.out.println("-----> Comparing var")
+			System.out.println("-----> Comparing var");
 		}
 		
 		if(parserExpression instanceof Literal && child instanceof ASTVar){
-			System.out.println("-----> Comparing var")
+			System.out.println("-----> Comparing var");
 		}
 	}
 	
