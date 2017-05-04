@@ -3,7 +3,7 @@ package main;
 import pack.MyNewGrammar;
 import pack.SimpleNode;
 import parser.Parser;
-import parser.Root;
+import parser.*;
 
 public class PAT {
 	
@@ -16,7 +16,17 @@ public class PAT {
 	
         SimpleNode n = MyNewGrammar.n;
         printChildren(n);*/
-	
+		
+		//Testing PatternMatcher
+        Member m = root.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
+        Block b = (Block) ((Method) m).getBody();
+        IStatement s = b.getStatements().get(0);
+        System.out.println("-----------------------------------------------");
+        System.out.println(s.toString(""));
+        
+        PatternMatcher pm = new PatternMatcher(s);
+        s.accept(pm);
+        System.out.println(pm.isMatch());
 	}
 	
 	public static void printChildren(SimpleNode node){

@@ -8,79 +8,85 @@ import parser.Class;
 public class PatternMatcher implements Visitor {
 	IBasicNode pattern;
 	HashMap<String,String> variables_found;
-	boolean match = true;
+	boolean match;
+	
+	public PatternMatcher(IBasicNode pattern) {
+		this.pattern = pattern;
+		this.variables_found = new HashMap<String,String>();
+		this.match = true;
+	}
 
 
 	@Override
 	public void visit(Root root) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit Root stub");
 	}
 
 	@Override
 	public void visit(CompilationUnit cu) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit CompilationUnit stub");
 	}
 
 	@Override
 	public void visit(Comment comment) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit Comment stub");
 	}
 
 	@Override
 	public void visit(ArrayRead ar) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit ArrayRead stub");
 	}
 
 	@Override
 	public void visit(Class c) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit Class stub");
 	}
 
 	@Override
 	public void visit(Constructor constructor) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit Constructor stub");
 	}
 
 	@Override
 	public void visit(Block block) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit Block stub");
 	}
 
 	@Override
 	public void visit(Invocation invocation) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit Invocation stub");
 	}
 
 	@Override
 	public void visit(ExecutableReference er) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit ExecutableReference stub");
 	}
 
 	@Override
 	public void visit(Method method) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit Method stub");
 	}
 
 	@Override
 	public void visit(Parameter parameter) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit Parameter stub");
 	}
 
 	@Override
 	public void visit(ArrayTypeReference atr) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit ArrayTypeReference stub");
 	}
 
 	@Override
@@ -111,7 +117,7 @@ public class PatternMatcher implements Visitor {
 	@Override
 	public void visit(Assignment assignment) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit Assignment stub");
 	}
 
 	@Override
@@ -145,14 +151,17 @@ public class PatternMatcher implements Visitor {
 				return;
 			}
 		}
+		System.out.println("Breakpoint1");
 		
 		pattern = p.getType();
 		lv.getType().accept(this);
 		if(!match)
 			return;
+		System.out.println("Breakpoint2");
 		
 		pattern = p.getInit();
 		lv.getInit().accept(this);
+		System.out.println("Breakpoint3");
 	}
 
 	@Override
