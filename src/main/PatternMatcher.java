@@ -85,8 +85,14 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(ArrayTypeReference atr) {
-		// TODO Auto-generated method stub
-		System.out.println("visit ArrayTypeReference stub");
+		if(!(pattern instanceof ArrayTypeReference)){
+			match = false;
+			return;
+		}
+		
+		ArrayTypeReference p = (ArrayTypeReference) pattern;
+		pattern = p.getType();
+		atr.getType().accept(this);
 	}
 
 	@Override
@@ -123,7 +129,7 @@ public class PatternMatcher implements Visitor {
 	@Override
 	public void visit(VariableWrite vw) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit VariableWrite stub");
 	}
 
 	@Override
@@ -133,7 +139,6 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(LocalVariable lv) {
-		// TODO Auto-generated method stub
 		if(!(pattern instanceof LocalVariable)){
 			match = false;
 			return;
@@ -151,35 +156,73 @@ public class PatternMatcher implements Visitor {
 				return;
 			}
 		}
-		System.out.println("Breakpoint1");
 		
 		pattern = p.getType();
 		lv.getType().accept(this);
 		if(!match)
 			return;
-		System.out.println("Breakpoint2");
 		
 		pattern = p.getInit();
 		lv.getInit().accept(this);
-		System.out.println("Breakpoint3");
 	}
 
 	@Override
 	public void visit(TypeReference tr) {
-		// TODO Auto-generated method stub
-
+		if(!(pattern instanceof TypeReference)){
+			match = false;
+			return;
+		}
+		
+		TypeReference p = (TypeReference) pattern;
+		if(tr.getName() != p.getName())
+			match = false;
 	}
 
 	@Override
 	public void visit(LocalVariableReference lvr) {
-		// TODO Auto-generated method stub
-
+		if(!(pattern instanceof LocalVariableReference)){
+			match = false;
+			return;
+		}
+		
+		LocalVariableReference p = (LocalVariableReference) pattern;
+		//Check if variables are consistent
+		if(this.variables_found.get(p.getName()) == null){
+			this.variables_found.put(p.getName(), lvr.getName());
+		}
+		else{
+			if(!this.variables_found.get(p.getName()).equals(lvr.getName())){
+				match = false;
+				return;
+			}
+		}
 	}
 
 	@Override
 	public void visit(BinaryOperator bo) {
-		// TODO Auto-generated method stub
-
+		if(!(pattern instanceof BinaryOperator)){
+			match = false;
+			return;
+		}
+		
+		BinaryOperator p = (BinaryOperator) pattern;
+		
+		//Compare operator
+		if(!p.getOperator().equals(bo.getOperator())){
+			match = false;
+			return;
+		}
+		
+		//Compare Left hand side
+		pattern = p.getLhs();
+		bo.getLhs().accept(this);
+		if(!match){
+			return;
+		}
+		
+		//Compare Left hand side
+		pattern = p.getRhs();
+		bo.getRhs().accept(this);
 	}
 
 	@Override
@@ -190,58 +233,65 @@ public class PatternMatcher implements Visitor {
 			match = (p.getValue() == literal.getValue());
 		}
 		
-		//TODO: Literal Variable Comparison
+		//TODO: Literal vs Variable Comparison
 	}
 
 	@Override
 	public void visit(VariableRead vr) {
-		// TODO Auto-generated method stub
-
+		if(!(pattern instanceof VariableRead)){
+			match = false;
+			return;
+		}
+		
+		VariableRead p = (VariableRead) pattern;
+		pattern = p.getVar();
+		vr.getVar().accept(this);		
 	}
 
 	@Override
 	public void visit(For f) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit For stub");
 	}
 
 	@Override
 	public void visit(UnaryOperator uo) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit UnaryOperator stub");
 	}
 
 	@Override
 	public void visit(NewArray na) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit NewArray stub");
 	}
 
 	@Override
 	public void visit(ArrayWrite aw) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit ArrayWrite stub");
 	}
 
 	@Override
 	public void visit(FieldRead fr) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit FieldRead stub");
 	}
 
 	@Override
 	public void visit(TypeAccess ta) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit TypeAccess stub");
 	}
 
 	@Override
 	public void visit(While w) {
 		// TODO Auto-generated method stub
-
+		System.out.println("visit While stub");
 	}	
 
 	public boolean isMatch() {
+		System.out.println(this.variables_found.toString());
 		return match;
 	}
 }

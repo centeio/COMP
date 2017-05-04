@@ -20,12 +20,16 @@ public class PAT {
 		//Testing PatternMatcher
         Member m = root.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
         Block b = (Block) ((Method) m).getBody();
-        IStatement s = b.getStatements().get(0);
+        IStatement lv1 = b.getStatements().get(0);
+        IStatement lv2 = b.getStatements().get(1);
+        IStatement lv3 = b.getStatements().get(2);
+        IStatement if1 = b.getStatements().get(3);
         System.out.println("-----------------------------------------------");
-        System.out.println(s.toString(""));
+        System.out.println(if1.toString(""));
+        //System.out.println(lv3.toString(""));
         
-        PatternMatcher pm = new PatternMatcher(s);
-        s.accept(pm);
+        PatternMatcher pm = new PatternMatcher(if1);
+        if1.accept(pm);
         System.out.println(pm.isMatch());
 	}
 	
