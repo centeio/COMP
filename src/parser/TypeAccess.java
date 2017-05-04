@@ -3,7 +3,7 @@ package parser;
 import main.Visitor;
 
 public class TypeAccess extends Expression {
-	public TypeReference target;
+	private TypeReference target;
 	
 	public String toString(String prefix) {
     	String str = prefix + nodetype; 

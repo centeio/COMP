@@ -16,6 +16,14 @@ public class ArrayTypeReference extends Reference {
 		return str;
 	}
 	
+	public TypeReference getType() {
+		return type;
+	}
+
+	public void setType(TypeReference type) {
+		this.type = type;
+	}
+
 	@Override
 	public void accept(Visitor v) {
 		v.visit(this);
