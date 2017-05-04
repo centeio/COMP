@@ -22,6 +22,7 @@ import parser.Invocation;
 import parser.Literal;
 import parser.LocalVariable;
 import parser.LocalVariableReference;
+import parser.Member;
 import parser.Method;
 import parser.NewArray;
 import parser.NullNode;
@@ -43,13 +44,13 @@ public class FindPattern implements Visitor {
 	List<IBasicNode> patternsFound;
 	HashMap<String, List<IBasicNode>> patternsToFind;
 	
-	public FindPattern(List<IBasicNode> patternsFound, HashMap<String, List<IBasicNode>> patternsToFind) {
-		this.patternsFound = patternsFound;
+	public FindPattern(HashMap<String, List<IBasicNode>> patternsToFind) {
+		this.patternsFound = new ArrayList<IBasicNode>();
 		this.patternsToFind = patternsToFind;
 	}
 	
-	public FindPattern(List<IBasicNode> patternsFound) {
-		this.patternsFound = patternsFound;
+	public FindPattern() {
+		this.patternsFound = new ArrayList<IBasicNode>();
 		this.patternsToFind = new HashMap<>();
 		
 		List<IBasicNode> patterns = new ArrayList<>();
@@ -109,6 +110,28 @@ public class FindPattern implements Visitor {
 		
 		if(c.getSuperClass() != null)
 			c.getSuperClass().accept(this);
+		
+		if(c.getFormalTypeParameters() != null) {
+			List<TypeReference> typeparameters = c.getFormalTypeParameters();
+			
+			for(int i = 0; i < typeparameters.size(); i++)
+				typeparameters.get(i).accept(this);
+		}
+		
+		if(c.getInterfaces() != null) {
+			List<TypeReference> interfces = c.getInterfaces();
+			
+			for(int i = 0; i < interfces.size(); i++)
+				interfces.get(i).accept(this);
+		}
+		
+		if(c.getMembers() != null) {
+			List<Member> members = c.getMembers();
+			
+			for(int i = 0; i < members.size(); i++)
+				members.get(i).accept(this);
+		}
+		
 	}
 
 	@Override
@@ -426,16 +449,18 @@ public class FindPattern implements Visitor {
 	}
 	
 	public void findPatterns(IBasicNode node) {
+
 		if(patternsToFind.containsKey(node.getNodeType())) {
 			List<IBasicNode> patterns = patternsToFind.get(node.getNodeType());
 			
 			for(int i = 0; i < patterns.size(); i++) {
-				PatternMatcher matcher = new PatternMatcher(patterns.get(i));
+				/*PatternMatcher matcher = new PatternMatcher(patterns.get(i));
 				
 				node.accept(matcher);				
 				
 				if(matcher.isMatch())
-					patternsFound.add(node);
+					patternsFound.add(node);*/
+				System.out.println(node.getNodeType() + " Pattern");
 			}
 		}
 	}

@@ -17,6 +17,11 @@ public class PAT {
         SimpleNode n = MyNewGrammar.n;
         printChildren(n);*/
 		
+		//Testing FindPattern
+		System.out.println("-----------------------------------------------");
+		FindPattern find = new FindPattern();
+		root.accept(find);
+		
 		//Testing PatternMatcher
         Member m = root.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
         Block b = (Block) ((Method) m).getBody();
