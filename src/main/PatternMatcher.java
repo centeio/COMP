@@ -487,8 +487,23 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(While w) {
-		// TODO Auto-generated method stub
-		System.out.println("visit While stub");
+		if(!(pattern instanceof While)){
+			match = false;
+			return;
+		}
+		
+		While p = (While) pattern;
+		
+		//Compare condition
+		pattern = p.getCondition();
+		w.getCondition().accept(this);
+		
+		if(!match)
+			return;
+		
+		//Compare body
+		pattern = p.getBody();
+		w.getBody().accept(this);
 	}	
 
 	public boolean isMatch() {

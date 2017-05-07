@@ -33,11 +33,11 @@ public class PAT {
         IStatement for1 = b.getStatements().get(4);
         IStatement while1 = b.getStatements().get(6);
         System.out.println("-----------------------------------------------");
-        System.out.println(for1.toString(""));
+        System.out.println(while1.toString(""));
         //System.out.println(lv3.toString(""));
         
-        PatternMatcher pm = new PatternMatcher(for1);
-        for1.accept(pm);
+        PatternMatcher pm = new PatternMatcher(while1);
+        while1.accept(pm);
         System.out.println(pm.isMatch());
 	}
 	
