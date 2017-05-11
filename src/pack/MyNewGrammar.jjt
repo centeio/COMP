@@ -13,6 +13,7 @@ import java.io.*;
 
 public class MyNewGrammar
 {
+  public static PrintWriter writer;
   public static ASTStart n;
   public static void createjjt(String code)
   {
@@ -23,8 +24,10 @@ public class MyNewGrammar
     try
     {
    		MyNewGrammar grammar = new MyNewGrammar(r);
-
+	    writer = new PrintWriter("patterns-java.java", "UTF-8");
       n = grammar.Start(); //root
+	  writer.close();
+      
       n.dump("");
       System.out.println("Thank you.");
     }
@@ -97,15 +100,19 @@ TOKEN : /* Keywords */
   	< CONST: "const" > |
   	< FLOAT: "float" > |
   	< NATIVE: "native" > |
-  	< SUPER: "super" >
+  	< BOOLEANVALUE: "false" | "true"  > |
+  	< SUPER: "super" > |
+  	< PATTERN: "Pattern" > |
+  	< EXHAUSTIVE: "Exhaustive" > |
+  	< PARTIAL: "Partial" >
 }
 
 TOKEN : /* IDENTIFIERS */
 {
+  	< VAR : "@"< STRING > > |
   	< STRING: < LETTER > (< LETTER > | < INTEGER >)* > |
 	< LETTER : [ "_", "a"-"z", "A"-"Z" ] > |
 	< INTEGER : [ "0"-"9" ]([ "0"-"9" ])* > |
-	< BOOLEANVALUE: "false" | "true"  > |
 	< EQUALS: "==" > |
 	< PL: "(" > |
 	< PR: ")" > |
@@ -117,22 +124,48 @@ TOKEN : /* IDENTIFIERS */
 	< TIMES : "*" > |
 	< DIV : "/" > |
 	< MAJOR : ">" > |
-	< MINOR : "<" >
+	< MINOR : "<" > |
+	< SEMICOL : ";" >
 		
 }
 
 ASTStart Start() :
 {}
 {
-  	If() { return jjtThis; }
+  { writer.println("public class MyPattern{"); }
+  	(< PATTERN >  { writer.print("void "); }
+  	 Name() [Search()] { writer.println("{"); } Pattern() { writer.println("}"); })+
+
+  { writer.println(" }"); }
+  	
+  	{ return jjtThis; }
+}
+
+void Name() : {Token t;} {
+  	t = < STRING >
+  	{
+		jjtThis.value = t.image;
+		writer.print(t.image+"()");		
+	}
+}
+
+void Pattern() : {} {
+  
+  If() | Operation() 
+}
+
+void Search() : {Token t;} {
+  	t = < EXHAUSTIVE >   	|
+	t =  < PARTIAL >	
 }
 
 void If() :  {} {
-  { System.out.println("If");  }
+  { writer.print("if("); System.out.println("If");  }
   
 	< IF > <PL >
 
-	Condition() < PR > < BL > Operation() < BR >  [<ELSE > ]
+	Condition() < PR >  { writer.print(")"); } < BL > { writer.println("{"); } Operation() < BR >  { writer.print("}"); }
+	[<ELSE > { writer.print("else"); } < BL > { writer.println("{"); } Operation() < BR >  { writer.print("}"); }]
 }
 
 void Condition() : {} {
@@ -146,24 +179,28 @@ void CompareOp() : {Token t;} {
 	t = < EQUALS >
 	{
 		jjtThis.value = t.image;
+		writer.print(t.image);
 	}
 }
 
 void Var() : {Token t;} {
   { System.out.println("Var");  }
   
-	t = < STRING >
+	t = < VAR >
 	{
 		jjtThis.value = t.image;
+		writer.print("_"+t.image);
+		
 	}
 }
 
 void Expression() : {} {
   { System.out.println("Expression");  }
   
-	< PL > Expression() Op() Expression() < PR > |
+	< PL > { writer.print("("); } Expression() Op() Expression() < PR >  { writer.print(")"); } |
 	Var() |
-	Int() 
+	Int() |
+	String()
 	
 }
 
@@ -173,24 +210,42 @@ void Int() : {Token t;} {
     t = < INTEGER >
 	{
 		jjtThis.value = t.image;
+		writer.print(t.image);
+	}
+}
+
+void String() : {Token t;} {
+  { System.out.println("String");  }
+  
+    t = < STRING >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image);
 	}
 }
 
 void Operation() : {} {
   { System.out.println("Operation");  }
-  
-  Var() < EQ > AritmeticOp()
+	Expression() [AritmeticOp() | Assignment()]
+}
+
+void Assignment() : {} {
+	{ System.out.println("Assignment");  }
+	< EQ > { writer.print(" = "); } Expression() [{ System.out.println("AritmeticOp");  } AritmeticOp()] < SEMICOL > { writer.println(";"); }
 }
 
 void AritmeticOp() : {} { 
   { System.out.println("AritmeticOp");  }
   
-  Expression() [Op() Expression()]
+	Op() Expression()
 }
 
-void Op() : {} {
+void Op() : {Token t;} {
   { System.out.println("Op");  }
   
- < EQ > | < MINUS > | < PLUS > | < TIMES > | < DIV >
+	t = < MINUS > {jjtThis.value = t.image; writer.print(t.image); } |
+	t = < PLUS > {jjtThis.value = t.image; writer.print(t.image); }|
+	t = < TIMES > {jjtThis.value = t.image; writer.print(t.image); }|
+	t = < DIV > {jjtThis.value = t.image; writer.print(t.image); }
 
 }

@@ -27,11 +27,11 @@ public class Visitor {
 		if(!parserCond.getOperator().equals(((SimpleNode) searchCond.jjtGetChild(1)).jjtGetValue().toString()))
 			return false;
 		
-		if(!equal((Expression) parserCond.getLHS(), (ASTExpression) searchCond.jjtGetChild(0)))
+		/*if(!equal((Expression) parserCond.getLHS(), (ASTExpression) searchCond.jjtGetChild(0)))
 			return false;
 		
 		if(!equal((Expression) parserCond.getRHS(), (ASTExpression) searchCond.jjtGetChild(2)))
-			return false;
+			return false;*/
 		
 		return true;
 	}
