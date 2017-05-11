@@ -22,6 +22,9 @@ public class Parser {
 			.registerTypeAdapter(Statement.class, typeAdapter)
 			.registerTypeAdapter(Member.class, typeAdapter)
 			.registerTypeAdapter(Type.class, typeAdapter)
+			.registerTypeAdapter(IBasicNode.class, typeAdapter)
+			.registerTypeAdapter(IStatement.class, typeAdapter)
+			.registerTypeAdapter(IExpression.class, typeAdapter)
 			.create();
 		
 		try {

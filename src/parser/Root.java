@@ -2,11 +2,13 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class Root extends BasicNode {
 	protected List<CompilationUnit> compilation_units;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Root";
+		String str = prefix + nodetype;
 		
 		if(compilation_units != null) {
 			str += "\n" + prefix + " CompilationUnits:";
@@ -18,9 +20,9 @@ public class Root extends BasicNode {
 	}
 	
 	public List<CompilationUnit> getCompilationUnits() { return compilation_units; }
-
+	
 	@Override
-	public BasicNode[] getChildren() {
-		return compilation_units.toArray(new BasicNode[0]);
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

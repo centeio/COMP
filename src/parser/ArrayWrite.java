@@ -1,11 +1,13 @@
 package parser;
 
+import main.Visitor;
+
 public class ArrayWrite extends Expression {
-	private Expression target;
-	private Expression index;
+	private IExpression target;
+	private IExpression index;
 	
 	public String toString(String prefix) {
-    	String str = prefix + "ArrayWrite";
+    	String str = prefix + nodetype;
     	
     	if(type != null) {
 			str += "\n" + prefix + " Type:";
@@ -26,19 +28,21 @@ public class ArrayWrite extends Expression {
     }
 	
 	
-	public Expression getTarget() {
+	public IExpression getTarget() {
 		return target;
 	}
-	public void setTarget(Expression target) {
+	public void setTarget(IExpression target) {
 		this.target = target;
 	}
-	public Expression getIndex() {
+	public IExpression getIndex() {
 		return index;
 	}
-	public void setIndex(Expression index) {
+	public void setIndex(IExpression index) {
 		this.index = index;
 	}
 	
-	
-
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

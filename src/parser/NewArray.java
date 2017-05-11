@@ -2,13 +2,15 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class NewArray extends Expression {
 	private List<TypeReference> type_casts;
-	private List<Expression> elements;
-	private List<Expression> dimensions;
+	private List<IExpression> elements;
+	private List<IExpression> dimensions;
 	
 	public String toString(String prefix) {
-		String str = prefix + "NewArray";
+		String str = prefix + nodetype;
 		
 		if(type != null) {
 			str += "\n" + prefix + " Type:";
@@ -18,14 +20,14 @@ public class NewArray extends Expression {
 		if(elements != null) {
 			str += "\n" + prefix + " Elements:";
 			
-			for(Expression element: elements)
+			for(IExpression element: elements)
 				str += "\n" + element.toString(prefix + "  ");
 		}
 		
 		if(dimensions != null) {
 			str += "\n" + prefix + " Dimensions:";
 			
-			for(Expression dimension: dimensions)
+			for(IExpression dimension: dimensions)
 				str += "\n" + dimension.toString(prefix + "  ");
 		}
 			
@@ -48,20 +50,24 @@ public class NewArray extends Expression {
 		this.type_casts = type_casts;
 	}
 
-	public List<Expression> getElements() {
+	public List<IExpression> getElements() {
 		return elements;
 	}
 
-	public void setElements(List<Expression> elements) {
+	public void setElements(List<IExpression> elements) {
 		this.elements = elements;
 	}
 
-	public List<Expression> getDimensions() {
+	public List<IExpression> getDimensions() {
 		return dimensions;
 	}
 
-	public void setDimensions(List<Expression> dimensions) {
+	public void setDimensions(List<IExpression> dimensions) {
 		this.dimensions = dimensions;
 	}
 	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

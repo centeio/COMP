@@ -2,12 +2,14 @@ package parser;
 
 import java.util.List;
 
-public class Invocation extends Statement {
+import main.Visitor;
+
+public class Invocation extends Statement implements IExpression {
 	private Reference executable;
-	private List<Expression> arguments;
+	private List<IExpression> arguments;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Invocation";
+		String str = prefix + nodetype;
 		
 		if(executable != null) {
 			str += "\n" + prefix + " Executable:";
@@ -16,7 +18,7 @@ public class Invocation extends Statement {
 		
 		if(arguments != null) {
 			str += "\n" + prefix + " Arguments:";
-			for(Expression argument: arguments)
+			for(IExpression argument: arguments)
 				str += "\n" + argument.toString(prefix + "  ");
 		}
 		
@@ -31,12 +33,19 @@ public class Invocation extends Statement {
 		this.executable = executable;
 	}
 
-	public List<Expression> getArguments() {
+	public List<IExpression> getArguments() {
 		return arguments;
 	}
 
-	public void setArguments(List<Expression> arguments) {
+	public void setArguments(List<IExpression> arguments) {
 		this.arguments = arguments;
 	}
-
+	
+	@Override
+	public Reference getType() { return null; }
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

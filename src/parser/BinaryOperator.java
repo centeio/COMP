@@ -1,12 +1,14 @@
 package parser;
 
+import main.Visitor;
+
 public class BinaryOperator extends Expression { 
     private String operator;
-    private Expression lhs;
-    private Expression rhs;
+    private IExpression lhs;
+    private IExpression rhs;
     
     public String toString(String prefix) {
-    	String str = prefix + "BinaryOperator";
+    	String str = prefix + nodetype;
     	
     	if(operator != null)
     		str += "\n" + prefix + " Operator:\n" + prefix + "  " + operator;
@@ -32,24 +34,24 @@ public class BinaryOperator extends Expression {
 		this.operator = operator;
 	}
 
-	public Expression getLhs() {
+	public IExpression getLhs() {
 		return lhs;
 	}
 
-	public void setLhs(Expression lhs) {
+	public void setLhs(IExpression lhs) {
 		this.lhs = lhs;
 	}
 
-	public Expression getRhs() {
+	public IExpression getRhs() {
 		return rhs;
 	}
 
-	public void setRhs(Expression rhs) {
+	public void setRhs(IExpression rhs) {
 		this.rhs = rhs;
 	}
-
+	
 	@Override
-	public BasicNode[] getChildren() {
-		return new BasicNode[0];
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

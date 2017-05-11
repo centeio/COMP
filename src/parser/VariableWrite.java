@@ -1,10 +1,12 @@
 package parser;
 
+import main.Visitor;
+
 public class VariableWrite extends Expression {
 	private Reference var;
 	
 	public String toString(String prefix) {
-		String str = prefix + "VariableWrite";
+		String str = prefix + nodetype;
 		
 		if(var != null) {
 			str += "\n" + prefix + " Var:";
@@ -15,4 +17,9 @@ public class VariableWrite extends Expression {
 	}
 	
 	public Reference getVar() { return var; }
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

@@ -1,11 +1,13 @@
 package parser;
 
+import main.Visitor;
+
 public class Parameter extends BasicNode {
 	private String name;
 	private Reference type;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Parameter";
+		String str = prefix + nodetype;
 		
 		if(name != null)
 			str += "\n" + prefix + " Name:\n" + prefix + "  " + name;
@@ -20,9 +22,9 @@ public class Parameter extends BasicNode {
 	
 	public String getName() { return name; }
 	public Reference getType() { return type; }
-
+	
 	@Override
-	public BasicNode[] getChildren() {
-		return new BasicNode[0];
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

@@ -1,10 +1,12 @@
 package parser;
 
+import main.Visitor;
+
 public class TypeAccess extends Expression {
-	public TypeReference target;
+	private TypeReference target;
 	
 	public String toString(String prefix) {
-    	String str = prefix + "TypeAccess"; 
+    	String str = prefix + nodetype; 
     	
     	if(target != null) {
     		str += "\n" + prefix + " Target:";
@@ -22,6 +24,8 @@ public class TypeAccess extends Expression {
 		this.target = target;
 	}
 	
-	
-
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

@@ -2,6 +2,8 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class ExecutableReference extends Reference {
 	private TypeReference declarator;
 	private TypeReference type;
@@ -9,7 +11,7 @@ public class ExecutableReference extends Reference {
 	private List<Reference> arguments;
 	
 	public String toString(String prefix) {
-		String str = prefix + "ExecutableReference";
+		String str = prefix + nodetype;
 		
 		if(name != null)
 			str += "\n" + prefix + " Name:\n" + prefix + "  " + name;
@@ -46,4 +48,8 @@ public class ExecutableReference extends Reference {
 	public List<Parameter> getParameters() { return parameters; }
 	public List<Reference> getArguments() { return arguments; }
 	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }

@@ -1,10 +1,12 @@
 package parser;
 
+import main.Visitor;
+
 public class LocalVariableReference extends Reference {
 	private Reference type;
 	
 	public String toString(String prefix) {
-		String str = prefix + "LocalVariableReference"; 
+		String str = prefix + nodetype; 
 		
 		if(name != null)
 			str += "\n" + prefix + " Name:\n" + prefix + "  " + name;
@@ -25,6 +27,8 @@ public class LocalVariableReference extends Reference {
 		this.type = type;
 	}
 	
-	
-	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}	
 }

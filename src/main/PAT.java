@@ -10,7 +10,7 @@ import java.util.Scanner;
 import pack.MyNewGrammar;
 import pack.SimpleNode;
 import parser.Parser;
-import parser.Root;
+import parser.*;
 
 public class PAT {
 	
@@ -33,6 +33,10 @@ public class PAT {
         
      //   v.findSubtree(root);
 		
+		//Testing FindPattern
+		System.out.println("-----------------------------------------------");
+		FindPattern find = new FindPattern();
+		root.accept(find);
 	}
 	
 }

@@ -1,12 +1,14 @@
 package parser;
 
-public class Assignment extends Statement {
+import main.Visitor;
+
+public class Assignment extends Statement implements IStatement {
 	private TypeReference type;
-	private Expression lhs;
-    private Expression rhs;
+	private IExpression lhs;
+    private IExpression rhs;
     
     public String toString(String prefix) {
-    	String str = prefix + "Assignment";
+    	String str = prefix + nodetype;
     			
     	if(type!= null) {
     		str += "\n" + prefix + " Type:";
@@ -26,8 +28,38 @@ public class Assignment extends Statement {
     	return str;
     }
     
-    public Expression getlhs() { return lhs; }
-    public Expression getrhs() { return rhs; }
-    public TypeReference type() { return type; }
+    public TypeReference getType() {
+		return type;
+	}
+
+	public void setType(TypeReference type) {
+		this.type = type;
+	}
+
+	public IExpression getLhs() {
+		return lhs;
+	}
+
+	public void setLhs(IExpression lhs) {
+		this.lhs = lhs;
+	}
+
+	public IExpression getRhs() {
+		return rhs;
+	}
+
+	public void setRhs(IExpression rhs) {
+		this.rhs = rhs;
+	}
+
+	@Override
+    public String getLabel() { return label; }
     
+    
+    @Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
+
+	
 }

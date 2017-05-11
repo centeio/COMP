@@ -2,13 +2,15 @@ package parser;
 
 import java.util.List;
 
+import main.Visitor;
+
 public class Method extends Member {
 	private TypeReference type;
 	private List<Parameter> parameters;
-	private Statement body;
+	private IStatement body;
 	
 	public String toString(String prefix) {
-		String str = prefix + "Method";
+		String str = prefix + nodetype;
 		
 		if(name != null)
 			str += "\n" + prefix + " Name:\n" + prefix + "  " + name;
@@ -36,12 +38,10 @@ public class Method extends Member {
 	
 	public TypeReference getType() { return type; }
 	public List<Parameter> getParameters() { return parameters; }
-	public Statement getBody() { return body; }
-
+	public IStatement getBody() { return body; }
+	
 	@Override
-	public BasicNode[] getChildren() {
-		BasicNode children[] = new BasicNode[1];
-		children[0] = body;
-		return children;
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 }

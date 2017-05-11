@@ -1,11 +1,13 @@
 package parser;
 
+import main.Visitor;
+
 public class FieldRead extends Expression {
-	private Expression target;
+	private IExpression target;
 	private Reference var;
 	
 	public String toString(String prefix) {
-    	String str = prefix + "FieldRead"; 
+    	String str = prefix + nodetype; 
     	
     	if(target != null) {
     		str += "\n" + prefix + " Target:";
@@ -20,10 +22,10 @@ public class FieldRead extends Expression {
     	return str;
     }
 	
-	public Expression getTarget() {
+	public IExpression getTarget() {
 		return target;
 	}
-	public void setTarget(Expression target) {
+	public void setTarget(IExpression target) {
 		this.target = target;
 	}
 	public Reference getVar() {
@@ -33,5 +35,8 @@ public class FieldRead extends Expression {
 		this.var = var;
 	}
 	
-	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 }
