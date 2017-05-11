@@ -37,8 +37,28 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(ArrayRead ar) {
-		// TODO Auto-generated method stub
-		System.out.println("visit ArrayRead stub");
+		if(!(pattern instanceof ArrayRead)){
+			match = false;
+			return;
+		}
+
+		ArrayRead p = (ArrayRead) pattern;
+		
+		//Compare Type
+		pattern = p.getType();
+		ar.getType().accept(this);
+		if(!match)
+			return;
+		
+		//Compare Target
+		pattern = p.getTarget();
+		ar.getTarget().accept(this);
+		if(!match)
+			return;
+		
+		//Compare Index
+		pattern = p.getIndex();
+		ar.getIndex().accept(this);	
 	}
 
 	@Override
@@ -76,14 +96,72 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(Invocation invocation) {
-		// TODO Auto-generated method stub
-		System.out.println("visit Invocation stub");
+		if(!(pattern instanceof Invocation)){
+			match = false;
+			return;
+		}
+		
+		Invocation p = (Invocation) pattern;
+		
+		//Compare Executable
+		pattern = p.getExecutable();
+		invocation.getExecutable().accept(this);
+		if(!match)
+			return;
+		
+		//Compare Arguments
+		if(p.getArguments().size() != invocation.getArguments().size()){
+			match = false;
+			return;
+		}
+		
+		for(int i = 0; i < p.getArguments().size(); i++){
+			pattern = p.getArguments().get(i);
+			invocation.getArguments().get(i).accept(this);
+			if(!match)
+				return;
+		}
 	}
 
 	@Override
 	public void visit(ExecutableReference er) {
-		// TODO Auto-generated method stub
-		System.out.println("visit ExecutableReference stub");
+		if(!(pattern instanceof ExecutableReference)){
+			match = false;
+			return;
+		}
+
+		ExecutableReference p = (ExecutableReference) pattern;
+		
+		//Compare name
+		if(!p.getName().equals(er.getName())){
+			match = false;
+			return;
+		}
+		
+		//Compare declarator
+		pattern = p.getDeclarator();
+		er.getDeclarator().accept(this);
+		if(!match)
+			return;
+		
+		//Compare type
+		pattern = p.getType();
+		er.getType().accept(this);
+		if(!match)
+			return;
+		
+		//Compare Parameters
+		if(p.getParameters().size() != er.getParameters().size()){
+			match = false;
+			return;
+		}
+		
+		for(int i = 0; i < p.getParameters().size(); i++){
+			pattern = p.getParameters().get(i);
+			er.getParameters().get(i).accept(this);
+			if(!match)
+				return;
+		}
 	}
 
 	@Override
@@ -94,8 +172,18 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(Parameter parameter) {
-		// TODO Auto-generated method stub
-		System.out.println("visit Parameter stub");
+		if(!(pattern instanceof Parameter)){
+			match = false;
+			return;
+		}
+		
+		Parameter p = (Parameter) pattern;
+		
+		//Compare name
+		if(!p.getName().equals(parameter.getName())){
+			match = false;
+			return;
+		}
 	}
 
 	@Override
@@ -137,8 +225,24 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(Assignment assignment) {
-		// TODO Auto-generated method stub
-		System.out.println("visit Assignment stub");
+		if(!(pattern instanceof Assignment)){
+			match = false;
+			return;
+		}
+		
+		Assignment p = (Assignment) pattern;
+		pattern = p.getType();
+		assignment.getType().accept(this);
+		if(!match)
+			return;
+		
+		pattern = p.getLhs();
+		assignment.getLhs().accept(this);
+		if(!match)
+			return;
+		
+		pattern = p.getRhs();
+		assignment.getRhs().accept(this);	
 	}
 
 	@Override
@@ -278,8 +382,20 @@ public class PatternMatcher implements Visitor {
 		
 		For p = (For) pattern;
 		
-		//TODO: Compare init
-		System.out.println("Comparing init");
+		//TODO: Exhaustive search done only
+		//Compare init
+		if(p.getInit().size() != f.getInit().size()){
+			match = false;
+			return;
+		}
+		
+		for (int i = 0; i < p.getInit().size(); i++) {
+			pattern = p.getInit().get(i);
+			f.getInit().get(i).accept(this);
+			
+			if(!match)
+				return;
+		}
 		
 		//Compare condition
 		pattern = p.getCondition();
@@ -287,9 +403,20 @@ public class PatternMatcher implements Visitor {
 		
 		if(!match)
 			return;
+
+		//Compare update
+		if(p.getUpdate().size() != f.getUpdate().size()){
+			match = false;
+			return;
+		}
 		
-		//TODO: Compare update
-		System.out.println("Comparing update");
+		for (int i = 0; i < p.getUpdate().size(); i++) {
+			pattern = p.getUpdate().get(i);
+			f.getUpdate().get(i).accept(this);
+			
+			if(!match)
+				return;
+		}
 		
 		//Compare
 		pattern = p.getBody();
@@ -322,8 +449,28 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(ArrayWrite aw) {
-		// TODO Auto-generated method stub
-		System.out.println("visit ArrayWrite stub");
+		if(!(pattern instanceof ArrayWrite)){
+			match = false;
+			return;
+		}
+
+		ArrayWrite p = (ArrayWrite) pattern;
+		
+		//Compare type
+		pattern = p.getType();
+		aw.getType().accept(this);
+		if(!match)
+			return;
+		
+		//Compare target
+		pattern = p.getTarget();
+		aw.getTarget().accept(this);
+		if(!match)
+			return;
+		
+		//Compare index
+		pattern = p.getIndex();
+		aw.getIndex().accept(this);
 	}
 
 	@Override
@@ -340,8 +487,23 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(While w) {
-		// TODO Auto-generated method stub
-		System.out.println("visit While stub");
+		if(!(pattern instanceof While)){
+			match = false;
+			return;
+		}
+		
+		While p = (While) pattern;
+		
+		//Compare condition
+		pattern = p.getCondition();
+		w.getCondition().accept(this);
+		
+		if(!match)
+			return;
+		
+		//Compare body
+		pattern = p.getBody();
+		w.getBody().accept(this);
 	}	
 
 	public boolean isMatch() {
