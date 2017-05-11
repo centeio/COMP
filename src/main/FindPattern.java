@@ -454,13 +454,12 @@ public class FindPattern implements Visitor {
 			List<IBasicNode> patterns = patternsToFind.get(node.getNodeType());
 			
 			for(int i = 0; i < patterns.size(); i++) {
-				/*PatternMatcher matcher = new PatternMatcher(patterns.get(i));
+				PatternMatcher matcher = new PatternMatcher(patterns.get(i));
 				
 				node.accept(matcher);				
 				
 				if(matcher.isMatch())
-					patternsFound.add(node);*/
-				System.out.println(node.getNodeType() + " Pattern");
+					patternsFound.add(node);
 			}
 		}
 	}
