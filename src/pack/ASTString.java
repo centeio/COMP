@@ -6,13 +6,10 @@ public
 class ASTString extends SimpleNode {
   public ASTString(int id) {
     super(id);
-    type = "String";
   }
 
   public ASTString(MyNewGrammar p, int id) {
     super(p, id);
-    type = "String";
-
   }
 
 }
