@@ -10,11 +10,17 @@ options
 PARSER_BEGIN(MyNewGrammar)
 package pack;
 import java.io.*;
+import java.util.HashMap;
+
 
 public class MyNewGrammar
 {
   public static PrintWriter writer;
   public static ASTStart n;
+  private static HashMap<String,String> vars;
+  private static int i = 0;
+  
+  
   public static void createjjt(String code)
   {
  
@@ -24,7 +30,8 @@ public class MyNewGrammar
     try
     {
    		MyNewGrammar grammar = new MyNewGrammar(r);
-	    writer = new PrintWriter("patterns-java.java", "UTF-8");
+	    writer = new PrintWriter("MyPattern.java", "UTF-8");
+	    vars = new HashMap<String,String>();
       n = grammar.Start(); //root
 	  writer.close();
       
@@ -189,7 +196,13 @@ void Var() : {Token t;} {
 	t = < VAR >
 	{
 		jjtThis.value = t.image;
-		writer.print("_"+t.image);
+		String name;
+		if((name = vars.get(t.image)) == null) {
+		  	name = "a"+i++;
+		  	vars.put(t.image,name);
+		}
+		System.out.println("Var");
+		writer.print(name);
 		
 	}
 }

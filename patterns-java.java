@@ -1,8 +1,8 @@
 public class MyPattern{
 void P1(){
-_@x*_@x}
+a0*a0}
 void P1(){
-_@x*_@x}
+a0*a0}
 void P1(){
-_@x*_@x}
+a0*a0}
  }
