@@ -27,7 +27,7 @@ public class MyNewGrammar
     try
     {
    		MyNewGrammar grammar = new MyNewGrammar(r);
-	    writer = new PrintWriter("MyPattern.txt.java", "UTF-8");
+	    writer = new PrintWriter("MyPattern.java", "UTF-8");
       n = grammar.Start(); //root
 	  writer.close();
       
