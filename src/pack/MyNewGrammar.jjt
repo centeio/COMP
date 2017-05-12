@@ -15,10 +15,7 @@ public class MyNewGrammar
 {
   public static PrintWriter writer;
   public static ASTStart n;
-  public static void createjjt(String code);
-  private static HashMap<String,String> vars;
-  private static int n = 0;
-  
+  public static void createjjt(String code)
   {
  
 
@@ -27,7 +24,7 @@ public class MyNewGrammar
     try
     {
    		MyNewGrammar grammar = new MyNewGrammar(r);
-	    writer = new PrintWriter("MyPattern.txt.java", "UTF-8");
+	    writer = new PrintWriter("patterns-java.java", "UTF-8");
       n = grammar.Start(); //root
 	  writer.close();
       
@@ -192,12 +189,7 @@ void Var() : {Token t;} {
 	t = < VAR >
 	{
 		jjtThis.value = t.image;
-		String name;
-		if(name = vars.get(t.image()) == -1) {
-		  	name = "a"+n++;
-		  	vars.put(t.image(),name);
-		}
-		writer.print(name);
+		writer.print("_"+t.image);
 		
 	}
 }
