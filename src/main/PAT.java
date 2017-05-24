@@ -13,7 +13,7 @@ import parser.*;
 public class PAT {
 	
 	public static void main(String args[]) throws IOException {
-		Parser parser = new Parser();
+		//Parser parser = new Parser();
 		
 		String testJson = SpoonASTLauncher.java2json(Paths.get("Test.java").toString(), null, false);
 		String patternsJson = SpoonASTLauncher.java2json(Paths.get("MyPattern.java").toString(), null, false);
