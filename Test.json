@@ -2,24 +2,24 @@
   "nodetype": "Root",
   "compilation_units": [{
     "nodetype": "CompilationUnit",
-    "location": "/home/tiagobalm/git/COMP/Test.java",
+    "location": "/Users/inesf/Documents/GitHub/COMP/Test.java",
     "types": [{
       "nodetype": "Class",
-      "location": "/home/tiagobalm/git/COMP/Test.java:1",
+      "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:1",
       "name": "Test",
       "package": "",
       "members": [
         {
         "nodetype": "Constructor",
-        "location": "/home/tiagobalm/git/COMP/Test.java:1",
+        "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:1",
         "name": "<init>",
         "parameters": [],
         "body": {
           "nodetype": "Block",
-          "location": "/home/tiagobalm/git/COMP/Test.java:1",
+          "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:1",
           "statements": [{
             "nodetype": "Invocation",
-            "location": "/home/tiagobalm/git/COMP/Test.java:1",
+            "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:1",
             "executable": {
               "nodetype": "ExecutableReference",
               "name": "<init>",
@@ -41,7 +41,7 @@
         },
         {
         "nodetype": "Method",
-        "location": "/home/tiagobalm/git/COMP/Test.java:2",
+        "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:2",
         "name": "main",
         "type": {
           "nodetype": "TypeReference",
@@ -49,7 +49,7 @@
           },
         "parameters": [{
           "nodetype": "Parameter",
-          "location": "/home/tiagobalm/git/COMP/Test.java:2",
+          "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:2",
           "name": "args",
           "type": {
             "nodetype": "ArrayTypeReference",
@@ -61,11 +61,11 @@
           }],
         "body": {
           "nodetype": "Block",
-          "location": "/home/tiagobalm/git/COMP/Test.java:2",
+          "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:2",
           "statements": [
             {
             "nodetype": "LocalVariable",
-            "location": "/home/tiagobalm/git/COMP/Test.java:4",
+            "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:4",
             "name": "x",
             "type": {
               "nodetype": "TypeReference",
@@ -73,7 +73,7 @@
               },
             "init": {
               "nodetype": "Literal",
-              "location": "/home/tiagobalm/git/COMP/Test.java:4",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:4",
               "value": 10,
               "type": {
                 "nodetype": "TypeReference",
@@ -83,7 +83,7 @@
             },
             {
             "nodetype": "LocalVariable",
-            "location": "/home/tiagobalm/git/COMP/Test.java:5",
+            "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:5",
             "name": "data",
             "type": {
               "nodetype": "ArrayTypeReference",
@@ -94,7 +94,7 @@
               },
             "init": {
               "nodetype": "NewArray",
-              "location": "/home/tiagobalm/git/COMP/Test.java:5",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:5",
               "type": {
                 "nodetype": "ArrayTypeReference",
                 "type": {
@@ -104,7 +104,7 @@
                 },
               "dimensions": [{
                 "nodetype": "Literal",
-                "location": "/home/tiagobalm/git/COMP/Test.java:5",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:5",
                 "value": 10,
                 "type": {
                   "nodetype": "TypeReference",
@@ -115,7 +115,7 @@
             },
             {
             "nodetype": "LocalVariable",
-            "location": "/home/tiagobalm/git/COMP/Test.java:6",
+            "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:6",
             "name": "data2",
             "type": {
               "nodetype": "ArrayTypeReference",
@@ -126,7 +126,7 @@
               },
             "init": {
               "nodetype": "NewArray",
-              "location": "/home/tiagobalm/git/COMP/Test.java:6",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:6",
               "type": {
                 "nodetype": "ArrayTypeReference",
                 "type": {
@@ -137,7 +137,7 @@
               "elements": [
                 {
                 "nodetype": "Literal",
-                "location": "/home/tiagobalm/git/COMP/Test.java:6",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:6",
                 "value": 1,
                 "type": {
                   "nodetype": "TypeReference",
@@ -146,7 +146,7 @@
                 },
                 {
                 "nodetype": "Literal",
-                "location": "/home/tiagobalm/git/COMP/Test.java:6",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:6",
                 "value": 2,
                 "type": {
                   "nodetype": "TypeReference",
@@ -155,7 +155,7 @@
                 },
                 {
                 "nodetype": "Literal",
-                "location": "/home/tiagobalm/git/COMP/Test.java:6",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:6",
                 "value": 3,
                 "type": {
                   "nodetype": "TypeReference",
@@ -164,7 +164,7 @@
                 },
                 {
                 "nodetype": "Literal",
-                "location": "/home/tiagobalm/git/COMP/Test.java:6",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:6",
                 "value": 4,
                 "type": {
                   "nodetype": "TypeReference",
@@ -173,7 +173,7 @@
                 },
                 {
                 "nodetype": "Literal",
-                "location": "/home/tiagobalm/git/COMP/Test.java:6",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:6",
                 "value": 5,
                 "type": {
                   "nodetype": "TypeReference",
@@ -185,10 +185,10 @@
             },
             {
             "nodetype": "If",
-            "location": "/home/tiagobalm/git/COMP/Test.java:8",
+            "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:8",
             "condition": {
               "nodetype": "BinaryOperator",
-              "location": "/home/tiagobalm/git/COMP/Test.java:8",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:8",
               "type": {
                 "nodetype": "TypeReference",
                 "name": "boolean"
@@ -196,7 +196,7 @@
               "operator": "==",
               "lhs": {
                 "nodetype": "VariableRead",
-                "location": "/home/tiagobalm/git/COMP/Test.java:8",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:8",
                 "var": {
                   "nodetype": "LocalVariableReference",
                   "name": "x",
@@ -208,7 +208,7 @@
                 },
               "rhs": {
                 "nodetype": "Literal",
-                "location": "/home/tiagobalm/git/COMP/Test.java:8",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:8",
                 "value": 10,
                 "type": {
                   "nodetype": "TypeReference",
@@ -218,11 +218,11 @@
               },
             "then": {
               "nodetype": "Block",
-              "location": "/home/tiagobalm/git/COMP/Test.java:8",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:8",
               "statements": [
                 {
                 "nodetype": "UnaryOperator",
-                "location": "/home/tiagobalm/git/COMP/Test.java:9",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:9",
                 "type": {
                   "nodetype": "TypeReference",
                   "name": "int"
@@ -230,7 +230,7 @@
                 "operator": "_--",
                 "operand": {
                   "nodetype": "VariableWrite",
-                  "location": "/home/tiagobalm/git/COMP/Test.java:9",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:9",
                   "var": {
                     "nodetype": "LocalVariableReference",
                     "name": "x",
@@ -243,7 +243,7 @@
                 },
                 {
                 "nodetype": "UnaryOperator",
-                "location": "/home/tiagobalm/git/COMP/Test.java:9",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:9",
                 "type": {
                   "nodetype": "TypeReference",
                   "name": "int"
@@ -251,7 +251,7 @@
                 "operator": "_++",
                 "operand": {
                   "nodetype": "VariableWrite",
-                  "location": "/home/tiagobalm/git/COMP/Test.java:9",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:9",
                   "var": {
                     "nodetype": "LocalVariableReference",
                     "name": "x",
@@ -268,10 +268,10 @@
             },
             {
             "nodetype": "For",
-            "location": "/home/tiagobalm/git/COMP/Test.java:12",
+            "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:12",
             "init": [{
               "nodetype": "LocalVariable",
-              "location": "/home/tiagobalm/git/COMP/Test.java:12",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:12",
               "name": "i",
               "type": {
                 "nodetype": "TypeReference",
@@ -279,7 +279,7 @@
                 },
               "init": {
                 "nodetype": "Literal",
-                "location": "/home/tiagobalm/git/COMP/Test.java:12",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:12",
                 "value": 0,
                 "type": {
                   "nodetype": "TypeReference",
@@ -289,7 +289,7 @@
               }],
             "condition": {
               "nodetype": "BinaryOperator",
-              "location": "/home/tiagobalm/git/COMP/Test.java:12",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:12",
               "type": {
                 "nodetype": "TypeReference",
                 "name": "boolean"
@@ -297,7 +297,7 @@
               "operator": "<",
               "lhs": {
                 "nodetype": "VariableRead",
-                "location": "/home/tiagobalm/git/COMP/Test.java:12",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:12",
                 "var": {
                   "nodetype": "LocalVariableReference",
                   "name": "i",
@@ -309,7 +309,7 @@
                 },
               "rhs": {
                 "nodetype": "VariableRead",
-                "location": "/home/tiagobalm/git/COMP/Test.java:12",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:12",
                 "var": {
                   "nodetype": "LocalVariableReference",
                   "name": "x",
@@ -322,7 +322,7 @@
               },
             "update": [{
               "nodetype": "UnaryOperator",
-              "location": "/home/tiagobalm/git/COMP/Test.java:12",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:12",
               "type": {
                 "nodetype": "TypeReference",
                 "name": "int"
@@ -330,7 +330,7 @@
               "operator": "_++",
               "operand": {
                 "nodetype": "VariableWrite",
-                "location": "/home/tiagobalm/git/COMP/Test.java:12",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:12",
                 "var": {
                   "nodetype": "LocalVariableReference",
                   "name": "i",
@@ -343,25 +343,25 @@
               }],
             "body": {
               "nodetype": "Block",
-              "location": "/home/tiagobalm/git/COMP/Test.java:12",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:12",
               "statements": [
                 {
                 "nodetype": "Assignment",
-                "location": "/home/tiagobalm/git/COMP/Test.java:13",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:13",
                 "type": {
                   "nodetype": "TypeReference",
                   "name": "int"
                   },
                 "lhs": {
                   "nodetype": "ArrayWrite",
-                  "location": "/home/tiagobalm/git/COMP/Test.java:13",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:13",
                   "type": {
                     "nodetype": "TypeReference",
                     "name": "int"
                     },
                   "target": {
                     "nodetype": "VariableRead",
-                    "location": "/home/tiagobalm/git/COMP/Test.java:13",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:13",
                     "var": {
                       "nodetype": "LocalVariableReference",
                       "name": "data",
@@ -376,7 +376,7 @@
                     },
                   "index": {
                     "nodetype": "VariableRead",
-                    "location": "/home/tiagobalm/git/COMP/Test.java:13",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:13",
                     "var": {
                       "nodetype": "LocalVariableReference",
                       "name": "i",
@@ -389,7 +389,7 @@
                   },
                 "rhs": {
                   "nodetype": "BinaryOperator",
-                  "location": "/home/tiagobalm/git/COMP/Test.java:13",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:13",
                   "type": {
                     "nodetype": "TypeReference",
                     "name": "int"
@@ -397,7 +397,7 @@
                   "operator": "+",
                   "lhs": {
                     "nodetype": "VariableRead",
-                    "location": "/home/tiagobalm/git/COMP/Test.java:13",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:13",
                     "var": {
                       "nodetype": "LocalVariableReference",
                       "name": "x",
@@ -409,7 +409,7 @@
                     },
                   "rhs": {
                     "nodetype": "Literal",
-                    "location": "/home/tiagobalm/git/COMP/Test.java:13",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:13",
                     "value": 1,
                     "type": {
                       "nodetype": "TypeReference",
@@ -420,13 +420,13 @@
                 },
                 {
                 "nodetype": "Invocation",
-                "location": "/home/tiagobalm/git/COMP/Test.java:14",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:14",
                 "target": {
                   "nodetype": "FieldRead",
-                  "location": "/home/tiagobalm/git/COMP/Test.java:14",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:14",
                   "target": {
                     "nodetype": "TypeAccess",
-                    "location": "/home/tiagobalm/git/COMP/Test.java:14",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:14",
                     "target": {
                       "nodetype": "TypeReference",
                       "name": "System",
@@ -467,14 +467,14 @@
                   },
                 "arguments": [{
                   "nodetype": "ArrayRead",
-                  "location": "/home/tiagobalm/git/COMP/Test.java:14",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:14",
                   "type": {
                     "nodetype": "TypeReference",
                     "name": "int"
                     },
                   "target": {
                     "nodetype": "VariableRead",
-                    "location": "/home/tiagobalm/git/COMP/Test.java:14",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:14",
                     "var": {
                       "nodetype": "LocalVariableReference",
                       "name": "data",
@@ -489,7 +489,7 @@
                     },
                   "index": {
                     "nodetype": "VariableRead",
-                    "location": "/home/tiagobalm/git/COMP/Test.java:14",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:14",
                     "var": {
                       "nodetype": "LocalVariableReference",
                       "name": "i",
@@ -506,7 +506,7 @@
             },
             {
             "nodetype": "LocalVariable",
-            "location": "/home/tiagobalm/git/COMP/Test.java:17",
+            "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:17",
             "name": "y",
             "type": {
               "nodetype": "TypeReference",
@@ -514,7 +514,7 @@
               },
             "init": {
               "nodetype": "Literal",
-              "location": "/home/tiagobalm/git/COMP/Test.java:17",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:17",
               "value": 0,
               "type": {
                 "nodetype": "TypeReference",
@@ -524,10 +524,10 @@
             },
             {
             "nodetype": "While",
-            "location": "/home/tiagobalm/git/COMP/Test.java:18",
+            "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:18",
             "condition": {
               "nodetype": "BinaryOperator",
-              "location": "/home/tiagobalm/git/COMP/Test.java:18",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:18",
               "type": {
                 "nodetype": "TypeReference",
                 "name": "boolean"
@@ -535,7 +535,7 @@
               "operator": "<",
               "lhs": {
                 "nodetype": "VariableRead",
-                "location": "/home/tiagobalm/git/COMP/Test.java:18",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:18",
                 "var": {
                   "nodetype": "LocalVariableReference",
                   "name": "y",
@@ -547,7 +547,7 @@
                 },
               "rhs": {
                 "nodetype": "VariableRead",
-                "location": "/home/tiagobalm/git/COMP/Test.java:18",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:18",
                 "var": {
                   "nodetype": "LocalVariableReference",
                   "name": "x",
@@ -560,11 +560,11 @@
               },
             "body": {
               "nodetype": "Block",
-              "location": "/home/tiagobalm/git/COMP/Test.java:18",
+              "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:18",
               "statements": [
                 {
                 "nodetype": "UnaryOperator",
-                "location": "/home/tiagobalm/git/COMP/Test.java:19",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:19",
                 "type": {
                   "nodetype": "TypeReference",
                   "name": "int"
@@ -572,14 +572,14 @@
                 "operator": "_--",
                 "operand": {
                   "nodetype": "ArrayWrite",
-                  "location": "/home/tiagobalm/git/COMP/Test.java:19",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:19",
                   "type": {
                     "nodetype": "TypeReference",
                     "name": "int"
                     },
                   "target": {
                     "nodetype": "VariableRead",
-                    "location": "/home/tiagobalm/git/COMP/Test.java:19",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:19",
                     "var": {
                       "nodetype": "LocalVariableReference",
                       "name": "data",
@@ -594,7 +594,7 @@
                     },
                   "index": {
                     "nodetype": "VariableRead",
-                    "location": "/home/tiagobalm/git/COMP/Test.java:19",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:19",
                     "var": {
                       "nodetype": "LocalVariableReference",
                       "name": "y",
@@ -608,7 +608,7 @@
                 },
                 {
                 "nodetype": "UnaryOperator",
-                "location": "/home/tiagobalm/git/COMP/Test.java:20",
+                "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:20",
                 "type": {
                   "nodetype": "TypeReference",
                   "name": "int"
@@ -616,7 +616,7 @@
                 "operator": "_++",
                 "operand": {
                   "nodetype": "VariableWrite",
-                  "location": "/home/tiagobalm/git/COMP/Test.java:20",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/Test.java:20",
                   "var": {
                     "nodetype": "LocalVariableReference",
                     "name": "y",

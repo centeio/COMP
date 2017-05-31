@@ -2,24 +2,24 @@
   "nodetype": "Root",
   "compilation_units": [{
     "nodetype": "CompilationUnit",
-    "location": "/home/tiagobalm/git/COMP/MyPattern.java",
+    "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java",
     "types": [{
       "nodetype": "Class",
-      "location": "/home/tiagobalm/git/COMP/MyPattern.java:1",
+      "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:1",
       "name": "MyPattern",
       "package": "",
       "members": [
         {
         "nodetype": "Constructor",
-        "location": "/home/tiagobalm/git/COMP/MyPattern.java:1",
+        "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:1",
         "name": "<init>",
         "parameters": [],
         "body": {
           "nodetype": "Block",
-          "location": "/home/tiagobalm/git/COMP/MyPattern.java:1",
+          "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:1",
           "statements": [{
             "nodetype": "Invocation",
-            "location": "/home/tiagobalm/git/COMP/MyPattern.java:1",
+            "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:1",
             "executable": {
               "nodetype": "ExecutableReference",
               "name": "<init>",
@@ -41,7 +41,7 @@
         },
         {
         "nodetype": "Method",
-        "location": "/home/tiagobalm/git/COMP/MyPattern.java:2",
+        "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:2",
         "name": "P1",
         "type": {
           "nodetype": "TypeReference",
@@ -50,14 +50,14 @@
         "parameters": [],
         "body": {
           "nodetype": "Block",
-          "location": "/home/tiagobalm/git/COMP/MyPattern.java:2",
+          "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:2",
           "statements": [{
             "nodetype": "Assignment",
-            "location": "/home/tiagobalm/git/COMP/MyPattern.java:3",
+            "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:3",
             "type": {"nodetype": "NullNode"},
             "lhs": {
               "nodetype": "FieldWrite",
-              "location": "/home/tiagobalm/git/COMP/MyPattern.java:3",
+              "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:3",
               "var": {
                 "nodetype": "FieldReference",
                 "name": "x",
@@ -71,12 +71,12 @@
               },
             "rhs": {
               "nodetype": "BinaryOperator",
-              "location": "/home/tiagobalm/git/COMP/MyPattern.java:3",
+              "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:3",
               "type": {"nodetype": "NullNode"},
               "operator": "*",
               "lhs": {
                 "nodetype": "FieldRead",
-                "location": "/home/tiagobalm/git/COMP/MyPattern.java:3",
+                "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:3",
                 "var": {
                   "nodetype": "FieldReference",
                   "name": "a0",
@@ -90,7 +90,7 @@
                 },
               "rhs": {
                 "nodetype": "FieldRead",
-                "location": "/home/tiagobalm/git/COMP/MyPattern.java:3",
+                "location": "/Users/inesf/Documents/GitHub/COMP/MyPattern.java:3",
                 "var": {
                   "nodetype": "FieldReference",
                   "name": "a0",
