@@ -1,7 +1,10 @@
-package Tests;
+package tests;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.junit.Test;
@@ -15,18 +18,30 @@ import parser.Parser;
 import parser.Root;
 
 public class PatternMatchingTests {
-	Parser parser = new Parser();
-	//Root root = parser.parse();
+	private Root testRoot = null;
+	private Root patternRoot = null;
 	
-	//Member m = root.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
-	//List<IStatement>  statements = ((Block) ((Method) m).getBody()).getStatements();
-
+	void start() throws IOException{
+		Parser parser = new Parser();
+		String testJson = new String(Files.readAllBytes(Paths.get("Test.json")));
+		testRoot = parser.parse(testJson);
+		
+		//System.out.println("---------------------------------------------------------");
+		String patternJson = new String(Files.readAllBytes(Paths.get("Test_Patterns.json")));
+		
+		patternRoot = parser.parse(patternJson);
+	}
+	
 	@Test
-	public void compareLocalVariables() {
-		/*IStatement lv1 = statements.get(0);
-        IStatement lv2 = statements.get(1);
-        IStatement lv3 = statements.get(2);
-        IStatement lv4 = statements.get(5);
+	public void compareLocalVariables() throws IOException {
+		start();
+		Member m = testRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
+		List<IStatement>  test_statements = ((Block) ((Method) m).getBody()).getStatements();
+		
+		IStatement lv1 = test_statements.get(0);
+        IStatement lv2 = test_statements.get(1);
+        IStatement lv3 = test_statements.get(2);
+        IStatement lv4 = test_statements.get(5);
 		
         PatternMatcher pm = new PatternMatcher(lv1);
         lv1.accept(pm);
@@ -46,35 +61,46 @@ public class PatternMatchingTests {
         
         pm = new PatternMatcher(lv1);
         lv4.accept(pm);
-        assertFalse(pm.isMatch());*/
+        assertFalse(pm.isMatch());
 	}
 	
 	@Test
-	public void compareIf() {
-        /*IStatement if1 = statements.get(3);
-        IStatement for1 = statements.get(4);
+	public void compareIf() throws IOException {
+		start();
+		Member m = testRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
+		List<IStatement>  test_statements = ((Block) ((Method) m).getBody()).getStatements();
+		
+		m = patternRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
+		List<IStatement>  pattern_statements = ((Block) ((Method) m).getBody()).getStatements();
+        
+		IStatement if1 = test_statements.get(3);
+		IStatement if2 = pattern_statements.get(0);
+        IStatement for1 = test_statements.get(4);
 		
         PatternMatcher pm = new PatternMatcher(if1);
         if1.accept(pm);
         assertTrue(pm.isMatch());
         
+        pm = new PatternMatcher(if2);
+        if1.accept(pm);
+        assertTrue(pm.isMatch());
+        
         pm = new PatternMatcher(for1);
         if1.accept(pm);
-        assertFalse(pm.isMatch());*/
+        assertFalse(pm.isMatch());
 	}
 	
 	@Test
-	public void compareFor() {
-		/*Parser parser = new Parser();
-		Root root = parser.parse();
+	public void compareFor() throws IOException {
+		start();
+		Member m = testRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
+		List<IStatement>  test_statements = ((Block) ((Method) m).getBody()).getStatements();
 		
-		Member m = root.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
-        Block b = (Block) ((Method) m).getBody();
-        IStatement lv1 = b.getStatements().get(0);
-        IStatement for1 = b.getStatements().get(4);
+		//m = patternRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
+		//List<IStatement>  pattern_statements = ((Block) ((Method) m).getBody()).getStatements();
 
-        IStatement lv1 = statements.get(0);
-        IStatement for1 = statements.get(4);
+        IStatement lv1 = test_statements.get(0);
+        IStatement for1 = test_statements.get(4);
 		
         PatternMatcher pm = new PatternMatcher(for1);
         for1.accept(pm);
@@ -82,25 +108,23 @@ public class PatternMatchingTests {
         
         pm = new PatternMatcher(lv1);
         for1.accept(pm);
-        assertFalse(pm.isMatch());*/
+        assertFalse(pm.isMatch());
 	}
 	
 	@Test
-	public void compareWhile() {
-		/*Parser parser = new Parser();
-		Root root = parser.parse();
+	public void compareWhile() throws IOException {
+		start();
+		Member m = testRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
+		List<IStatement>  test_statements = ((Block) ((Method) m).getBody()).getStatements();
 		
-		Member m = root.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
-        Block b = (Block) ((Method) m).getBody();
+		//m = patternRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
+		//List<IStatement>  pattern_statements = ((Block) ((Method) m).getBody()).getStatements();
         
-        //Escolher
-        IStatement while1 = b.getStatements().get(6);
-        
-        IStatement while1 = statements.get(6);
+        IStatement while1 = test_statements.get(6);
 		
         PatternMatcher pm = new PatternMatcher(while1);
         while1.accept(pm);
-        assertTrue(pm.isMatch());*/
+        assertTrue(pm.isMatch());
 	}
 
 }

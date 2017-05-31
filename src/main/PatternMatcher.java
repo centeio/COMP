@@ -9,7 +9,7 @@ public class PatternMatcher implements Visitor {
 	IBasicNode pattern;
 	HashMap<String,String> variables_found;
 	boolean match;
-	
+
 	public PatternMatcher(IBasicNode pattern) {
 		this.pattern = pattern;
 		this.variables_found = new HashMap<String,String>();
@@ -43,19 +43,19 @@ public class PatternMatcher implements Visitor {
 		}
 
 		ArrayRead p = (ArrayRead) pattern;
-		
+
 		//Compare Type
 		pattern = p.getType();
 		ar.getType().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare Target
 		pattern = p.getTarget();
 		ar.getTarget().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare Index
 		pattern = p.getIndex();
 		ar.getIndex().accept(this);	
@@ -80,17 +80,17 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		Block p = (Block) pattern;
 		for (int i = 0; i < block.getStatements().size(); i++) {
-		    pattern = p.getStatements().get(i);
-		    
-		    IStatement statement = block.getStatements().get(i);
-		    
-		    statement.accept(this);
-		    
-		    if(!match)
-		    	break;
+			pattern = p.getStatements().get(i);
+
+			IStatement statement = block.getStatements().get(i);
+
+			statement.accept(this);
+
+			if(!match)
+				break;
 		}
 	}
 
@@ -100,21 +100,21 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		Invocation p = (Invocation) pattern;
-		
+
 		//Compare Executable
 		pattern = p.getExecutable();
 		invocation.getExecutable().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare Arguments
 		if(p.getArguments().size() != invocation.getArguments().size()){
 			match = false;
 			return;
 		}
-		
+
 		for(int i = 0; i < p.getArguments().size(); i++){
 			pattern = p.getArguments().get(i);
 			invocation.getArguments().get(i).accept(this);
@@ -131,31 +131,31 @@ public class PatternMatcher implements Visitor {
 		}
 
 		ExecutableReference p = (ExecutableReference) pattern;
-		
+
 		//Compare name
 		if(!p.getName().equals(er.getName())){
 			match = false;
 			return;
 		}
-		
+
 		//Compare declarator
 		pattern = p.getDeclarator();
 		er.getDeclarator().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare type
 		pattern = p.getType();
 		er.getType().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare Parameters
 		if(p.getParameters().size() != er.getParameters().size()){
 			match = false;
 			return;
 		}
-		
+
 		for(int i = 0; i < p.getParameters().size(); i++){
 			pattern = p.getParameters().get(i);
 			er.getParameters().get(i).accept(this);
@@ -176,9 +176,9 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		Parameter p = (Parameter) pattern;
-		
+
 		//Compare name
 		if(!p.getName().equals(parameter.getName())){
 			match = false;
@@ -192,7 +192,7 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		ArrayTypeReference p = (ArrayTypeReference) pattern;
 		pattern = p.getType();
 		atr.getType().accept(this);
@@ -204,20 +204,20 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		//Compare condition
 		If p = (If) pattern;
 		pattern = p.getCondition();
 		i.getCondition().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare then
 		pattern = p.getThen();
 		i.getThen().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare Else
 		pattern = p.getElse();
 		i.getElse().accept(this);
@@ -229,32 +229,39 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		Assignment p = (Assignment) pattern;
 		pattern = p.getType();
 		assignment.getType().accept(this);
 		if(!match)
 			return;
-		
+
 		pattern = p.getLhs();
 		assignment.getLhs().accept(this);
 		if(!match)
 			return;
-		
+
 		pattern = p.getRhs();
 		assignment.getRhs().accept(this);	
 	}
 
 	@Override
 	public void visit(VariableWrite vw) {
-		if(!(pattern instanceof VariableWrite)){
+		if(!(pattern instanceof VariableWrite || pattern instanceof FieldWrite)){
 			match = false;
 			return;
 		}
-		
-		VariableWrite p = (VariableWrite) pattern;
-		pattern = p.getVar();
-		vw.getVar().accept(this);
+
+		if(pattern instanceof VariableWrite){
+			VariableWrite p = (VariableWrite) pattern;
+			pattern = p.getVar();
+			vw.getVar().accept(this);
+		}
+		else{
+			FieldWrite p = (FieldWrite) pattern;
+			pattern = p.getVar();
+			vw.getVar().accept(this);
+		}
 	}
 
 	@Override
@@ -268,9 +275,9 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		LocalVariable p = (LocalVariable) pattern;
-		
+
 		//Check if variables are consistent
 		if(this.variables_found.get(p.getName()) == null){
 			this.variables_found.put(p.getName(), lv.getName());
@@ -281,12 +288,12 @@ public class PatternMatcher implements Visitor {
 				return;
 			}
 		}
-		
+
 		pattern = p.getType();
 		lv.getType().accept(this);
 		if(!match)
 			return;
-		
+
 		pattern = p.getInit();
 		lv.getInit().accept(this);
 	}
@@ -297,7 +304,7 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		TypeReference p = (TypeReference) pattern;
 		if(tr.getName() != p.getName())
 			match = false;
@@ -305,12 +312,12 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(LocalVariableReference lvr) {
-		if(!(pattern instanceof LocalVariableReference)){
+		if(!(pattern instanceof LocalVariableReference || pattern instanceof FieldReference)){
 			match = false;
 			return;
 		}
-		
-		LocalVariableReference p = (LocalVariableReference) pattern;
+
+		Reference p = (Reference) pattern;
 		//Check if variables are consistent
 		if(this.variables_found.get(p.getName()) == null){
 			this.variables_found.put(p.getName(), lvr.getName());
@@ -329,22 +336,22 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		BinaryOperator p = (BinaryOperator) pattern;
-		
+
 		//Compare operator
 		if(!p.getOperator().equals(bo.getOperator())){
 			match = false;
 			return;
 		}
-		
+
 		//Compare Left hand side
 		pattern = p.getLhs();
 		bo.getLhs().accept(this);
 		if(!match){
 			return;
 		}
-		
+
 		//Compare Left hand side
 		pattern = p.getRhs();
 		bo.getRhs().accept(this);
@@ -352,25 +359,50 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(Literal literal) {
-		if(pattern instanceof Literal){
-			Literal p = (Literal) pattern;
-			
-			match = (p.getValue() == literal.getValue());
+		if(pattern instanceof FieldRead){
+
+			pattern = ((FieldRead) pattern).getVar();
 		}
 		
-		//TODO: Literal vs Variable Comparison
+		if(pattern instanceof Literal){
+			Literal p = (Literal) pattern;
+
+			match = (p.getValue() == literal.getValue());
+		}else if(pattern instanceof Reference){
+
+			Reference p = (Reference) pattern;
+			//Check if variables are consistent
+			if(this.variables_found.get(p.getName()) == null){
+				this.variables_found.put(p.getName(), literal.getValue());
+			}
+			else{
+				if(!this.variables_found.get(p.getName()).equals(literal.getValue())){
+					match = false;
+					return;
+				}
+			}
+		}
+		else{
+			match = false;
+		}
 	}
 
 	@Override
 	public void visit(VariableRead vr) {
-		if(!(pattern instanceof VariableRead)){
+		if(!(pattern instanceof VariableRead || pattern instanceof FieldRead)){
 			match = false;
 			return;
 		}
-		
-		VariableRead p = (VariableRead) pattern;
-		pattern = p.getVar();
-		vr.getVar().accept(this);		
+		if(pattern instanceof VariableRead){	
+			VariableRead p = (VariableRead) pattern;
+			pattern = p.getVar();
+			vr.getVar().accept(this);	
+		}else{
+			FieldRead p = (FieldRead) pattern;
+			pattern = p.getVar();
+			vr.getVar().accept(this);
+		}
+
 	}
 
 	@Override
@@ -379,28 +411,28 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		For p = (For) pattern;
-		
+
 		//TODO: Exhaustive search done only
 		//Compare init
 		if(p.getInit().size() != f.getInit().size()){
 			match = false;
 			return;
 		}
-		
+
 		for (int i = 0; i < p.getInit().size(); i++) {
 			pattern = p.getInit().get(i);
 			f.getInit().get(i).accept(this);
-			
+
 			if(!match)
 				return;
 		}
-		
+
 		//Compare condition
 		pattern = p.getCondition();
 		f.getCondition().accept(this);
-		
+
 		if(!match)
 			return;
 
@@ -409,15 +441,15 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		for (int i = 0; i < p.getUpdate().size(); i++) {
 			pattern = p.getUpdate().get(i);
 			f.getUpdate().get(i).accept(this);
-			
+
 			if(!match)
 				return;
 		}
-		
+
 		//Compare
 		pattern = p.getBody();
 		f.getBody().accept(this);
@@ -429,14 +461,14 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		UnaryOperator p = (UnaryOperator) pattern;
-		
+
 		if(!p.getOperator().equals(uo.getOperator())){
 			match = false;
 			return;
 		}
-		
+
 		pattern = p.getOperand();
 		uo.getOperand().accept(this);
 	}
@@ -455,19 +487,19 @@ public class PatternMatcher implements Visitor {
 		}
 
 		ArrayWrite p = (ArrayWrite) pattern;
-		
+
 		//Compare type
 		pattern = p.getType();
 		aw.getType().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare target
 		pattern = p.getTarget();
 		aw.getTarget().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare index
 		pattern = p.getIndex();
 		aw.getIndex().accept(this);
@@ -491,16 +523,16 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		While p = (While) pattern;
-		
+
 		//Compare condition
 		pattern = p.getCondition();
 		w.getCondition().accept(this);
-		
+
 		if(!match)
 			return;
-		
+
 		//Compare body
 		pattern = p.getBody();
 		w.getBody().accept(this);
@@ -515,13 +547,13 @@ public class PatternMatcher implements Visitor {
 	@Override
 	public void visit(FieldReference fr) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	@Override
 	public void visit(FieldWrite fw) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
