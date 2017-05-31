@@ -10,4 +10,5 @@ public interface IBasicNode extends Visitable {
     public String getLocation();
     public List<Comment> getComments();
     public void accept(Visitor v);
+	public String toString(String string);
 }

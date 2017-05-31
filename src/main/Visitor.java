@@ -31,6 +31,8 @@ public interface Visitor {
 	void visit(NewArray na);
 	void visit(ArrayWrite aw);
 	void visit(FieldRead fr);
+	void visit(FieldReference fr);
+	void visit(FieldWrite fw);
 	void visit(TypeAccess ta);
 	void visit(While w);
 }

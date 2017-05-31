@@ -16,6 +16,8 @@ import parser.CompilationUnit;
 import parser.Constructor;
 import parser.ExecutableReference;
 import parser.FieldRead;
+import parser.FieldReference;
+import parser.FieldWrite;
 import parser.For;
 import parser.If;
 import parser.Invocation;
@@ -464,4 +466,15 @@ public class FindPattern implements Visitor {
 		}
 	}
 
+	@Override
+	public void visit(FieldReference fr) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(FieldWrite fw) {
+		// TODO Auto-generated method stub
+		
+	}
 }

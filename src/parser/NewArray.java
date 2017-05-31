@@ -34,7 +34,7 @@ public class NewArray extends Expression {
 		return str;
 	}
 
-	public Reference getType() {
+	public IBasicNode getType() {
 		return type;
 	}
 

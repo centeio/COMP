@@ -27,10 +27,16 @@ public class Parser {
 			.registerTypeAdapter(IExpression.class, typeAdapter)
 			.create();
 		
-
+		try{
 			Root root = gson.fromJson(jsonString, Root.class);
 			System.out.println(root.toString(""));
-			return root;	
+			return root;
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+			
 	}
 	
 	public String readFile(String json) throws IOException {

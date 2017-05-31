@@ -510,4 +510,18 @@ public class PatternMatcher implements Visitor {
 		System.out.println(this.variables_found.toString());
 		return match;
 	}
+
+
+	@Override
+	public void visit(FieldReference fr) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void visit(FieldWrite fw) {
+		// TODO Auto-generated method stub
+		
+	}
 }

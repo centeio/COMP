@@ -1,6 +1,6 @@
 package parser;
 
 public interface IExpression extends IBasicNode {
-	public Reference getType();
+	public IBasicNode getType();
 	public String toString(String prefix);
 }
