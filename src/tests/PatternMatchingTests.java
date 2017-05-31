@@ -89,14 +89,20 @@ public class PatternMatchingTests {
 		Member m = testRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
 		List<IStatement>  test_statements = ((Block) ((Method) m).getBody()).getStatements();
 		
-		//m = patternRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
-		//List<IStatement>  pattern_statements = ((Block) ((Method) m).getBody()).getStatements();
-
+		m = patternRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(2);
+		List<IStatement>  pattern_statements = ((Block) ((Method) m).getBody()).getStatements();
+		
+		
         IStatement lv1 = test_statements.get(0);
         IStatement for1 = test_statements.get(4);
+        IStatement for2 = pattern_statements.get(0);
         
         PatternMatcher pm = new PatternMatcher(null);
         assertTrue(pm.compare(for1,for1));
+        
+        System.out.println(for2.toString(""));
+        
+        assertTrue(pm.compare(for1,for2));
         
         assertFalse(pm.compare(for1,lv1));
 	}
