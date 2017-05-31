@@ -26,9 +26,7 @@ public class PatternMatchingTests {
 		String testJson = new String(Files.readAllBytes(Paths.get("Test.json")));
 		testRoot = parser.parse(testJson);
 		
-		//System.out.println("---------------------------------------------------------");
-		String patternJson = new String(Files.readAllBytes(Paths.get("Test_Patterns.json")));
-		
+		String patternJson = new String(Files.readAllBytes(Paths.get("Test_Patterns.json")));	
 		patternRoot = parser.parse(patternJson);
 	}
 	
@@ -77,17 +75,12 @@ public class PatternMatchingTests {
 		IStatement if2 = pattern_statements.get(0);
         IStatement for1 = test_statements.get(4);
 		
-        PatternMatcher pm = new PatternMatcher(if1);
-        if1.accept(pm);
-        assertTrue(pm.isMatch());
-        
-        pm = new PatternMatcher(if2);
-        if1.accept(pm);
-        assertTrue(pm.isMatch());
-        
-        pm = new PatternMatcher(for1);
-        if1.accept(pm);
-        assertFalse(pm.isMatch());
+        PatternMatcher pm = new PatternMatcher(null);
+        assertTrue(pm.compare(if1,if1));
+
+        assertTrue(pm.compare(if1,if2));
+
+        assertFalse(pm.compare(if1,for1));
 	}
 	
 	@Test
@@ -101,14 +94,11 @@ public class PatternMatchingTests {
 
         IStatement lv1 = test_statements.get(0);
         IStatement for1 = test_statements.get(4);
-		
-        PatternMatcher pm = new PatternMatcher(for1);
-        for1.accept(pm);
-        assertTrue(pm.isMatch());
         
-        pm = new PatternMatcher(lv1);
-        for1.accept(pm);
-        assertFalse(pm.isMatch());
+        PatternMatcher pm = new PatternMatcher(null);
+        assertTrue(pm.compare(for1,for1));
+        
+        assertFalse(pm.compare(for1,lv1));
 	}
 	
 	@Test
@@ -121,10 +111,9 @@ public class PatternMatchingTests {
 		//List<IStatement>  pattern_statements = ((Block) ((Method) m).getBody()).getStatements();
         
         IStatement while1 = test_statements.get(6);
-		
-        PatternMatcher pm = new PatternMatcher(while1);
-        while1.accept(pm);
-        assertTrue(pm.isMatch());
+        
+        PatternMatcher pm = new PatternMatcher(null);
+        assertTrue(pm.compare(while1,while1));
 	}
 
 }

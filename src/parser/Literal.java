@@ -2,7 +2,6 @@ package parser;
 
 import main.Visitor;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Literal.
  */
@@ -11,7 +10,7 @@ public class Literal extends Expression {
 	/** The value. */
 	private String value;
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see parser.Expression#toString(java.lang.String)
 	 */
 	public String toString(String prefix) {

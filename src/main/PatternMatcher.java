@@ -19,19 +19,19 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(Root root) {
-		// TODO Auto-generated method stub
+		// TODO visit Root
 		System.out.println("visit Root stub");
 	}
 
 	@Override
 	public void visit(CompilationUnit cu) {
-		// TODO Auto-generated method stub
+		// TODO visit CompilationUnit
 		System.out.println("visit CompilationUnit stub");
 	}
 
 	@Override
 	public void visit(Comment comment) {
-		// TODO Auto-generated method stub
+		// TODO visit Comment
 		System.out.println("visit Comment stub");
 	}
 
@@ -63,13 +63,13 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(Class c) {
-		// TODO Auto-generated method stub
+		// TODO visit Class
 		System.out.println("visit Class stub");
 	}
 
 	@Override
 	public void visit(Constructor constructor) {
-		// TODO Auto-generated method stub
+		// TODO visit Constructor
 		System.out.println("visit Constructor stub");
 	}
 
@@ -166,7 +166,7 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(Method method) {
-		// TODO Auto-generated method stub
+		// TODO visit Method
 		System.out.println("visit Method stub");
 	}
 
@@ -475,7 +475,7 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(NewArray na) {
-		// TODO Auto-generated method stub
+		// TODO visit NewArray
 		System.out.println("visit NewArray stub");
 	}
 
@@ -507,13 +507,13 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(FieldRead fr) {
-		// TODO Auto-generated method stub
+		// TODO visit FieldRead
 		System.out.println("visit FieldRead stub");
 	}
 
 	@Override
 	public void visit(TypeAccess ta) {
-		// TODO Auto-generated method stub
+		// TODO visit TypeAccess
 		System.out.println("visit TypeAccess stub");
 	}
 
@@ -537,23 +537,31 @@ public class PatternMatcher implements Visitor {
 		pattern = p.getBody();
 		w.getBody().accept(this);
 	}	
-
-	public boolean isMatch() {
-		System.out.println(this.variables_found.toString());
-		return match;
-	}
-
-
+	
 	@Override
 	public void visit(FieldReference fr) {
-		// TODO Auto-generated method stub
-
+		// TODO visit FieldReference
+		System.out.println("visit FieldReference stub");
 	}
-
 
 	@Override
 	public void visit(FieldWrite fw) {
-		// TODO Auto-generated method stub
+		// TODO vistit FieldWrite
+		System.out.println("visit FieldWrite stub");
+	}
 
+	public boolean isMatch() {
+		return match;
+	}
+	
+	public boolean compare(IBasicNode code, IBasicNode pattern){
+		this.match = true;
+		this.pattern = pattern;
+		variables_found.clear();
+		
+		code.accept(this);
+
+		System.out.println(this.variables_found.toString());
+		return match;
 	}
 }
