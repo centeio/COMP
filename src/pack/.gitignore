@@ -32,3 +32,11 @@
 /ASTBlock.java
 /ASTDoWhile.java
 /ASTFor.java
+/ASTDefinition.java
+/ASTForCondition.java
+/ASTType.java
+/ASTPortion.java
+/ASTTemp.java
+/ASTParcel.java
+/ASTIgnore.java
+/ASTCall.java

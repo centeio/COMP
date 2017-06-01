@@ -24,8 +24,15 @@ public class PAT {
 		Root rootTest = parser.parse(testJson);
 		
 		Root rootPatterns = parser.parse(testJson);		
-	
-        //SimpleNode n = MyNewGrammar.n;
+	        
+        String content; 
+        
+        content = new String(Files.readAllBytes(Paths.get("patterns.txt"))); 
+        System.out.println(content); 
+     
+        MyNewGrammar.createjjt(content); 
+       
+        SimpleNode n = MyNewGrammar.n; 
 
         
      //   Visitor v = new Visitor(n);

@@ -111,7 +111,8 @@ TOKEN : /* Keywords */
   	< SUPER: "super" > |
   	< PATTERN: "Pattern" > |
   	< EXHAUSTIVE: "Exhaustive" > |
-  	< PARTIAL: "Partial" >
+  	< PARTIAL: "Partial" > |
+  	< IGNORE: "ignore">
 }
 
 TOKEN : /* IDENTIFIERS */
@@ -130,7 +131,7 @@ TOKEN : /* IDENTIFIERS */
 	< PLUS : "+"> |
 	< TIMES : "*" > |
 	< DIV : "/" > |
-	< MAJOR : ">" > |
+	< GREATER : ">" > |
 	< MINOR : "<" > |
 	< SEMICOL : ";" >
 		
@@ -141,29 +142,29 @@ ASTStart Start() :
 {
   { writer.println("public class MyPattern{"); }
   	(< PATTERN >  { writer.print("void "); }
-  	 Name() [Search()] { writer.println("{"); } Pattern() { writer.println("}"); })+
+  	 Call() [Search()] { writer.println("{"); } Pattern() { writer.println("}"); })+
 
   { writer.println(" }"); }
   	
   	{ return jjtThis; }
 }
 
-void Name() : {Token t;} {
-  	t = < STRING >
-  	{
-		jjtThis.value = t.image;
-		writer.print(t.image+"()");		
-	}
+void Call() : {} {
+  	< PL > { writer.print("(");} < PL > { writer.print(")");}
 }
 
 void Pattern() : {} {
   
-  If() | Operation() | While() | DoWhile() 
+  If() | Operation() | While() | DoWhile() | For() | Definition() | Ignore() | Call()
 }
 
 void Search() : {Token t;} {
   	t = < EXHAUSTIVE >   	|
 	t =  < PARTIAL >	
+}
+
+void Ignore() : { } {
+	< IGNORE > { writer.println("ignore()"); System.out.println("Ignore");} 
 }
 
 void If() :  {} {
@@ -175,7 +176,7 @@ void If() :  {} {
 void While() :  {} {
   { writer.print("while"); System.out.println("While");  }
   
-	< WHILE > Condition() Block()
+	< WHILE > Condition() Block() 
 }
 
 void DoWhile() :  {} {
@@ -186,11 +187,16 @@ void DoWhile() :  {} {
 
 void For() :  {} {
   { writer.print("for"); System.out.println("For");  }
-  //for(int i; condition; nada/operation)
   
-	< FOR > Condition() Block()
+	< FOR > ForCondition() Block() 
 }
 
+
+void ForCondition() : { } {
+ < PL > { writer.print("("); } [(Var()|Temp()) [Definition()|Assignment()]]
+ < SEMICOL > { writer.print(";");}
+ [Condition()] < SEMICOL > { writer.print(";");} [Operation()] < PR >  { writer.print(")"); }  
+}
 
 void Block() : { } {
 	< BL > { writer.println("{"); } (Operation())+ < BR >  { writer.print("}"); } |
@@ -200,12 +206,23 @@ void Block() : { } {
 void Condition() : {} {
   { System.out.println("Condition");  }
   
-	< PL > { writer.print("("); } Expression() CompareOp() Expression() < PR >  { writer.print(")"); } 
+	< PL > { writer.print("("); } (Expression() [CompareOp() Expression()] | < BOOLEANVALUE > ) < PR >  { writer.print(")"); } 
 }
 
 void CompareOp() : {Token t;} {
   { System.out.println("CompareOp");  }
 	t = < EQUALS >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image);
+	} |
+
+	t = < GREATER >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image);
+	} |
+	t = < MINOR >
 	{
 		jjtThis.value = t.image;
 		writer.print(t.image);
@@ -232,11 +249,61 @@ void Var() : {Token t;} {
 void Expression() : {} {
   { System.out.println("Expression");  }
   
-	< PL > { writer.print("("); } Expression() Op() Expression() < PR >  { writer.print(")"); } |
-	Var() |
-	Int() |
-	String()
+	< PL > { writer.print("("); } Expression() Op() Expression() < PR >  { writer.print(")"); } | Parcel()
+
 	
+}
+
+void Parcel() : {Token t;} {
+	Var() | Int() | Temp()
+}
+
+void Definition() : {} {
+	Type() (Var() | Temp()) [Assignment()]
+
+}
+
+void Type() : {Token t;} {
+	t = < BYTE >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image + " ");
+	}|
+	t = < SHORT >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image + " ");
+	}|
+	t = < INT >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image + " ");
+	}|
+	t = < LONG >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image + " ");
+	}|
+	t = < FLOAT >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image + " ");
+	}|
+	t = < DOUBLE >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image + " ");
+	}|
+	t = < CHAR >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image + " ");
+	}|
+	t = < STRING >
+	{
+		jjtThis.value = t.image;
+		writer.print(t.image + " ");
+	}
 }
 
 void Int() : {Token t;} {
@@ -249,7 +316,7 @@ void Int() : {Token t;} {
 	}
 }
 
-void String() : {Token t;} {
+void Temp() : {Token t;} {
   { System.out.println("String");  }
   
     t = < STRING >
@@ -261,12 +328,12 @@ void String() : {Token t;} {
 
 void Operation() : {} {
   { System.out.println("Operation");  }
-	Expression() [AritmeticOp() | Assignment()]
+	Parcel() [AritmeticOp() | Assignment()]
 }
 
 void Assignment() : {} {
 	{ System.out.println("Assignment");  }
-	< EQ > { writer.print(" = "); } Expression() [{ System.out.println("AritmeticOp");  } AritmeticOp()] < SEMICOL > { writer.println(";"); }
+	< EQ > { writer.print(" = "); } Expression() [AritmeticOp() {System.out.println("AritmeticOp");}] { writer.println(";"); }
 }
 
 void AritmeticOp() : {} { 
