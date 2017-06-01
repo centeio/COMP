@@ -158,7 +158,7 @@ void Name() : {Token t;} {
 
 void Pattern() : {} {
   
-  If() | Operation() 
+  If() | Operation() | While() | DoWhile() 
 }
 
 void Search() : {Token t;} {
@@ -167,18 +167,40 @@ void Search() : {Token t;} {
 }
 
 void If() :  {} {
-  { writer.print("if("); System.out.println("If");  }
+  { writer.print("if"); System.out.println("If");  }
   
-	< IF > <PL >
-
-	Condition() < PR >  { writer.print(")"); } < BL > { writer.println("{"); } Operation() < BR >  { writer.print("}"); }
-	[<ELSE > { writer.print("else"); } < BL > { writer.println("{"); } Operation() < BR >  { writer.print("}"); }]
+	< IF >	Condition() Block()	[< ELSE > { writer.print("else"); System.out.println("Else");} Block()]
 }
+
+void While() :  {} {
+  { writer.print("while"); System.out.println("While");  }
+  
+	< WHILE > Condition() Block()
+}
+
+void DoWhile() :  {} {
+  { writer.print("do"); System.out.println("Do");  }
+  
+	< DO > Block() < WHILE > { writer.print("while"); System.out.println("While");}  Condition() 
+}
+
+void For() :  {} {
+  { writer.print("for"); System.out.println("For");  }
+  //for(int i; condition; nada/operation)
+  
+	< FOR > Condition() Block()
+}
+
+
+void Block() : { } {
+	< BL > { writer.println("{"); } (Operation())+ < BR >  { writer.print("}"); } |
+	Operation()
+ }
 
 void Condition() : {} {
   { System.out.println("Condition");  }
   
-	Expression()  CompareOp() Expression() 
+	< PL > { writer.print("("); } Expression() CompareOp() Expression() < PR >  { writer.print(")"); } 
 }
 
 void CompareOp() : {Token t;} {

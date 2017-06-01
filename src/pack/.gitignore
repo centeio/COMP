@@ -28,3 +28,7 @@
 /ASTName.java
 /ASTAssignment.java
 /ASTString.java
+/ASTWhile.java
+/ASTBlock.java
+/ASTDoWhile.java
+/ASTFor.java
