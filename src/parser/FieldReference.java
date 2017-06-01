@@ -3,7 +3,7 @@ package parser;
 import main.Visitor;
 
 public class FieldReference extends Reference {
-	private IBasicNode declarator;
+	private IReference declarator;
 	private Reference type;
 	
 	public String toString(String prefix) {

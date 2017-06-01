@@ -1,6 +1,6 @@
 package parser;
 
-public abstract class Reference extends BasicNode {
+public abstract class Reference extends BasicNode implements IReference {
 	protected String name;
 	
 	public String toString(String prefix) {
@@ -10,9 +10,5 @@ public abstract class Reference extends BasicNode {
 	
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 }

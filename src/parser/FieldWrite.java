@@ -3,7 +3,6 @@ package parser;
 import main.Visitor;
 
 public class FieldWrite extends Expression {
-
 	private Reference var;
 	
 	public String toString(String prefix) {
