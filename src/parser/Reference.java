@@ -7,7 +7,6 @@ public abstract class Reference extends BasicNode implements IReference {
 		return prefix + "Reference";
 	}
 	
-	
 	public String getName() {
 		return name;
 	}

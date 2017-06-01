@@ -25,8 +25,6 @@ public class FieldReference extends Reference {
 		return type;
 	}
 
-
-
 	@Override
 	public void accept(Visitor v) {
 		//v.visit(this);

@@ -30,24 +30,12 @@ public class LocalVariable extends Statement {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Reference getType() {
 		return type;
 	}
 
-	public void setType(Reference type) {
-		this.type = type;
-	}
-
 	public IExpression getInit() {
 		return init;
-	}
-
-	public void setInit(IExpression init) {
-		this.init = init;
 	}
 	
 	@Override

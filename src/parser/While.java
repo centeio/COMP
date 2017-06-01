@@ -25,14 +25,9 @@ public class While extends Statement {
 	public IExpression getCondition() {
 		return condition;
 	}
-	public void setCondition(IExpression condition) {
-		this.condition = condition;
-	}
+	
 	public IStatement getBody() {
 		return body;
-	}
-	public void setBody(IStatement body) {
-		this.body = body;
 	}
 	
 	@Override

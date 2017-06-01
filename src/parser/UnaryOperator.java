@@ -29,15 +29,11 @@ public class UnaryOperator extends Expression implements IStatement {
     public String getOperator() {
 		return operator;
 	}
-	public void setOperator(String operator) {
-		this.operator = operator;
-	}
+    
 	public IExpression getOperand() {
 		return operand;
 	}
-	public void setOperand(IExpression operand) {
-		this.operand = operand;
-	}
+	
 	@Override
 	public String getLabel() { return null; }
 	

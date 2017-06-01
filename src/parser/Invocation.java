@@ -29,16 +29,8 @@ public class Invocation extends Statement implements IExpression {
 		return executable;
 	}
 
-	public void setExecutable(Reference executable) {
-		this.executable = executable;
-	}
-
 	public List<IExpression> getArguments() {
 		return arguments;
-	}
-
-	public void setArguments(List<IExpression> arguments) {
-		this.arguments = arguments;
 	}
 	
 	@Override
