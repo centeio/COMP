@@ -2,7 +2,7 @@ package parser;
 
 import main.Visitor;
 
-public class NullNode extends Statement {
+public class NullNode extends Statement implements IReference {
 
 	public String toString(String prefix) {
 		return prefix + nodetype;
@@ -11,5 +11,10 @@ public class NullNode extends Statement {
 	@Override
 	public void accept(Visitor v) {
 		v.visit(this);
+	}
+
+	@Override
+	public String getName() {
+		return null;
 	}
 }

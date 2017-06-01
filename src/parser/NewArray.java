@@ -34,36 +34,20 @@ public class NewArray extends Expression {
 		return str;
 	}
 
-	public Reference getType() {
+	public IBasicNode getType() {
 		return type;
-	}
-
-	public void setType(Reference type) {
-		this.type = type;
 	}
 
 	public List<TypeReference> getType_casts() {
 		return type_casts;
 	}
 
-	public void setType_casts(List<TypeReference> type_casts) {
-		this.type_casts = type_casts;
-	}
-
 	public List<IExpression> getElements() {
 		return elements;
 	}
 
-	public void setElements(List<IExpression> elements) {
-		this.elements = elements;
-	}
-
 	public List<IExpression> getDimensions() {
 		return dimensions;
-	}
-
-	public void setDimensions(List<IExpression> dimensions) {
-		this.dimensions = dimensions;
 	}
 	
 	@Override

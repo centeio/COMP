@@ -12,7 +12,7 @@ public class Parser {
 	
 	public Parser() {}
 	
-	public Root parse() {
+	public Root parse(String jsonString) {
 
 		NodeDeserializer typeAdapter = new NodeDeserializer();
 		Gson gson = new GsonBuilder()
@@ -25,18 +25,19 @@ public class Parser {
 			.registerTypeAdapter(IBasicNode.class, typeAdapter)
 			.registerTypeAdapter(IStatement.class, typeAdapter)
 			.registerTypeAdapter(IExpression.class, typeAdapter)
+			.registerTypeAdapter(IReference.class, typeAdapter)
 			.create();
 		
-		try {
-			
-			String jsonString = readFile("ast.json");
+		try{
 			Root root = gson.fromJson(jsonString, Root.class);
-			System.out.println(root.toString(""));
+			//System.out.println(root.toString(""));
 			return root;
+		} catch(Exception e) {
 			
-		} catch(IOException e) { e.printStackTrace(); }
-		
-		return null;		
+			e.printStackTrace();
+			return null;
+		}
+			
 	}
 	
 	public String readFile(String json) throws IOException {

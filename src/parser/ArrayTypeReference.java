@@ -20,10 +20,6 @@ public class ArrayTypeReference extends Reference {
 		return type;
 	}
 
-	public void setType(TypeReference type) {
-		this.type = type;
-	}
-
 	@Override
 	public void accept(Visitor v) {
 		v.visit(this);

@@ -16,6 +16,8 @@ import parser.CompilationUnit;
 import parser.Constructor;
 import parser.ExecutableReference;
 import parser.FieldRead;
+import parser.FieldReference;
+import parser.FieldWrite;
 import parser.For;
 import parser.If;
 import parser.Invocation;
@@ -448,6 +450,29 @@ public class FindPattern implements Visitor {
 			w.getBody().accept(this);
 	}
 	
+	@Override
+	public void visit(FieldReference fr) {
+		findPatterns(fr);
+		
+		if(fr.getDeclarator() != null)
+			fr.getDeclarator().accept(this);
+		
+		if(fr.getType() != null)
+			fr.getType().accept(this);
+		
+	}
+
+	@Override
+	public void visit(FieldWrite fw) {
+		findPatterns(fw);
+		
+		if(fw.getVar() != null)
+			fw.getVar().accept(this);
+		
+		if(fw.getType() != null)
+			fw.getType().accept(this);
+	}
+	
 	public void findPatterns(IBasicNode node) {
 
 		if(patternsToFind.containsKey(node.getNodeType())) {
@@ -463,5 +488,4 @@ public class FindPattern implements Visitor {
 			}
 		}
 	}
-
 }

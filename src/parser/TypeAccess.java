@@ -19,10 +19,6 @@ public class TypeAccess extends Expression {
 	public TypeReference getTarget() {
 		return target;
 	}
-
-	public void setTarget(TypeReference target) {
-		this.target = target;
-	}
 	
 	@Override
 	public void accept(Visitor v) {

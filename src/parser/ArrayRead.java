@@ -30,14 +30,8 @@ public class ArrayRead extends Expression {
 	public IExpression getTarget() {
 		return target;
 	}
-	public void setTarget(IExpression target) {
-		this.target = target;
-	}
 	public IExpression getIndex() {
 		return index;
-	}
-	public void setIndex(IExpression index) {
-		this.index = index;
 	}
 
 	@Override

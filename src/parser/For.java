@@ -45,33 +45,18 @@ public class For extends Statement {
 		return init;
 	}
 
-	public void setInit(List<IStatement> init) {
-		this.init = init;
-	}
-
 	public IExpression getCondition() {
 		return condition;
-	}
-
-	public void setCondition(IExpression condition) {
-		this.condition = condition;
 	}
 
 	public List<IStatement> getUpdate() {
 		return update;
 	}
-
-	public void setUpdate(List<IStatement> update) {
-		this.update = update;
-	}
-
+	
 	public IStatement getBody() {
 		return body;
 	}
-
-	public void setBody(IStatement body) {
-		this.body = body;
-	}
+	
 	
 	@Override
 	public void accept(Visitor v) {

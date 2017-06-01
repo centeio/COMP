@@ -30,24 +30,12 @@ public class BinaryOperator extends Expression {
 		return operator;
 	}
 
-	public void setOperator(String operator) {
-		this.operator = operator;
-	}
-
 	public IExpression getLhs() {
 		return lhs;
 	}
 
-	public void setLhs(IExpression lhs) {
-		this.lhs = lhs;
-	}
-
 	public IExpression getRhs() {
 		return rhs;
-	}
-
-	public void setRhs(IExpression rhs) {
-		this.rhs = rhs;
 	}
 	
 	@Override

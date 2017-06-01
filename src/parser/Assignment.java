@@ -32,24 +32,12 @@ public class Assignment extends Statement implements IStatement {
 		return type;
 	}
 
-	public void setType(TypeReference type) {
-		this.type = type;
-	}
-
 	public IExpression getLhs() {
 		return lhs;
 	}
 
-	public void setLhs(IExpression lhs) {
-		this.lhs = lhs;
-	}
-
 	public IExpression getRhs() {
 		return rhs;
-	}
-
-	public void setRhs(IExpression rhs) {
-		this.rhs = rhs;
 	}
 
 	@Override

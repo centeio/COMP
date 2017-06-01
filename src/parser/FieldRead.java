@@ -25,14 +25,8 @@ public class FieldRead extends Expression {
 	public IExpression getTarget() {
 		return target;
 	}
-	public void setTarget(IExpression target) {
-		this.target = target;
-	}
 	public Reference getVar() {
 		return var;
-	}
-	public void setVar(Reference var) {
-		this.var = var;
 	}
 	
 	@Override

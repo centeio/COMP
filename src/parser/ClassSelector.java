@@ -29,7 +29,9 @@ public enum ClassSelector {
     FIELDREAD(FieldRead.class),
     TYPEACESS(TypeAccess.class),
     ARRAYREAD(ArrayRead.class),
-    WHILE(While.class);
+    WHILE(While.class),
+    FIELDREFERENCE(FieldReference.class),
+    FIELDWRITE(FieldWrite.class);
     
     private java.lang.Class<? extends BasicNode> myClass;
 

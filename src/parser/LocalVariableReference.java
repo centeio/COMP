@@ -22,10 +22,6 @@ public class LocalVariableReference extends Reference {
 	public Reference getType() {
 		return type;
 	}
-
-	public void setType(Reference type) {
-		this.type = type;
-	}
 	
 	@Override
 	public void accept(Visitor v) {
