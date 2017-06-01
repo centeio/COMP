@@ -327,6 +327,256 @@
               }
             }]
           }
+        },
+        {
+        "nodetype": "Method",
+        "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:13",
+        "name": "P3",
+        "type": {
+          "nodetype": "TypeReference",
+          "name": "void"
+          },
+        "parameters": [],
+        "body": {
+          "nodetype": "Block",
+          "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:13",
+          "statements": [{
+            "nodetype": "While",
+            "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:14",
+            "condition": {
+              "nodetype": "BinaryOperator",
+              "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:14",
+              "type": {"nodetype": "NullNode"},
+              "operator": "<",
+              "lhs": {
+                "nodetype": "FieldRead",
+                "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:14",
+                "var": {
+                  "nodetype": "FieldReference",
+                  "name": "a0",
+                  "declarator": {"nodetype": "NullNode"},
+                  "type": {
+                    "nodetype": "TypeReference",
+                    "name": "MyPattern",
+                    "package": ""
+                    }
+                  }
+                },
+              "rhs": {
+                "nodetype": "FieldRead",
+                "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:14",
+                "var": {
+                  "nodetype": "FieldReference",
+                  "name": "a1",
+                  "declarator": {"nodetype": "NullNode"},
+                  "type": {
+                    "nodetype": "TypeReference",
+                    "name": "MyPattern",
+                    "package": ""
+                    }
+                  }
+                }
+              },
+            "body": {
+              "nodetype": "Block",
+              "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:14",
+              "statements": [
+                {
+                "nodetype": "UnaryOperator",
+                "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:15",
+                "type": {"nodetype": "NullNode"},
+                "operator": "_--",
+                "operand": {
+                  "nodetype": "ArrayWrite",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:15",
+                  "type": {"nodetype": "NullNode"},
+                  "target": {
+                    "nodetype": "FieldRead",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:15",
+                    "var": {
+                      "nodetype": "FieldReference",
+                      "name": "a2",
+                      "declarator": {"nodetype": "NullNode"},
+                      "type": {
+                        "nodetype": "TypeReference",
+                        "name": "MyPattern",
+                        "package": ""
+                        }
+                      }
+                    },
+                  "index": {
+                    "nodetype": "FieldRead",
+                    "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:15",
+                    "var": {
+                      "nodetype": "FieldReference",
+                      "name": "a0",
+                      "declarator": {"nodetype": "NullNode"},
+                      "type": {
+                        "nodetype": "TypeReference",
+                        "name": "MyPattern",
+                        "package": ""
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                "nodetype": "UnaryOperator",
+                "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:16",
+                "type": {"nodetype": "NullNode"},
+                "operator": "_++",
+                "operand": {
+                  "nodetype": "FieldWrite",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:16",
+                  "var": {
+                    "nodetype": "FieldReference",
+                    "name": "a0",
+                    "declarator": {"nodetype": "NullNode"},
+                    "type": {
+                      "nodetype": "TypeReference",
+                      "name": "MyPattern",
+                      "package": ""
+                      }
+                    }
+                  }
+                }
+              ]
+              }
+            }]
+          }
+        },
+        {
+        "nodetype": "Method",
+        "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:19",
+        "name": "P4",
+        "type": {
+          "nodetype": "TypeReference",
+          "name": "void"
+          },
+        "parameters": [],
+        "body": {
+          "nodetype": "Block",
+          "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:19",
+          "statements": [{
+            "nodetype": "While",
+            "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:20",
+            "condition": {
+              "nodetype": "BinaryOperator",
+              "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:20",
+              "type": {"nodetype": "NullNode"},
+              "operator": "<",
+              "lhs": {
+                "nodetype": "FieldRead",
+                "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:20",
+                "var": {
+                  "nodetype": "FieldReference",
+                  "name": "a0",
+                  "declarator": {"nodetype": "NullNode"},
+                  "type": {
+                    "nodetype": "TypeReference",
+                    "name": "MyPattern",
+                    "package": ""
+                    }
+                  }
+                },
+              "rhs": {
+                "nodetype": "FieldRead",
+                "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:20",
+                "var": {
+                  "nodetype": "FieldReference",
+                  "name": "a1",
+                  "declarator": {"nodetype": "NullNode"},
+                  "type": {
+                    "nodetype": "TypeReference",
+                    "name": "MyPattern",
+                    "package": ""
+                    }
+                  }
+                }
+              },
+            "body": {
+              "nodetype": "Block",
+              "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:20",
+              "statements": [{
+                "nodetype": "Invocation",
+                "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:21",
+                "target": {
+                  "nodetype": "ThisAccess",
+                  "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:1",
+                  "type": {
+                    "nodetype": "TypeReference",
+                    "name": "MyPattern",
+                    "package": ""
+                    },
+                  "target": {
+                    "nodetype": "TypeAccess",
+                    "location": "unknown file",
+                    "target": {
+                      "nodetype": "TypeReference",
+                      "name": "MyPattern",
+                      "package": ""
+                      }
+                    }
+                  },
+                "executable": {
+                  "nodetype": "ExecutableReference",
+                  "name": "ignore",
+                  "declarator": {"nodetype": "NullNode"},
+                  "type": {"nodetype": "NullNode"},
+                  "parameters": []
+                  },
+                "arguments": []
+                }]
+              }
+            }]
+          }
+        },
+        {
+        "nodetype": "Method",
+        "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:24",
+        "name": "P5",
+        "type": {
+          "nodetype": "TypeReference",
+          "name": "void"
+          },
+        "parameters": [],
+        "body": {
+          "nodetype": "Block",
+          "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:24",
+          "statements": [{
+            "nodetype": "Assignment",
+            "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:25",
+            "type": {"nodetype": "NullNode"},
+            "lhs": {
+              "nodetype": "FieldWrite",
+              "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:25",
+              "var": {
+                "nodetype": "FieldReference",
+                "name": "a0",
+                "declarator": {"nodetype": "NullNode"},
+                "type": {
+                  "nodetype": "TypeReference",
+                  "name": "MyPattern",
+                  "package": ""
+                  }
+                }
+              },
+            "rhs": {
+              "nodetype": "FieldRead",
+              "location": "/Users/inesf/Documents/GitHub/COMP/MyPatternTest.java:25",
+              "var": {
+                "nodetype": "FieldReference",
+                "name": "a0",
+                "declarator": {"nodetype": "NullNode"},
+                "type": {
+                  "nodetype": "TypeReference",
+                  "name": "MyPattern",
+                  "package": ""
+                  }
+                }
+              }
+            }]
+          }
         }
       ]
       }]

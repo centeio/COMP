@@ -25,7 +25,7 @@ public class PatternMatchingTests {
 		Parser parser = new Parser();
 		String testJson = new String(Files.readAllBytes(Paths.get("Test.json")));
 		testRoot = parser.parse(testJson);
-		
+
 		String patternJson = new String(Files.readAllBytes(Paths.get("Test_Patterns.json")));	
 		patternRoot = parser.parse(patternJson);
 	}
@@ -100,8 +100,6 @@ public class PatternMatchingTests {
         PatternMatcher pm = new PatternMatcher(null);
         assertTrue(pm.compare(for1,for1));
         
-        System.out.println(for2.toString(""));
-        
         assertTrue(pm.compare(for1,for2));
         
         assertFalse(pm.compare(for1,lv1));
@@ -113,13 +111,16 @@ public class PatternMatchingTests {
 		Member m = testRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
 		List<IStatement>  test_statements = ((Block) ((Method) m).getBody()).getStatements();
 		
-		//m = patternRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
-		//List<IStatement>  pattern_statements = ((Block) ((Method) m).getBody()).getStatements();
+		m = patternRoot.getCompilationUnits().get(0).getTypes().get(0).getMembers().get(3);
+		List<IStatement>  pattern_statements = ((Block) ((Method) m).getBody()).getStatements();
         
         IStatement while1 = test_statements.get(6);
+        IStatement while2 = pattern_statements.get(0);
         
         PatternMatcher pm = new PatternMatcher(null);
         assertTrue(pm.compare(while1,while1));
+        
+        assertTrue(pm.compare(while1,while2));
 	}
 
 }

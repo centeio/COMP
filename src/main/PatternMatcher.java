@@ -89,8 +89,6 @@ public class PatternMatcher implements Visitor {
 			
 			if(pattern instanceof Invocation && ((Invocation) pattern).getExecutable().getName().equals("ignore")){
 				//TODO: implement ignore (now it just doesn't compare)
-				
-				System.out.println("Should ignore");
 				ignore = true;
 				
 				j++;
