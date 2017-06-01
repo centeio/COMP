@@ -20,5 +20,16 @@ public class Test {
             y++;
         }
 
+	do {
+     	    x--; y++;
+	} while (y < x);
+
+	for(int i = 0; i < x; i++) {
+            foo(x);
+        }
+
+	for(int i = 0; i < y; i++) {
+            sth(y);
+        }
     }
 }

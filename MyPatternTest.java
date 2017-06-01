@@ -39,4 +39,14 @@ public class MyPattern{
      	    ignore();
 	} while (a0);
     }
+    void P9(){
+	do {
+     	    ignore();
+	} while (a0 < a1);
+    }
+    void P10(){
+	for(int i = 0; i < a0; i++) {
+            f1(a0);
+        }
+    }
 }
