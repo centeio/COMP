@@ -13,6 +13,11 @@ void P3("Exhaustive"){
 if(a0){
 a = 3;
 }for(int i = 0;i<a3;i++){
+ignore();
 a = i+1;
 }}
+void P4("Exhaustive"){
+do{
+a++;
+}while(true)}
  }

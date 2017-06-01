@@ -145,7 +145,7 @@ ASTStart Start() :
 {
   { writer.println("public class MyPattern{"); }
   	(< PATTERN >  { writer.print("void "); }
-  	 Temp() { writer.print("("); } [Search()] { writer.println("){"); } (Pattern())+ { writer.println("}"); } )+
+  	 { System.out.println("Novo pattern"); } Temp() { writer.print("("); } [Search()] { writer.println("){"); } (Pattern())+ { writer.println("}"); } )+
 
   { writer.println(" }"); }
   	
@@ -210,14 +210,22 @@ void ForCondition() : { } {
 }
 
 void Block() : { } {
-	< BL > { writer.println("{"); } (Operation()|Ignore())+ < BR >  { writer.print("}"); } |
-	Operation()
+	< BL > { writer.println("{"); } (Operation()|Ignore())+ < BR >  { writer.print("}"); } | Operation()
  }
 
 void Condition() : {} {
   { System.out.println("Condition");  }
   
-	< PL > { writer.print("("); } (Expression() [CompareOp() Expression()] | < BOOLEANVALUE > ) < PR >  { writer.print(")"); } 
+	< PL > { writer.print("("); } (Expression() [CompareOp() Expression()] | Bool() ) < PR >  { writer.print(")"); } 
+}
+
+void Bool() : {Token t;} {
+  t = < BOOLEANVALUE >
+  {
+		jjtThis.value = t.image;
+		writer.print(t.image);
+}
+  
 }
 
 void CompareOp() : {Token t;} {
