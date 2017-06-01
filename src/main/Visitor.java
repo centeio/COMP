@@ -35,4 +35,5 @@ public interface Visitor {
 	void visit(FieldWrite fw);
 	void visit(TypeAccess ta);
 	void visit(While w);
+	void visit(Do do1);
 }

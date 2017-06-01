@@ -511,7 +511,7 @@ public class PatternMatcher implements Visitor {
 			return;
 		
 		//Compare dimensions
-		if(p.getDimensions() != null && na.getDimensions() != null){
+		if(p.getDimensions() != null && na.getDimensions() != null) {
 			if(p.getDimensions().size() != na.getDimensions().size()){
 				match = false;
 				return;
@@ -638,5 +638,12 @@ public class PatternMatcher implements Visitor {
 			System.out.println(this.pattern.getClass().getName());
 		}
 		return match;
+	}
+
+
+	@Override
+	public void visit(Do do1) {
+		// TODO Auto-generated method stub
+		
 	}
 }

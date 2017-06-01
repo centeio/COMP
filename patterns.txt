@@ -1,2 +1,5 @@
 Pattern P1 Exhaustive
 x = @x * @x;
+
+Pattern P2 Exhaustive
+if(@x == @y) then

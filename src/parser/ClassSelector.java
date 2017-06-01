@@ -31,7 +31,8 @@ public enum ClassSelector {
     ARRAYREAD(ArrayRead.class),
     WHILE(While.class),
     FIELDREFERENCE(FieldReference.class),
-    FIELDWRITE(FieldWrite.class);
+    FIELDWRITE(FieldWrite.class),
+    DO(Do.class);
     
     private java.lang.Class<? extends BasicNode> myClass;
 
