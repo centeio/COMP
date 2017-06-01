@@ -35,14 +35,14 @@ public class PAT {
 		Root rootPatterns = parser.parse(patternsJson);		
 
         
-     	Visitor v = new Visitor(n);
+ //    	Visitor v = new Visitor(n);
         
-     	v.findSubtree(root);
+ //    	v.findSubtree(root);
 		
 		//Testing FindPattern
 		System.out.println("-----------------------------------------------");
 		FindPattern find = new FindPattern();
-		root.accept(find);*/
+//		root.accept(find);
 		
 		//PatternMatchingTests test = new PatternMatchingTests();
 	}

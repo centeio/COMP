@@ -1,12 +1,16 @@
-Pattern P1 Exhaustive
+Pattern P1 Exhaustiveignore
 x = @x * @x;
 
 Pattern P2 Exhaustive
-if(@x == @y){
-a=3;
+if(@x == @y){ignore
+a=3;
+@z();
 }
 
-Pattern P2 Exhaustive
+Pattern P3 Exhaustive
 if(@x){
 a=3;
+}
+for(int i=0; i<@n; i++){
+a= i+1;
 }

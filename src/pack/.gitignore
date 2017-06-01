@@ -40,3 +40,5 @@
 /ASTParcel.java
 /ASTIgnore.java
 /ASTCall.java
+/ASTDec.java
+/ASTInc.java
