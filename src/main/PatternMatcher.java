@@ -82,6 +82,8 @@ public class PatternMatcher implements Visitor {
 
 		Block p = (Block) pattern;
 		int j = 0;
+		boolean ignore = false;
+		
 		for (int i = 0; i < block.getStatements().size(); i++) {
 			pattern = p.getStatements().get(j);
 			
@@ -89,6 +91,7 @@ public class PatternMatcher implements Visitor {
 				//TODO: implement ignore (now it just doesn't compare)
 				
 				System.out.println("Should ignore");
+				ignore = true;
 				
 				j++;
 			}
@@ -97,10 +100,16 @@ public class PatternMatcher implements Visitor {
 	
 				statement.accept(this);
 				
-				if(!match)
+				if(!match && ignore){
+					match = true;
+				}
+				else if(!match && !ignore){
 					break;
-				
-				j++;
+				}
+				else if(match){
+					ignore = false;
+					j++;
+				}
 			}
 		}
 	}
