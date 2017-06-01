@@ -25,6 +25,7 @@ public class Parser {
 			.registerTypeAdapter(IBasicNode.class, typeAdapter)
 			.registerTypeAdapter(IStatement.class, typeAdapter)
 			.registerTypeAdapter(IExpression.class, typeAdapter)
+			.registerTypeAdapter(IReference.class, typeAdapter)
 			.create();
 		
 		try{
