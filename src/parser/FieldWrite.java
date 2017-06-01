@@ -22,7 +22,7 @@ public class FieldWrite extends Expression {
 
 	@Override
 	public void accept(Visitor v) {
-		//v.visit(this);
+		v.visit(this);
 	}
 
 }

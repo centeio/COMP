@@ -468,13 +468,24 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(FieldReference fr) {
-		// TODO Auto-generated method stub
+		findPatterns(fr);
+		
+		if(fr.getDeclarator() != null)
+			fr.getDeclarator().accept(this);
+		
+		if(fr.getType() != null)
+			fr.getType().accept(this);
 		
 	}
 
 	@Override
 	public void visit(FieldWrite fw) {
-		// TODO Auto-generated method stub
+		findPatterns(fw);
 		
+		if(fw.getVar() != null)
+			fw.getVar().accept(this);
+		
+		if(fw.getType() != null)
+			fw.getType().accept(this);
 	}
 }

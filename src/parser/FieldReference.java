@@ -17,7 +17,7 @@ public class FieldReference extends Reference {
     	return str;
     }
 	
-	public IBasicNode getDeclarator() {
+	public IReference getDeclarator() {
 		return declarator;
 	}
 
