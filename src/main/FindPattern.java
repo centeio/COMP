@@ -450,22 +450,6 @@ public class FindPattern implements Visitor {
 			w.getBody().accept(this);
 	}
 	
-	public void findPatterns(IBasicNode node) {
-
-		if(patternsToFind.containsKey(node.getNodeType())) {
-			List<IBasicNode> patterns = patternsToFind.get(node.getNodeType());
-			
-			for(int i = 0; i < patterns.size(); i++) {
-				PatternMatcher matcher = new PatternMatcher(patterns.get(i));
-				
-				node.accept(matcher);				
-				
-				if(matcher.isMatch())
-					patternsFound.add(node);
-			}
-		}
-	}
-
 	@Override
 	public void visit(FieldReference fr) {
 		findPatterns(fr);
@@ -487,5 +471,21 @@ public class FindPattern implements Visitor {
 		
 		if(fw.getType() != null)
 			fw.getType().accept(this);
+	}
+	
+	public void findPatterns(IBasicNode node) {
+
+		if(patternsToFind.containsKey(node.getNodeType())) {
+			List<IBasicNode> patterns = patternsToFind.get(node.getNodeType());
+			
+			for(int i = 0; i < patterns.size(); i++) {
+				PatternMatcher matcher = new PatternMatcher(patterns.get(i));
+				
+				node.accept(matcher);				
+				
+				if(matcher.isMatch())
+					patternsFound.add(node);
+			}
+		}
 	}
 }
