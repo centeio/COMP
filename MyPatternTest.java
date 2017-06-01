@@ -10,4 +10,18 @@ public class MyPattern{
             ignore();
         }
     }
+    void P3(){
+	while(a0 < a1) {
+            a2[a0]--;
+            a0++;
+        }
+    }
+    void P4(){
+	while(a0 < a1) {
+            ignore();
+        }
+    }
+    void P5(){
+	a0+a0;
+    }
 }
