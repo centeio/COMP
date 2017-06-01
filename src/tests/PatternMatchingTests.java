@@ -28,8 +28,6 @@ public class PatternMatchingTests {
 		String testJson = SpoonASTLauncher.java2json(Paths.get("Test.java").toString(), null, false);
 		String patternJson = SpoonASTLauncher.java2json(Paths.get("MyPatternTest.java").toString(), null, false);
 		
-		System.out.println(patternJson);
-		
 		Member m = parser.parse(testJson).getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
 
 		test_statements = ((Block) ((Method) m).getBody()).getStatements();
@@ -112,9 +110,9 @@ public class PatternMatchingTests {
         
         assertTrue(pm.compare(while1,pattern3));
         
-        assertFalse(pm.compare(while1,pattern4));
+        assertTrue(pm.compare(while1,pattern4));
         
-        //assertTrue(pm.compare(while1,pattern8));
+        //assertFalse(pm.compare(while1,pattern8));
 	}
 
 }

@@ -85,7 +85,7 @@ public class PatternMatcher implements Visitor {
 		int j = 0;
 		boolean ignore = false;
 		
-		for (int i = 0; i < block.getStatements().size(); i++) {
+		for (int i = 0; i < block.getStatements().size() && j < p.getStatements().size(); i++) {
 			pattern = p.getStatements().get(j);
 			
 			if(pattern instanceof Invocation && ((Invocation) pattern).getExecutable().getName().equals("ignore")){
