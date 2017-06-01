@@ -3,6 +3,9 @@ package main;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import parser.ArrayRead;
 import parser.ArrayTypeReference;
@@ -14,6 +17,7 @@ import parser.Class;
 import parser.Comment;
 import parser.CompilationUnit;
 import parser.Constructor;
+import parser.Do;
 import parser.ExecutableReference;
 import parser.FieldRead;
 import parser.FieldReference;
@@ -38,22 +42,27 @@ import parser.UnaryOperator;
 import parser.VariableRead;
 import parser.VariableWrite;
 import parser.While;
+import workers.Worker;
 import parser.IBasicNode;
 import parser.IExpression;
 import parser.IStatement;
 
 public class FindPattern implements Visitor {
-	List<IBasicNode> patternsFound;
+	CopyOnWriteArrayList<IBasicNode> patternsFound;
 	HashMap<String, List<IBasicNode>> patternsToFind;
+	ExecutorService executor;
+	
 	
 	public FindPattern(HashMap<String, List<IBasicNode>> patternsToFind) {
-		this.patternsFound = new ArrayList<IBasicNode>();
+		this.patternsFound = new CopyOnWriteArrayList<IBasicNode>();
 		this.patternsToFind = patternsToFind;
+		executor = Executors.newFixedThreadPool(10);
 	}
 	
 	public FindPattern() {
-		this.patternsFound = new ArrayList<IBasicNode>();
+		this.patternsFound = new CopyOnWriteArrayList<IBasicNode>();
 		this.patternsToFind = new HashMap<>();
+		executor = Executors.newFixedThreadPool(10);
 		
 		List<IBasicNode> patterns = new ArrayList<>();
 		patterns.add(new Root());
@@ -473,19 +482,24 @@ public class FindPattern implements Visitor {
 			fw.getType().accept(this);
 	}
 	
+	@Override
+	public void visit(Do doNode) {
+		findPatterns(doNode);
+		
+		if(doNode.getBody() != null)
+			doNode.getBody().accept(this);
+		
+		if(doNode.getCondition() != null)
+			doNode.getCondition().accept(this);
+	}
+	
 	public void findPatterns(IBasicNode node) {
 
 		if(patternsToFind.containsKey(node.getNodeType())) {
 			List<IBasicNode> patterns = patternsToFind.get(node.getNodeType());
 			
-			for(int i = 0; i < patterns.size(); i++) {
-				PatternMatcher matcher = new PatternMatcher(patterns.get(i));
-				
-				node.accept(matcher);				
-				
-				if(matcher.isMatch())
-					patternsFound.add(node);
-			}
+			for(int i = 0; i < patterns.size(); i++)
+				executor.submit(new Worker(node, patterns.get(i), patternsFound));
 		}
 	}
 }

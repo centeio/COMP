@@ -1,12 +1,12 @@
-Pattern P1 Exhaustive
-x = @x * @x;
-
-Pattern P2 Exhaustive
-if(@x == @y){
-a=3;
-}
-
-Pattern P2 Exhaustive
-if(@x){
-a=3;
+Pattern P1 Exhaustive
+x = @x * @x;
+
+Pattern P2 Exhaustive
+if(@x == @y){
+a=3;
+}
+
+Pattern P2 Exhaustive
+if(@x){
+a=3;
 }

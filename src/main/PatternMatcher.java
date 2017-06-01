@@ -85,7 +85,7 @@ public class PatternMatcher implements Visitor {
 		int j = 0;
 		boolean ignore = false;
 		
-		for (int i = 0; i < block.getStatements().size(); i++) {
+		for (int i = 0; i < block.getStatements().size() && j < p.getStatements().size(); i++) {
 			pattern = p.getStatements().get(j);
 			
 			if(pattern instanceof Invocation && ((Invocation) pattern).getExecutable().getName().equals("ignore")){
@@ -511,7 +511,7 @@ public class PatternMatcher implements Visitor {
 			return;
 		
 		//Compare dimensions
-		if(p.getDimensions() != null && na.getDimensions() != null){
+		if(p.getDimensions() != null && na.getDimensions() != null) {
 			if(p.getDimensions().size() != na.getDimensions().size()){
 				match = false;
 				return;
@@ -638,5 +638,12 @@ public class PatternMatcher implements Visitor {
 			System.out.println(this.pattern.getClass().getName());
 		}
 		return match;
+	}
+
+
+	@Override
+	public void visit(Do do1) {
+		// TODO Auto-generated method stub
+		
 	}
 }

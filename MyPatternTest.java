@@ -24,4 +24,19 @@ public class MyPattern{
     void P5(){
 	a0+a0;
     }
+    void P6(){
+	if(a0 == a1) {
+            a1--; a0++;
+        }
+    }
+    void P7(){
+	if(a1) {
+            a0--; a0++;
+        }
+    }
+    void P8(){
+	do {
+     	    ignore();
+	} while (a0);
+    }
 }
