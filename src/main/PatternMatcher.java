@@ -2,17 +2,21 @@ package main;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import parser.*;
 import parser.Class;
 
 public class PatternMatcher implements Visitor {
 	IBasicNode pattern;
+	HashMap<String,String> functions_found;
 	HashMap<String,String> variables_found;
 	boolean match;
 
 	public PatternMatcher(IBasicNode pattern) {
 		this.pattern = pattern;
+		this.functions_found = new HashMap<String,String>();
 		this.variables_found = new HashMap<String,String>();
 		this.match = true;
 	}
@@ -150,9 +154,19 @@ public class PatternMatcher implements Visitor {
 		}
 
 		ExecutableReference p = (ExecutableReference) pattern;
-
+		
 		//Compare name
-		if(!p.getName().equals(er.getName())){
+		Pattern pat = Pattern.compile("f\\d*");
+		Matcher m = pat.matcher(p.getName());
+		
+		if(m.matches()){
+			if(functions_found.get(p.getName()) == null){
+				functions_found.put(p.getName(),er.getName());
+			}else if(!functions_found.get(p.getName()).equals(er.getName())){
+				match = false;
+				return;
+			}		
+		}else if(!p.getName().equals(er.getName())){
 			match = false;
 			return;
 		}
@@ -175,7 +189,7 @@ public class PatternMatcher implements Visitor {
 			return;
 		}
 
-		for(int i = 0; i < p.getParameters().size(); i++){
+		for(int i = 0; i < p.getParameters().size(); i++){			
 			pattern = p.getParameters().get(i);
 			er.getParameters().get(i).accept(this);
 			if(!match)
@@ -199,7 +213,7 @@ public class PatternMatcher implements Visitor {
 		Parameter p = (Parameter) pattern;
 
 		//Compare name
-		if(!p.getName().equals(parameter.getName())){
+		if(!p.getName().equals("null") && !p.getName().equals(parameter.getName())){
 			match = false;
 			return;
 		}
@@ -326,7 +340,7 @@ public class PatternMatcher implements Visitor {
 
 		TypeReference p = (TypeReference) pattern;
 		
-		if(!tr.getName().equals(p.getName()) && p.getName() != null)
+		if(p.getName() != null && !tr.getName().equals(p.getName()))
 			match = false;
 	}
 
@@ -619,6 +633,26 @@ public class PatternMatcher implements Visitor {
 		// TODO vistit FieldWrite
 		System.out.println("visit FieldWrite stub");
 	}
+	
+	@Override
+	public void visit(Do do1) {
+		if(!(pattern instanceof Do)){
+			match = false;
+			return;
+		}
+
+		Do p = (Do) pattern;
+		
+		//Compare condition
+		pattern = p.getCondition();
+		do1.getCondition().accept(this);
+		if(!match)
+			return;
+		
+		//Compare body
+		pattern = p.getBody();
+		do1.getBody().accept(this);
+	}
 
 	public boolean isMatch() {
 		return match;
@@ -628,22 +662,18 @@ public class PatternMatcher implements Visitor {
 		this.match = true;
 		this.pattern = pattern;
 		variables_found.clear();
+		functions_found.clear();
 		
 		code.accept(this);
-
-		System.out.println(this.variables_found.toString());
 		
 		//TODO This is for debug purposes
-		if(!match){
-			System.out.println(this.pattern.getClass().getName());
-		}
-		return match;
-	}
-
-
-	@Override
-	public void visit(Do do1) {
-		// TODO Auto-generated method stub
+		System.out.println(this.variables_found.toString());
+		System.out.println(this.functions_found.toString());
 		
+		if(!match){
+			System.out.println(this.pattern.getClass().getSimpleName());
+		}
+		
+		return match;
 	}
 }
