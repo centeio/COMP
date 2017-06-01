@@ -1,6 +1,7 @@
 package main;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 import parser.*;
 import parser.Class;
@@ -496,8 +497,54 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(NewArray na) {
-		// TODO visit NewArray
-		System.out.println("visit NewArray stub");
+		if(!(pattern instanceof NewArray)){
+			match = false;
+			return;
+		}
+
+		NewArray p = (NewArray) pattern;
+		
+		//Compare type
+		pattern = p.getType();
+		na.getType().accept(this);
+		if(!match)
+			return;
+		
+		//Compare dimensions
+		if(p.getDimensions() != null && na.getDimensions() != null){
+			if(p.getDimensions().size() != na.getDimensions().size()){
+				match = false;
+				return;
+			}
+			Iterator<IExpression> na_iterator = na.getDimensions().iterator();
+			for (Iterator<IExpression> pattern_iterator = p.getDimensions().iterator(); pattern_iterator.hasNext() && na_iterator.hasNext();) {
+				pattern = pattern_iterator.next();
+				na_iterator.next().accept(this);
+				
+				if(!match)
+					return;
+			}
+		}
+		
+		//Compare Elements
+		else if(p.getElements() != null && na.getElements() != null){
+			if(p.getElements().size() != na.getElements().size()){
+				match = false;
+				return;
+			}
+			Iterator<IExpression> na_iterator = na.getElements().iterator();
+			for (Iterator<IExpression> pattern_iterator = p.getElements().iterator(); pattern_iterator.hasNext() && na_iterator.hasNext();) {
+				pattern = pattern_iterator.next();
+				na_iterator.next().accept(this);
+				
+				if(!match)
+					return;
+			}
+		}
+		//One has elements and the other dimensions
+		else{
+			match = false;
+		}
 	}
 
 	@Override
