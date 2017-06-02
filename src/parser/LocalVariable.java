@@ -42,4 +42,68 @@ public class LocalVariable extends Statement {
 	public void accept(Visitor v) {
 		v.visit(this);
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((init == null) ? 0 : init.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof LocalVariable)) {
+			if(obj instanceof LocalVariableReference){
+				LocalVariableReference other = (LocalVariableReference) obj;
+				if (name == null) {
+					if (other.name != null) {
+						return false;
+					}
+				} else if (!name.equals(other.name)) {
+					return false;
+				}
+				if (type == null) {
+					if (other.getType() != null) {
+						return false;
+					}
+				} else if (!type.equals(other.getType())) {
+					return false;
+				}
+				return true;
+			}
+			return false;
+		}
+		LocalVariable other = (LocalVariable) obj;
+		if (init == null) {
+			if (other.init != null) {
+				return false;
+			}
+		} else if (!init.equals(other.init)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (type == null) {
+			if (other.type != null) {
+				return false;
+			}
+		} else if (!type.equals(other.type)) {
+			return false;
+		}
+		return true;
+	}
 }

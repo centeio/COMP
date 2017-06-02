@@ -10,6 +10,11 @@ public abstract class BasicNode implements IBasicNode {
     public String getNodeType() { return nodetype; }
     public String getLocation() { return location; }
     public List<Comment> getComments() { return comments; }
+    
+    @Override
+	public String toString() {
+		return toString("")+"\n";
+	}
 }
 
 

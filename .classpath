@@ -3,7 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="gson-2.8.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Carolina/Documents/FEUP/3A/2S/COMP/COMP/spoon2ast.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="spoon2ast.jar"/>
 	<classpathentry kind="output" path="bin"/>

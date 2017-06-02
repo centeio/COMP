@@ -34,7 +34,7 @@ public class PatternMatchingTests {
 		patternMethods = parser.parse(patternJson).getCompilationUnits().get(0).getTypes().get(0).getMembers();
 	}
 	
-	/*@Test
+	@Test
 	public void compareLocalVariables() throws IOException {
 		start();
 		
@@ -74,10 +74,10 @@ public class PatternMatchingTests {
         
         assertFalse(pm.compare(if1,pattern6));
         
-        //assertTrue(pm.compare(if1,pattern7));
+        assertTrue(pm.compare(if1,pattern7));
 
         assertFalse(pm.compare(if1,for1));
-	}*/
+	}
 	
 	@Test
 	public void compareFor() throws IOException {
@@ -103,7 +103,7 @@ public class PatternMatchingTests {
         assertFalse(pm.compare(for1,lv1));
 	}
 	
-	/*@Test
+	@Test
 	public void compareWhile() throws IOException {
 		start();
 		
@@ -123,11 +123,11 @@ public class PatternMatchingTests {
         
         assertTrue(pm.compare(pattern8,pattern8));
         
-        //assertTrue(pm.compare(doWhile1,pattern8));
+        assertTrue(pm.compare(doWhile1,pattern8));
         
         assertTrue(pm.compare(doWhile1,pattern9));
         
         assertFalse(pm.compare(while1,pattern8));
-	}*/
+	}
 
 }

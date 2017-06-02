@@ -11,13 +11,13 @@ import parser.Class;
 public class PatternMatcher implements Visitor {
 	IBasicNode pattern;
 	HashMap<String,String> functions_found;
-	HashMap<String,String> variables_found;
+	HashMap<String,IBasicNode> variables_found;
 	boolean match;
 
 	public PatternMatcher(IBasicNode pattern) {
 		this.pattern = pattern;
 		this.functions_found = new HashMap<String,String>();
-		this.variables_found = new HashMap<String,String>();
+		this.variables_found = new HashMap<String,IBasicNode>();
 		this.match = true;
 	}
 
@@ -313,10 +313,10 @@ public class PatternMatcher implements Visitor {
 
 		//Check if variables are consistent
 		if(this.variables_found.get(p.getName()) == null){
-			this.variables_found.put(p.getName(), lv.getName());
+			this.variables_found.put(p.getName(), lv);
 		}
 		else{
-			if(!this.variables_found.get(p.getName()).equals(lv.getName())){
+			if(!variables_found.get(p.getName()).equals(lv)){
 				match = false;
 				return;
 			}
@@ -354,10 +354,10 @@ public class PatternMatcher implements Visitor {
 		Reference p = (Reference) pattern;
 		//Check if variables are consistent
 		if(this.variables_found.get(p.getName()) == null){
-			this.variables_found.put(p.getName(), lvr.getName());
+			this.variables_found.put(p.getName(), lvr);
 		}
 		else{
-			if(!this.variables_found.get(p.getName()).equals(lvr.getName())){
+			if(!variables_found.get(p.getName()).equals(lvr)){
 				match = false;
 				return;
 			}
@@ -367,6 +367,22 @@ public class PatternMatcher implements Visitor {
 	@Override
 	public void visit(BinaryOperator bo) {
 		if(!(pattern instanceof BinaryOperator)){
+			if(pattern instanceof FieldRead){
+				FieldRead p = (FieldRead) pattern;
+				
+				//Check if variables are consistent
+				if(this.variables_found.get(p.getVar().getName()) == null){
+					this.variables_found.put(p.getVar().getName(), bo);
+				}
+				else{
+					if(!variables_found.get(p.getVar().getName()).equals(bo)){
+						match = false;
+						return;
+					}
+				}
+				
+				return;
+			}
 			match = false;
 			return;
 		}
@@ -408,10 +424,10 @@ public class PatternMatcher implements Visitor {
 			Reference p = (Reference) pattern;
 			//Check if variables are consistent
 			if(this.variables_found.get(p.getName()) == null){
-				this.variables_found.put(p.getName(), literal.getValue());
+				this.variables_found.put(p.getName(), literal);
 			}
 			else{
-				if(!this.variables_found.get(p.getName()).equals(literal.getValue())){
+				if(!variables_found.get(p.getName()).equals(literal)){
 					match = false;
 					return;
 				}
@@ -595,24 +611,26 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		// TODO Compared only children. Possibly compare string values?
 
 		FieldRead p = (FieldRead) pattern;
-
+		
 		//Compare type
 		pattern = p.getType();
-		if(!(pattern instanceof NullNode)){
+		if(!(pattern instanceof NullNode || fr.getType() == null)){
 			fr.getType().accept(this);
 			if(!match)
 				return;
 		}
 
 		//Compare target
-		pattern = p.getTarget();
-		fr.getTarget().accept(this);
-		if(!match)
-			return;
+		if(p.getTarget() != null && fr.getTarget() != null){
+			pattern = p.getTarget();
+			fr.getTarget().accept(this);
+			if(!match)
+				return;
+		}
 
 		//Compare index
 		pattern = p.getVar();
@@ -740,12 +758,12 @@ public class PatternMatcher implements Visitor {
 		pattern = p.getBody();
 		do1.getBody().accept(this);
 	}
-
-	public boolean isMatch() {
-		return match;
-	}
 	
 	public boolean compare(IBasicNode code, IBasicNode pattern){
+		return compare(code,pattern, false);
+	}
+	
+	public boolean compare(IBasicNode code, IBasicNode pattern, boolean debug){
 		this.match = true;
 		this.pattern = pattern;
 		variables_found.clear();
@@ -753,14 +771,37 @@ public class PatternMatcher implements Visitor {
 		
 		code.accept(this);
 		
-		//TODO This is for debug purposes
-		System.out.println(this.variables_found.toString());
-		System.out.println(this.functions_found.toString());
-		
-		if(!match){
-			System.out.println(this.pattern.getClass().getSimpleName());
+		if(debug){
+			System.out.println("Var found:");
+			System.out.println(this.variables_found.toString());
+	
+			System.out.println("Functions found:");
+			System.out.println(this.functions_found.toString());
+			
+			if(!match){
+				System.out.println(this.pattern.getClass().getSimpleName());
+			}
 		}
 		
 		return match;
+	}
+
+	public boolean isMatch() {
+		return match;
+	}
+
+
+	public HashMap<String, String> getFunctions_found() {
+		return functions_found;
+	}
+
+
+	public HashMap<String, IBasicNode> getVariables_found() {
+		return variables_found;
+	}
+
+
+	public String getPatternClassName() {
+		return pattern.getClass().getSimpleName();
 	}
 }
