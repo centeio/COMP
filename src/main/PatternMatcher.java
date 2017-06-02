@@ -591,14 +591,58 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(FieldRead fr) {
-		// TODO visit FieldRead
-		System.out.println("visit FieldRead stub");
+		if(!(pattern instanceof FieldRead)){
+			match = false;
+			return;
+		}
+		
+		// TODO Compared only children. Possibly compare string values?
+
+		FieldRead p = (FieldRead) pattern;
+
+		//Compare type
+		pattern = p.getType();
+		if(!(pattern instanceof NullNode)){
+			fr.getType().accept(this);
+			if(!match)
+				return;
+		}
+
+		//Compare target
+		pattern = p.getTarget();
+		fr.getTarget().accept(this);
+		if(!match)
+			return;
+
+		//Compare index
+		pattern = p.getVar();
+		fr.getVar().accept(this);
 	}
 
 	@Override
 	public void visit(TypeAccess ta) {
-		// TODO visit TypeAccess
-		System.out.println("visit TypeAccess stub");
+		if(!(pattern instanceof TypeAccess)){
+			match = false;
+			return;
+		}
+		
+		// TODO Compared only children. Possibly compare string values?
+
+		TypeAccess p = (TypeAccess) pattern;
+
+		//Compare type
+		pattern = p.getType();
+		if(!(pattern instanceof NullNode)){
+			ta.getType().accept(this);
+			if(!match)
+				return;
+		}
+
+		//Compare target
+		pattern = p.getTarget();
+		ta.getTarget().accept(this);
+		if(!match)
+			return;
 	}
 
 	@Override
@@ -624,14 +668,57 @@ public class PatternMatcher implements Visitor {
 	
 	@Override
 	public void visit(FieldReference fr) {
-		// TODO visit FieldReference
-		System.out.println("visit FieldReference stub");
+		if(!(pattern instanceof FieldReference)){
+			match = false;
+			return;
+		}
+		
+		// TODO Compared only children. Possibly compare string values?
+
+		FieldReference p = (FieldReference) pattern;
+
+		//Compare type
+		pattern = p.getType();
+		if(!(pattern instanceof NullNode)){
+			fr.getType().accept(this);
+			if(!match)
+				return;
+		}
+
+		//Compare target
+		pattern = p.getDeclarator();
+		if(!(pattern instanceof NullNode)){
+			fr.getType().accept(this);
+			if(!match)
+				return;
+		}
 	}
 
 	@Override
 	public void visit(FieldWrite fw) {
-		// TODO vistit FieldWrite
-		System.out.println("visit FieldWrite stub");
+		if(!(pattern instanceof FieldWrite)){
+			match = false;
+			return;
+		}
+		
+		// TODO Compared only children. Possibly compare string values?
+
+		FieldWrite p = (FieldWrite) pattern;
+
+		//Compare type
+		pattern = p.getType();
+		if(!(pattern instanceof NullNode)){
+			fw.getType().accept(this);
+			if(!match)
+				return;
+		}
+
+		//Compare target
+		pattern = p.getVar();
+		fw.getVar().accept(this);
+		if(!match)
+			return;
+		
 	}
 	
 	@Override
