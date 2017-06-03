@@ -33,6 +33,13 @@ public class Method extends Member {
 			str += "\n" + body.toString(prefix + "  ");
 		}
 		
+		if(comments != null){
+			for (Comment comment : comments) {
+				str += "\n" + prefix + " Comment:\n";
+				str += comment.toString(prefix + "  ");
+			}
+		}
+		
 		return str;
 	}
 	

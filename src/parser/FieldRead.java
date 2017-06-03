@@ -19,6 +19,11 @@ public class FieldRead extends Expression {
     		str += "\n" + var.toString(prefix + "  ");
     	}
     	
+    	if(type != null) {
+    		str += "\n" + prefix + " Type:";
+    		str += "\n" + type.toString(prefix + "  ");
+    	}
+    	
     	return str;
     }
 	

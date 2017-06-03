@@ -9,8 +9,12 @@ public class FieldReference extends Reference {
 	public String toString(String prefix) {
     	String str = prefix + nodetype; 
     	
+    	if(name != null) {
+    		str += "\n" + prefix + " Name: " + name;
+    	}
+    	
     	if(type != null) {
-    		str += "\n" + prefix + " Target:";
+    		str += "\n" + prefix + " Type:";
     		str += "\n" + type.toString(prefix + "  ");
     	}
     	
