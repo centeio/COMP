@@ -12,32 +12,62 @@ public class PatternMatcher implements Visitor {
 	IBasicNode pattern;
 	HashMap<String,String> functions_found;
 	HashMap<String,IBasicNode> variables_found;
+	boolean parcial;
 	boolean match;
 
 	public PatternMatcher(IBasicNode pattern) {
 		this.pattern = pattern;
 		this.functions_found = new HashMap<String,String>();
 		this.variables_found = new HashMap<String,IBasicNode>();
+		this.parcial = false;
 		this.match = true;
 	}
 
 
 	@Override
 	public void visit(Root root) {
-		// TODO visit Root
-		System.out.println("visit Root stub");
+		if(!(pattern instanceof Root)){
+			match = false;
+			return;
+		}
+
+		Root p = (Root) pattern;
+		
+		for (Iterator<CompilationUnit> root_iterator = root.getCompilationUnits().iterator(), pattern_iterator = p.getCompilationUnits().iterator(); root_iterator.hasNext() && pattern_iterator.hasNext();) {
+			CompilationUnit cu = root_iterator.next();
+			pattern = pattern_iterator.next();
+			
+			cu.accept(this);			
+		}
 	}
 
 	@Override
 	public void visit(CompilationUnit cu) {
-		// TODO visit CompilationUnit
-		System.out.println("visit CompilationUnit stub");
+		if(!(pattern instanceof CompilationUnit)){
+			match = false;
+			return;
+		}
+
+		CompilationUnit p = (CompilationUnit) pattern;
+		
+		for (Iterator<Type> root_iterator = cu.getTypes().iterator(), pattern_iterator = p.getTypes().iterator(); root_iterator.hasNext() && pattern_iterator.hasNext();) {
+			Type type = root_iterator.next();
+			pattern = pattern_iterator.next();
+			
+			type.accept(this);			
+		}
 	}
 
 	@Override
 	public void visit(Comment comment) {
-		// TODO visit Comment
-		System.out.println("visit Comment stub");
+		if(!(pattern instanceof Comment)){
+			match = false;
+			return;
+		}
+
+		Comment p = (Comment) pattern;
+		
+		match = (p.getContent().equals(comment.getContent()));
 	}
 
 	@Override
@@ -74,8 +104,26 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(Constructor constructor) {
-		// TODO visit Constructor
-		System.out.println("visit Constructor stub");
+		if(!(pattern instanceof Constructor)){
+			match = false;
+			return;
+		}
+
+		Constructor p = (Constructor) pattern;
+		
+		if(constructor.getParameters() != null) {
+			for (Iterator<Parameter> root_iterator = constructor.getParameters().iterator(), pattern_iterator = p.getParameters().iterator(); root_iterator.hasNext() && pattern_iterator.hasNext();) {
+				Parameter parameter = root_iterator.next();
+				pattern = pattern_iterator.next();
+				
+				parameter.accept(this);			
+			}
+		}
+		
+		if(constructor.getBody() != null) {
+			pattern = p.getBody();
+			constructor.getBody().accept(this);
+		}
 	}
 
 	@Override
@@ -89,11 +137,14 @@ public class PatternMatcher implements Visitor {
 		int j = 0;
 		boolean ignore = false;
 		
+		if(parcial){
+			ignore = true;
+		}
+		
 		for (int i = 0; i < block.getStatements().size() && j < p.getStatements().size(); i++) {
 			pattern = p.getStatements().get(j);
 			
 			if(pattern instanceof Invocation && ((Invocation) pattern).getExecutable().getName().equals("ignore")){
-				//TODO: implement ignore (now it just doesn't compare)
 				ignore = true;
 				
 				j++;
@@ -110,10 +161,15 @@ public class PatternMatcher implements Visitor {
 					break;
 				}
 				else if(match){
-					ignore = false;
+					if(!parcial){
+						ignore = false;
+					}
 					j++;
 				}
 			}
+		}
+		if(j != p.getStatements().size()){
+			match = false;
 		}
 	}
 
@@ -199,8 +255,35 @@ public class PatternMatcher implements Visitor {
 
 	@Override
 	public void visit(Method method) {
-		// TODO visit Method
-		System.out.println("visit Method stub");
+		if(!(pattern instanceof Method)){
+			match = false;
+			return;
+		}
+
+		Method p = (Method) pattern;
+		
+		if(method.getName() != null)
+			match = method.getName().equals(p.getName());
+		
+		if(method.getType() != null) {
+			pattern = p.getType();
+			method.getType().accept(this);
+		}
+		
+		
+		if(method.getParameters() != null) {
+			for (Iterator<Parameter> root_iterator = method.getParameters().iterator(), pattern_iterator = p.getParameters().iterator(); root_iterator.hasNext() && pattern_iterator.hasNext();) {
+				Parameter parameter = root_iterator.next();
+				pattern = pattern_iterator.next();
+				
+				parameter.accept(this);			
+			}
+		}
+		
+		if(method.getBody() != null) {
+			pattern = p.getBody();
+			method.getBody().accept(this);
+		}
 	}
 
 	@Override
@@ -464,8 +547,7 @@ public class PatternMatcher implements Visitor {
 		}
 
 		For p = (For) pattern;
-
-		//TODO: Exhaustive search done only
+		
 		//Compare init
 		if(p.getInit().size() != f.getInit().size()){
 			match = false;

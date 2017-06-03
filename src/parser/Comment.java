@@ -8,7 +8,20 @@ public class Comment extends BasicNode {
 	String position;
 	
 	public String toString(String prefix) {
-		return prefix + nodetype;
+		String str = prefix + nodetype;
+		
+		if(type != null)
+			str += "\n" + prefix + " Type:\n" + prefix + "  " + type;
+		
+		if(content != null) {
+			str += "\n" + prefix + " Content:\n" + prefix + "  " + content;
+		}
+		
+		if(position != null) {
+			str += "\n" + prefix + " Position:\n" + prefix + "  " + position;
+		}
+		
+		return str;
 	}
 	
 	public String getType() { return type; }
