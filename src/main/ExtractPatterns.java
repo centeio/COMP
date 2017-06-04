@@ -197,7 +197,7 @@ public class ExtractPatterns implements Visitor {
 				root = ((Block) method.getBody()).getStatements().get(0);
 			}
 
-			if(!patterns.containsKey(method.getBody().getNodeType()))
+			if(!patterns.containsKey(root.getNodeType()))
 				patterns.put(root.getNodeType(), new ArrayList<Pattern>());
 			patterns.get(root.getNodeType()).add(new Pattern(method.getName(), root, parcial));
 		}
