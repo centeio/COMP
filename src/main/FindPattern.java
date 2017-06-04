@@ -517,14 +517,9 @@ public class FindPattern implements Visitor {
 			for(int i = 0; i < patterns.size(); i++) {
 				PatternMatcher matcher = new PatternMatcher(patterns.get(i).getRoot(), patterns.get(i).isParcial());
 				
-				System.out.println("------------------------------------------------------------");
-				System.out.println(node.toString());
-				System.out.println(patterns.get(i).toString());
-				System.out.println("------------------------------------------------------------");
-				
 				node.accept(matcher);
 				if(matcher.isMatch())
-					patternsFound.add(node);
+					patternsFound.add(patterns.get(i).getRoot());
 				//executor.submit(new Worker(node, patterns.get(i).getRoot(), patterns.get(i).isParcial(), patternsFound));
 			}
 		}

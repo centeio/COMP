@@ -25,11 +25,11 @@ public class Test {
 	    } while (y < x);
 
 	    for(int i = 0; i < x; i++) {
-                foo(x);
-            }
+            foo(x);
+        }
 
 	    for(int i = 0; i < y; i++) {
-                sth(y);
-            }
+            sth(y);
+        }
     }
 }

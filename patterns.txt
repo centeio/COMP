@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Pattern P1 Exhaustiveignorelong x = 0;
 x = @x * @x;
 
@@ -19,4 +20,7 @@ a= i+1;
 Pattern P4 Exhaustive
 	do{a++;}while(true)
 
-Pattern P1 Exhaustiveif(@x == @y) {    @x--; @x++;}
+Pattern P1 Exhaustiveif(@x == @y) {    @x--; @x++;}
+=======
+Pattern P1 Exhaustiveignoreint @x = 10;if(@x == @y) {    @x--; @x++;}ignorePattern P2 Exhaustiveignoreint @x = 10;ignorefor(int i = 0; i < @x; i++) {    @y(@x);}ignorePattern P3 Exhaustiveif(@x){@a=3;}for(int i=0; i<@n; i++){ignore@a= i+1;}Pattern P4 Exhaustive	do{@a++;}while(true)Pattern P5 Exhaustiveif(@x == @y) {    @x--; @x++;}
+>>>>>>> master
