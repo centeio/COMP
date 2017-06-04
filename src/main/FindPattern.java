@@ -531,13 +531,13 @@ public class FindPattern implements Visitor {
 	}
 	
 	public void awaitTermination() {
-		try {
+		/*try {
 			executor.awaitTermination(2, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		executor.shutdown();
+		executor.shutdown();*/
 		printMatches();
 	}
 	
