@@ -2,6 +2,8 @@ package main;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -158,17 +160,33 @@ public class PatternMatcher implements Visitor {
 			else{
 				pattern = null;
 			}
-			IStatement statement = block.getStatements().get(i);
 
-			statement.accept(this);
+			PatternMatcher pm = new PatternMatcher(null, parcial);
+			boolean aux_match = pm.compare(block.getStatements().get(i), pattern);
 
-			if(!match && ignore){
+			if(!aux_match && ignore){
+
 				match = true;
 			}
-			else if(!match && !ignore){
+			else if(!aux_match && !ignore){
+				match = false;
 				break;
 			}
 			else if(match){
+				//Merge Variables Found
+				Iterator<Entry<String, IBasicNode>> it = pm.variables_found.entrySet().iterator();
+			    while (it.hasNext()) {
+			        Entry<String, IBasicNode> pair = (Entry<String, IBasicNode>)it.next();
+			        if(variables_found.containsKey(pair.getKey())){
+			        	if(!variables_found.get(pair.getKey()).equals(pair.getValue())){
+			        		match = false;
+			        		return;
+			        	}
+			        }else{
+			        	variables_found.put(pair.getKey(), pair.getValue());
+			        }
+			    }
+
 				if(!parcial){
 					ignore = false;
 				}
@@ -178,6 +196,7 @@ public class PatternMatcher implements Visitor {
 		}
 		if(j != p.getStatements().size()){
 			IBasicNode tmp = p.getStatements().get(j);
+			
 			if(j == p.getStatements().size() - 1 && (tmp instanceof Invocation && ((Invocation) tmp).getExecutable().getName().equals("ignore"))){
 				match = true;
 			}
@@ -226,10 +245,11 @@ public class PatternMatcher implements Visitor {
 		ExecutableReference p = (ExecutableReference) pattern;
 
 		//Compare name
-		Pattern pat = Pattern.compile("f\\d*");
+		Pattern pat = Pattern.compile("a\\d*");
 		Matcher m = pat.matcher(p.getName());
 
 		if(m.matches()){
+
 			if(functions_found.get(p.getName()) == null){
 				functions_found.put(p.getName(),er.getName());
 			}else if(!functions_found.get(p.getName()).equals(er.getName())){

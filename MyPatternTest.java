@@ -46,7 +46,7 @@ public class MyPattern{
 	}
 	void P10(String Exhaustive){
 		for(int i = 0; i < a0; i++) {
-			f1(a0);
+			a1(a0);
 		}
 	}
 	void P11(String Parcial){
@@ -58,6 +58,24 @@ public class MyPattern{
 			for(int i = 0; i < a0; i++) {
 				a2[i] = a0 + 1;
 				ignore();
+			}
+		}
+	}
+	void P12(String Exhaustive){
+		{
+			ignore();
+			int a0 = 10;
+			ignore();
+			for(int i = 0;i<a0;i++){
+				a1(a0);
+			}
+			ignore();
+		}
+	}
+	void P13(String Parcial){
+		{
+			for(int i = 0;i<a0;i++){
+				a1(a0);
 			}
 		}
 	}

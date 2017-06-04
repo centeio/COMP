@@ -142,10 +142,18 @@ public class PatternMatchingTests {
 		start();
 		
 		IStatement pattern11 = ((Block) ((Method) patternMethods.get(11)).getBody()).getStatements().get(0);
+		IStatement pattern12 = ((Block) ((Method) patternMethods.get(12)).getBody()).getStatements().get(0);
+		IStatement pattern13 = ((Block) ((Method) patternMethods.get(13)).getBody()).getStatements().get(0);
 
 		PatternMatcher pm = new PatternMatcher(null, true);
         
         assertTrue(pm.compare(test_body,pattern11));
+        
+        assertTrue(pm.compare(test_body,pattern13, true));
+        
+        pm = new PatternMatcher(null, false);
+        
+        assertTrue(pm.compare(test_body,pattern12));
 	}
 
 }
