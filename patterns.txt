@@ -1,8 +1,8 @@
-Pattern P1 Exhaustiveignore
+Pattern P1 Exhaustiveignorelong x = 0;
 x = @x * @x;
 
-Pattern P2 Exhaustive
-if(@x == @y){ignore
+Pattern P2 Exhaustive
+if(@x == @y){int a;ignore
 a=3;
 @z();
 }

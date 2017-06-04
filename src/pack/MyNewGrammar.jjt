@@ -156,8 +156,9 @@ void Call() : {} {
   	< PL > { writer.print("(");} [Expression()] < PR > { writer.print(")");}
 }
 
-void Pattern() : {} {  
-  If() | While() | DoWhile() | For() | Definition() | Ignore() | Operation()
+void Pattern() : {} {
+  { System.out.println("Nova subarvore"); }  
+  (    If() | While() | DoWhile() | For() | Ignore() | Operation())
 }
 
 void Search() : {Token t;} {
@@ -206,7 +207,7 @@ void ForCondition() : { } {
  < PL > { writer.print("("); } [(Var() | Temp()) [Assignment()] | Definition() ]
  < SEMICOL > { writer.print(";");}
  [(Expression() [CompareOp() Expression()] | < BOOLEANVALUE > )]
- < SEMICOL > { writer.print(";");} [Operation()] < PR >  { writer.print(")"); }  
+ < SEMICOL > { writer.print(";");} [OperationAux()] < PR >  { writer.print(")"); }  
 }
 
 void Block() : { } {
@@ -279,8 +280,7 @@ void Parcel() : {Token t;} {
 
 void Definition() : {} {
   { System.out.println("Definition");  }
-	Type() (Var() | Temp()) [Assignment()]
-
+	(Type() (Var() | Temp()) [Assignment()] )
 }
 
 void Type() : {Token t;} {
@@ -348,7 +348,12 @@ void Temp() : {Token t;} {
 
 void Operation() : {} {
   { System.out.println("Operation");  }
-	((Temp() | Var()) (Assignment() | Call() | AritmeticOp())) [< SEMICOL > { writer.println(";"); }]
+	 (OperationAux()|Definition()) < SEMICOL > { writer.println(";"); }
+}
+
+void OperationAux() : {} {
+  { System.out.println("Operation");  }
+	((Temp() | Var()) (Assignment() | Call() | AritmeticOp()))
 }
 
 void Assignment() : {} {
