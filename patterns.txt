@@ -1,20 +1,1 @@
-Pattern P1 Exhaustiveignore
-x = @x * @x;
-
-Pattern P2 Exhaustive
-if(@x == @y){ignore
-a=3;
-@z();
-}
-
-Pattern P3 Exhaustive
-if(@x){
-a=3;
-}
-for(int i=0; i<@n; i++){
-ignore
-a= i+1;
-}
-
-Pattern P4 Exhaustive
-	do{a++;}while(true)
+Pattern P1 Exhaustiveif(@x == @y) {    @x--; @x++;}
