@@ -127,6 +127,8 @@ TOKEN : /* IDENTIFIERS */
 	< PR: ")" > |
 	< BL: "{" > |
 	< BR: "}" > |
+	< BRL: "[" > |
+	< BRR: "]" > |
 	< EQ : "="> |
 	< MINUS : "-"> |
 	< MMINUS : "--"> |
@@ -204,7 +206,7 @@ void For() :  {} {
 
 
 void ForCondition() : { } {
- < PL > { writer.print("("); } [(Var() | Temp()) [Assignment()] | Definition() ]
+ < PL > { writer.print("("); } [Parcel() [Assignment()] | Definition() ]
  < SEMICOL > { writer.print(";");}
  [(Expression() [CompareOp() Expression()] | < BOOLEANVALUE > )]
  < SEMICOL > { writer.print(";");} [OperationAux()] < PR >  { writer.print(")"); }  
@@ -267,20 +269,26 @@ void Var() : {Token t;} {
 }
 
 void Expression() : {} {
-  { System.out.println("Expression");  }
-  
-	< PL > { writer.print("("); } Expression() Op() Expression() < PR >  { writer.print(")"); } | Parcel()
-
+  { System.out.println("Expression");  }  
+	< PL > { writer.print("("); } Expression() Op() Expression() < PR >  { writer.print(")"); } | Parcel() | Int() 
 	
 }
 
 void Parcel() : {Token t;} {
-	Var() | Int() | Temp()
+	(Var() | Temp()) [Array()]  
+}
+
+void Array() : { } {
+  < BRL > { writer.print("[");} Expression() [AritmeticOp()] < BRR > { writer.print("]");}
+}
+
+void ArrayDeclaration() : { } {
+  < BRL > { writer.print("[");} [Expression() [AritmeticOp()]] < BRR > { writer.print("]");}
 }
 
 void Definition() : {} {
   { System.out.println("Definition");  }
-	(Type() (Var() | Temp()) [Assignment()] )
+	(Type() (Var()|Temp()) [ArrayDeclaration()] [Assignment()] )
 }
 
 void Type() : {Token t;} {
@@ -353,7 +361,7 @@ void Operation() : {} {
 
 void OperationAux() : {} {
   { System.out.println("Operation");  }
-	((Temp() | Var()) (Assignment() | Call() | AritmeticOp()))
+	(Parcel() (Assignment() | Call() | AritmeticOp()))
 }
 
 void Assignment() : {} {

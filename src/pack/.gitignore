@@ -44,3 +44,5 @@
 /ASTInc.java
 /ASTBool.java
 /ASTOperationAux.java
+/ASTArray.java
+/ASTArrayDeclaration.java
