@@ -30,10 +30,8 @@ public class Parser {
 		
 		try{
 			Root root = gson.fromJson(jsonString, Root.class);
-			//System.out.println(root.toString(""));
 			return root;
 		} catch(Exception e) {
-			
 			e.printStackTrace();
 			return null;
 		}
