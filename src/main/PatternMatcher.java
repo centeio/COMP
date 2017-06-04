@@ -32,11 +32,11 @@ public class PatternMatcher implements Visitor {
 		}
 
 		Root p = (Root) pattern;
-		
+
 		for (Iterator<CompilationUnit> root_iterator = root.getCompilationUnits().iterator(), pattern_iterator = p.getCompilationUnits().iterator(); root_iterator.hasNext() && pattern_iterator.hasNext();) {
 			CompilationUnit cu = root_iterator.next();
 			pattern = pattern_iterator.next();
-			
+
 			cu.accept(this);			
 		}
 	}
@@ -49,11 +49,11 @@ public class PatternMatcher implements Visitor {
 		}
 
 		CompilationUnit p = (CompilationUnit) pattern;
-		
+
 		for (Iterator<Type> root_iterator = cu.getTypes().iterator(), pattern_iterator = p.getTypes().iterator(); root_iterator.hasNext() && pattern_iterator.hasNext();) {
 			Type type = root_iterator.next();
 			pattern = pattern_iterator.next();
-			
+
 			type.accept(this);			
 		}
 	}
@@ -66,7 +66,7 @@ public class PatternMatcher implements Visitor {
 		}
 
 		Comment p = (Comment) pattern;
-		
+
 		match = (p.getContent().equals(comment.getContent()));
 	}
 
@@ -80,10 +80,12 @@ public class PatternMatcher implements Visitor {
 		ArrayRead p = (ArrayRead) pattern;
 
 		//Compare Type
-		pattern = p.getType();
-		ar.getType().accept(this);
-		if(!match)
-			return;
+		if(!(ar.getType() instanceof NullNode || p.getType() instanceof NullNode)){ 
+			pattern = p.getType();
+			ar.getType().accept(this);
+			if(!match)
+				return;
+		}
 
 		//Compare Target
 		pattern = p.getTarget();
@@ -93,7 +95,7 @@ public class PatternMatcher implements Visitor {
 
 		//Compare Index
 		pattern = p.getIndex();
-		ar.getIndex().accept(this);	
+		ar.getIndex().accept(this);
 	}
 
 	@Override
@@ -110,16 +112,16 @@ public class PatternMatcher implements Visitor {
 		}
 
 		Constructor p = (Constructor) pattern;
-		
+
 		if(constructor.getParameters() != null) {
 			for (Iterator<Parameter> root_iterator = constructor.getParameters().iterator(), pattern_iterator = p.getParameters().iterator(); root_iterator.hasNext() && pattern_iterator.hasNext();) {
 				Parameter parameter = root_iterator.next();
 				pattern = pattern_iterator.next();
-				
+
 				parameter.accept(this);			
 			}
 		}
-		
+
 		if(constructor.getBody() != null) {
 			pattern = p.getBody();
 			constructor.getBody().accept(this);
@@ -136,40 +138,51 @@ public class PatternMatcher implements Visitor {
 		Block p = (Block) pattern;
 		int j = 0;
 		boolean ignore = false;
-		
+
 		if(parcial){
 			ignore = true;
 		}
-		
+
 		for (int i = 0; i < block.getStatements().size() && j < p.getStatements().size(); i++) {
 			pattern = p.getStatements().get(j);
-			
+
 			if(pattern instanceof Invocation && ((Invocation) pattern).getExecutable().getName().equals("ignore")){
 				ignore = true;
-				
+
 				j++;
 			}
-			else{
-				IStatement statement = block.getStatements().get(i);
-	
-				statement.accept(this);
-				
-				if(!match && ignore){
-					match = true;
-				}
-				else if(!match && !ignore){
-					break;
-				}
-				else if(match){
-					if(!parcial){
-						ignore = false;
-					}
-					j++;
-				}
+
+			if(j < p.getStatements().size()){
+				pattern = p.getStatements().get(j);
 			}
+			else{
+				pattern = null;
+			}
+			IStatement statement = block.getStatements().get(i);
+
+			statement.accept(this);
+
+			if(!match && ignore){
+				match = true;
+			}
+			else if(!match && !ignore){
+				break;
+			}
+			else if(match){
+				if(!parcial){
+					ignore = false;
+				}
+				j++;
+			}
+
 		}
 		if(j != p.getStatements().size()){
-			match = false;
+			IBasicNode tmp = p.getStatements().get(j);
+			if(j == p.getStatements().size() - 1 && (tmp instanceof Invocation && ((Invocation) tmp).getExecutable().getName().equals("ignore"))){
+				match = true;
+			}
+			else
+				match = false;
 		}
 	}
 
@@ -197,8 +210,9 @@ public class PatternMatcher implements Visitor {
 		for(int i = 0; i < p.getArguments().size(); i++){
 			pattern = p.getArguments().get(i);
 			invocation.getArguments().get(i).accept(this);
-			if(!match)
+			if(!match){
 				return;
+			}
 		}
 	}
 
@@ -210,11 +224,11 @@ public class PatternMatcher implements Visitor {
 		}
 
 		ExecutableReference p = (ExecutableReference) pattern;
-		
+
 		//Compare name
 		Pattern pat = Pattern.compile("f\\d*");
 		Matcher m = pat.matcher(p.getName());
-		
+
 		if(m.matches()){
 			if(functions_found.get(p.getName()) == null){
 				functions_found.put(p.getName(),er.getName());
@@ -248,8 +262,10 @@ public class PatternMatcher implements Visitor {
 		for(int i = 0; i < p.getParameters().size(); i++){			
 			pattern = p.getParameters().get(i);
 			er.getParameters().get(i).accept(this);
-			if(!match)
+
+			if(!match){
 				return;
+			}
 		}
 	}
 
@@ -261,25 +277,25 @@ public class PatternMatcher implements Visitor {
 		}
 
 		Method p = (Method) pattern;
-		
+
 		if(method.getName() != null)
 			match = method.getName().equals(p.getName());
-		
+
 		if(method.getType() != null) {
 			pattern = p.getType();
 			method.getType().accept(this);
 		}
-		
-		
+
+
 		if(method.getParameters() != null) {
 			for (Iterator<Parameter> root_iterator = method.getParameters().iterator(), pattern_iterator = p.getParameters().iterator(); root_iterator.hasNext() && pattern_iterator.hasNext();) {
 				Parameter parameter = root_iterator.next();
 				pattern = pattern_iterator.next();
-				
+
 				parameter.accept(this);			
 			}
 		}
-		
+
 		if(method.getBody() != null) {
 			pattern = p.getBody();
 			method.getBody().accept(this);
@@ -296,7 +312,7 @@ public class PatternMatcher implements Visitor {
 		Parameter p = (Parameter) pattern;
 
 		//Compare name
-		if(!p.getName().equals("null") && !p.getName().equals(parameter.getName())){
+		if(p.getName() != null && !p.getName().equals("null") && !p.getName().equals(parameter.getName())){
 			match = false;
 			return;
 		}
@@ -351,7 +367,7 @@ public class PatternMatcher implements Visitor {
 		assignment.getType().accept(this);
 		if(!match)
 			return;
-		
+
 		pattern = p.getLhs();
 		assignment.getLhs().accept(this);
 		if(!match)
@@ -409,7 +425,7 @@ public class PatternMatcher implements Visitor {
 		lv.getType().accept(this);
 		if(!match)
 			return;
-		
+
 		pattern = p.getInit();
 		lv.getInit().accept(this);
 	}
@@ -422,7 +438,7 @@ public class PatternMatcher implements Visitor {
 		}
 
 		TypeReference p = (TypeReference) pattern;
-		
+
 		if(p.getName() != null && !tr.getName().equals(p.getName()))
 			match = false;
 	}
@@ -452,7 +468,7 @@ public class PatternMatcher implements Visitor {
 		if(!(pattern instanceof BinaryOperator)){
 			if(pattern instanceof FieldRead){
 				FieldRead p = (FieldRead) pattern;
-				
+
 				//Check if variables are consistent
 				if(this.variables_found.get(p.getVar().getName()) == null){
 					this.variables_found.put(p.getVar().getName(), bo);
@@ -463,7 +479,7 @@ public class PatternMatcher implements Visitor {
 						return;
 					}
 				}
-				
+
 				return;
 			}
 			match = false;
@@ -496,9 +512,9 @@ public class PatternMatcher implements Visitor {
 
 			pattern = ((FieldRead) pattern).getVar();
 		}
-		
+
 		if(pattern instanceof Literal){
-			
+
 			Literal p = (Literal) pattern;
 
 			match = (p.getValue().equals(literal.getValue()));
@@ -547,7 +563,7 @@ public class PatternMatcher implements Visitor {
 		}
 
 		For p = (For) pattern;
-		
+
 		//Compare init
 		if(p.getInit().size() != f.getInit().size()){
 			match = false;
@@ -556,7 +572,7 @@ public class PatternMatcher implements Visitor {
 
 		for (int i = 0; i < p.getInit().size(); i++) {
 			pattern = p.getInit().get(i);
-			
+
 			f.getInit().get(i).accept(this);
 
 			if(!match)
@@ -615,13 +631,13 @@ public class PatternMatcher implements Visitor {
 		}
 
 		NewArray p = (NewArray) pattern;
-		
+
 		//Compare type
 		pattern = p.getType();
 		na.getType().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare dimensions
 		if(p.getDimensions() != null && na.getDimensions() != null) {
 			if(p.getDimensions().size() != na.getDimensions().size()){
@@ -632,12 +648,12 @@ public class PatternMatcher implements Visitor {
 			for (Iterator<IExpression> pattern_iterator = p.getDimensions().iterator(); pattern_iterator.hasNext() && na_iterator.hasNext();) {
 				pattern = pattern_iterator.next();
 				na_iterator.next().accept(this);
-				
+
 				if(!match)
 					return;
 			}
 		}
-		
+
 		//Compare Elements
 		else if(p.getElements() != null && na.getElements() != null){
 			if(p.getElements().size() != na.getElements().size()){
@@ -648,7 +664,7 @@ public class PatternMatcher implements Visitor {
 			for (Iterator<IExpression> pattern_iterator = p.getElements().iterator(); pattern_iterator.hasNext() && na_iterator.hasNext();) {
 				pattern = pattern_iterator.next();
 				na_iterator.next().accept(this);
-				
+
 				if(!match)
 					return;
 			}
@@ -697,7 +713,7 @@ public class PatternMatcher implements Visitor {
 		// TODO Compared only children. Possibly compare string values?
 
 		FieldRead p = (FieldRead) pattern;
-		
+
 		//Compare type
 		pattern = p.getType();
 		if(!(pattern instanceof NullNode || fr.getType() == null)){
@@ -725,7 +741,7 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		// TODO Compared only children. Possibly compare string values?
 
 		TypeAccess p = (TypeAccess) pattern;
@@ -765,14 +781,14 @@ public class PatternMatcher implements Visitor {
 		pattern = p.getBody();
 		w.getBody().accept(this);
 	}	
-	
+
 	@Override
 	public void visit(FieldReference fr) {
 		if(!(pattern instanceof FieldReference)){
 			match = false;
 			return;
 		}
-		
+
 		// TODO Compared only children. Possibly compare string values?
 
 		FieldReference p = (FieldReference) pattern;
@@ -800,7 +816,7 @@ public class PatternMatcher implements Visitor {
 			match = false;
 			return;
 		}
-		
+
 		// TODO Compared only children. Possibly compare string values?
 
 		FieldWrite p = (FieldWrite) pattern;
@@ -818,9 +834,9 @@ public class PatternMatcher implements Visitor {
 		fw.getVar().accept(this);
 		if(!match)
 			return;
-		
+
 	}
-	
+
 	@Override
 	public void visit(Do do1) {
 		if(!(pattern instanceof Do)){
@@ -829,42 +845,42 @@ public class PatternMatcher implements Visitor {
 		}
 
 		Do p = (Do) pattern;
-		
+
 		//Compare condition
 		pattern = p.getCondition();
 		do1.getCondition().accept(this);
 		if(!match)
 			return;
-		
+
 		//Compare body
 		pattern = p.getBody();
 		do1.getBody().accept(this);
 	}
-	
+
 	public boolean compare(IBasicNode code, IBasicNode pattern){
 		return compare(code,pattern, false);
 	}
-	
+
 	public boolean compare(IBasicNode code, IBasicNode pattern, boolean debug){
 		this.match = true;
 		this.pattern = pattern;
 		variables_found.clear();
 		functions_found.clear();
-		
+
 		code.accept(this);
-		
+
 		if(debug){
 			System.out.println("Var found:");
 			System.out.println(this.variables_found.toString());
-	
+
 			System.out.println("Functions found:");
 			System.out.println(this.functions_found.toString());
-			
+
 			if(!match){
 				System.out.println(this.pattern.getClass().getSimpleName());
 			}
 		}
-		
+
 		return match;
 	}
 

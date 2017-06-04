@@ -2,8 +2,10 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
+import java.io.PrintStream;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -15,7 +17,6 @@ import parser.IStatement;
 import parser.Member;
 import parser.Method;
 import parser.Parser;
-import parser.Root;
 import pt.up.fe.specs.spoon.SpoonASTLauncher;
 
 public class PatternMatchingTests {
@@ -23,8 +24,10 @@ public class PatternMatchingTests {
 	private List<Member> patternMethods = null;
 	
 	void start() throws IOException{
-		Parser parser = new Parser();
+		PrintStream old = System.err;
+		System.setErr(new PrintStream(new BufferedOutputStream(new FileOutputStream("error.txt", true))));
 		
+		Parser parser = new Parser();
 		String testJson = SpoonASTLauncher.java2json(Paths.get("Test.java").toString(), null, false);
 		String patternJson = SpoonASTLauncher.java2json(Paths.get("MyPatternTest.java").toString(), null, false);
 		
@@ -32,6 +35,8 @@ public class PatternMatchingTests {
 
 		test_statements = ((Block) ((Method) m).getBody()).getStatements();
 		patternMethods = parser.parse(patternJson).getCompilationUnits().get(0).getTypes().get(0).getMembers();
+		
+		System.setErr(old);
 	}
 	
 	@Test
