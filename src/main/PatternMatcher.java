@@ -15,11 +15,11 @@ public class PatternMatcher implements Visitor {
 	boolean parcial;
 	boolean match;
 
-	public PatternMatcher(IBasicNode pattern) {
+	public PatternMatcher(IBasicNode pattern, boolean parcial) {
 		this.pattern = pattern;
 		this.functions_found = new HashMap<String,String>();
 		this.variables_found = new HashMap<String,IBasicNode>();
-		this.parcial = false;
+		this.parcial = parcial;
 		this.match = true;
 	}
 

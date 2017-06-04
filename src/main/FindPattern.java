@@ -48,11 +48,11 @@ import parser.IStatement;
 
 public class FindPattern implements Visitor {
 	CopyOnWriteArrayList<IBasicNode> patternsFound;
-	HashMap<String, List<IBasicNode>> patternsToFind;
+	HashMap<String, List<Pattern>> patternsToFind;
 	ExecutorService executor;
 	
 	
-	public FindPattern(HashMap<String, List<IBasicNode>> patternsToFind) {
+	public FindPattern(HashMap<String, List<Pattern>> patternsToFind) {
 		this.patternsFound = new CopyOnWriteArrayList<IBasicNode>();
 		this.patternsToFind = patternsToFind;
 		executor = Executors.newFixedThreadPool(10);
@@ -512,10 +512,10 @@ public class FindPattern implements Visitor {
 	public void findPatterns(IBasicNode node) {
 
 		if(patternsToFind.containsKey(node.getNodeType())) {
-			List<IBasicNode> patterns = patternsToFind.get(node.getNodeType());
+			List<Pattern> patterns = patternsToFind.get(node.getNodeType());
 			
 			for(int i = 0; i < patterns.size(); i++) {
-				PatternMatcher matcher = new PatternMatcher(patterns.get(i));
+				PatternMatcher matcher = new PatternMatcher(patterns.get(i).getRoot(), patterns.get(i).isParcial());
 				
 				System.out.println("------------------------------------------------------------");
 				System.out.println(node.toString());
@@ -525,7 +525,7 @@ public class FindPattern implements Visitor {
 				node.accept(matcher);
 				if(matcher.isMatch())
 					patternsFound.add(node);
-				//executor.submit(new Worker(node, patterns.get(i), patternsFound));
+				//executor.submit(new Worker(node, patterns.get(i).getRoot(), patterns.get(i).isParcial(), patternsFound));
 			}
 		}
 	}

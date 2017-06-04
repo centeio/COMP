@@ -43,7 +43,7 @@ public class PatternMatchingTests {
         IStatement lv3 = test_statements.get(2);
         IStatement lv4 = test_statements.get(5);
         
-        PatternMatcher pm = new PatternMatcher(null);
+        PatternMatcher pm = new PatternMatcher(null, false);
 
         assertTrue(pm.compare(lv1,lv1));
         
@@ -67,7 +67,7 @@ public class PatternMatchingTests {
 		IStatement pattern6 = ((Block) ((Method) patternMethods.get(6)).getBody()).getStatements().get(0);
 		IStatement pattern7 = ((Block) ((Method) patternMethods.get(7)).getBody()).getStatements().get(0);
 		
-        PatternMatcher pm = new PatternMatcher(null);
+        PatternMatcher pm = new PatternMatcher(null, false);
         assertTrue(pm.compare(if1,if1));
 
         assertTrue(pm.compare(if1,pattern1));
@@ -91,7 +91,7 @@ public class PatternMatchingTests {
         IStatement pattern2 = ((Block) ((Method) patternMethods.get(2)).getBody()).getStatements().get(0);
         IStatement pattern10 = ((Block) ((Method) patternMethods.get(10)).getBody()).getStatements().get(0);
         
-        PatternMatcher pm = new PatternMatcher(null);
+        PatternMatcher pm = new PatternMatcher(null, false);
         assertTrue(pm.compare(for1,for1));
         
         assertTrue(pm.compare(for1,pattern2));
@@ -114,7 +114,7 @@ public class PatternMatchingTests {
 		IStatement pattern8 = ((Block) ((Method) patternMethods.get(8)).getBody()).getStatements().get(0);
 		IStatement pattern9 = ((Block) ((Method) patternMethods.get(9)).getBody()).getStatements().get(0);
         
-        PatternMatcher pm = new PatternMatcher(null);
+        PatternMatcher pm = new PatternMatcher(null, false);
         assertTrue(pm.compare(while1,while1));
         
         assertTrue(pm.compare(while1,pattern3));
