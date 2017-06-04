@@ -20,6 +20,7 @@ import parser.Parser;
 import pt.up.fe.specs.spoon.SpoonASTLauncher;
 
 public class PatternMatchingTests {
+	private Block  test_body = null;
 	private List<IStatement>  test_statements = null;
 	private List<Member> patternMethods = null;
 	
@@ -32,8 +33,9 @@ public class PatternMatchingTests {
 		String patternJson = SpoonASTLauncher.java2json(Paths.get("MyPatternTest.java").toString(), null, false);
 		
 		Member m = parser.parse(testJson).getCompilationUnits().get(0).getTypes().get(0).getMembers().get(1);
-
-		test_statements = ((Block) ((Method) m).getBody()).getStatements();
+		
+		test_body = (Block) ((Method) m).getBody();
+		test_statements = test_body.getStatements();
 		patternMethods = parser.parse(patternJson).getCompilationUnits().get(0).getTypes().get(0).getMembers();
 		
 		System.setErr(old);
@@ -133,6 +135,17 @@ public class PatternMatchingTests {
         assertTrue(pm.compare(doWhile1,pattern9));
         
         assertFalse(pm.compare(while1,pattern8));
+	}
+	
+	@Test
+	public void compareBlock() throws IOException {
+		start();
+		
+		IStatement pattern11 = ((Block) ((Method) patternMethods.get(11)).getBody()).getStatements().get(0);
+
+		PatternMatcher pm = new PatternMatcher(null, true);
+        
+        assertTrue(pm.compare(test_body,pattern11));
 	}
 
 }
