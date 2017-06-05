@@ -4,8 +4,8 @@ We used this example to test parcial search in the whole code block.
 
 In this example we have two patterns, P1 and P2. 
 
-The first one will find two declarations, one  of a variable of type int(@x) and another of an int array(@z) and an for statement where a counter(i) will start in 0 and stop at @x by incrementing i.
-Inside the for loop, there must be a statement filling the ith position of the array (@z) with @x+1. 
+The first one will find a declarations of a variable of type int(@x) and a for statement where a counter(@z) will start in 0 and stop at @x by incrementing @z.
+Inside the for loop, there must be a statement calling a fuction with @x as a parameter. 
 
 The second pattern will be used to test if the tool is able to find every for loop in the code with a counter named i starting in 0 .
 
