@@ -31,3 +31,14 @@ do {
      @x--; @y++;
 } while (@y < @x);
 ignore
+
+Pattern P5 Exhaustive
+ignore
+int @x = 10;
+int @z[] = new int[@y];
+ignore
+for(int i = 0; i < @x; i++) {
+    @z[i] = @x + 1;
+    System.out.println(@z[i]);
+}
+ignore
