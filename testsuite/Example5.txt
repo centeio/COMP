@@ -1,10 +1,10 @@
-Pattern P5 Exhaustive
-ignore
+Pattern P1 Partial
 int @x = 10;
 int @z[] = new int[@y];
-ignore
 for(int i = 0; i < @x; i++) {
     @z[i] = @x + 1;
-    System.out.println(@z[i]);
 }
-ignore
+
+Pattern P2 Partial
+for(int i = 0; i < @x; i++) {
+}

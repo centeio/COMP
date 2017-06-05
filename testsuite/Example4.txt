@@ -1,6 +1,9 @@
-Pattern P4 Exhaustive
-ignore
+Pattern P1 Partial
 do {
-     @x--; @y++;
+     @x--;
 } while (@y < @x);
-ignore
+
+Pattern P2 Partial
+while(@y < @x) {
+    @y++;
+}
