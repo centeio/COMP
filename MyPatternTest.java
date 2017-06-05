@@ -79,4 +79,31 @@ public class MyPattern{
 			}
 		}
 	}
+
+	void P14(String Exhaustive){
+		{
+			ignore();
+			int a0 = a1;
+			while(a0 < a2) {
+				data[a0]--;
+				a0++;
+			}
+			ignore();
+		}
+	}
+
+
+	void P15(String Exhaustive){
+		{
+			ignore();
+			int a0 = 10;
+			int a1[] = new int[a2];
+			ignore();
+			for(int i = 0; i < a0; i++) {
+				a1[i] = a0 + 1;
+				System.out.println(a1[i]);
+			}
+			ignore();
+		}
+	}
 }

@@ -2,7 +2,6 @@ package main;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,9 +17,13 @@ public class PatternMatcher implements Visitor {
 	boolean match;
 
 	public PatternMatcher(IBasicNode pattern, boolean parcial) {
+		this(pattern, parcial, new HashMap<String,IBasicNode>());
+	}
+
+	public PatternMatcher(IBasicNode pattern, boolean parcial, HashMap<String,IBasicNode> variables_found) {
 		this.pattern = pattern;
 		this.functions_found = new HashMap<String,String>();
-		this.variables_found = new HashMap<String,IBasicNode>();
+		this.variables_found = variables_found;
 		this.parcial = parcial;
 		this.match = true;
 	}
@@ -138,14 +141,14 @@ public class PatternMatcher implements Visitor {
 		}
 
 		Block p = (Block) pattern;
-		int j = 0;
-		boolean ignore = false;
+		boolean ignore = parcial;
 
-		if(parcial){
-			ignore = true;
-		}
+		match = verifyBlock(block, p, 0, 0, ignore, variables_found);
+	}
 
-		for (int i = 0; i < block.getStatements().size() && j < p.getStatements().size(); i++) {
+	private boolean verifyBlock(Block block, Block p, int i, int j, boolean ignore, HashMap<String, IBasicNode> var) {
+		System.out.println("verify block i = " + i + " j =" + j + " ignore=" + ignore + " var=" + var);
+		for (; i < block.getStatements().size() && j < p.getStatements().size(); i++) {
 			pattern = p.getStatements().get(j);
 
 			if(pattern instanceof Invocation && ((Invocation) pattern).getExecutable().getName().equals("ignore")){
@@ -161,49 +164,62 @@ public class PatternMatcher implements Visitor {
 				pattern = null;
 			}
 
-			PatternMatcher pm = new PatternMatcher(null, parcial);
-			boolean aux_match = pm.compare(block.getStatements().get(i), pattern);
+			HashMap<String, IBasicNode> var1 = new HashMap<String, IBasicNode>(var);
+			PatternMatcher pm = new PatternMatcher(pattern, parcial, var1);
+			block.getStatements().get(i).accept(pm);
+			boolean aux_match = pm.isMatch();
 
-			if(!aux_match && ignore){
+			if(aux_match){
+				HashMap<String, IBasicNode> var2 = new HashMap<String, IBasicNode>(pm.getVariables_found());
 
-				match = true;
-			}
-			else if(!aux_match && !ignore){
-				match = false;
-				break;
-			}
-			else if(match){
-				//Merge Variables Found
-				Iterator<Entry<String, IBasicNode>> it = pm.variables_found.entrySet().iterator();
-			    while (it.hasNext()) {
-			        Entry<String, IBasicNode> pair = (Entry<String, IBasicNode>)it.next();
-			        if(variables_found.containsKey(pair.getKey())){
-			        	if(!variables_found.get(pair.getKey()).equals(pair.getValue())){
-			        		match = false;
-			        		return;
-			        	}
-			        }else{
-			        	variables_found.put(pair.getKey(), pair.getValue());
-			        }
-			    }
+				boolean ignore2 = ignore;
+				if(!parcial)
+					ignore2 = false;
 
-				if(!parcial){
-					ignore = false;
+				if(verifyBlock(block, p, i+1, j+1, ignore2, var2)){
+					if(!joinVars(var, var2)){
+						if(!ignore){
+							return false;
+						}
+					}
+					else{
+						var.putAll(var2);
+						return true;
+					}
+				}else if(!ignore){
+					return false;
 				}
-				j++;
 			}
-
 		}
 		if(j != p.getStatements().size()){
 			IBasicNode tmp = p.getStatements().get(j);
-			
+
 			if(j == p.getStatements().size() - 1 && (tmp instanceof Invocation && ((Invocation) tmp).getExecutable().getName().equals("ignore"))){
-				match = true;
+
+				return true;
 			}
-			else
-				match = false;
+			else{
+				return false;
+			}
 		}
+		return true;
 	}
+
+
+	private boolean joinVars(HashMap<String, IBasicNode> var, HashMap<String, IBasicNode> var2) {
+		Iterator<Entry<String, IBasicNode>> it = var2.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, IBasicNode> pair = (Entry<String, IBasicNode>)it.next();
+			if(var.containsKey(pair.getKey())){
+				if(!var.get(pair.getKey()).equals(pair.getValue())){
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
 
 	@Override
 	public void visit(Invocation invocation) {
