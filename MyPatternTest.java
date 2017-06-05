@@ -128,4 +128,11 @@ public class MyPattern{
 			}
 		}
 	}
+	
+	void P18(String Exhaustive){
+		while(a0 < a1) {
+			a2--;
+			a0++;
+		}
+	}
 }

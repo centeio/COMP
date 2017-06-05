@@ -444,7 +444,7 @@ public class PatternMatcher implements Visitor {
 		}
 
 		LocalVariable p = (LocalVariable) pattern;
-		 
+
 		checkVariableConsistency(lv, p.getName());
 		if(!match)
 			return;
@@ -479,7 +479,7 @@ public class PatternMatcher implements Visitor {
 		}
 
 		Reference p = (Reference) pattern;
-		 
+
 		checkVariableConsistency(lvr, p.getName());
 	}
 
@@ -488,7 +488,7 @@ public class PatternMatcher implements Visitor {
 		if(!(pattern instanceof BinaryOperator)){
 			if(pattern instanceof FieldRead){
 				FieldRead p = (FieldRead) pattern;
-  				
+
 				checkVariableConsistency(bo, p.getVar().getName());
 
 				return;
@@ -532,7 +532,7 @@ public class PatternMatcher implements Visitor {
 		}else if(pattern instanceof Reference){
 
 			Reference p = (Reference) pattern;
-			 
+
 			checkVariableConsistency(literal, p.getName());
 		}
 		else{
@@ -623,7 +623,7 @@ public class PatternMatcher implements Visitor {
 		}
 
 		pattern = p.getOperand();
-		uo.getOperand().accept(this);
+		uo.getOperand().accept(this);		
 	}
 
 	@Override
@@ -681,6 +681,14 @@ public class PatternMatcher implements Visitor {
 	@Override
 	public void visit(ArrayWrite aw) {
 		if(!(pattern instanceof ArrayWrite)){
+			if(pattern instanceof FieldWrite){
+				FieldWrite p = (FieldWrite) pattern;
+
+				checkVariableConsistency(aw, p.getVar().getName());
+
+				return;
+			}
+			
 			match = false;
 			return;
 		}
@@ -859,14 +867,29 @@ public class PatternMatcher implements Visitor {
 		pattern = p.getBody();
 		do1.getBody().accept(this);
 	}
-	
+
 	private void checkVariableConsistency(IBasicNode code, String pattern_name) {
+		//Compare name
+		Pattern pat = Pattern.compile("a\\d*");
+		Matcher m = pat.matcher(pattern_name);
+		
+		if(m.matches()){
 		if(!variables_found.containsKey(pattern_name)){
 			variables_found.put(pattern_name, code);
 		}
 		else{
 			if(!variables_found.get(pattern_name).equals(code)){
 				match = false;
+				return;
+			}
+		}
+		}
+		else{
+			if(code instanceof Reference && ((Reference) code).getName().equals(pattern_name)){
+				match = true;
+				return;
+			}else if(code instanceof LocalVariable && ((LocalVariable) code).getName().equals(pattern_name)){
+				match = true;
 				return;
 			}
 		}
@@ -917,5 +940,5 @@ public class PatternMatcher implements Visitor {
 	public String getPatternClassName() {
 		return pattern.getClass().getSimpleName();
 	}
-	
+
 }

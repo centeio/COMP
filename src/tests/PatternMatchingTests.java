@@ -120,6 +120,7 @@ public class PatternMatchingTests {
 		IStatement pattern4 = ((Block) ((Method) patternMethods.get(4)).getBody()).getStatements().get(0);
 		IStatement pattern8 = ((Block) ((Method) patternMethods.get(8)).getBody()).getStatements().get(0);
 		IStatement pattern9 = ((Block) ((Method) patternMethods.get(9)).getBody()).getStatements().get(0);
+		IStatement pattern18 = ((Block) ((Method) patternMethods.get(18)).getBody()).getStatements().get(0);
         
         PatternMatcher pm = new PatternMatcher(null, false);
         assertTrue(pm.compare(while1,while1));
@@ -130,11 +131,14 @@ public class PatternMatchingTests {
         
         assertTrue(pm.compare(pattern8,pattern8));
         
+        assertFalse(pm.compare(while1,pattern8));
+        
         assertTrue(pm.compare(doWhile1,pattern8));
         
         assertTrue(pm.compare(doWhile1,pattern9));
+
+        assertTrue(pm.compare(while1,pattern18));
         
-        assertFalse(pm.compare(while1,pattern8));
 	}
 	
 	@Test
