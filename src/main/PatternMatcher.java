@@ -444,17 +444,10 @@ public class PatternMatcher implements Visitor {
 		}
 
 		LocalVariable p = (LocalVariable) pattern;
-
-		//Check if variables are consistent
-		if(this.variables_found.get(p.getName()) == null){
-			this.variables_found.put(p.getName(), lv);
-		}
-		else{
-			if(!variables_found.get(p.getName()).equals(lv)){
-				match = false;
-				return;
-			}
-		}
+		 
+		checkVariableConsistency(lv, p.getName());
+		if(!match)
+			return;
 
 		pattern = p.getType();
 		lv.getType().accept(this);
@@ -486,16 +479,8 @@ public class PatternMatcher implements Visitor {
 		}
 
 		Reference p = (Reference) pattern;
-		//Check if variables are consistent
-		if(this.variables_found.get(p.getName()) == null){
-			this.variables_found.put(p.getName(), lvr);
-		}
-		else{
-			if(!variables_found.get(p.getName()).equals(lvr)){
-				match = false;
-				return;
-			}
-		}
+		 
+		checkVariableConsistency(lvr, p.getName());
 	}
 
 	@Override
@@ -503,17 +488,8 @@ public class PatternMatcher implements Visitor {
 		if(!(pattern instanceof BinaryOperator)){
 			if(pattern instanceof FieldRead){
 				FieldRead p = (FieldRead) pattern;
-
-				//Check if variables are consistent
-				if(this.variables_found.get(p.getVar().getName()) == null){
-					this.variables_found.put(p.getVar().getName(), bo);
-				}
-				else{
-					if(!variables_found.get(p.getVar().getName()).equals(bo)){
-						match = false;
-						return;
-					}
-				}
+  				
+				checkVariableConsistency(bo, p.getVar().getName());
 
 				return;
 			}
@@ -556,16 +532,8 @@ public class PatternMatcher implements Visitor {
 		}else if(pattern instanceof Reference){
 
 			Reference p = (Reference) pattern;
-			//Check if variables are consistent
-			if(this.variables_found.get(p.getName()) == null){
-				this.variables_found.put(p.getName(), literal);
-			}
-			else{
-				if(!variables_found.get(p.getName()).equals(literal)){
-					match = false;
-					return;
-				}
-			}
+			 
+			checkVariableConsistency(literal, p.getName());
 		}
 		else{
 			match = false;
@@ -891,6 +859,18 @@ public class PatternMatcher implements Visitor {
 		pattern = p.getBody();
 		do1.getBody().accept(this);
 	}
+	
+	private void checkVariableConsistency(IBasicNode code, String pattern_name) {
+		if(!variables_found.containsKey(pattern_name)){
+			variables_found.put(pattern_name, code);
+		}
+		else{
+			if(!variables_found.get(pattern_name).equals(code)){
+				match = false;
+				return;
+			}
+		}
+	}
 
 	public boolean compare(IBasicNode code, IBasicNode pattern){
 		return compare(code,pattern, false);
@@ -937,4 +917,5 @@ public class PatternMatcher implements Visitor {
 	public String getPatternClassName() {
 		return pattern.getClass().getSimpleName();
 	}
+	
 }
