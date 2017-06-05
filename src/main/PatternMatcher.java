@@ -147,7 +147,6 @@ public class PatternMatcher implements Visitor {
 	}
 
 	private boolean verifyBlock(Block block, Block p, int i, int j, boolean ignore, HashMap<String, IBasicNode> var) {
-		System.out.println("verify block i = " + i + " j =" + j + " ignore=" + ignore + " var=" + var);
 		for (; i < block.getStatements().size() && j < p.getStatements().size(); i++) {
 			pattern = p.getStatements().get(j);
 
