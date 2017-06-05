@@ -1,0 +1,17 @@
+Pattern P1 Exhaustive
+ignore
+int @x = @z;
+ignore
+if(@x == @y) {
+    @x--; @x++;
+}
+ignore
+
+Pattern P2 Exhaustive
+ignore
+int @x = @z;
+ignore
+if(@x == @x) {
+    @x--; @x++;
+}
+ignore

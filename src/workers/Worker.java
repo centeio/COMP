@@ -19,16 +19,12 @@ public class Worker implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("[DEBUG] Worker Running");
-		System.out.println(node.toString());
-		System.out.println(pattern.toString());
 		PatternMatcher matcher = new PatternMatcher(pattern, parcial);
 		
 		node.accept(matcher);
 		
-		System.out.println("[DEBUG] Worker Testing match");
 		if(matcher.isMatch())
-			patternsFound.add(node);		
+			patternsFound.add(pattern);		
 	}
 
 }

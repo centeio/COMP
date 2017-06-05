@@ -1,0 +1,18 @@
+Pattern P1 Exhaustive
+ignore
+int @y = @z;
+while(@y < @x) {
+    @w[@y]--;
+    @y++;
+}
+ignore
+
+
+Pattern P2 Exhaustive
+ignore
+int @y = @z;
+while(@y < @x) {
+    @w[@z]--;
+    @y++;
+}
+ignore

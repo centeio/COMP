@@ -1,0 +1,17 @@
+Pattern P1 Exhaustive
+ignore
+int @x = @y;
+ignore
+for(int @z = 0; @z < @x; @z++) {
+    @w(@x);
+}
+ignore
+
+Pattern P2 Exhaustive
+ignore
+int @x = @y;
+ignore
+for(int @z = @t; @z < @x; @z++) {
+    @w(@z);
+}
+ignore

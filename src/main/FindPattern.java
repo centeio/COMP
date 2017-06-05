@@ -42,6 +42,7 @@ import parser.UnaryOperator;
 import parser.VariableRead;
 import parser.VariableWrite;
 import parser.While;
+import workers.Worker;
 import parser.IBasicNode;
 import parser.IExpression;
 import parser.IStatement;
@@ -60,7 +61,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(Root root) {
-		System.out.println("[DEBUG] FindPattern: Root");
+		//System.out.println("[DEBUG] FindPattern: Root");
 		findPatterns(root);
 		
 		if(root.getCompilationUnits() != null) {
@@ -73,7 +74,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(CompilationUnit cu) {
-		System.out.println("[DEBUG] FindPattern: CompilationUnit");
+		//System.out.println("[DEBUG] FindPattern: CompilationUnit");
 		findPatterns(cu);
 		
 		if(cu.getTypes() != null) {
@@ -87,13 +88,13 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(Comment comment) {
-		System.out.println("[DEBUG] FindPattern: Comment");
+		//System.out.println("[DEBUG] FindPattern: Comment");
 		findPatterns(comment);
 	}
 
 	@Override
 	public void visit(ArrayRead ar) {
-		System.out.println("[DEBUG] FindPattern: ArrayRead");
+		//System.out.println("[DEBUG] FindPattern: ArrayRead");
 		findPatterns(ar);
 		
 		if(ar.getTarget() != null)
@@ -105,7 +106,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(Class c) {
-		System.out.println("[DEBUG] FindPattern: Class");
+		//System.out.println("[DEBUG] FindPattern: Class");
 		findPatterns(c);
 		
 		if(c.getSuperClass() != null)
@@ -136,7 +137,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(Constructor constructor) {
-		System.out.println("[DEBUG] FindPattern: Constructor");
+		//System.out.println("[DEBUG] FindPattern: Constructor");
 		findPatterns(constructor);
 		
 		if(constructor.getParameters() != null) {
@@ -152,7 +153,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(Block block) {
-		System.out.println("[DEBUG] FindPattern: Block");
+		//System.out.println("[DEBUG] FindPattern: Block");
 		findPatterns(block);
 		
 		List<IStatement> statements = block.getStatements();
@@ -163,7 +164,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(Invocation invocation) {
-		System.out.println("[DEBUG] FindPattern: Invocation");
+		//System.out.println("[DEBUG] FindPattern: Invocation");
 		findPatterns(invocation);
 		
 		if(invocation.getArguments() != null) {		
@@ -180,7 +181,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(ExecutableReference er) {
-		System.out.println("[DEBUG] FindPattern: ExecutableReference");
+		//System.out.println("[DEBUG] FindPattern: ExecutableReference");
 		findPatterns(er);
 		
 		if(er.getDeclarator() != null)
@@ -206,7 +207,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(Method method) {
-		System.out.println("[DEBUG] FindPattern: Method");
+		//System.out.println("[DEBUG] FindPattern: Method");
 		findPatterns(method);
 		
 		if(method.getType() != null)
@@ -224,7 +225,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(Parameter parameter) {
-		System.out.println("[DEBUG] FindPattern: Parameter");
+		//System.out.println("[DEBUG] FindPattern: Parameter");
 		findPatterns(parameter);
 		
 		if(parameter.getType() != null)
@@ -233,7 +234,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(ArrayTypeReference atr) {
-		System.out.println("[DEBUG] FindPattern: ArrayTypeReference");
+		//System.out.println("[DEBUG] FindPattern: ArrayTypeReference");
 		findPatterns(atr);
 		
 		if(atr.getType() != null)
@@ -242,7 +243,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(If i) {
-		System.out.println("[DEBUG] FindPattern: If");
+		//System.out.println("[DEBUG] FindPattern: If");
 		findPatterns(i);
 		
 		if(i.getCondition() != null)
@@ -257,7 +258,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(Assignment assignment) {
-		System.out.println("[DEBUG] FindPattern: Assignment");
+		//System.out.println("[DEBUG] FindPattern: Assignment");
 		findPatterns(assignment);
 		
 		if(assignment.getType() != null)
@@ -272,7 +273,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(VariableWrite vw) {
-		System.out.println("[DEBUG] FindPattern: VariableWrite");
+		//System.out.println("[DEBUG] FindPattern: VariableWrite");
 		findPatterns(vw);
 		
 		if(vw.getType() != null)
@@ -284,13 +285,13 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(NullNode nn) {
-		System.out.println("[DEBUG] FindPattern: NullNode");
+		//System.out.println("[DEBUG] FindPattern: NullNode");
 		findPatterns(nn);
 	}
 
 	@Override
 	public void visit(LocalVariable lv) {
-		System.out.println("[DEBUG] FindPattern: LocalVariable");
+		//System.out.println("[DEBUG] FindPattern: LocalVariable");
 		findPatterns(lv);
 		
 		if(lv.getType() != null)
@@ -302,13 +303,13 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(TypeReference tr) {
-		System.out.println("[DEBUG] FindPattern: TypeReference");
+		//System.out.println("[DEBUG] FindPattern: TypeReference");
 		findPatterns(tr);
 	}
 
 	@Override
 	public void visit(LocalVariableReference lvr) {
-		System.out.println("[DEBUG] FindPattern: LocalVariableReference");
+		//System.out.println("[DEBUG] FindPattern: LocalVariableReference");
 		findPatterns(lvr);
 		
 		if(lvr.getType() != null)
@@ -317,7 +318,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(BinaryOperator bo) {
-		System.out.println("[DEBUG] FindPattern: BinaryOperator");
+		//System.out.println("[DEBUG] FindPattern: BinaryOperator");
 		findPatterns(bo);
 		
 		if(bo.getType() != null)
@@ -332,7 +333,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(Literal literal) {
-		System.out.println("[DEBUG] FindPattern: Literal");
+		//System.out.println("[DEBUG] FindPattern: Literal");
 		findPatterns(literal);
 		
 		if(literal.getType() != null)
@@ -341,7 +342,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(VariableRead vr) {
-		System.out.println("[DEBUG] FindPattern: VariableRead");
+		//System.out.println("[DEBUG] FindPattern: VariableRead");
 		findPatterns(vr);
 		
 		if(vr.getType() != null)
@@ -353,7 +354,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(For f) {
-		System.out.println("[DEBUG] FindPattern: For");
+		//System.out.println("[DEBUG] FindPattern: For");
 		findPatterns(f);
 		
 		if(f.getInit() != null) {
@@ -378,7 +379,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(UnaryOperator uo) {
-		System.out.println("[DEBUG] FindPattern: UnaryOperator");
+		//System.out.println("[DEBUG] FindPattern: UnaryOperator");
 		findPatterns(uo);		
 		
 		if(uo.getType() != null)
@@ -390,7 +391,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(NewArray na) {
-		System.out.println("[DEBUG] FindPattern: NewArray");
+		//System.out.println("[DEBUG] FindPattern: NewArray");
 		findPatterns(na);
 		
 		if(na.getType() != null)
@@ -420,7 +421,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(ArrayWrite aw) {
-		System.out.println("[DEBUG] FindPattern: ArrayWrite");
+		//System.out.println("[DEBUG] FindPattern: ArrayWrite");
 		findPatterns(aw);
 		
 		if(aw.getType() != null)
@@ -435,7 +436,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(FieldRead fr) {
-		System.out.println("[DEBUG] FindPattern: FieldRead");
+		//System.out.println("[DEBUG] FindPattern: FieldRead");
 		findPatterns(fr);
 		
 		if(fr.getType() != null)
@@ -450,7 +451,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(TypeAccess ta) {
-		System.out.println("[DEBUG] FindPattern: TypeAccess");
+		//System.out.println("[DEBUG] FindPattern: TypeAccess");
 		findPatterns(ta);
 		
 		if(ta.getType() != null)
@@ -462,7 +463,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(While w) {
-		System.out.println("[DEBUG] FindPattern: While");
+		//System.out.println("[DEBUG] FindPattern: While");
 		findPatterns(w);
 		
 		if(w.getCondition() != null)
@@ -474,7 +475,7 @@ public class FindPattern implements Visitor {
 	
 	@Override
 	public void visit(FieldReference fr) {
-		System.out.println("[DEBUG] FindPattern: FieldReference");
+		//System.out.println("[DEBUG] FindPattern: FieldReference");
 		findPatterns(fr);
 		
 		if(fr.getDeclarator() != null)
@@ -487,7 +488,7 @@ public class FindPattern implements Visitor {
 
 	@Override
 	public void visit(FieldWrite fw) {
-		System.out.println("[DEBUG] FindPattern: FieldWrite");
+		//System.out.println("[DEBUG] FindPattern: FieldWrite");
 		findPatterns(fw);
 		
 		if(fw.getVar() != null)
@@ -499,7 +500,7 @@ public class FindPattern implements Visitor {
 	
 	@Override
 	public void visit(Do doNode) {
-		System.out.println("[DEBUG] FindPattern: Do");
+		//System.out.println("[DEBUG] FindPattern: Do");
 		findPatterns(doNode);
 		
 		if(doNode.getBody() != null)
@@ -514,25 +515,18 @@ public class FindPattern implements Visitor {
 		if(patternsToFind.containsKey(node.getNodeType())) {
 			List<Pattern> patterns = patternsToFind.get(node.getNodeType());
 			
-			for(int i = 0; i < patterns.size(); i++) {
-				PatternMatcher matcher = new PatternMatcher(patterns.get(i).getRoot(), patterns.get(i).isParcial());
-				
-				node.accept(matcher);
-				if(matcher.isMatch())
-					patternsFound.add(patterns.get(i).getRoot());
-				//executor.submit(new Worker(node, patterns.get(i).getRoot(), patterns.get(i).isParcial(), patternsFound));
-			}
+			for(int i = 0; i < patterns.size(); i++)
+				executor.submit(new Worker(node, patterns.get(i).getRoot(), patterns.get(i).isParcial(), patternsFound));
 		}
 	}
 	
 	public void awaitTermination() {
-		/*try {
+		try {
 			executor.awaitTermination(2, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		executor.shutdown();*/
+		executor.shutdown();
 		printMatches();
 	}
 	

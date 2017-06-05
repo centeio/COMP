@@ -1,0 +1,6 @@
+Pattern P4 Exhaustive
+ignore
+do {
+     @x--; @y++;
+} while (@y < @x);
+ignore
