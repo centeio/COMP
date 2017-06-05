@@ -29,5 +29,15 @@ ignore();
 do{
 a0--;
 a2++;
-}while(a2<a0)}
+}while(a2<a0);ignore();
+}
+void P5(String Exhaustive){
+ignore();
+int a0 = 10;
+int a1[] = new int [a2];
+ignore();
+for(int i = 0;i<a0;i++){
+a1[i] = a0+1;
+}ignore();
+}
  }

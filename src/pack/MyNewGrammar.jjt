@@ -195,7 +195,7 @@ void While() :  {} {
 void DoWhile() :  {} {
   { writer.print("do"); System.out.println("Do");  }
   
-	< DO > Block() < WHILE > { writer.print("while"); System.out.println("While");}  Condition() 
+	< DO > Block() < WHILE > { writer.print("while"); System.out.println("While");}  Condition() < SEMICOL > { writer.print(";");}
 }
 
 void For() :  {} {
@@ -366,7 +366,7 @@ void OperationAux() : {} {
 
 void Assignment() : {} {
 	{ System.out.println("Assignment");  }
-	< EQ > { writer.print(" = "); } Expression() [AritmeticOp() {System.out.println("AritmeticOp");}] 
+	< EQ > { writer.print(" = "); } (Expression() [AritmeticOp() {System.out.println("AritmeticOp");}]  |   < NEW > { writer.print("new "); }  Type() ArrayDeclaration())
 }
 
 void AritmeticOp() : {} { 
