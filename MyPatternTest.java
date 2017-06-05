@@ -49,7 +49,7 @@ public class MyPattern{
 			a1(a0);
 		}
 	}
-	void P11(String Parcial){
+	void P11(String Partial){
 		{
 			if(a0 == a1) {
 				a0--; a0++;
@@ -104,6 +104,28 @@ public class MyPattern{
 				System.out.println(a1[i]);
 			}
 			ignore();
+		}
+	}
+	
+	void P16(String Partial){
+		{
+			int a0 = a1;
+			while(a0 < a2) {
+				data[a0]--;
+				a0++;
+			}
+		}
+	}
+
+
+	void P17(String Partial){
+		{
+			int a0 = 10;
+			int a1[] = new int[a2];
+			for(int i = 0; i < a0; i++) {
+				a1[i] = a0 + 1;
+				System.out.println(a1[i]);
+			}
 		}
 	}
 }

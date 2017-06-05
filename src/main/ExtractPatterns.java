@@ -191,7 +191,7 @@ public class ExtractPatterns implements Visitor {
 
 		if(method.getBody() != null) {
 			IBasicNode root = method.getBody();
-			boolean parcial = method.getParameters().get(0).getName().equals("Parcial");
+			boolean partial = method.getParameters().get(0).getName().equals("Partial");
 
 			if(method.getBody() instanceof Block && ((Block) method.getBody()).getStatements().size() == 1){
 				root = ((Block) method.getBody()).getStatements().get(0);
@@ -199,7 +199,7 @@ public class ExtractPatterns implements Visitor {
 
 			if(!patterns.containsKey(root.getNodeType()))
 				patterns.put(root.getNodeType(), new ArrayList<Pattern>());
-			patterns.get(root.getNodeType()).add(new Pattern(method.getName(), root, parcial));
+			patterns.get(root.getNodeType()).add(new Pattern(method.getName(), root, partial));
 		}
 	}
 
