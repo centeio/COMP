@@ -1,0 +1,690 @@
+\hypertarget{classmain_1_1_extract_patterns}{}\section{main.\+Extract\+Patterns Class Reference}
+\label{classmain_1_1_extract_patterns}\index{main.\+Extract\+Patterns@{main.\+Extract\+Patterns}}
+
+
+Inheritance diagram for main.\+Extract\+Patterns\+:
+% FIG 0
+
+
+Collaboration diagram for main.\+Extract\+Patterns\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmain_1_1_extract_patterns_afff7cebe32c70f14e70122206866476a}{Extract\+Patterns} ()
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a330ac9d97bfdad0523ed8c8d8e2da0ef}{visit} (\hyperlink{classparser_1_1_root}{Root} root)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a7d6f48055d16804b305ddd4731bdf4a1}{visit} (\hyperlink{classparser_1_1_compilation_unit}{Compilation\+Unit} cu)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a79ae84f8a0d26918ab940676d3880426}{visit} (\hyperlink{classparser_1_1_comment}{Comment} comment)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a505254ca93a2988ed917b3d9fee192ad}{visit} (\hyperlink{classparser_1_1_array_read}{Array\+Read} ar)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a754cfb75325481a66a23f17b506464f3}{visit} (\hyperlink{classparser_1_1_class}{Class} c)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a59963d78594833a5675f824a4bfa8459}{visit} (\hyperlink{classparser_1_1_constructor}{Constructor} constructor)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a3a849b790957e8f3b11e969850b1c67c}{visit} (\hyperlink{classparser_1_1_block}{Block} block)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_ac626a54bc8542b04fb42aa127a254790}{visit} (\hyperlink{classparser_1_1_invocation}{Invocation} invocation)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a63ab29499b0b3367fb6ce20675048c00}{visit} (\hyperlink{classparser_1_1_executable_reference}{Executable\+Reference} er)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_ae3ffd26d1b2b30dd58dc6b76b7ea2421}{visit} (\hyperlink{classparser_1_1_method}{Method} method)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a681b5d5856456be54ba34a5c94775894}{visit} (\hyperlink{classparser_1_1_parameter}{Parameter} parameter)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_ad93d7bce27d376978d7258132a327b27}{visit} (\hyperlink{classparser_1_1_array_type_reference}{Array\+Type\+Reference} atr)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_ac14a7a5581ce144e00e7a7c8a24d0790}{visit} (\hyperlink{classparser_1_1_if}{If} i)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a64c8a36e994271c04559818dae31f490}{visit} (\hyperlink{classparser_1_1_assignment}{Assignment} assignment)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a1523ac3509ab89c2f4658aa8aa594fd4}{visit} (\hyperlink{classparser_1_1_variable_write}{Variable\+Write} vw)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a4de5d746ecd293f67cd1ecb8ae843225}{visit} (\hyperlink{classparser_1_1_null_node}{Null\+Node} nn)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a37d92d13174f0d4622168e467e767c9e}{visit} (\hyperlink{classparser_1_1_local_variable}{Local\+Variable} lv)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a2ac7e60ee23751b9f26fd32d006bcca2}{visit} (\hyperlink{classparser_1_1_type_reference}{Type\+Reference} tr)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a87aaab3e78d4bb7f53b179e7612faf59}{visit} (\hyperlink{classparser_1_1_local_variable_reference}{Local\+Variable\+Reference} lvr)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a29d1140dc318e296ffafdde459b3e669}{visit} (\hyperlink{classparser_1_1_binary_operator}{Binary\+Operator} bo)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a9f253274efaa1e10f878f4136223e825}{visit} (\hyperlink{classparser_1_1_literal}{Literal} literal)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_acfe39cf0bd9840df4eaab7503bfbc6fb}{visit} (\hyperlink{classparser_1_1_variable_read}{Variable\+Read} vr)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a827147308a4cb38c7846ce911faa7a6a}{visit} (\hyperlink{classparser_1_1_for}{For} f)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_af1489e40443a856d566ea376c92ee3ae}{visit} (\hyperlink{classparser_1_1_unary_operator}{Unary\+Operator} uo)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_ad8b3fe5bcb09a6b94a599d16dd2f16e4}{visit} (\hyperlink{classparser_1_1_new_array}{New\+Array} na)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_aa33b779bc3c7e8eba41f73741bc42034}{visit} (\hyperlink{classparser_1_1_array_write}{Array\+Write} aw)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_af08159517fcaeed32c85ae7359f12f8f}{visit} (\hyperlink{classparser_1_1_field_read}{Field\+Read} fr)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_ace4686efb7204b4a65f33d87ad73a014}{visit} (\hyperlink{classparser_1_1_type_access}{Type\+Access} ta)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a49b2a40106cb0d98f5496a69d5650695}{visit} (\hyperlink{classparser_1_1_while}{While} w)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a15a5cfd2e87d1460a102ae3b06f0c3c3}{visit} (\hyperlink{classparser_1_1_field_reference}{Field\+Reference} fr)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_a67050fdd8fe74062c9bcae045182b4cc}{visit} (\hyperlink{classparser_1_1_field_write}{Field\+Write} fw)
+\item 
+void \hyperlink{classmain_1_1_extract_patterns_ad009599114d6beaf55937925373a8fe8}{visit} (\hyperlink{classparser_1_1_do}{Do} do\+Node)
+\item 
+Hash\+Map$<$ String, List$<$ \hyperlink{classmain_1_1_pattern}{Pattern} $>$ $>$ \hyperlink{classmain_1_1_extract_patterns_ada5bf37d19b20884bff76f91960b904c}{get\+Patterns} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{interfacemain_1_1_visitor}{Visitor} responsible for extracting patterns from the pattern java file 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!Extract\+Patterns@{Extract\+Patterns}}
+\index{Extract\+Patterns@{Extract\+Patterns}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{Extract\+Patterns()}{ExtractPatterns()}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+Extract\+Patterns.\+Extract\+Patterns (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_afff7cebe32c70f14e70122206866476a}{}\label{classmain_1_1_extract_patterns_afff7cebe32c70f14e70122206866476a}
+Instantiates a new extract patterns. 
+
+\subsection{Member Function Documentation}
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!get\+Patterns@{get\+Patterns}}
+\index{get\+Patterns@{get\+Patterns}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{get\+Patterns()}{getPatterns()}}]{\setlength{\rightskip}{0pt plus 5cm}Hash\+Map$<$String, List$<${\bf Pattern}$>$ $>$ main.\+Extract\+Patterns.\+get\+Patterns (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_ada5bf37d19b20884bff76f91960b904c}{}\label{classmain_1_1_extract_patterns_ada5bf37d19b20884bff76f91960b904c}
+Gets the patterns extracted.
+
+\begin{DoxyReturn}{Returns}
+patterns extracted 
+\end{DoxyReturn}
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Root root)}{visit(Root root)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Root}}]{root}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a330ac9d97bfdad0523ed8c8d8e2da0ef}{}\label{classmain_1_1_extract_patterns_a330ac9d97bfdad0523ed8c8d8e2da0ef}
+Visit root.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & the root \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_af0d09d0444a9a38206f55c3c4a145c64}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Compilation\+Unit cu)}{visit(CompilationUnit cu)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Compilation\+Unit}}]{cu}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a7d6f48055d16804b305ddd4731bdf4a1}{}\label{classmain_1_1_extract_patterns_a7d6f48055d16804b305ddd4731bdf4a1}
+Visit Compilation Unit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cu} & the compilation unit \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_ae4526b245504b137e6493b64cf88abd8}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Comment comment)}{visit(Comment comment)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Comment}}]{comment}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a79ae84f8a0d26918ab940676d3880426}{}\label{classmain_1_1_extract_patterns_a79ae84f8a0d26918ab940676d3880426}
+Visit comment.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comment} & the comment \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a86506550160b7c663463a8b56aea26ac}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Array\+Read ar)}{visit(ArrayRead ar)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Array\+Read}}]{ar}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a505254ca93a2988ed917b3d9fee192ad}{}\label{classmain_1_1_extract_patterns_a505254ca93a2988ed917b3d9fee192ad}
+Visit Array Read.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ar} & the Array Read \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a9b393467433e42eb3ef3d4dd49517d91}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Class c)}{visit(Class c)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Class}}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a754cfb75325481a66a23f17b506464f3}{}\label{classmain_1_1_extract_patterns_a754cfb75325481a66a23f17b506464f3}
+Visit class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & the class \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_afcc74364de2b22080c15380f1d54e7c7}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Constructor constructor)}{visit(Constructor constructor)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Constructor}}]{constructor}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a59963d78594833a5675f824a4bfa8459}{}\label{classmain_1_1_extract_patterns_a59963d78594833a5675f824a4bfa8459}
+Visit constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em constructor} & the constructor \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_afd5b91c54ca6bdc370d05b376d30883d}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Block block)}{visit(Block block)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Block}}]{block}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a3a849b790957e8f3b11e969850b1c67c}{}\label{classmain_1_1_extract_patterns_a3a849b790957e8f3b11e969850b1c67c}
+Visit block.
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & the block \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a12e9a6a856e6048b49c0b5948dbf7a9a}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Invocation invocation)}{visit(Invocation invocation)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Invocation}}]{invocation}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_ac626a54bc8542b04fb42aa127a254790}{}\label{classmain_1_1_extract_patterns_ac626a54bc8542b04fb42aa127a254790}
+Visit invocation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em invocation} & the invocation \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a573d5b4bdaf93b1ab363d2f4374e301e}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Executable\+Reference er)}{visit(ExecutableReference er)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Executable\+Reference}}]{er}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a63ab29499b0b3367fb6ce20675048c00}{}\label{classmain_1_1_extract_patterns_a63ab29499b0b3367fb6ce20675048c00}
+Visit Executable Reference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em er} & the Executable Reference \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a605cf685affb3add0d2d4703e2c968e3}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Method method)}{visit(Method method)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Method}}]{method}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_ae3ffd26d1b2b30dd58dc6b76b7ea2421}{}\label{classmain_1_1_extract_patterns_ae3ffd26d1b2b30dd58dc6b76b7ea2421}
+Visit method.
+
+
+\begin{DoxyParams}{Parameters}
+{\em method} & the method \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a115a68630492b789c182ebeb4469d7bd}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Parameter parameter)}{visit(Parameter parameter)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Parameter}}]{parameter}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a681b5d5856456be54ba34a5c94775894}{}\label{classmain_1_1_extract_patterns_a681b5d5856456be54ba34a5c94775894}
+Visit parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter} & the parameter \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_aafc4c4e5b5ee22122a0b8e7ffd581b72}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Array\+Type\+Reference atr)}{visit(ArrayTypeReference atr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Array\+Type\+Reference}}]{atr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_ad93d7bce27d376978d7258132a327b27}{}\label{classmain_1_1_extract_patterns_ad93d7bce27d376978d7258132a327b27}
+Visit Array Type Reference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em atr} & the Array Type Reference \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a7c498c62d42f788316548fa7648724fa}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+If i)}{visit(If i)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf If}}]{i}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_ac14a7a5581ce144e00e7a7c8a24d0790}{}\label{classmain_1_1_extract_patterns_ac14a7a5581ce144e00e7a7c8a24d0790}
+Visit if.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & the if \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a06dd957e145bea2eb026e044aa3f3119}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Assignment assignment)}{visit(Assignment assignment)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Assignment}}]{assignment}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a64c8a36e994271c04559818dae31f490}{}\label{classmain_1_1_extract_patterns_a64c8a36e994271c04559818dae31f490}
+Visit assignment.
+
+
+\begin{DoxyParams}{Parameters}
+{\em assignment} & the assignment \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a6e938f696967e376deab5565b4223ad0}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Variable\+Write vw)}{visit(VariableWrite vw)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Variable\+Write}}]{vw}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a1523ac3509ab89c2f4658aa8aa594fd4}{}\label{classmain_1_1_extract_patterns_a1523ac3509ab89c2f4658aa8aa594fd4}
+Visit Variable Write.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vw} & the Variable Write \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a7f90cf95f580cceafb2fea1e2283f74a}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Null\+Node nn)}{visit(NullNode nn)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Null\+Node}}]{nn}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a4de5d746ecd293f67cd1ecb8ae843225}{}\label{classmain_1_1_extract_patterns_a4de5d746ecd293f67cd1ecb8ae843225}
+Visit Null Node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nn} & the Null Node \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a1437a93c8b8b41c3082c593ed0fd4ce5}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Local\+Variable lv)}{visit(LocalVariable lv)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Local\+Variable}}]{lv}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a37d92d13174f0d4622168e467e767c9e}{}\label{classmain_1_1_extract_patterns_a37d92d13174f0d4622168e467e767c9e}
+Visit Local Variable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lv} & the Local Variable \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_adadc51a0b50d0c0ff4b4e96f60f17b80}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Type\+Reference tr)}{visit(TypeReference tr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Type\+Reference}}]{tr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a2ac7e60ee23751b9f26fd32d006bcca2}{}\label{classmain_1_1_extract_patterns_a2ac7e60ee23751b9f26fd32d006bcca2}
+Visit Type Reference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tr} & the Type Reference \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_af509944ff15a0958d290a3c82ef672bf}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Local\+Variable\+Reference lvr)}{visit(LocalVariableReference lvr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Local\+Variable\+Reference}}]{lvr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a87aaab3e78d4bb7f53b179e7612faf59}{}\label{classmain_1_1_extract_patterns_a87aaab3e78d4bb7f53b179e7612faf59}
+Visit Local Variable Reference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lvr} & the Local Variable Reference \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_afd63e1757a2f3ab052b8c9c5c9698d66}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Binary\+Operator bo)}{visit(BinaryOperator bo)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\+Operator}}]{bo}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a29d1140dc318e296ffafdde459b3e669}{}\label{classmain_1_1_extract_patterns_a29d1140dc318e296ffafdde459b3e669}
+Visit Binary Operator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bo} & the Binary Operator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a252083abc17a52a6e72bd823f9c2b9c6}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Literal literal)}{visit(Literal literal)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Literal}}]{literal}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a9f253274efaa1e10f878f4136223e825}{}\label{classmain_1_1_extract_patterns_a9f253274efaa1e10f878f4136223e825}
+Visit literal.
+
+
+\begin{DoxyParams}{Parameters}
+{\em literal} & the literal \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a62b8935cfe6f21af68dab1ed7b24a9eb}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Variable\+Read vr)}{visit(VariableRead vr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Variable\+Read}}]{vr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_acfe39cf0bd9840df4eaab7503bfbc6fb}{}\label{classmain_1_1_extract_patterns_acfe39cf0bd9840df4eaab7503bfbc6fb}
+Visit Variable Read.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vr} & the Variable Read \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_aecb22f6c1d21ebcbb33b09baa10ed68c}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+For f)}{visit(For f)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf For}}]{f}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a827147308a4cb38c7846ce911faa7a6a}{}\label{classmain_1_1_extract_patterns_a827147308a4cb38c7846ce911faa7a6a}
+Visit for loop.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & the for loop \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a1e5d17ad311979a5e2810e9447522409}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Unary\+Operator uo)}{visit(UnaryOperator uo)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Unary\+Operator}}]{uo}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_af1489e40443a856d566ea376c92ee3ae}{}\label{classmain_1_1_extract_patterns_af1489e40443a856d566ea376c92ee3ae}
+Visit Unary Operator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uo} & the Unary Operator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a25c0cf12936de74a7626164514a48628}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+New\+Array na)}{visit(NewArray na)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf New\+Array}}]{na}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_ad8b3fe5bcb09a6b94a599d16dd2f16e4}{}\label{classmain_1_1_extract_patterns_ad8b3fe5bcb09a6b94a599d16dd2f16e4}
+Visit New Array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em na} & the New Array \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_abcc26715d83f3c8dfc4ae4395fb32856}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Array\+Write aw)}{visit(ArrayWrite aw)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Array\+Write}}]{aw}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_aa33b779bc3c7e8eba41f73741bc42034}{}\label{classmain_1_1_extract_patterns_aa33b779bc3c7e8eba41f73741bc42034}
+Visit Array Write.
+
+
+\begin{DoxyParams}{Parameters}
+{\em aw} & the Array Write \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_ac625a6f6f3f8b44545383014df2d3960}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Field\+Read fr)}{visit(FieldRead fr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Field\+Read}}]{fr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_af08159517fcaeed32c85ae7359f12f8f}{}\label{classmain_1_1_extract_patterns_af08159517fcaeed32c85ae7359f12f8f}
+Visit Field Read.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fr} & the Field Read \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_aaf4a22d8e3697468d09f930609ad3ac8}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Type\+Access ta)}{visit(TypeAccess ta)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Type\+Access}}]{ta}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_ace4686efb7204b4a65f33d87ad73a014}{}\label{classmain_1_1_extract_patterns_ace4686efb7204b4a65f33d87ad73a014}
+Visit Type Access.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ta} & the Type Access \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a04e14cba21b224c4d034306764aae1dd}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+While w)}{visit(While w)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf While}}]{w}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a49b2a40106cb0d98f5496a69d5650695}{}\label{classmain_1_1_extract_patterns_a49b2a40106cb0d98f5496a69d5650695}
+Visit while loop.
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & the while loop \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_aedde9dde1d806658a73bcd4d5445d8ed}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Field\+Reference fr)}{visit(FieldReference fr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Field\+Reference}}]{fr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a15a5cfd2e87d1460a102ae3b06f0c3c3}{}\label{classmain_1_1_extract_patterns_a15a5cfd2e87d1460a102ae3b06f0c3c3}
+Visit Field Reference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fr} & the Field Reference \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a4be7e674b6a49efc962fda5610191b8c}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Field\+Write fw)}{visit(FieldWrite fw)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Field\+Write}}]{fw}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_a67050fdd8fe74062c9bcae045182b4cc}{}\label{classmain_1_1_extract_patterns_a67050fdd8fe74062c9bcae045182b4cc}
+Visit Field Write.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fw} & the Field Write \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_ae7c2f2bdca23076149653f81f9a0dec5}{main.\+Visitor}.
+
+\index{main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Extract\+Patterns@{main\+::\+Extract\+Patterns}}
+\subsubsection[{\texorpdfstring{visit(\+Do do\+Node)}{visit(Do doNode)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Extract\+Patterns.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Do}}]{do1}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_extract_patterns_ad009599114d6beaf55937925373a8fe8}{}\label{classmain_1_1_extract_patterns_ad009599114d6beaf55937925373a8fe8}
+Visit do while loop.
+
+
+\begin{DoxyParams}{Parameters}
+{\em do1} & the do while loop \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a9e4bc482c380e7b78c1dc6df1cfa16c2}{main.\+Visitor}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/Extract\+Patterns.\+java\end{DoxyCompactItemize}

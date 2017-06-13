@@ -1,0 +1,13 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="pack.MyNewGrammarConstants",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacepack_1_1_my_new_grammar_constants.html"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="pack.MyNewGrammar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpack_1_1_my_new_grammar.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="pack.MyNewGrammarTokenManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classpack_1_1_my_new_grammar_token_manager.html"];
+  Node4 [label="pack.MyNewGrammarTreeConstants",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacepack_1_1_my_new_grammar_tree_constants.html"];
+  Node4 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

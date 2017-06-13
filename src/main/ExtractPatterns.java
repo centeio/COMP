@@ -43,13 +43,25 @@ import parser.IBasicNode;
 import parser.IExpression;
 import parser.IStatement;
 
+/**
+ * Visitor responsible for extracting patterns from the pattern java file
+ */
 public class ExtractPatterns implements Visitor {
+	
+	/** The patterns extracted */
 	HashMap<String, List<Pattern>> patterns;
 
+	/**
+	 * Instantiates a new extract patterns.
+	 */
 	public ExtractPatterns() {
 		this.patterns = new HashMap<>();
 	} 
 
+	/* 
+	 * Extracts patterns starting from Root
+	 * @see main.Visitor#visit(parser.Root)
+	 */
 	@Override
 	public void visit(Root root) {		
 		if(root.getCompilationUnits() != null) {
@@ -60,6 +72,10 @@ public class ExtractPatterns implements Visitor {
 		}
 	}
 
+	/* 
+	 * Extracts patterns starting from Compilation Unit
+	 * @see main.Visitor#visit(parser.CompilationUnit)
+	 */
 	@Override
 	public void visit(CompilationUnit cu) {
 
@@ -76,6 +92,10 @@ public class ExtractPatterns implements Visitor {
 	public void visit(Comment comment) {
 	}
 
+	/* 
+	 * Extracts patterns starting from Array Read
+	 * @see main.Visitor#visit(parser.ArrayRead)
+	 */
 	@Override
 	public void visit(ArrayRead ar) {
 
@@ -86,6 +106,10 @@ public class ExtractPatterns implements Visitor {
 			ar.getIndex().accept(this);
 	}
 
+	/* 
+	 * Extracts patterns starting from Class
+	 * @see main.Visitor#visit(parser.Class)
+	 */
 	@Override
 	public void visit(Class c) {
 
@@ -115,6 +139,10 @@ public class ExtractPatterns implements Visitor {
 
 	}
 
+	/* 
+	 * Extracts patterns starting from Constructor
+	 * @see main.Visitor#visit(parser.Constructor)
+	 */
 	@Override
 	public void visit(Constructor constructor) {
 
@@ -129,6 +157,10 @@ public class ExtractPatterns implements Visitor {
 			constructor.getBody().accept(this);
 	}
 
+	/* 
+	 * Extracts patterns starting from Block
+	 * @see main.Visitor#visit(parser.Block)
+	 */
 	@Override
 	public void visit(Block block) {
 
@@ -138,6 +170,10 @@ public class ExtractPatterns implements Visitor {
 			statements.get(i).accept(this);
 	}
 
+	/* 
+	 * Extracts patterns starting from Invocation
+	 * @see main.Visitor#visit(parser.Invocation)
+	 */
 	@Override
 	public void visit(Invocation invocation) {
 
@@ -153,6 +189,10 @@ public class ExtractPatterns implements Visitor {
 
 	}
 
+	/* 
+	 * Extracts patterns starting from Executable Reference
+	 * @see main.Visitor#visit(parser.ExecutableReference)
+	 */
 	@Override
 	public void visit(ExecutableReference er) {
 
@@ -177,6 +217,10 @@ public class ExtractPatterns implements Visitor {
 			}
 	}
 
+	/* 
+	 * Extracts patterns starting from method
+	 * @see main.Visitor#visit(parser.Method)
+	 */
 	@Override
 	public void visit(Method method) {
 
@@ -203,6 +247,10 @@ public class ExtractPatterns implements Visitor {
 		}
 	}
 
+	/* 
+	 * Extracts patterns starting from Parameter
+	 * @see main.Visitor#visit(parser.Parameter)
+	 */
 	@Override
 	public void visit(Parameter parameter) {
 
@@ -210,6 +258,10 @@ public class ExtractPatterns implements Visitor {
 			parameter.getType().accept(this);
 	}
 
+	/* 
+	 * Extracts patterns starting from Array Read
+	 * @see main.Visitor#visit(parser.ArrayTypeReference)
+	 */
 	@Override
 	public void visit(ArrayTypeReference atr) {
 
@@ -217,6 +269,10 @@ public class ExtractPatterns implements Visitor {
 			atr.getType().accept(this);
 	}
 
+	/* 
+	 * Extracts patterns starting from If
+	 * @see main.Visitor#visit(parser.If)
+	 */
 	@Override
 	public void visit(If i) {
 
@@ -230,6 +286,10 @@ public class ExtractPatterns implements Visitor {
 			i.getElse().accept(this);
 	}
 
+	/* 
+	 * Extracts patterns starting from assignment
+	 * @see main.Visitor#visit(parser.Assignment)
+	 */
 	@Override
 	public void visit(Assignment assignment) {
 
@@ -243,6 +303,10 @@ public class ExtractPatterns implements Visitor {
 			assignment.getRhs().accept(this);
 	}
 
+	/* 
+	 * Extracts patterns starting from Variable Write
+	 * @see main.Visitor#visit(parser.VariableWrite)
+	 */
 	@Override
 	public void visit(VariableWrite vw) {
 
@@ -257,6 +321,9 @@ public class ExtractPatterns implements Visitor {
 	public void visit(NullNode nn) {
 	}
 
+	/* Extracts patterns starting from Local Variable
+	 * @see main.Visitor#visit(parser.LocalVariable)
+	 */
 	@Override
 	public void visit(LocalVariable lv) {
 
@@ -271,6 +338,9 @@ public class ExtractPatterns implements Visitor {
 	public void visit(TypeReference tr) {
 	}
 
+	/* Extracts patterns starting from Local Variable Reference
+	 * @see main.Visitor#visit(parser.LocalVariableReference)
+	 */
 	@Override
 	public void visit(LocalVariableReference lvr) {
 
@@ -278,6 +348,9 @@ public class ExtractPatterns implements Visitor {
 			lvr.getType().accept(this);
 	}
 
+	/* Extracts patterns starting from Binary Operator
+	 * @see main.Visitor#visit(parser.BinaryOperator)
+	 */
 	@Override
 	public void visit(BinaryOperator bo) {
 
@@ -291,6 +364,9 @@ public class ExtractPatterns implements Visitor {
 			bo.getRhs().accept(this);
 	}
 
+	/* Extracts patterns starting from Literal
+	 * @see main.Visitor#visit(parser.Literal)
+	 */
 	@Override
 	public void visit(Literal literal) {
 
@@ -298,6 +374,9 @@ public class ExtractPatterns implements Visitor {
 			literal.getType().accept(this);
 	}
 
+	/* Extracts patterns starting from Variable Read
+	 * @see main.Visitor#visit(parser.VariableRead)
+	 */
 	@Override
 	public void visit(VariableRead vr) {
 
@@ -308,6 +387,9 @@ public class ExtractPatterns implements Visitor {
 			vr.getVar().accept(this);
 	}
 
+	/* Extracts patterns starting from For loop
+	 * @see main.Visitor#visit(parser.For)
+	 */
 	@Override
 	public void visit(For f) {
 
@@ -331,6 +413,9 @@ public class ExtractPatterns implements Visitor {
 			f.getBody().accept(this);
 	}
 
+	/* Extracts patterns starting from Unary Operator
+	 * @see main.Visitor#visit(parser.UnaryOperator)
+	 */
 	@Override
 	public void visit(UnaryOperator uo) {	
 
@@ -341,6 +426,9 @@ public class ExtractPatterns implements Visitor {
 			uo.getOperand().accept(this);
 	}
 
+	/* Extracts patterns starting from New Array
+	 * @see main.Visitor#visit(parser.NewArray)
+	 */
 	@Override
 	public void visit(NewArray na) {
 
@@ -369,6 +457,9 @@ public class ExtractPatterns implements Visitor {
 		}
 	}
 
+	/* Extracts patterns starting from Array Write
+	 * @see main.Visitor#visit(parser.ArrayWrite)
+	 */
 	@Override
 	public void visit(ArrayWrite aw) {
 
@@ -382,6 +473,9 @@ public class ExtractPatterns implements Visitor {
 			aw.getIndex().accept(this);
 	}
 
+	/* Extracts patterns starting from Field Read
+	 * @see main.Visitor#visit(parser.FieldRead)
+	 */
 	@Override
 	public void visit(FieldRead fr) {
 
@@ -395,6 +489,9 @@ public class ExtractPatterns implements Visitor {
 			fr.getVar().accept(this);
 	}
 
+	/* Extracts patterns starting from Type Access
+	 * @see main.Visitor#visit(parser.TypeAccess)
+	 */
 	@Override
 	public void visit(TypeAccess ta) {
 
@@ -405,6 +502,9 @@ public class ExtractPatterns implements Visitor {
 			ta.getTarget().accept(this);
 	}
 
+	/* Extracts patterns starting from While loop
+	 * @see main.Visitor#visit(parser.While)
+	 */
 	@Override
 	public void visit(While w) {
 
@@ -415,6 +515,9 @@ public class ExtractPatterns implements Visitor {
 			w.getBody().accept(this);
 	}
 
+	/* Extracts patterns starting from Field Reference
+	 * @see main.Visitor#visit(parser.FieldReference)
+	 */
 	@Override
 	public void visit(FieldReference fr) {
 
@@ -426,6 +529,9 @@ public class ExtractPatterns implements Visitor {
 
 	}
 
+	/* Extracts patterns starting from Field Write
+	 * @see main.Visitor#visit(parser.FieldWrite)
+	 */
 	@Override
 	public void visit(FieldWrite fw) {
 
@@ -436,6 +542,9 @@ public class ExtractPatterns implements Visitor {
 			fw.getType().accept(this);
 	}
 
+	/* Extracts patterns starting from Do loop
+	 * @see main.Visitor#visit(parser.Do)
+	 */
 	@Override
 	public void visit(Do doNode) {
 
@@ -446,5 +555,10 @@ public class ExtractPatterns implements Visitor {
 			doNode.getCondition().accept(this);
 	}
 
+	/**
+	 * Gets the patterns extracted.
+	 *
+	 * @return patterns extracted
+	 */
 	public HashMap<String, List<Pattern>> getPatterns() { return patterns; }
 }

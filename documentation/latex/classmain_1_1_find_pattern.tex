@@ -1,0 +1,708 @@
+\hypertarget{classmain_1_1_find_pattern}{}\section{main.\+Find\+Pattern Class Reference}
+\label{classmain_1_1_find_pattern}\index{main.\+Find\+Pattern@{main.\+Find\+Pattern}}
+
+
+Inheritance diagram for main.\+Find\+Pattern\+:
+% FIG 0
+
+
+Collaboration diagram for main.\+Find\+Pattern\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmain_1_1_find_pattern_a507de1ab97cb405fd7094cedb38a6b8c}{Find\+Pattern} (Hash\+Map$<$ String, List$<$ \hyperlink{classmain_1_1_pattern}{Pattern} $>$$>$ patterns\+To\+Find)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a11c7c0e93878aee8d3ae7757e8c69a1d}{visit} (\hyperlink{classparser_1_1_root}{Root} root)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a6e5cd7b99267074313734993973d8ae5}{visit} (\hyperlink{classparser_1_1_compilation_unit}{Compilation\+Unit} cu)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a390e63794bb999e648ddcdac2ccf01ac}{visit} (\hyperlink{classparser_1_1_comment}{Comment} comment)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a33a051b05002ca3bf576409bbb895652}{visit} (\hyperlink{classparser_1_1_array_read}{Array\+Read} ar)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_aa9229d4903133cab095952bd390e8fe3}{visit} (\hyperlink{classparser_1_1_class}{Class} c)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a23f36a9730f08ec44ed7782604dd02c3}{visit} (\hyperlink{classparser_1_1_constructor}{Constructor} constructor)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a0c41bb68d41e46187d33ebf1100fd7d5}{visit} (\hyperlink{classparser_1_1_block}{Block} block)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a5e8455dca876e833d13311a9d739cf23}{visit} (\hyperlink{classparser_1_1_invocation}{Invocation} invocation)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a2c68e93e6d63eef721fe953e53fd721b}{visit} (\hyperlink{classparser_1_1_executable_reference}{Executable\+Reference} er)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_ab7f9db26d06a9a781ee14618203b1140}{visit} (\hyperlink{classparser_1_1_method}{Method} method)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_ac4d98a117245ae03c9fc0060668bdce8}{visit} (\hyperlink{classparser_1_1_parameter}{Parameter} parameter)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_ade995fbbd6e7fabe3bcd2e1fdd7fe8d1}{visit} (\hyperlink{classparser_1_1_array_type_reference}{Array\+Type\+Reference} atr)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_aaf970b80a8159b09bca4c45cf5cbcac1}{visit} (\hyperlink{classparser_1_1_if}{If} i)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_ad21c65e4a8bcc97c73aaeef17f656611}{visit} (\hyperlink{classparser_1_1_assignment}{Assignment} assignment)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_acd038a6fbc77de32079a444f6a81ea66}{visit} (\hyperlink{classparser_1_1_variable_write}{Variable\+Write} vw)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a1b511eaab06b970652b7349ebd1d2919}{visit} (\hyperlink{classparser_1_1_null_node}{Null\+Node} nn)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a78ec9efeaf6321d08d58fb7d5568bfc9}{visit} (\hyperlink{classparser_1_1_local_variable}{Local\+Variable} lv)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a03c6caf42c09297405d602920ac432cf}{visit} (\hyperlink{classparser_1_1_type_reference}{Type\+Reference} tr)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a1f047a47f26f660f64199b9e62dc888c}{visit} (\hyperlink{classparser_1_1_local_variable_reference}{Local\+Variable\+Reference} lvr)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_acd51572f2a221701fc6b973592039cbc}{visit} (\hyperlink{classparser_1_1_binary_operator}{Binary\+Operator} bo)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_aa780e7fbc447187f960a0c5e57815f0b}{visit} (\hyperlink{classparser_1_1_literal}{Literal} literal)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_aa5e33b6c5de74e4d553b1d6e14b9cb71}{visit} (\hyperlink{classparser_1_1_variable_read}{Variable\+Read} vr)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_ac9e4f1699f47aa105f729d68b8059510}{visit} (\hyperlink{classparser_1_1_for}{For} f)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_ac1947f846a05ed5f0e350f85440e500a}{visit} (\hyperlink{classparser_1_1_unary_operator}{Unary\+Operator} uo)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_aaedf8faf24d3f5768201345ac48faec4}{visit} (\hyperlink{classparser_1_1_new_array}{New\+Array} na)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a544f9712011aace5009a5968dedfe70d}{visit} (\hyperlink{classparser_1_1_array_write}{Array\+Write} aw)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_afdb1f22b4ebb01aff3ceac4faf50bc72}{visit} (\hyperlink{classparser_1_1_field_read}{Field\+Read} fr)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_ab4ff8507ce6dfd72d4aa2fb3292c2300}{visit} (\hyperlink{classparser_1_1_type_access}{Type\+Access} ta)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_aaae3db86cb736b5938082a889cbe8f07}{visit} (\hyperlink{classparser_1_1_while}{While} w)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a3bb209a67dfe2002b50a6e34f433b33b}{visit} (\hyperlink{classparser_1_1_field_reference}{Field\+Reference} fr)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a727f5e90e283cd7350705bb4a93ab345}{visit} (\hyperlink{classparser_1_1_field_write}{Field\+Write} fw)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a9ca926cdbffea32b67a5e73d45ecd428}{visit} (\hyperlink{classparser_1_1_do}{Do} do\+Node)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_a6b097445ba17c69dac08c9015546e420}{find\+Patterns} (\hyperlink{interfaceparser_1_1_i_basic_node}{I\+Basic\+Node} node)
+\item 
+void \hyperlink{classmain_1_1_find_pattern_af7eb90877212efef585502628abf5038}{await\+Termination} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Finds patterns in code 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!Find\+Pattern@{Find\+Pattern}}
+\index{Find\+Pattern@{Find\+Pattern}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{Find\+Pattern(\+Hash\+Map$<$ String, List$<$ Pattern $>$$>$ patterns\+To\+Find)}{FindPattern(HashMap< String, List< Pattern >> patternsToFind)}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+Find\+Pattern.\+Find\+Pattern (
+\begin{DoxyParamCaption}
+\item[{Hash\+Map$<$ String, List$<$ {\bf Pattern} $>$$>$}]{patterns\+To\+Find}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a507de1ab97cb405fd7094cedb38a6b8c}{}\label{classmain_1_1_find_pattern_a507de1ab97cb405fd7094cedb38a6b8c}
+Instantiates a new instance of the pattern finder visitor
+
+
+\begin{DoxyParams}{Parameters}
+{\em patterns\+To\+Find} & the patterns to find \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!await\+Termination@{await\+Termination}}
+\index{await\+Termination@{await\+Termination}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{await\+Termination()}{awaitTermination()}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+await\+Termination (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_af7eb90877212efef585502628abf5038}{}\label{classmain_1_1_find_pattern_af7eb90877212efef585502628abf5038}
+Awaits termination of all the pattern comparison threads \index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!find\+Patterns@{find\+Patterns}}
+\index{find\+Patterns@{find\+Patterns}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{find\+Patterns(\+I\+Basic\+Node node)}{findPatterns(IBasicNode node)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+find\+Patterns (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+Basic\+Node}}]{node}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a6b097445ba17c69dac08c9015546e420}{}\label{classmain_1_1_find_pattern_a6b097445ba17c69dac08c9015546e420}
+if code possibly matches one pattern, starts a new thread to compare the code with the pattern add it to patterns found
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & code which possibly matches \\
+\hline
+\end{DoxyParams}
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Root root)}{visit(Root root)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Root}}]{root}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a11c7c0e93878aee8d3ae7757e8c69a1d}{}\label{classmain_1_1_find_pattern_a11c7c0e93878aee8d3ae7757e8c69a1d}
+Visit root.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & the root \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_af0d09d0444a9a38206f55c3c4a145c64}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Compilation\+Unit cu)}{visit(CompilationUnit cu)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Compilation\+Unit}}]{cu}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a6e5cd7b99267074313734993973d8ae5}{}\label{classmain_1_1_find_pattern_a6e5cd7b99267074313734993973d8ae5}
+Visit Compilation Unit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cu} & the compilation unit \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_ae4526b245504b137e6493b64cf88abd8}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Comment comment)}{visit(Comment comment)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Comment}}]{comment}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a390e63794bb999e648ddcdac2ccf01ac}{}\label{classmain_1_1_find_pattern_a390e63794bb999e648ddcdac2ccf01ac}
+Visit comment.
+
+
+\begin{DoxyParams}{Parameters}
+{\em comment} & the comment \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a86506550160b7c663463a8b56aea26ac}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Array\+Read ar)}{visit(ArrayRead ar)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Array\+Read}}]{ar}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a33a051b05002ca3bf576409bbb895652}{}\label{classmain_1_1_find_pattern_a33a051b05002ca3bf576409bbb895652}
+Visit Array Read.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ar} & the Array Read \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a9b393467433e42eb3ef3d4dd49517d91}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Class c)}{visit(Class c)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Class}}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_aa9229d4903133cab095952bd390e8fe3}{}\label{classmain_1_1_find_pattern_aa9229d4903133cab095952bd390e8fe3}
+Visit class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & the class \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_afcc74364de2b22080c15380f1d54e7c7}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Constructor constructor)}{visit(Constructor constructor)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Constructor}}]{constructor}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a23f36a9730f08ec44ed7782604dd02c3}{}\label{classmain_1_1_find_pattern_a23f36a9730f08ec44ed7782604dd02c3}
+Visit constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em constructor} & the constructor \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_afd5b91c54ca6bdc370d05b376d30883d}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Block block)}{visit(Block block)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Block}}]{block}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a0c41bb68d41e46187d33ebf1100fd7d5}{}\label{classmain_1_1_find_pattern_a0c41bb68d41e46187d33ebf1100fd7d5}
+Visit block.
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & the block \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a12e9a6a856e6048b49c0b5948dbf7a9a}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Invocation invocation)}{visit(Invocation invocation)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Invocation}}]{invocation}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a5e8455dca876e833d13311a9d739cf23}{}\label{classmain_1_1_find_pattern_a5e8455dca876e833d13311a9d739cf23}
+Visit invocation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em invocation} & the invocation \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a573d5b4bdaf93b1ab363d2f4374e301e}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Executable\+Reference er)}{visit(ExecutableReference er)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Executable\+Reference}}]{er}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a2c68e93e6d63eef721fe953e53fd721b}{}\label{classmain_1_1_find_pattern_a2c68e93e6d63eef721fe953e53fd721b}
+Visit Executable Reference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em er} & the Executable Reference \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a605cf685affb3add0d2d4703e2c968e3}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Method method)}{visit(Method method)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Method}}]{method}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_ab7f9db26d06a9a781ee14618203b1140}{}\label{classmain_1_1_find_pattern_ab7f9db26d06a9a781ee14618203b1140}
+Visit method.
+
+
+\begin{DoxyParams}{Parameters}
+{\em method} & the method \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a115a68630492b789c182ebeb4469d7bd}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Parameter parameter)}{visit(Parameter parameter)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Parameter}}]{parameter}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_ac4d98a117245ae03c9fc0060668bdce8}{}\label{classmain_1_1_find_pattern_ac4d98a117245ae03c9fc0060668bdce8}
+Visit parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter} & the parameter \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_aafc4c4e5b5ee22122a0b8e7ffd581b72}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Array\+Type\+Reference atr)}{visit(ArrayTypeReference atr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Array\+Type\+Reference}}]{atr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_ade995fbbd6e7fabe3bcd2e1fdd7fe8d1}{}\label{classmain_1_1_find_pattern_ade995fbbd6e7fabe3bcd2e1fdd7fe8d1}
+Visit Array Type Reference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em atr} & the Array Type Reference \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a7c498c62d42f788316548fa7648724fa}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+If i)}{visit(If i)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf If}}]{i}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_aaf970b80a8159b09bca4c45cf5cbcac1}{}\label{classmain_1_1_find_pattern_aaf970b80a8159b09bca4c45cf5cbcac1}
+Visit if.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & the if \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a06dd957e145bea2eb026e044aa3f3119}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Assignment assignment)}{visit(Assignment assignment)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Assignment}}]{assignment}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_ad21c65e4a8bcc97c73aaeef17f656611}{}\label{classmain_1_1_find_pattern_ad21c65e4a8bcc97c73aaeef17f656611}
+Visit assignment.
+
+
+\begin{DoxyParams}{Parameters}
+{\em assignment} & the assignment \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a6e938f696967e376deab5565b4223ad0}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Variable\+Write vw)}{visit(VariableWrite vw)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Variable\+Write}}]{vw}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_acd038a6fbc77de32079a444f6a81ea66}{}\label{classmain_1_1_find_pattern_acd038a6fbc77de32079a444f6a81ea66}
+Visit Variable Write.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vw} & the Variable Write \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a7f90cf95f580cceafb2fea1e2283f74a}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Null\+Node nn)}{visit(NullNode nn)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Null\+Node}}]{nn}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a1b511eaab06b970652b7349ebd1d2919}{}\label{classmain_1_1_find_pattern_a1b511eaab06b970652b7349ebd1d2919}
+Visit Null Node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nn} & the Null Node \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a1437a93c8b8b41c3082c593ed0fd4ce5}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Local\+Variable lv)}{visit(LocalVariable lv)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Local\+Variable}}]{lv}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a78ec9efeaf6321d08d58fb7d5568bfc9}{}\label{classmain_1_1_find_pattern_a78ec9efeaf6321d08d58fb7d5568bfc9}
+Visit Local Variable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lv} & the Local Variable \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_adadc51a0b50d0c0ff4b4e96f60f17b80}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Type\+Reference tr)}{visit(TypeReference tr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Type\+Reference}}]{tr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a03c6caf42c09297405d602920ac432cf}{}\label{classmain_1_1_find_pattern_a03c6caf42c09297405d602920ac432cf}
+Visit Type Reference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tr} & the Type Reference \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_af509944ff15a0958d290a3c82ef672bf}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Local\+Variable\+Reference lvr)}{visit(LocalVariableReference lvr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Local\+Variable\+Reference}}]{lvr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a1f047a47f26f660f64199b9e62dc888c}{}\label{classmain_1_1_find_pattern_a1f047a47f26f660f64199b9e62dc888c}
+Visit Local Variable Reference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lvr} & the Local Variable Reference \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_afd63e1757a2f3ab052b8c9c5c9698d66}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Binary\+Operator bo)}{visit(BinaryOperator bo)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\+Operator}}]{bo}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_acd51572f2a221701fc6b973592039cbc}{}\label{classmain_1_1_find_pattern_acd51572f2a221701fc6b973592039cbc}
+Visit Binary Operator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bo} & the Binary Operator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a252083abc17a52a6e72bd823f9c2b9c6}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Literal literal)}{visit(Literal literal)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Literal}}]{literal}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_aa780e7fbc447187f960a0c5e57815f0b}{}\label{classmain_1_1_find_pattern_aa780e7fbc447187f960a0c5e57815f0b}
+Visit literal.
+
+
+\begin{DoxyParams}{Parameters}
+{\em literal} & the literal \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a62b8935cfe6f21af68dab1ed7b24a9eb}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Variable\+Read vr)}{visit(VariableRead vr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Variable\+Read}}]{vr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_aa5e33b6c5de74e4d553b1d6e14b9cb71}{}\label{classmain_1_1_find_pattern_aa5e33b6c5de74e4d553b1d6e14b9cb71}
+Visit Variable Read.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vr} & the Variable Read \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_aecb22f6c1d21ebcbb33b09baa10ed68c}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+For f)}{visit(For f)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf For}}]{f}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_ac9e4f1699f47aa105f729d68b8059510}{}\label{classmain_1_1_find_pattern_ac9e4f1699f47aa105f729d68b8059510}
+Visit for loop.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & the for loop \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a1e5d17ad311979a5e2810e9447522409}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Unary\+Operator uo)}{visit(UnaryOperator uo)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Unary\+Operator}}]{uo}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_ac1947f846a05ed5f0e350f85440e500a}{}\label{classmain_1_1_find_pattern_ac1947f846a05ed5f0e350f85440e500a}
+Visit Unary Operator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uo} & the Unary Operator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a25c0cf12936de74a7626164514a48628}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+New\+Array na)}{visit(NewArray na)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf New\+Array}}]{na}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_aaedf8faf24d3f5768201345ac48faec4}{}\label{classmain_1_1_find_pattern_aaedf8faf24d3f5768201345ac48faec4}
+Visit New Array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em na} & the New Array \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_abcc26715d83f3c8dfc4ae4395fb32856}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Array\+Write aw)}{visit(ArrayWrite aw)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Array\+Write}}]{aw}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a544f9712011aace5009a5968dedfe70d}{}\label{classmain_1_1_find_pattern_a544f9712011aace5009a5968dedfe70d}
+Visit Array Write.
+
+
+\begin{DoxyParams}{Parameters}
+{\em aw} & the Array Write \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_ac625a6f6f3f8b44545383014df2d3960}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Field\+Read fr)}{visit(FieldRead fr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Field\+Read}}]{fr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_afdb1f22b4ebb01aff3ceac4faf50bc72}{}\label{classmain_1_1_find_pattern_afdb1f22b4ebb01aff3ceac4faf50bc72}
+Visit Field Read.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fr} & the Field Read \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_aaf4a22d8e3697468d09f930609ad3ac8}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Type\+Access ta)}{visit(TypeAccess ta)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Type\+Access}}]{ta}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_ab4ff8507ce6dfd72d4aa2fb3292c2300}{}\label{classmain_1_1_find_pattern_ab4ff8507ce6dfd72d4aa2fb3292c2300}
+Visit Type Access.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ta} & the Type Access \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a04e14cba21b224c4d034306764aae1dd}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+While w)}{visit(While w)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf While}}]{w}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_aaae3db86cb736b5938082a889cbe8f07}{}\label{classmain_1_1_find_pattern_aaae3db86cb736b5938082a889cbe8f07}
+Visit while loop.
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & the while loop \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_aedde9dde1d806658a73bcd4d5445d8ed}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Field\+Reference fr)}{visit(FieldReference fr)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Field\+Reference}}]{fr}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a3bb209a67dfe2002b50a6e34f433b33b}{}\label{classmain_1_1_find_pattern_a3bb209a67dfe2002b50a6e34f433b33b}
+Visit Field Reference.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fr} & the Field Reference \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a4be7e674b6a49efc962fda5610191b8c}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Field\+Write fw)}{visit(FieldWrite fw)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Field\+Write}}]{fw}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a727f5e90e283cd7350705bb4a93ab345}{}\label{classmain_1_1_find_pattern_a727f5e90e283cd7350705bb4a93ab345}
+Visit Field Write.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fw} & the Field Write \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_ae7c2f2bdca23076149653f81f9a0dec5}{main.\+Visitor}.
+
+\index{main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}!visit@{visit}}
+\index{visit@{visit}!main\+::\+Find\+Pattern@{main\+::\+Find\+Pattern}}
+\subsubsection[{\texorpdfstring{visit(\+Do do\+Node)}{visit(Do doNode)}}]{\setlength{\rightskip}{0pt plus 5cm}void main.\+Find\+Pattern.\+visit (
+\begin{DoxyParamCaption}
+\item[{{\bf Do}}]{do1}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1_find_pattern_a9ca926cdbffea32b67a5e73d45ecd428}{}\label{classmain_1_1_find_pattern_a9ca926cdbffea32b67a5e73d45ecd428}
+Visit do while loop.
+
+
+\begin{DoxyParams}{Parameters}
+{\em do1} & the do while loop \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{interfacemain_1_1_visitor_a9e4bc482c380e7b78c1dc6df1cfa16c2}{main.\+Visitor}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/Find\+Pattern.\+java\end{DoxyCompactItemize}

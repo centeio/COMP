@@ -9,25 +9,55 @@ import java.util.regex.Pattern;
 import parser.*;
 import parser.Class;
 
+/**
+ * Visitor that concludes if code matches a pattern
+ */
 public class PatternMatcher implements Visitor {
+	
+	/** The pattern to be matched */
 	IBasicNode pattern;
+	
+	/** The pattern functions found. */
 	HashMap<String,String> functions_found;
+	
+	/** The pattern variables found. */
 	HashMap<String,IBasicNode> variables_found;
-	boolean parcial;
+	
+	/** if search is partial or exhaustive */
+	boolean partial;
+	
+	/** whether it is a match. */
 	boolean match;
-	public PatternMatcher(IBasicNode pattern, boolean parcial) {
-		this(pattern, parcial, new HashMap<String,IBasicNode>());
+	
+	/**
+	 * Instantiates a new pattern matcher.
+	 *
+	 * @param pattern the pattern to be matched
+	 * @param partial if search is partial
+	 */
+	public PatternMatcher(IBasicNode pattern, boolean partial) {
+		this(pattern, partial, new HashMap<String,IBasicNode>());
 	}
 
-	public PatternMatcher(IBasicNode pattern, boolean parcial, HashMap<String,IBasicNode> variables_found) {
+	/**
+	 * Instantiates a new pattern matcher.
+	 *
+	 * @param pattern the pattern to be matched
+	 * @param partial if search is partial
+	 * @param variables_found the variables found so far
+	 */
+	public PatternMatcher(IBasicNode pattern, boolean partial, HashMap<String,IBasicNode> variables_found) {
 		this.pattern = pattern;
 		this.functions_found = new HashMap<String,String>();
 		this.variables_found = variables_found;
-		this.parcial = parcial;
+		this.partial = partial;
 		this.match = true;
 	}
 
 
+	/* Check if pattern matches Root and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Root)
+	 */
 	@Override
 	public void visit(Root root) {
 		if(!(pattern instanceof Root)){
@@ -45,6 +75,9 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches Compilation Unit and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.CompilationUnit)
+	 */
 	@Override
 	public void visit(CompilationUnit cu) {
 		if(!(pattern instanceof CompilationUnit)){
@@ -62,6 +95,9 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches Comment and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Comment)
+	 */
 	@Override
 	public void visit(Comment comment) {
 		if(!(pattern instanceof Comment)){
@@ -74,6 +110,9 @@ public class PatternMatcher implements Visitor {
 		match = (p.getContent().equals(comment.getContent()));
 	}
 
+	/* Check if pattern matches Array Read and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.ArrayRead)
+	 */
 	@Override
 	public void visit(ArrayRead ar) {
 		if(!(pattern instanceof ArrayRead)){
@@ -102,12 +141,18 @@ public class PatternMatcher implements Visitor {
 		ar.getIndex().accept(this);
 	}
 
+	/* Check if pattern matches Class and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Class)
+	 */
 	@Override
 	public void visit(Class c) {
 		// TODO visit Class
 		System.out.println("visit Class stub");
 	}
 
+	/* Check if pattern matches Constructor and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Constructor)
+	 */
 	@Override
 	public void visit(Constructor constructor) {
 		if(!(pattern instanceof Constructor)){
@@ -132,6 +177,9 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches Block and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Block)
+	 */
 	@Override
 	public void visit(Block block) {
 		if(!(pattern instanceof Block)){
@@ -140,11 +188,22 @@ public class PatternMatcher implements Visitor {
 		}
 
 		Block p = (Block) pattern;
-		boolean ignore = parcial;
+		boolean ignore = partial;
 
 		match = verifyBlock(block, p, 0, 0, ignore, variables_found);
 	}
 
+	/**
+	 * Auxiliary function to verify if block matches pattern starting in statement i.
+	 *
+	 * @param block the code block 
+	 * @param p the pattern 
+	 * @param i the index of the block statement to start the verification
+	 * @param j the index of the pattern statement to start the verification
+	 * @param ignore if statement can be ignored
+	 * @param var the variables found so far
+	 * @return true, if block matches from i to end.
+	 */
 	private boolean verifyBlock(Block block, Block p, int i, int j, boolean ignore, HashMap<String, IBasicNode> var) {
 		for (; i < block.getStatements().size() && j < p.getStatements().size(); i++) {
 			pattern = p.getStatements().get(j);
@@ -163,7 +222,7 @@ public class PatternMatcher implements Visitor {
 			}
 
 			HashMap<String, IBasicNode> var1 = new HashMap<String, IBasicNode>(var);
-			PatternMatcher pm = new PatternMatcher(pattern, parcial, var1);
+			PatternMatcher pm = new PatternMatcher(pattern, partial, var1);
 			block.getStatements().get(i).accept(pm);
 			boolean aux_match = pm.isMatch();
 
@@ -171,7 +230,7 @@ public class PatternMatcher implements Visitor {
 				HashMap<String, IBasicNode> var2 = new HashMap<String, IBasicNode>(pm.getVariables_found());
 
 				boolean ignore2 = ignore;
-				if(!parcial)
+				if(!partial)
 					ignore2 = false;
 
 				if(verifyBlock(block, p, i+1, j+1, ignore2, var2)){
@@ -204,6 +263,13 @@ public class PatternMatcher implements Visitor {
 	}
 
 
+	/**
+	 * Merge variables found if possible.
+	 *
+	 * @param var the current variables found
+	 * @param var2 the new variables to be added
+	 * @return true, if merge is possible and successful
+	 */
 	private boolean joinVars(HashMap<String, IBasicNode> var, HashMap<String, IBasicNode> var2) {
 		Iterator<Entry<String, IBasicNode>> it = var2.entrySet().iterator();
 		while (it.hasNext()) {
@@ -219,6 +285,9 @@ public class PatternMatcher implements Visitor {
 	}
 
 
+	/* Check if pattern matches Invocation and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Invocation)
+	 */
 	@Override
 	public void visit(Invocation invocation) {
 		if(!(pattern instanceof Invocation)){
@@ -249,6 +318,9 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches Executable Reference and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.ExecutableReference)
+	 */
 	@Override
 	public void visit(ExecutableReference er) {
 		if(!(pattern instanceof ExecutableReference)){
@@ -303,6 +375,9 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches Method and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Method)
+	 */
 	@Override
 	public void visit(Method method) {
 		if(!(pattern instanceof Method)){
@@ -336,6 +411,9 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches parameter and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Parameter)
+	 */
 	@Override
 	public void visit(Parameter parameter) {
 		if(!(pattern instanceof Parameter)){
@@ -352,6 +430,9 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches Array Type Reference and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.ArrayTypeReference)
+	 */
 	@Override
 	public void visit(ArrayTypeReference atr) {
 		if(!(pattern instanceof ArrayTypeReference)){
@@ -364,6 +445,9 @@ public class PatternMatcher implements Visitor {
 		atr.getType().accept(this);
 	}
 
+	/* Check if pattern matches If and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.If)
+	 */
 	@Override
 	public void visit(If i) {
 		if(!(pattern instanceof If)){
@@ -389,6 +473,9 @@ public class PatternMatcher implements Visitor {
 		i.getElse().accept(this);
 	}
 
+	/* Check if pattern matches assignment and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Assignment)
+	 */
 	@Override
 	public void visit(Assignment assignment) {
 		if(!(pattern instanceof Assignment)){
@@ -411,6 +498,9 @@ public class PatternMatcher implements Visitor {
 		assignment.getRhs().accept(this);	
 	}
 
+	/* Check if pattern matches Variable Write and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.VariableWrite)
+	 */
 	@Override
 	public void visit(VariableWrite vw) {
 		if(!(pattern instanceof VariableWrite || pattern instanceof FieldWrite)){
@@ -430,11 +520,17 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches Null node
+	 * @see main.Visitor#visit(parser.NullNode)
+	 */
 	@Override
 	public void visit(NullNode nn) {
 		match = (pattern instanceof NullNode);
 	}
 
+	/* Check if pattern matches Local Variable and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.LocalVariable)
+	 */
 	@Override
 	public void visit(LocalVariable lv) {
 		if(!(pattern instanceof LocalVariable)){
@@ -457,6 +553,9 @@ public class PatternMatcher implements Visitor {
 		lv.getInit().accept(this);
 	}
 
+	/* Check if pattern matches Type Reference and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.TypeReference)
+	 */
 	@Override
 	public void visit(TypeReference tr) {
 		if(!(pattern instanceof TypeReference)){
@@ -470,6 +569,9 @@ public class PatternMatcher implements Visitor {
 			match = false;
 	}
 
+	/* Check if pattern matches Local Variable Reference and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.LocalVariableReference)
+	 */
 	@Override
 	public void visit(LocalVariableReference lvr) {
 		if(!(pattern instanceof LocalVariableReference || pattern instanceof FieldReference)){
@@ -482,6 +584,9 @@ public class PatternMatcher implements Visitor {
 		checkVariableConsistency(lvr, p.getName());
 	}
 
+	/* Check if pattern matches Binary Operator and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.BinaryOperator)
+	 */
 	@Override
 	public void visit(BinaryOperator bo) {
 		if(!(pattern instanceof BinaryOperator)){
@@ -516,6 +621,9 @@ public class PatternMatcher implements Visitor {
 		bo.getRhs().accept(this);
 	}
 
+	/* Check if pattern matches literal and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Literal)
+	 */
 	@Override
 	public void visit(Literal literal) {
 		if(pattern instanceof FieldRead){
@@ -539,6 +647,9 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches Variable Read and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.VariableRead)
+	 */
 	@Override
 	public void visit(VariableRead vr) {
 		if(!(pattern instanceof VariableRead || pattern instanceof FieldRead)){
@@ -557,6 +668,9 @@ public class PatternMatcher implements Visitor {
 
 	}
 
+	/* Check if pattern matches for loop and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.For)
+	 */
 	@Override
 	public void visit(For f) {
 		if(!(pattern instanceof For)){
@@ -607,6 +721,9 @@ public class PatternMatcher implements Visitor {
 		f.getBody().accept(this);
 	}
 
+	/* Check if pattern matches Unary Operator and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.UnaryOperator)
+	 */
 	@Override
 	public void visit(UnaryOperator uo) {
 		if(!(pattern instanceof UnaryOperator)){
@@ -625,6 +742,9 @@ public class PatternMatcher implements Visitor {
 		uo.getOperand().accept(this);		
 	}
 
+	/* Check if pattern matches New Array and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.NewArray)
+	 */
 	@Override
 	public void visit(NewArray na) {
 		if(!(pattern instanceof NewArray)){
@@ -677,6 +797,9 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches Array Write and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.ArrayWrite)
+	 */
 	@Override
 	public void visit(ArrayWrite aw) {
 		if(!(pattern instanceof ArrayWrite)){
@@ -713,6 +836,9 @@ public class PatternMatcher implements Visitor {
 		aw.getIndex().accept(this);
 	}
 
+	/* Check if pattern matches Field Read and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.FieldRead)
+	 */
 	@Override
 	public void visit(FieldRead fr) {
 		if(!(pattern instanceof FieldRead)){
@@ -745,6 +871,9 @@ public class PatternMatcher implements Visitor {
 		fr.getVar().accept(this);
 	}
 
+	/* Check if pattern matches Type Access and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.TypeAccess)
+	 */
 	@Override
 	public void visit(TypeAccess ta) {
 		if(!(pattern instanceof TypeAccess)){
@@ -771,6 +900,9 @@ public class PatternMatcher implements Visitor {
 			return;
 	}
 
+	/* Check if pattern matches while loop and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.While)
+	 */
 	@Override
 	public void visit(While w) {
 		if(!(pattern instanceof While)){
@@ -792,6 +924,9 @@ public class PatternMatcher implements Visitor {
 		w.getBody().accept(this);
 	}	
 
+	/* Check if pattern matches Field Reference and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.FieldReference)
+	 */
 	@Override
 	public void visit(FieldReference fr) {
 		if(!(pattern instanceof FieldReference)){
@@ -820,6 +955,9 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/* Check if pattern matches Field Write and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.FieldWrite)
+	 */
 	@Override
 	public void visit(FieldWrite fw) {
 		if(!(pattern instanceof FieldWrite)){
@@ -847,6 +985,9 @@ public class PatternMatcher implements Visitor {
 
 	}
 
+	/* Check if pattern matches do while loop and all it's relevant children nodes
+	 * @see main.Visitor#visit(parser.Do)
+	 */
 	@Override
 	public void visit(Do do1) {
 		if(!(pattern instanceof Do)){
@@ -867,6 +1008,12 @@ public class PatternMatcher implements Visitor {
 		do1.getBody().accept(this);
 	}
 
+	/**
+	 * Check for variable consistency.
+	 *
+	 * @param code the code which may match variable
+	 * @param pattern_name the pattern's variable name
+	 */
 	private void checkVariableConsistency(IBasicNode code, String pattern_name) {
 		//Compare name
 		Pattern pat = Pattern.compile("a\\d*");
@@ -894,6 +1041,13 @@ public class PatternMatcher implements Visitor {
 		}
 	}
 
+	/**
+	 * Compare the pattern with the code. Exactily the same as instanciating a new PatternMatcher and making the node accept it
+	 *
+	 * @param code the code
+	 * @param pattern the pattern
+	 * @return true, if they match
+	 */
 	public boolean compare(IBasicNode code, IBasicNode pattern){
 		return compare(code,pattern, false);
 	}
@@ -921,21 +1075,41 @@ public class PatternMatcher implements Visitor {
 		return match;
 	}
 
+	/**
+	 * Checks if is a match.
+	 *
+	 * @return true, if the code matches the pattern
+	 */
 	public boolean isMatch() {
 		return match;
 	}
 
 
+	/**
+	 * Gets the functions found.
+	 *
+	 * @return the functions found
+	 */
 	public HashMap<String, String> getFunctions_found() {
 		return functions_found;
 	}
 
 
+	/**
+	 * Gets the variables found.
+	 *
+	 * @return the variables found
+	 */
 	public HashMap<String, IBasicNode> getVariables_found() {
 		return variables_found;
 	}
 
 
+	/**
+	 * Gets the class name where pattern failed (for debug mostly).
+	 *
+	 * @return the class name where pattern failed
+	 */
 	public String getPatternClassName() {
 		return pattern.getClass().getSimpleName();
 	}

@@ -1,0 +1,34 @@
+digraph "parser.Statement"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="parser.Statement",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="parser.BasicNode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_basic_node.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="parser.IBasicNode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceparser_1_1_i_basic_node.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="main.Visitable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacemain_1_1_visitable.html"];
+  Node5 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="parser.IStatement",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceparser_1_1_i_statement.html"];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="parser.Assignment",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_assignment.html"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="parser.Block",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_block.html"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="parser.Do",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_do.html"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="parser.For",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_for.html"];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="parser.If",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_if.html"];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="parser.Invocation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_invocation.html"];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="parser.LocalVariable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_local_variable.html"];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="parser.NullNode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_null_node.html"];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="parser.While",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_while.html"];
+}

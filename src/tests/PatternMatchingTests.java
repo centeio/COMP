@@ -19,11 +19,20 @@ import parser.Method;
 import parser.Parser;
 import pt.up.fe.specs.spoon.SpoonASTLauncher;
 
+/**
+ * class for testing PatternMatcher results
+ */
 public class PatternMatchingTests {
+
 	private Block  test_body = null;
 	private List<IStatement>  test_statements = null;
 	private List<Member> patternMethods = null;
 	
+	/**
+	 * Reads test file and patterns and creates corresponding AST.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	void start() throws IOException{
 		PrintStream old = System.err;
 		System.setErr(new PrintStream(new BufferedOutputStream(new FileOutputStream("error.txt", true))));
@@ -41,6 +50,11 @@ public class PatternMatchingTests {
 		System.setErr(old);
 	}
 	
+	/**
+	 * Compare local variables.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Test
 	public void compareLocalVariables() throws IOException {
 		start();
@@ -63,6 +77,11 @@ public class PatternMatchingTests {
         assertFalse(pm.compare(lv4, lv1));
 	}
 	
+	/**
+	 * Compare if.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Test
 	public void compareIf() throws IOException {
 		start();
@@ -86,6 +105,11 @@ public class PatternMatchingTests {
         assertFalse(pm.compare(if1,for1));
 	}
 	
+	/**
+	 * Compare for.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Test
 	public void compareFor() throws IOException {
 		start();
@@ -110,6 +134,11 @@ public class PatternMatchingTests {
         assertFalse(pm.compare(for1,lv1));
 	}
 	
+	/**
+	 * Compare while.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Test
 	public void compareWhile() throws IOException {
 		start();
@@ -141,6 +170,11 @@ public class PatternMatchingTests {
         
 	}
 	
+	/**
+	 * Compare partial.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Test
 	public void comparePartial() throws IOException {
 		start();
@@ -161,6 +195,11 @@ public class PatternMatchingTests {
         assertTrue(pm.compare(test_body,pattern17));
 	}
 	
+	/**
+	 * Compare block.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Test
 	public void compareBlock() throws IOException {
 		start();

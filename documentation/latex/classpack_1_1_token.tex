@@ -1,0 +1,139 @@
+\hypertarget{classpack_1_1_token}{}\section{pack.\+Token Class Reference}
+\label{classpack_1_1_token}\index{pack.\+Token@{pack.\+Token}}
+
+
+Inheritance diagram for pack.\+Token\+:
+% FIG 0
+
+
+Collaboration diagram for pack.\+Token\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Object \hyperlink{classpack_1_1_token_ac305f24cb6fbdef23f67ba8c2e3ae04e}{get\+Value} ()
+\item 
+\hyperlink{classpack_1_1_token_a4ecfec365d6c5c6ae5200941cae55f66}{Token} ()
+\item 
+\hyperlink{classpack_1_1_token_a2b695dd62c074593e61d2807ee9025c4}{Token} (int \hyperlink{classpack_1_1_token_a2556cfc62b26093ed5ca01f8d183ff28}{kind})
+\item 
+\hyperlink{classpack_1_1_token_a7013555b7b9f14f339b383840ed80127}{Token} (int \hyperlink{classpack_1_1_token_a2556cfc62b26093ed5ca01f8d183ff28}{kind}, String \hyperlink{classpack_1_1_token_a2c9f5859a8bc0fc9c72aaff47620e755}{image})
+\item 
+String \hyperlink{classpack_1_1_token_aea326d2e5e0be4132465e052794d7eff}{to\+String} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classpack_1_1_token}{Token} \hyperlink{classpack_1_1_token_aa51ceb7660dfb6df5bc48ecae53b8ecf}{new\+Token} (int of\+Kind, String \hyperlink{classpack_1_1_token_a2c9f5859a8bc0fc9c72aaff47620e755}{image})
+\item 
+static \hyperlink{classpack_1_1_token}{Token} {\bfseries new\+Token} (int of\+Kind)\hypertarget{classpack_1_1_token_a09c75bac5fb861fefc8d8991bb6997d5}{}\label{classpack_1_1_token_a09c75bac5fb861fefc8d8991bb6997d5}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classpack_1_1_token_a2556cfc62b26093ed5ca01f8d183ff28}{kind}
+\item 
+int \hyperlink{classpack_1_1_token_aa970f368e286c9f8bfd2859870079cbd}{begin\+Line}
+\item 
+int \hyperlink{classpack_1_1_token_a93563c3ed878705c1c2a3159b09a33f1}{begin\+Column}
+\item 
+int \hyperlink{classpack_1_1_token_a85c1abc6fce7795d5929a97ab8ae0839}{end\+Line}
+\item 
+int \hyperlink{classpack_1_1_token_a1937522e258fb958b41292e4bb25a8ff}{end\+Column}
+\item 
+String \hyperlink{classpack_1_1_token_a2c9f5859a8bc0fc9c72aaff47620e755}{image}
+\item 
+\hyperlink{classpack_1_1_token}{Token} \hyperlink{classpack_1_1_token_a45bfb8566505e83f8ce57f27f04b3d3b}{next}
+\item 
+\hyperlink{classpack_1_1_token}{Token} \hyperlink{classpack_1_1_token_a3b1f8d59a9c48ef7f0476e33caf5aa01}{special\+Token}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Describes the input token stream. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{pack\+::\+Token@{pack\+::\+Token}!Token@{Token}}
+\index{Token@{Token}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{Token()}{Token()}}]{\setlength{\rightskip}{0pt plus 5cm}pack.\+Token.\+Token (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpack_1_1_token_a4ecfec365d6c5c6ae5200941cae55f66}{}\label{classpack_1_1_token_a4ecfec365d6c5c6ae5200941cae55f66}
+No-\/argument constructor \index{pack\+::\+Token@{pack\+::\+Token}!Token@{Token}}
+\index{Token@{Token}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{Token(int kind)}{Token(int kind)}}]{\setlength{\rightskip}{0pt plus 5cm}pack.\+Token.\+Token (
+\begin{DoxyParamCaption}
+\item[{int}]{kind}
+\end{DoxyParamCaption}
+)}\hypertarget{classpack_1_1_token_a2b695dd62c074593e61d2807ee9025c4}{}\label{classpack_1_1_token_a2b695dd62c074593e61d2807ee9025c4}
+Constructs a new token for the specified Image. \index{pack\+::\+Token@{pack\+::\+Token}!Token@{Token}}
+\index{Token@{Token}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{Token(int kind, String image)}{Token(int kind, String image)}}]{\setlength{\rightskip}{0pt plus 5cm}pack.\+Token.\+Token (
+\begin{DoxyParamCaption}
+\item[{int}]{kind, }
+\item[{String}]{image}
+\end{DoxyParamCaption}
+)}\hypertarget{classpack_1_1_token_a7013555b7b9f14f339b383840ed80127}{}\label{classpack_1_1_token_a7013555b7b9f14f339b383840ed80127}
+Constructs a new token for the specified Image and Kind. 
+
+\subsection{Member Function Documentation}
+\index{pack\+::\+Token@{pack\+::\+Token}!get\+Value@{get\+Value}}
+\index{get\+Value@{get\+Value}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{get\+Value()}{getValue()}}]{\setlength{\rightskip}{0pt plus 5cm}Object pack.\+Token.\+get\+Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpack_1_1_token_ac305f24cb6fbdef23f67ba8c2e3ae04e}{}\label{classpack_1_1_token_ac305f24cb6fbdef23f67ba8c2e3ae04e}
+An optional attribute value of the \hyperlink{classpack_1_1_token}{Token}. Tokens which are not used as syntactic sugar will often contain meaningful values that will be used later on by the compiler or interpreter. This attribute value is often different from the image. Any subclass of \hyperlink{classpack_1_1_token}{Token} that actually wants to return a non-\/null value can override this method as appropriate. \index{pack\+::\+Token@{pack\+::\+Token}!new\+Token@{new\+Token}}
+\index{new\+Token@{new\+Token}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{new\+Token(int of\+Kind, String image)}{newToken(int ofKind, String image)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Token} pack.\+Token.\+new\+Token (
+\begin{DoxyParamCaption}
+\item[{int}]{of\+Kind, }
+\item[{String}]{image}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classpack_1_1_token_aa51ceb7660dfb6df5bc48ecae53b8ecf}{}\label{classpack_1_1_token_aa51ceb7660dfb6df5bc48ecae53b8ecf}
+Returns a new \hyperlink{classpack_1_1_token}{Token} object, by default. However, if you want, you can create and return subclass objects based on the value of of\+Kind. Simply add the cases to the switch for all those special cases. For example, if you have a subclass of \hyperlink{classpack_1_1_token}{Token} called I\+D\+Token that you want to create if of\+Kind is ID, simply add something like \+:
+
+case My\+Parser\+Constants.\+ID \+: return new I\+D\+Token(of\+Kind, image);
+
+to the following switch statement. Then you can cast matched\+Token variable to the appropriate type and use sit in your lexical actions. \index{pack\+::\+Token@{pack\+::\+Token}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{to\+String()}{toString()}}]{\setlength{\rightskip}{0pt plus 5cm}String pack.\+Token.\+to\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpack_1_1_token_aea326d2e5e0be4132465e052794d7eff}{}\label{classpack_1_1_token_aea326d2e5e0be4132465e052794d7eff}
+Returns the image. 
+
+\subsection{Member Data Documentation}
+\index{pack\+::\+Token@{pack\+::\+Token}!begin\+Column@{begin\+Column}}
+\index{begin\+Column@{begin\+Column}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{begin\+Column}{beginColumn}}]{\setlength{\rightskip}{0pt plus 5cm}int pack.\+Token.\+begin\+Column}\hypertarget{classpack_1_1_token_a93563c3ed878705c1c2a3159b09a33f1}{}\label{classpack_1_1_token_a93563c3ed878705c1c2a3159b09a33f1}
+The column number of the first character of this \hyperlink{classpack_1_1_token}{Token}. \index{pack\+::\+Token@{pack\+::\+Token}!begin\+Line@{begin\+Line}}
+\index{begin\+Line@{begin\+Line}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{begin\+Line}{beginLine}}]{\setlength{\rightskip}{0pt plus 5cm}int pack.\+Token.\+begin\+Line}\hypertarget{classpack_1_1_token_aa970f368e286c9f8bfd2859870079cbd}{}\label{classpack_1_1_token_aa970f368e286c9f8bfd2859870079cbd}
+The line number of the first character of this \hyperlink{classpack_1_1_token}{Token}. \index{pack\+::\+Token@{pack\+::\+Token}!end\+Column@{end\+Column}}
+\index{end\+Column@{end\+Column}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{end\+Column}{endColumn}}]{\setlength{\rightskip}{0pt plus 5cm}int pack.\+Token.\+end\+Column}\hypertarget{classpack_1_1_token_a1937522e258fb958b41292e4bb25a8ff}{}\label{classpack_1_1_token_a1937522e258fb958b41292e4bb25a8ff}
+The column number of the last character of this \hyperlink{classpack_1_1_token}{Token}. \index{pack\+::\+Token@{pack\+::\+Token}!end\+Line@{end\+Line}}
+\index{end\+Line@{end\+Line}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{end\+Line}{endLine}}]{\setlength{\rightskip}{0pt plus 5cm}int pack.\+Token.\+end\+Line}\hypertarget{classpack_1_1_token_a85c1abc6fce7795d5929a97ab8ae0839}{}\label{classpack_1_1_token_a85c1abc6fce7795d5929a97ab8ae0839}
+The line number of the last character of this \hyperlink{classpack_1_1_token}{Token}. \index{pack\+::\+Token@{pack\+::\+Token}!image@{image}}
+\index{image@{image}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{image}{image}}]{\setlength{\rightskip}{0pt plus 5cm}String pack.\+Token.\+image}\hypertarget{classpack_1_1_token_a2c9f5859a8bc0fc9c72aaff47620e755}{}\label{classpack_1_1_token_a2c9f5859a8bc0fc9c72aaff47620e755}
+The string image of the token. \index{pack\+::\+Token@{pack\+::\+Token}!kind@{kind}}
+\index{kind@{kind}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{kind}{kind}}]{\setlength{\rightskip}{0pt plus 5cm}int pack.\+Token.\+kind}\hypertarget{classpack_1_1_token_a2556cfc62b26093ed5ca01f8d183ff28}{}\label{classpack_1_1_token_a2556cfc62b26093ed5ca01f8d183ff28}
+An integer that describes the kind of this token. This numbering system is determined by Java\+C\+C\+Parser, and a table of these numbers is stored in the file ...Constants.\+java. \index{pack\+::\+Token@{pack\+::\+Token}!next@{next}}
+\index{next@{next}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{next}{next}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Token} pack.\+Token.\+next}\hypertarget{classpack_1_1_token_a45bfb8566505e83f8ce57f27f04b3d3b}{}\label{classpack_1_1_token_a45bfb8566505e83f8ce57f27f04b3d3b}
+A reference to the next regular (non-\/special) token from the input stream. If this is the last token from the input stream, or if the token manager has not read tokens beyond this one, this field is set to null. This is true only if this token is also a regular token. Otherwise, see below for a description of the contents of this field. \index{pack\+::\+Token@{pack\+::\+Token}!special\+Token@{special\+Token}}
+\index{special\+Token@{special\+Token}!pack\+::\+Token@{pack\+::\+Token}}
+\subsubsection[{\texorpdfstring{special\+Token}{specialToken}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Token} pack.\+Token.\+special\+Token}\hypertarget{classpack_1_1_token_a3b1f8d59a9c48ef7f0476e33caf5aa01}{}\label{classpack_1_1_token_a3b1f8d59a9c48ef7f0476e33caf5aa01}
+This field is used to access special tokens that occur prior to this token, but after the immediately preceding regular (non-\/special) token. If there are no such special tokens, this field is set to null. When there are more than one such special token, this field refers to the last of these special tokens, which in turn refers to the next previous special token through its special\+Token field, and so on until the first special token (whose special\+Token field is null). The next fields of special tokens refer to other special tokens that immediately follow it (without an intervening regular token). If there is no such token, this field is null. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/pack/Token.\+java\end{DoxyCompactItemize}

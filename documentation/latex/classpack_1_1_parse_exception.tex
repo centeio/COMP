@@ -1,0 +1,84 @@
+\hypertarget{classpack_1_1_parse_exception}{}\section{pack.\+Parse\+Exception Class Reference}
+\label{classpack_1_1_parse_exception}\index{pack.\+Parse\+Exception@{pack.\+Parse\+Exception}}
+
+
+Inheritance diagram for pack.\+Parse\+Exception\+:
+% FIG 0
+
+
+Collaboration diagram for pack.\+Parse\+Exception\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpack_1_1_parse_exception_a745edb4065dc4046755fb13bf2bde638}{Parse\+Exception} (\hyperlink{classpack_1_1_token}{Token} current\+Token\+Val, int\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} expected\+Token\+Sequences\+Val, String\mbox{[}$\,$\mbox{]} token\+Image\+Val)
+\item 
+\hyperlink{classpack_1_1_parse_exception_ab3a6309229ffee8827ba5d4e366cb4ad}{Parse\+Exception} ()
+\item 
+\hyperlink{classpack_1_1_parse_exception_a33b74f43d592261e1420397e31c69665}{Parse\+Exception} (String message)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpack_1_1_token}{Token} \hyperlink{classpack_1_1_parse_exception_af771ffcbd65f981e21a98ba06aed11a6}{current\+Token}
+\item 
+int\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} \hyperlink{classpack_1_1_parse_exception_aded466561b7bf1e713e6acc68ba9a04d}{expected\+Token\+Sequences}
+\item 
+String\mbox{[}$\,$\mbox{]} \hyperlink{classpack_1_1_parse_exception_a7897eecab28c89c7da8d0c1ce195782c}{token\+Image}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{classpack_1_1_parse_exception_a1a4505eb551f8364ad29f84ea805fe7b}{eol} = System.\+get\+Property(\char`\"{}line.\+separator\char`\"{}, \char`\"{}\textbackslash{}n\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This exception is thrown when parse errors are encountered. You can explicitly create objects of this exception type by calling the method generate\+Parse\+Exception in the generated parser.
+
+You can modify this class to customize your error reporting mechanisms so long as you retain the public fields. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}!Parse\+Exception@{Parse\+Exception}}
+\index{Parse\+Exception@{Parse\+Exception}!pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}}
+\subsubsection[{\texorpdfstring{Parse\+Exception(\+Token current\+Token\+Val, int[][] expected\+Token\+Sequences\+Val, String[] token\+Image\+Val)}{ParseException(Token currentTokenVal, int[][] expectedTokenSequencesVal, String[] tokenImageVal)}}]{\setlength{\rightskip}{0pt plus 5cm}pack.\+Parse\+Exception.\+Parse\+Exception (
+\begin{DoxyParamCaption}
+\item[{{\bf Token}}]{current\+Token\+Val, }
+\item[{int}]{expected\+Token\+Sequences\+Val\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]}, }
+\item[{String\mbox{[}$\,$\mbox{]}}]{token\+Image\+Val}
+\end{DoxyParamCaption}
+)}\hypertarget{classpack_1_1_parse_exception_a745edb4065dc4046755fb13bf2bde638}{}\label{classpack_1_1_parse_exception_a745edb4065dc4046755fb13bf2bde638}
+This constructor is used by the method \char`\"{}generate\+Parse\+Exception\char`\"{} in the generated parser. Calling this constructor generates a new object of this type with the fields \char`\"{}current\+Token\char`\"{}, \char`\"{}expected\+Token\+Sequences\char`\"{}, and \char`\"{}token\+Image\char`\"{} set. \index{pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}!Parse\+Exception@{Parse\+Exception}}
+\index{Parse\+Exception@{Parse\+Exception}!pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}}
+\subsubsection[{\texorpdfstring{Parse\+Exception()}{ParseException()}}]{\setlength{\rightskip}{0pt plus 5cm}pack.\+Parse\+Exception.\+Parse\+Exception (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classpack_1_1_parse_exception_ab3a6309229ffee8827ba5d4e366cb4ad}{}\label{classpack_1_1_parse_exception_ab3a6309229ffee8827ba5d4e366cb4ad}
+The following constructors are for use by you for whatever purpose you can think of. Constructing the exception in this manner makes the exception behave in the normal way -\/ i.\+e., as documented in the class \char`\"{}\+Throwable\char`\"{}. The fields \char`\"{}error\+Token\char`\"{}, \char`\"{}expected\+Token\+Sequences\char`\"{}, and \char`\"{}token\+Image\char`\"{} do not contain relevant information. The Java\+CC generated code does not use these constructors. \index{pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}!Parse\+Exception@{Parse\+Exception}}
+\index{Parse\+Exception@{Parse\+Exception}!pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}}
+\subsubsection[{\texorpdfstring{Parse\+Exception(\+String message)}{ParseException(String message)}}]{\setlength{\rightskip}{0pt plus 5cm}pack.\+Parse\+Exception.\+Parse\+Exception (
+\begin{DoxyParamCaption}
+\item[{String}]{message}
+\end{DoxyParamCaption}
+)}\hypertarget{classpack_1_1_parse_exception_a33b74f43d592261e1420397e31c69665}{}\label{classpack_1_1_parse_exception_a33b74f43d592261e1420397e31c69665}
+Constructor with message. 
+
+\subsection{Member Data Documentation}
+\index{pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}!current\+Token@{current\+Token}}
+\index{current\+Token@{current\+Token}!pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}}
+\subsubsection[{\texorpdfstring{current\+Token}{currentToken}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Token} pack.\+Parse\+Exception.\+current\+Token}\hypertarget{classpack_1_1_parse_exception_af771ffcbd65f981e21a98ba06aed11a6}{}\label{classpack_1_1_parse_exception_af771ffcbd65f981e21a98ba06aed11a6}
+This is the last token that has been consumed successfully. If this object has been created due to a parse error, the token followng this token will (therefore) be the first error token. \index{pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}!eol@{eol}}
+\index{eol@{eol}!pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}}
+\subsubsection[{\texorpdfstring{eol}{eol}}]{\setlength{\rightskip}{0pt plus 5cm}String pack.\+Parse\+Exception.\+eol = System.\+get\+Property(\char`\"{}line.\+separator\char`\"{}, \char`\"{}\textbackslash{}n\char`\"{})\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classpack_1_1_parse_exception_a1a4505eb551f8364ad29f84ea805fe7b}{}\label{classpack_1_1_parse_exception_a1a4505eb551f8364ad29f84ea805fe7b}
+The end of line string for this machine. \index{pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}!expected\+Token\+Sequences@{expected\+Token\+Sequences}}
+\index{expected\+Token\+Sequences@{expected\+Token\+Sequences}!pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}}
+\subsubsection[{\texorpdfstring{expected\+Token\+Sequences}{expectedTokenSequences}}]{\setlength{\rightskip}{0pt plus 5cm}int \mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} pack.\+Parse\+Exception.\+expected\+Token\+Sequences}\hypertarget{classpack_1_1_parse_exception_aded466561b7bf1e713e6acc68ba9a04d}{}\label{classpack_1_1_parse_exception_aded466561b7bf1e713e6acc68ba9a04d}
+Each entry in this array is an array of integers. Each array of integers represents a sequence of tokens (by their ordinal values) that is expected at this point of the parse. \index{pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}!token\+Image@{token\+Image}}
+\index{token\+Image@{token\+Image}!pack\+::\+Parse\+Exception@{pack\+::\+Parse\+Exception}}
+\subsubsection[{\texorpdfstring{token\+Image}{tokenImage}}]{\setlength{\rightskip}{0pt plus 5cm}String \mbox{[}$\,$\mbox{]} pack.\+Parse\+Exception.\+token\+Image}\hypertarget{classpack_1_1_parse_exception_a7897eecab28c89c7da8d0c1ce195782c}{}\label{classpack_1_1_parse_exception_a7897eecab28c89c7da8d0c1ce195782c}
+This is a reference to the \char`\"{}token\+Image\char`\"{} array of the generated parser within which the parse error occurred. This array is defined in the generated ...Constants interface. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/pack/Parse\+Exception.\+java\end{DoxyCompactItemize}

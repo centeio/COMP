@@ -1,0 +1,19 @@
+digraph "parser.For"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="parser.For",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="parser.Statement",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_statement.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="parser.BasicNode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classparser_1_1_basic_node.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="parser.IBasicNode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceparser_1_1_i_basic_node.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="main.Visitable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacemain_1_1_visitable.html"];
+  Node6 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" comments" ];
+  Node6 [label="List\< parser.Comment \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="parser.IStatement",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceparser_1_1_i_statement.html"];
+  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

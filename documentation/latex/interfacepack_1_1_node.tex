@@ -1,0 +1,99 @@
+\hypertarget{interfacepack_1_1_node}{}\section{pack.\+Node Interface Reference}
+\label{interfacepack_1_1_node}\index{pack.\+Node@{pack.\+Node}}
+
+
+Inheritance diagram for pack.\+Node\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interfacepack_1_1_node_a2e232dd013242bce5da2c813a56edbb0}{jjt\+Open} ()
+\item 
+void \hyperlink{interfacepack_1_1_node_a9234e6bd261f300f291e1a8fc9921abd}{jjt\+Close} ()
+\item 
+void \hyperlink{interfacepack_1_1_node_a1f60b4e36c67e890ebd9c3148c4c59ec}{jjt\+Set\+Parent} (\hyperlink{interfacepack_1_1_node}{Node} n)
+\item 
+\hyperlink{interfacepack_1_1_node}{Node} {\bfseries jjt\+Get\+Parent} ()\hypertarget{interfacepack_1_1_node_a0f57f6c5e61e7a98c7c36369229dfb4c}{}\label{interfacepack_1_1_node_a0f57f6c5e61e7a98c7c36369229dfb4c}
+
+\item 
+void \hyperlink{interfacepack_1_1_node_aa4f19509c7b4b0340d3179711be8a382}{jjt\+Add\+Child} (\hyperlink{interfacepack_1_1_node}{Node} n, int i)
+\item 
+\hyperlink{interfacepack_1_1_node}{Node} \hyperlink{interfacepack_1_1_node_a6b03fa6e83689cf6ade56010f61400f0}{jjt\+Get\+Child} (int i)
+\item 
+int \hyperlink{interfacepack_1_1_node_a310058801a9f3b9ffbd73b2a0c1b31df}{jjt\+Get\+Num\+Children} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{pack\+::\+Node@{pack\+::\+Node}!jjt\+Add\+Child@{jjt\+Add\+Child}}
+\index{jjt\+Add\+Child@{jjt\+Add\+Child}!pack\+::\+Node@{pack\+::\+Node}}
+\subsubsection[{\texorpdfstring{jjt\+Add\+Child(\+Node n, int i)}{jjtAddChild(Node n, int i)}}]{\setlength{\rightskip}{0pt plus 5cm}void pack.\+Node.\+jjt\+Add\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}}]{n, }
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}\hypertarget{interfacepack_1_1_node_aa4f19509c7b4b0340d3179711be8a382}{}\label{interfacepack_1_1_node_aa4f19509c7b4b0340d3179711be8a382}
+This method tells the node to add its argument to the node\textquotesingle{}s list of children. 
+
+Implemented in \hyperlink{classpack_1_1_simple_node_a06fa17840f33f2fbf99fd2d754aaae5c}{pack.\+Simple\+Node}.
+
+\index{pack\+::\+Node@{pack\+::\+Node}!jjt\+Close@{jjt\+Close}}
+\index{jjt\+Close@{jjt\+Close}!pack\+::\+Node@{pack\+::\+Node}}
+\subsubsection[{\texorpdfstring{jjt\+Close()}{jjtClose()}}]{\setlength{\rightskip}{0pt plus 5cm}void pack.\+Node.\+jjt\+Close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{interfacepack_1_1_node_a9234e6bd261f300f291e1a8fc9921abd}{}\label{interfacepack_1_1_node_a9234e6bd261f300f291e1a8fc9921abd}
+This method is called after all the child nodes have been added. 
+
+Implemented in \hyperlink{classpack_1_1_simple_node_a5f272bda4f2f74f749dcf0ba8d86fcf1}{pack.\+Simple\+Node}.
+
+\index{pack\+::\+Node@{pack\+::\+Node}!jjt\+Get\+Child@{jjt\+Get\+Child}}
+\index{jjt\+Get\+Child@{jjt\+Get\+Child}!pack\+::\+Node@{pack\+::\+Node}}
+\subsubsection[{\texorpdfstring{jjt\+Get\+Child(int i)}{jjtGetChild(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} pack.\+Node.\+jjt\+Get\+Child (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}\hypertarget{interfacepack_1_1_node_a6b03fa6e83689cf6ade56010f61400f0}{}\label{interfacepack_1_1_node_a6b03fa6e83689cf6ade56010f61400f0}
+This method returns a child node. The children are numbered from zero, left to right. 
+
+Implemented in \hyperlink{classpack_1_1_simple_node_a35eaf281dec92361730bd8362640c94e}{pack.\+Simple\+Node}.
+
+\index{pack\+::\+Node@{pack\+::\+Node}!jjt\+Get\+Num\+Children@{jjt\+Get\+Num\+Children}}
+\index{jjt\+Get\+Num\+Children@{jjt\+Get\+Num\+Children}!pack\+::\+Node@{pack\+::\+Node}}
+\subsubsection[{\texorpdfstring{jjt\+Get\+Num\+Children()}{jjtGetNumChildren()}}]{\setlength{\rightskip}{0pt plus 5cm}int pack.\+Node.\+jjt\+Get\+Num\+Children (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{interfacepack_1_1_node_a310058801a9f3b9ffbd73b2a0c1b31df}{}\label{interfacepack_1_1_node_a310058801a9f3b9ffbd73b2a0c1b31df}
+Return the number of children the node has. 
+
+Implemented in \hyperlink{classpack_1_1_simple_node_ad9d5ab808a21ac7ef4f4ad6638294a7d}{pack.\+Simple\+Node}.
+
+\index{pack\+::\+Node@{pack\+::\+Node}!jjt\+Open@{jjt\+Open}}
+\index{jjt\+Open@{jjt\+Open}!pack\+::\+Node@{pack\+::\+Node}}
+\subsubsection[{\texorpdfstring{jjt\+Open()}{jjtOpen()}}]{\setlength{\rightskip}{0pt plus 5cm}void pack.\+Node.\+jjt\+Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{interfacepack_1_1_node_a2e232dd013242bce5da2c813a56edbb0}{}\label{interfacepack_1_1_node_a2e232dd013242bce5da2c813a56edbb0}
+This method is called after the node has been made the current node. It indicates that child nodes can now be added to it. 
+
+Implemented in \hyperlink{classpack_1_1_simple_node_a63a57095974d21b950870faf4f0d0301}{pack.\+Simple\+Node}.
+
+\index{pack\+::\+Node@{pack\+::\+Node}!jjt\+Set\+Parent@{jjt\+Set\+Parent}}
+\index{jjt\+Set\+Parent@{jjt\+Set\+Parent}!pack\+::\+Node@{pack\+::\+Node}}
+\subsubsection[{\texorpdfstring{jjt\+Set\+Parent(\+Node n)}{jjtSetParent(Node n)}}]{\setlength{\rightskip}{0pt plus 5cm}void pack.\+Node.\+jjt\+Set\+Parent (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{interfacepack_1_1_node_a1f60b4e36c67e890ebd9c3148c4c59ec}{}\label{interfacepack_1_1_node_a1f60b4e36c67e890ebd9c3148c4c59ec}
+This pair of methods are used to inform the node of its parent. 
+
+Implemented in \hyperlink{classpack_1_1_simple_node_aa45f180756d00da5365794c9496f4fb8}{pack.\+Simple\+Node}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/pack/Node.\+java\end{DoxyCompactItemize}

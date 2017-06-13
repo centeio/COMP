@@ -47,18 +47,35 @@ import parser.IBasicNode;
 import parser.IExpression;
 import parser.IStatement;
 
+/**
+ * Finds patterns in code
+ */
 public class FindPattern implements Visitor {
+	
+	/** The patterns found. */
 	CopyOnWriteArrayList<IBasicNode> patternsFound;
+	
+	/** The patterns to find. */
 	HashMap<String, List<Pattern>> patternsToFind;
+	
+	/** The executor. */
 	ExecutorService executor;
 	
 	
+	/**
+	 * Instantiates a new instance of the pattern finder visitor
+	 *
+	 * @param patternsToFind the patterns to find
+	 */
 	public FindPattern(HashMap<String, List<Pattern>> patternsToFind) {
 		this.patternsFound = new CopyOnWriteArrayList<IBasicNode>();
 		this.patternsToFind = patternsToFind;
 		executor = Executors.newFixedThreadPool(10);
 	}
 
+	/* Tries to find pattern in Root and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.Root)
+	 */
 	@Override
 	public void visit(Root root) {
 		//System.out.println("[DEBUG] FindPattern: Root");
@@ -72,6 +89,9 @@ public class FindPattern implements Visitor {
 		}
 	}
 
+	/* Tries to find pattern in compilation unit and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.CompilationUnit)
+	 */
 	@Override
 	public void visit(CompilationUnit cu) {
 		//System.out.println("[DEBUG] FindPattern: CompilationUnit");
@@ -86,12 +106,18 @@ public class FindPattern implements Visitor {
 		}
 	}
 
+	/* Tries to find pattern in comment
+	 * @see main.Visitor#visit(parser.Comment)
+	 */
 	@Override
 	public void visit(Comment comment) {
 		//System.out.println("[DEBUG] FindPattern: Comment");
 		findPatterns(comment);
 	}
 
+	/* Tries to find pattern in array read and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.ArrayRead)
+	 */
 	@Override
 	public void visit(ArrayRead ar) {
 		//System.out.println("[DEBUG] FindPattern: ArrayRead");
@@ -104,6 +130,9 @@ public class FindPattern implements Visitor {
 			ar.getIndex().accept(this);
 	}
 
+	/* Tries to find pattern in class and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.Class)
+	 */
 	@Override
 	public void visit(Class c) {
 		//System.out.println("[DEBUG] FindPattern: Class");
@@ -135,6 +164,9 @@ public class FindPattern implements Visitor {
 		
 	}
 
+	/* Tries to find pattern in constructor and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.Constructor)
+	 */
 	@Override
 	public void visit(Constructor constructor) {
 		//System.out.println("[DEBUG] FindPattern: Constructor");
@@ -151,6 +183,9 @@ public class FindPattern implements Visitor {
 			constructor.getBody().accept(this);
 	}
 
+	/* Tries to find pattern in block and propagates the search to it's statements
+	 * @see main.Visitor#visit(parser.Block)
+	 */
 	@Override
 	public void visit(Block block) {
 		//System.out.println("[DEBUG] FindPattern: Block");
@@ -162,6 +197,9 @@ public class FindPattern implements Visitor {
 			statements.get(i).accept(this);
 	}
 
+	/* Tries to find pattern in invocation and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.Invocation)
+	 */
 	@Override
 	public void visit(Invocation invocation) {
 		//System.out.println("[DEBUG] FindPattern: Invocation");
@@ -179,6 +217,9 @@ public class FindPattern implements Visitor {
 		
 	}
 
+	/* Tries to find pattern in Executable Reference and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.ExecutableReference)
+	 */
 	@Override
 	public void visit(ExecutableReference er) {
 		//System.out.println("[DEBUG] FindPattern: ExecutableReference");
@@ -205,6 +246,9 @@ public class FindPattern implements Visitor {
 		}
 	}
 
+	/* Tries to find pattern in method and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.Method)
+	 */
 	@Override
 	public void visit(Method method) {
 		//System.out.println("[DEBUG] FindPattern: Method");
@@ -223,6 +267,9 @@ public class FindPattern implements Visitor {
 			method.getBody().accept(this);
 	}
 
+	/* Tries to find pattern in parameter and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.Parameter)
+	 */
 	@Override
 	public void visit(Parameter parameter) {
 		//System.out.println("[DEBUG] FindPattern: Parameter");
@@ -232,6 +279,9 @@ public class FindPattern implements Visitor {
 			parameter.getType().accept(this);
 	}
 
+	/* Tries to find pattern in Array Type Reference
+	 * @see main.Visitor#visit(parser.ArrayTypeReference)
+	 */
 	@Override
 	public void visit(ArrayTypeReference atr) {
 		//System.out.println("[DEBUG] FindPattern: ArrayTypeReference");
@@ -241,6 +291,9 @@ public class FindPattern implements Visitor {
 			atr.getType().accept(this);
 	}
 
+	/* Tries to find pattern in if and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.If)
+	 */
 	@Override
 	public void visit(If i) {
 		//System.out.println("[DEBUG] FindPattern: If");
@@ -256,6 +309,9 @@ public class FindPattern implements Visitor {
 			i.getElse().accept(this);
 	}
 
+	/* Tries to find pattern in assignment and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.Assignment)
+	 */
 	@Override
 	public void visit(Assignment assignment) {
 		//System.out.println("[DEBUG] FindPattern: Assignment");
@@ -271,6 +327,9 @@ public class FindPattern implements Visitor {
 			assignment.getRhs().accept(this);
 	}
 
+	/* Tries to find pattern in Variable write and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.VariableWrite)
+	 */
 	@Override
 	public void visit(VariableWrite vw) {
 		//System.out.println("[DEBUG] FindPattern: VariableWrite");
@@ -283,12 +342,18 @@ public class FindPattern implements Visitor {
 			vw.getVar().accept(this);
 	}
 
+	/* Tries to find pattern in null node
+	 * @see main.Visitor#visit(parser.NullNode)
+	 */
 	@Override
 	public void visit(NullNode nn) {
 		//System.out.println("[DEBUG] FindPattern: NullNode");
 		findPatterns(nn);
 	}
 
+	/* Tries to find pattern in local variable and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.LocalVariable)
+	 */
 	@Override
 	public void visit(LocalVariable lv) {
 		//System.out.println("[DEBUG] FindPattern: LocalVariable");
@@ -301,12 +366,18 @@ public class FindPattern implements Visitor {
 			lv.getInit().accept(this);
 	}
 
+	/* Tries to find pattern in Type reference
+	 * @see main.Visitor#visit(parser.TypeReference)
+	 */
 	@Override
 	public void visit(TypeReference tr) {
 		//System.out.println("[DEBUG] FindPattern: TypeReference");
 		findPatterns(tr);
 	}
 
+	/* Tries to find pattern in Local Variable Reference
+	 * @see main.Visitor#visit(parser.LocalVariableReference)
+	 */
 	@Override
 	public void visit(LocalVariableReference lvr) {
 		//System.out.println("[DEBUG] FindPattern: LocalVariableReference");
@@ -316,6 +387,9 @@ public class FindPattern implements Visitor {
 			lvr.getType().accept(this);
 	}
 
+	/* Tries to find pattern in binary operator and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.BinaryOperator)
+	 */
 	@Override
 	public void visit(BinaryOperator bo) {
 		//System.out.println("[DEBUG] FindPattern: BinaryOperator");
@@ -331,6 +405,9 @@ public class FindPattern implements Visitor {
 			bo.getRhs().accept(this);
 	}
 
+	/* Tries to find pattern in literal
+	 * @see main.Visitor#visit(parser.Literal)
+	 */
 	@Override
 	public void visit(Literal literal) {
 		//System.out.println("[DEBUG] FindPattern: Literal");
@@ -340,6 +417,9 @@ public class FindPattern implements Visitor {
 			literal.getType().accept(this);
 	}
 
+	/* Tries to find pattern in Variable Read and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.VariableRead)
+	 */
 	@Override
 	public void visit(VariableRead vr) {
 		//System.out.println("[DEBUG] FindPattern: VariableRead");
@@ -352,6 +432,9 @@ public class FindPattern implements Visitor {
 			vr.getVar().accept(this);
 	}
 
+	/* Tries to find pattern in for loop and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.For)
+	 */
 	@Override
 	public void visit(For f) {
 		//System.out.println("[DEBUG] FindPattern: For");
@@ -377,6 +460,9 @@ public class FindPattern implements Visitor {
 			f.getBody().accept(this);
 	}
 
+	/* Tries to find pattern in unary operator and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.UnaryOperator)
+	 */
 	@Override
 	public void visit(UnaryOperator uo) {
 		//System.out.println("[DEBUG] FindPattern: UnaryOperator");
@@ -389,6 +475,9 @@ public class FindPattern implements Visitor {
 			uo.getOperand().accept(this);
 	}
 
+	/* Tries to find pattern in new array and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.NewArray)
+	 */
 	@Override
 	public void visit(NewArray na) {
 		//System.out.println("[DEBUG] FindPattern: NewArray");
@@ -419,6 +508,9 @@ public class FindPattern implements Visitor {
 		}
 	}
 
+	/* Tries to find pattern in array write and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.ArrayWrite)
+	 */
 	@Override
 	public void visit(ArrayWrite aw) {
 		//System.out.println("[DEBUG] FindPattern: ArrayWrite");
@@ -434,6 +526,9 @@ public class FindPattern implements Visitor {
 			aw.getIndex().accept(this);
 	}
 
+	/* Tries to find pattern in field read and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.FieldRead)
+	 */
 	@Override
 	public void visit(FieldRead fr) {
 		//System.out.println("[DEBUG] FindPattern: FieldRead");
@@ -449,6 +544,9 @@ public class FindPattern implements Visitor {
 			fr.getVar().accept(this);
 	}
 
+	/* Tries to find pattern in Type access and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.TypeAccess)
+	 */
 	@Override
 	public void visit(TypeAccess ta) {
 		//System.out.println("[DEBUG] FindPattern: TypeAccess");
@@ -461,6 +559,9 @@ public class FindPattern implements Visitor {
 			ta.getTarget().accept(this);
 	}
 
+	/* Tries to find pattern in while and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.While)
+	 */
 	@Override
 	public void visit(While w) {
 		//System.out.println("[DEBUG] FindPattern: While");
@@ -473,6 +574,9 @@ public class FindPattern implements Visitor {
 			w.getBody().accept(this);
 	}
 	
+	/* Tries to find pattern in field reference and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.FieldReference)
+	 */
 	@Override
 	public void visit(FieldReference fr) {
 		//System.out.println("[DEBUG] FindPattern: FieldReference");
@@ -486,6 +590,9 @@ public class FindPattern implements Visitor {
 		
 	}
 
+	/* Tries to find pattern in field write and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.FieldWrite)
+	 */
 	@Override
 	public void visit(FieldWrite fw) {
 		//System.out.println("[DEBUG] FindPattern: FieldWrite");
@@ -498,6 +605,9 @@ public class FindPattern implements Visitor {
 			fw.getType().accept(this);
 	}
 	
+	/* Tries to find pattern in do while loop and propagates the search to it's children nodes
+	 * @see main.Visitor#visit(parser.Do)
+	 */
 	@Override
 	public void visit(Do doNode) {
 		//System.out.println("[DEBUG] FindPattern: Do");
@@ -510,16 +620,24 @@ public class FindPattern implements Visitor {
 			doNode.getCondition().accept(this);
 	}
 	
+	/**
+	 * if code possibly matches one pattern, starts a new thread to compare the code with the pattern add it to patterns found
+	 *
+	 * @param node code which possibly matches
+	 */
 	public void findPatterns(IBasicNode node) {
 
 		if(patternsToFind.containsKey(node.getNodeType())) {
 			List<Pattern> patterns = patternsToFind.get(node.getNodeType());
 			
 			for(int i = 0; i < patterns.size(); i++)
-				executor.submit(new Worker(node, patterns.get(i).getRoot(), patterns.get(i).isParcial(), patternsFound));
+				executor.submit(new Worker(node, patterns.get(i).getRoot(), patterns.get(i).isPartial(), patternsFound));
 		}
 	}
 	
+	/**
+	 * Awaits termination of all the pattern comparison threads
+	 */
 	public void awaitTermination() {
 		executor.shutdown();
 		try {
@@ -530,6 +648,9 @@ public class FindPattern implements Visitor {
 		printMatches();
 	}
 	
+	/**
+	 * Prints the line of the patterns found
+	 */
 	private void printMatches() {
 		System.out.println("------------------------------------------------------------");
 		System.out.println("----------------------- Matches Found ----------------------");
