@@ -536,7 +536,8 @@ public class FindPattern implements Visitor {
 		System.out.println("------------------------------------------------------------");
 		
 		for(IBasicNode node : patternsFound) {
-			System.out.println(node.toString());
+			System.out.println(node.getNodeType() + " pattern found in line " +
+					node.getLocation().substring(node.getLocation().lastIndexOf('/') + 1, node.getLocation().length()));
 			System.out.println("------------------------------------------------------------");
 		}
 	}

@@ -15,7 +15,6 @@ public class PatternMatcher implements Visitor {
 	HashMap<String,IBasicNode> variables_found;
 	boolean parcial;
 	boolean match;
-
 	public PatternMatcher(IBasicNode pattern, boolean parcial) {
 		this(pattern, parcial, new HashMap<String,IBasicNode>());
 	}
@@ -42,7 +41,7 @@ public class PatternMatcher implements Visitor {
 			CompilationUnit cu = root_iterator.next();
 			pattern = pattern_iterator.next();
 
-			cu.accept(this);			
+			cu.accept(this);
 		}
 	}
 
@@ -59,7 +58,7 @@ public class PatternMatcher implements Visitor {
 			Type type = root_iterator.next();
 			pattern = pattern_iterator.next();
 
-			type.accept(this);			
+			type.accept(this);
 		}
 	}
 

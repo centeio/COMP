@@ -24,7 +24,7 @@ public class Worker implements Runnable {
 		node.accept(matcher);
 		
 		if(matcher.isMatch())
-			patternsFound.add(pattern);		
+			patternsFound.add(node);		
 	}
 
 }

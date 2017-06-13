@@ -11,7 +11,7 @@ Pattern P2 Exhaustive
 ignore
 int @x = @z;
 ignore
-if(@x == @x) {
+if(@x == @z) {
     @x--; @x++;
 }
 ignore

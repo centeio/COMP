@@ -7,7 +7,6 @@ while(@y < @x) {
 }
 ignore
 
-
 Pattern P2 Exhaustive
 ignore
 int @y = @z;
