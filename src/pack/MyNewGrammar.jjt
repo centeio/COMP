@@ -144,7 +144,7 @@ TOKEN : /* IDENTIFIERS */
 
 ASTStart Start() :
 {}
-{
+{ /*Reads every pattern and writes it in Java*/
   { writer.println("public class MyPattern{"); }
   	(< PATTERN >  { writer.print("void "); }
   	 { System.out.println("Novo pattern"); } Temp() { writer.print("("); } [Search()] { writer.println("){"); } (Pattern())+ { writer.println("}"); } )+
@@ -154,15 +154,18 @@ ASTStart Start() :
   	{ return jjtThis; }
 }
 
+/*Calling a function*/
 void Call() : {} {
   	< PL > { writer.print("(");} [Expression()] < PR > { writer.print(")");}
 }
 
+/*Possible patterns*/
 void Pattern() : {} {
   { System.out.println("Nova subarvore"); }  
   (    If() | While() | DoWhile() | For() | Ignore() | Operation())
 }
 
+/*Defines the type of search: exhaustive or partial*/
 void Search() : {Token t;} {
   	t = < EXHAUSTIVE >
   	{
@@ -176,35 +179,40 @@ void Search() : {Token t;} {
 	}	
 }
 
+/*Finds an "ignore" in the code*/
 void Ignore() : { } {
 	< IGNORE > { writer.println("ignore();"); System.out.println("Ignore");} 
 }
 
+/*Starts a pattern if*/
 void If() :  {} {
   { writer.print("if"); System.out.println("If");  }
   
 	< IF > Condition() Block()	[< ELSE > { writer.print("else"); System.out.println("Else");} Block()]
 }
 
+/*Starts a pattern While*/
 void While() :  {} {
   { writer.print("while"); System.out.println("While");  }
   
 	< WHILE > Condition() Block() 
 }
 
+/*Starts a pattern DoWhile*/
 void DoWhile() :  {} {
   { writer.print("do"); System.out.println("Do");  }
   
 	< DO > Block() < WHILE > { writer.print("while"); System.out.println("While");}  Condition() < SEMICOL > { writer.print(";");}
 }
 
+/*Starts a pattern For*/
 void For() :  {} {
   { writer.print("for"); System.out.println("For");  }
   
 	< FOR > ForCondition() Block() 
 }
 
-
+/*Checks the Condition of the for*/
 void ForCondition() : { } {
  < PL > { writer.print("("); } [Parcel() [Assignment()] | Definition() ]
  < SEMICOL > { writer.print(";");}
@@ -212,25 +220,29 @@ void ForCondition() : { } {
  < SEMICOL > { writer.print(";");} [OperationAux()] < PR >  { writer.print(")"); }  
 }
 
+/*Analyses the code in between brackets*/
 void Block() : { } {
 	< BL > { writer.println("{"); } (Operation()|Ignore())+ < BR >  { writer.print("}"); } | Operation()
  }
 
+/*Checks the Condition of an if, while or dowhile*/
 void Condition() : {} {
   { System.out.println("Condition");  }
   
 	< PL > { writer.print("("); } (Expression() [CompareOp() Expression()] | Bool() ) < PR >  { writer.print(")"); } 
 }
 
+/*Gets true or false*/
 void Bool() : {Token t;} {
   t = < BOOLEANVALUE >
   {
 		jjtThis.value = t.image;
 		writer.print(t.image);
-}
+  }
   
 }
 
+/*Checks a comparison operation*/
 void CompareOp() : {Token t;} {
   { System.out.println("CompareOp");  }
 	t = < EQUALS >
@@ -251,6 +263,8 @@ void CompareOp() : {Token t;} {
 	}
 }
 
+
+/*Gets a var like @x, and checks if it was already parsed*/
 void Var() : {Token t;} {
   { System.out.println("Var");  }
   
@@ -258,6 +272,7 @@ void Var() : {Token t;} {
 	{
 		jjtThis.value = t.image;
 		String name;
+		/*Checks if the variable exists in the hashtable (has already been parsed). If not: creates it with an incremental number*/
 		if((name = vars.get(t.image)) == null) {
 		  	name = "a"+i++;
 		  	vars.put(t.image,name);
@@ -268,29 +283,35 @@ void Var() : {Token t;} {
 	}
 }
 
+/*An expression in between curly brackets or an Int or Pacerl : anything that can be used in an operation*/
 void Expression() : {} {
   { System.out.println("Expression");  }  
 	< PL > { writer.print("("); } Expression() Op() Expression() < PR >  { writer.print(")"); } | Parcel() | Int() 
 	
 }
 
+/*A Parcel is a variable (Temp()). This can also mean it is an @x or a position of an array*/
 void Parcel() : {Token t;} {
 	(Var() | Temp()) [Array()]  
 }
 
+/*Defines as a position of an array if it ends with square brackets and has something in between them*/
 void Array() : { } {
   < BRL > { writer.print("[");} Expression() [AritmeticOp()] < BRR > { writer.print("]");}
 }
 
+/*Defines as a declaration of an array if it ends with square brackets*/
 void ArrayDeclaration() : { } {
   < BRL > { writer.print("[");} [Expression() [AritmeticOp()]] < BRR > { writer.print("]");}
 }
 
+/*A declaration/assignment*/
 void Definition() : {} {
   { System.out.println("Definition");  }
 	(Type() (Var()|Temp()) [ArrayDeclaration()] [Assignment()] )
 }
 
+/*Indicates the type of a variable*/
 void Type() : {Token t;} {
 	t = < BYTE >
 	{
@@ -334,6 +355,7 @@ void Type() : {Token t;} {
 	}
 }
 
+/*Single or group of digits*/
 void Int() : {Token t;} {
   { System.out.println("Int");  }
   
@@ -344,6 +366,7 @@ void Int() : {Token t;} {
 	}
 }
 
+/*A string that means it is a variable*/
 void Temp() : {Token t;} {
   { System.out.println("String");  }
   
@@ -354,39 +377,46 @@ void Temp() : {Token t;} {
 	}
 }
 
+/*This can be a definition of a variable or an operation*/
 void Operation() : {} {
   { System.out.println("Operation");  }
 	 (OperationAux()|Definition()) < SEMICOL > { writer.println(";"); }
 }
 
+/*This involves a Parcel and an assignment or function call or an Aritmetic operation*/
 void OperationAux() : {} {
   { System.out.println("Operation");  }
 	(Parcel() (Assignment() | Call() | AritmeticOp()))
 }
 
+/*Parses an assignment*/
 void Assignment() : {} {
 	{ System.out.println("Assignment");  }
 	< EQ > { writer.print(" = "); } (Expression() [AritmeticOp() {System.out.println("AritmeticOp");}]  |   < NEW > { writer.print("new "); }  Type() ArrayDeclaration())
 }
 
+/*Accepts an operator and a right side of the expression*/
 void AritmeticOp() : {} { 
   { System.out.println("AritmeticOp");  }
   
 	Op() Expression() | Inc() | Dec()
 }
 
+/*Operation ++*/
 void Inc() : {Token t;} {
   { System.out.println("++");  }
   
 	t = < PPLUS > {jjtThis.value = t.image; writer.print(t.image); } 
 }
 
+/*Operation --*/
 void Dec() : {Token t;} {
   { System.out.println("--");  }
   
 	t = < MMINUS > {jjtThis.value = t.image; writer.print(t.image); } 
 }
 
+/*Other operators*/
 void Op() : {Token t;} {
   { System.out.println("Op");  }
   
