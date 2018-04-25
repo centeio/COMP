@@ -1,29 +1,4 @@
 PROJECT TITLE: PAT (P18)
-GROUP: G35
- 
-Student 1:
-Name:Carolina Centeio Jorge
-UP: up201403090
-Grade: 19
-Contribution: 28%
- 
-Student 2:
-Name: Inês Proença
-UP: up201404228
-Grade: 19
-Contribution: 28%
- 
-Student 3:
-Name: Mónica Ariana Fernandes
-UP: up201404789
-Grade: 14
-Contribution 16%
- 
-Student 4:
-Name: Tiago Almeida
-UP: up201305665
-Grade: 19
-Contribution: 28%
  
 **SUMMARY: 
 This project intends to develop a simple DSL for specifying code patterns and to identify the code sections in a program that matches the input patterns.
@@ -65,7 +40,7 @@ We created 5 files. Each file contains a  running script.
  **TASK DISTRIBUTION: 
 Carolina - Generation of java code from patterns. 
 Tiago - Parser for Java test File.
-Inês e Ariana - Visitors.
+InÃªs e Ariana - Visitors.
  
  
 **PROS: 
